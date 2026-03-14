@@ -6,6 +6,7 @@ print("Packaging files...")
 try:
     with tarfile.open('paper.tar.gz', 'w:gz') as tar:
         tar.add('ELAPSE_paper.tex', arcname='ELAPSE_paper.tex')
+        tar.add('xurl.sty', arcname='xurl.sty')
         tar.add('../output/figures/fig1_entropy_n100.png', arcname='output/figures/fig1_entropy_n100.png')
         tar.add('../output/figures/fig3_iee_n500.png', arcname='output/figures/fig3_iee_n500.png')
         tar.add('../output/figures/fig6_weights_n100.png', arcname='output/figures/fig6_weights_n100.png')
