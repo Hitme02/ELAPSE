@@ -59,7 +59,7 @@ The study of information containment spans several active research domains, part
 
 \textbf{Information Diffusion and Entropy.} The foundational mechanics of information spread on complex networks were early formalized by epidemiological models \cite{pastor2015epidemic}. More recently, entropy-based metrics have emerged as robust topological indicators. Zhao et al. (2024) \cite{zhao2024entropy} demonstrated that entropy spreading provides a highly accurate macroscopic view of information volatility across heterogeneous node degrees, establishing Shannon entropy as a primary indicator for outbreak detection. Concurrently, advances in continuous graph diffusion, such as the work by Eliasof et al. (2024) \cite{eliasof2024graph}, have shown that applying partial differential equations (PDEs) directly to graph topologies can accurately model non-linear propagation boundaries. 
 
-\textbf{Static Self-Destructing Data.} Early containment protocols focused heavily on cryptographic key decay. Vanish \cite{geambasu2009vanish} introduced the concept of leveraging DHT churn to systematically lose decryption keys, though it was quickly shown to be vulnerable to Sybil attacks \cite{wolchok2010defeating}. Subsequent iterations \cite{tang2010fades, perlman2005ephemerizer} sought to harden the storage layers, but fundamentally retained chronological decay timers \cite{wang2013secrecy}. 
+\textbf{Static Self-Destructing Data.} Early containment protocols focused heavily on cryptographic key decay. Vanish \cite{geambasu2009vanish} introduced the concept of leveraging DHT churn to systematically lose decryption keys, though it was quickly shown to be vulnerable to Sybil attacks \cite{wolchok2010defeating}. Subsequent iterations \cite{tang2010fades, perlman2005ephemerizer} sought to harden the storage layers, but fundamentally retained chronological decay timers \cite{douceur2002sybil}. 
 
 \textbf{Active Containment and Unlearning.} In the broader context of active data containment, recent literature has pivoted toward algorithmic unlearning and adaptive exposure limits. Juliussen et al. (2023) \cite{juliussen2023machine} highlighted the necessity of verifiable topological removal protocols, while Oesterling et al. (2024) \cite{oesterling2024aistats} advanced the use of active thresholding constraints in dynamic graph learning. Furthermore, multi-agent modeling literature has increasingly adopted concepts from systems biology \cite{alon2019introduction} and social cascades \cite{watts2002social} to model robust, step-like phase transitions in complex networks \cite{guilbeault2018complex}.
 
@@ -245,7 +245,7 @@ Despite these promising results, the framework possesses inherent limitations. T
 Future work will focus on integrating dynamic neural weight prediction to bypass the static overhead of the Nelder-Mead simplex solver, extending the Laplacian operators to accommodate directed social graphs, and establishing a formal well-posedness proof for the underlying stochastic differential systems driving the erasure boundary.
 
 \section*{Acknowledgements}
-The authors acknowledge institutional support ensuring available computational clusters. \textbf{Code availability:} The complete ELAPSE Python simulation codebase, including generation parameters, is formally maintained and available upon request for exact experimental reproduction.
+The authors acknowledge institutional support ensuring available computational clusters. \textbf{Code availability:} The complete ELAPSE Python simulation codebase, including generation parameters, is formally maintained and publicly available at \url{https://github.com/Hitme02/ELAPSE}.
 
 \vspace{1em}
 \bibliographystyle{elsarticle-num}
@@ -257,7 +257,7 @@ Tang, Y., Lee, P. P., Lui, J. C., \& Perlman, R. (2010). FADE: Secure overlay cl
 \bibitem{zhao2024entropy}
 Zhao, X., Han, D., Bao, Y., Qian, J., \& Yang, R. (2024). A Multi-Information Spreading Model for One-Time Retweet Information in Complex Networks. \emph{Entropy}, 26(2).
 \bibitem{eliasof2024graph}
-Eliasof, R., et al. (2024). Graph neural diffusion models for continuous-time propagation. \emph{arXiv preprint arXiv:2406.10871}.
+Eliasof, M., Haber, E., \& Treister, E. (2024). Graph neural diffusion models for continuous-time propagation. \emph{arXiv preprint arXiv:2406.10871}.
 \bibitem{juliussen2023machine}
 Juliussen, B. A., Rui, J. P., \& Johansen, D. (2023). Algorithms that forget: Machine unlearning and the right to erasure. \emph{Computer Law \& Security Review}.
 \bibitem{oesterling2024aistats}

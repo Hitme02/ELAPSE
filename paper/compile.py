@@ -5,12 +5,12 @@ import sys
 print("Packaging files...")
 try:
     with tarfile.open('paper.tar.gz', 'w:gz') as tar:
-        tar.add('ELAPSE_paper.tex')
-        tar.add('output/figures/fig1_entropy_n100.png')
-        tar.add('output/figures/fig3_iee_n500.png')
-        tar.add('output/figures/fig6_weights_n100.png')
-        tar.add('output/figures/fig7_scaling.png')
-        tar.add('output/figures/fig8_sensitivity.png')
+        tar.add('ELAPSE_paper.tex', arcname='ELAPSE_paper.tex')
+        tar.add('../output/figures/fig1_entropy_n100.png', arcname='output/figures/fig1_entropy_n100.png')
+        tar.add('../output/figures/fig3_iee_n500.png', arcname='output/figures/fig3_iee_n500.png')
+        tar.add('../output/figures/fig6_weights_n100.png', arcname='output/figures/fig6_weights_n100.png')
+        tar.add('../output/figures/fig7_scaling.png', arcname='output/figures/fig7_scaling.png')
+        tar.add('../output/figures/fig8_sensitivity.png', arcname='output/figures/fig8_sensitivity.png')
 except Exception as e:
     print(f"Failed to create tar.gz: {e}")
     sys.exit(1)
