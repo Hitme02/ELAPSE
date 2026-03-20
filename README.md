@@ -7,14 +7,14 @@ Welcome to the official repository for the **ELAPSE** framework. This project is
 
 ---
 
-## 🛑 The Problem: Why Current Systems Fail
+## The Problem: Why Current Systems Fail
 
 Imagine you send a highly sensitive photo or document over a decentralized network. 
 Normally, people try to secure this by using **Time-Based Deletion** (like Snapchat, or protocols like *Vanish*). They attach a timer: *"Delete this file after 8 hours."*
 
 **The flaw:** On a massive, highly connected network, 8 hours is an eternity. A viral file can be copied to thousands of computers in minutes. By the time the 8-hour clock runs out, the data is already everywhere. The "timer" has no idea what is actually happening in the real world.
 
-## 💡 The ELAPSE Solution: Deleting Based on "Space", Not "Time"
+## The ELAPSE Solution: Deleting Based on "Space", Not "Time"
 
 **ELAPSE** throws away the clock. Instead of deleting data based on *time*, it deletes data based on *space* (how widely it has spread). 
 
@@ -22,7 +22,7 @@ We measure this spread using a mathematical concept called **Shannon Entropy**. 
 
 ---
 
-## ⚙️ How It Works: The 5 Core Mechanisms
+## How It Works: The 5 Core Mechanisms
 
 Because computer networks come in all shapes and sizes, a single "delete switch" doesn't always work. To fix this, ELAPSE acts as an "ensemble"—it combines the math from **5 different scientific fields** to vote on when the data should kill itself:
 
@@ -37,7 +37,7 @@ Instead of guessing which of these 5 models is best, ELAPSE uses an AI optimizat
 
 ---
 
-## 📊 Key Results
+## Key Results
 
 Through extensive simulations on networks of up to 500 nodes (using Erdős–Rényi, Barabási–Albert, and Watts–Strogatz graphs):
 - **Doing Nothing (Baseline):** Privacy exposure skyrockets to a massive score of **7,055**.
@@ -70,7 +70,7 @@ ELAPSE/
 
 ---
 
-## 🚀 Quick Start Guide
+## Quick Start Guide
 
 Want to run the simulations yourself and generate the graphs from the paper? It's incredibly easy.
 
@@ -92,5 +92,5 @@ This will execute the entire ELAPSE framework across all network topologies and 
 python run_all.py
 ```
 
-## 📈 Viewing Results
+## Viewing Results
 Once the simulation finishes running, head into the `output/figures/` folder. The engine will automatically generate all the beautiful Trajectory, Bar, Heatmap, and Scaling charts seen in the official paper!
