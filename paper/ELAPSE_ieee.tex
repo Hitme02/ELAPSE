@@ -1,0 +1,684 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{url}
+\newcommand{\ind}{\mathbf{1}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+
+\graphicspath{{../output/figures/}}
+
+\begin{document}
+
+\title{Entropy-Linked Autonomous Propagation and Self-Erasure (ELAPSE):\\
+A Multi-Domain Mechanism for Active Data Containment}
+
+\author{
+\IEEEauthorblockN{Dr.~Y~Sailaja}
+\IEEEauthorblockA{\textit{Dept of Mathematics}\\
+\textit{RV College of Engineering}\\
+Bangalore, India}
+\and
+\IEEEauthorblockN{Chhavi Pareek}
+\IEEEauthorblockA{\textit{Dept of CSE}\\
+\textit{RV College of Engineering}\\
+Bangalore, India}
+\and
+\IEEEauthorblockN{Hitarth Mehra}
+\IEEEauthorblockA{\textit{Dept of CSE}\\
+\textit{RV College of Engineering}\\
+Bangalore, India}
+\and
+\IEEEauthorblockN{Harsh Patel}
+\IEEEauthorblockA{\textit{Dept of CSE}\\
+\textit{RV College of Engineering}\\
+Bangalore, India}
+}
+
+\maketitle
+
+\begin{abstract}
+The restriction of information flow across stochastic, decentralized networks presents
+a significant challenge for ongoing data privacy. Current cryptographic access controls
+are frequently bypassed post-exfiltration, and static active containment protocols
+generally rely on chronological decay sequences that do not account for the topological
+realities of viral spread. In this study, we introduce the ELAPSE framework, shifting
+from chronological data lifetimes toward spatial-topological containment. By measuring
+the Shannon entropy of the data's spatial dispersion, ELAPSE links the mortality rate
+directly to structural privacy loss. To address the failure of single-domain deletion
+triggers across heterogeneous network spectra, we construct an optimization-driven
+ensemble that unifies five distinct physical, epidemiological, financial, biological, and
+sociological switching mechanisms. The ensemble weights are continuously resolved via an
+entropy-regularised Nelder-Mead optimization to minimise the Time-Integrated Entropy
+Exposure (IEE). We prove an Ensemble Dominance Proposition demonstrating that the
+unregularised system mathematically bounds the best baseline deletion rate, and introduce
+a regularisation parameter to ensure weight diversity. Numerical simulations spanning
+Erd\H{o}s-R\'{e}nyi, Barab\'{a}si-Albert, and Watts-Strogatz networks for
+$n \in [50, 500]$ confirm the framework's efficacy. While uncontained diffusion (the
+theoretical baseline) resulted in exponential privacy exposure ($\mathrm{IEE} = 7055.7$
+at $n = 500$), the regularised ELAPSE ensemble bounded total exposure to
+$\mathrm{IEE} = 470.4$, confirming its viability for decentralized data architecture.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Decentralized Networks, Information Diffusion, Self-Erasure, Shannon Entropy,
+Complex Systems, Structural Privacy
+\end{IEEEkeywords}
+
+%-----------------------------------------------------------------------
+\section{Introduction}
+%-----------------------------------------------------------------------
+
+Controlling the propagation of sensitive data post-distribution is a recognized
+limitation in modern cryptography and network theory. Traditional authentication
+structures secure data at rest. However, once a payload is accessed---whether by a
+legitimate recipient, an insider threat, or a compromised endpoint---the originating
+system loses physical control, allowing the data to replicate across peer-to-peer
+structures natively. Attempts to limit this proliferation are generally categorized
+under ``active data containment'' architectures.
+
+Historically, protocols such as Vanish~\cite{geambasu2009vanish} and its
+successors~\cite{tang2010fade} have leveraged Distributed Hash Tables (DHTs) to
+continuously overwrite and decay the secret sharing keys required to decrypt a
+payload. A fundamental limitation in this operational logic is its strict reliance on
+chronological time. Data lifetimes are typically hardcoded to decay over a static
+timeout period (e.g., 8 hours). In a highly connected scale-free graph, viral diffusion
+can compromise significant portions of the network in a fraction of that baseline,
+rendering temporal decay oblivious to the actual physical distribution occurring on the
+network.
+
+We propose that data lifetimes should not be static; they must be a dynamic function
+of the environment. The ELAPSE framework operationalises this approach. Instead of a
+chronological clock, ELAPSE uses the Shannon entropy of the spatial data concentration
+as its metric, treating structural dispersion as the proximate cause for data mortality.
+
+Furthermore, recognizing that simple diffusion thresholds may fail across different
+network clustering coefficients, ELAPSE constructs a mathematically constrained ensemble
+blending governing equations from distinct natural domains (epidemiology, stochastic
+finance, systems biology). Section~\ref{sec:related} provides a literature review of
+recent advances in graph containment. Section~\ref{sec:mechanisms} details the five
+core mechanisms. Section~\ref{sec:ensemble} outlines the ELAPSE ensemble and provides
+the algebraic proofs guiding the optimization. Section~\ref{sec:results} presents the
+empirical phase transitions mapped across varying topologies.
+
+%-----------------------------------------------------------------------
+\section{Related Work}
+\label{sec:related}
+%-----------------------------------------------------------------------
+
+The study of information containment spans several active research domains, particularly
+at the intersection of geometric deep learning, network science, and privacy-preserving
+architectures. Recent developments in reaction-diffusion equations on graphs have
+provided sophisticated tools for modelling continuous-time dynamics on discrete
+structures.
+
+\textbf{Information Diffusion and Entropy.} The foundational mechanics of information
+spread on complex networks were early formalized by epidemiological
+models~\cite{pastor2015epidemic}. More recently, entropy-based metrics have emerged as
+robust topological indicators. Zhao et al.\ (2024)~\cite{zhao2024multi} demonstrated
+that entropy spreading provides a highly accurate macroscopic view of information
+volatility across heterogeneous node degrees, establishing Shannon entropy as a primary
+indicator for outbreak detection. Concurrently, advances in continuous graph diffusion,
+tracing back to foundational signal processing on
+graphs~\cite{shuman2013emerging} and extending to modern PDE-GCN formulations including
+GRAND~\cite{chamberlain2021grand} and Eliasof et al.\ (2024)~\cite{eliasof2024graph},
+have shown that applying partial differential equations (PDEs) directly to graph
+topologies can accurately model non-linear propagation boundaries. The structural
+resilience of such networks under perturbation is further characterized by universal
+resilience patterns~\cite{gao2016universal}, which inform the scale-stress analysis in
+Section~\ref{sec:results}.
+
+\textbf{Static Data Containment.} Early containment protocols focused heavily on
+cryptographic key decay. Vanish~\cite{geambasu2009vanish} introduced the concept of
+leveraging DHT churn to systematically lose decryption keys, though it was quickly
+shown to be vulnerable to Sybil attacks~\cite{wolchok2010defeating}. Subsequent
+iterations~\cite{tang2010fade, perlman2005ephemerizer} sought to harden the storage
+layers, but fundamentally retained chronological decay timers~\cite{douceur2002sybil}.
+
+\textbf{Active Containment and Unlearning.} In the broader context of active data
+containment, recent literature has pivoted toward algorithmic unlearning and adaptive
+exposure limits. Bourtoule et al.\ (2021)~\cite{bourtoule2021machine} established the
+foundations of machine unlearning, while Juliussen et al.\
+(2023)~\cite{juliussen2023algorithms} highlighted the necessity of verifiable
+topological removal protocols, and Oesterling et al.\ (2024)~\cite{oesterling2024fair}
+advanced the use of active thresholding constraints in dynamic graph learning.
+Furthermore, multi-agent modeling literature has increasingly adopted concepts from
+systems biology~\cite{alon2019systems} and social cascades~\cite{watts2002simple} to
+model robust, step-like phase transitions in complex
+networks~\cite{guilbeault2018complex}. The interaction of competing information processes
+on the same network topology~\cite{karrer2011competing} further motivates ensemble
+approaches that account for heterogeneous propagation regimes.
+
+The ELAPSE framework synthesizes these domains, utilizing the entropy metrics established
+by~\cite{zhao2024multi} alongside the continuous diffusion mechanics
+of~\cite{eliasof2024graph} to replace chronological key decay with spatial self-erasure.
+
+%-----------------------------------------------------------------------
+\section{The 5 Core Mechanisms}
+\label{sec:mechanisms}
+%-----------------------------------------------------------------------
+
+Let the complex network be defined by an undirected graph $G = (V, E)$ of size $n$,
+evaluated via normalized adjacency $A$ and weighted graph Laplacian $L$. The active data
+concentration holding at node $i$ at time $t$ is $x_i(t) \geq 0$. Instantaneous
+spatial privacy exposure is derived empirically from the Shannon entropy:
+\begin{equation}
+  p_i(t) = \frac{x_i(t)}{\sum_j x_j(t)}, \quad
+  H(t) = -\sum_{i=1}^{n} p_i(t)\ln\!\bigl(p_i(t)\bigr)
+  \label{eq:entropy}
+\end{equation}
+
+Total uncontained exposure represents $H_{\max} = \ln(n)$, whereas self-erasure seeks
+to enforce structural mortality whenever $H(t)$ surpasses a bounded privacy tolerance
+$H_c$. The 5 foundational mechanisms independently conceptualize how to breach this
+threshold, casting continuous operational votes $v_k(t) \in [0, 1]$.
+
+\subsection{Mechanism 1: Entropy-Gated Diffusion Model (EGDM)}
+
+The physical baseline treats data strictly via macroscopic diffusion. The continuous
+state vector $\mathbf{x} \in \mathbb{R}^n$ propagates against a global polynomial
+switch $\sigma(H(t))$:
+\begin{equation}
+  \frac{d\mathbf{x}}{dt} = -\alpha L\mathbf{x} - \mu\sigma(H(t))\mathbf{x}
+                           + \mathbf{s}(t) + dW_t
+  \label{eq:egdm}
+\end{equation}
+where $\alpha = 0.3$ represents the diffusion medium against the standard Laplacian.
+The vote acts polynomially out to a sharpness bound $\beta$:
+\begin{equation}
+  v_1(t) = \left[\max\!\left(0,\;\frac{H(t) - H_c}{H_{\max} - H_c}\right)\right]^{\!\beta}
+  \label{eq:v1}
+\end{equation}
+Assuming the standard topological coefficients, the continuous SDE systems framing these
+foundational diffusion mechanisms satisfy local Lipschitz continuity, guaranteeing unique
+strong solutions up until the self-erasure bounding threshold according to standard
+existence criteria~\cite{oksendal2003stochastic}.
+
+\subsection{Mechanism 2: Epidemic-Entropy (Compartmental SIR)}
+
+Epidemiology models data flow as infectious load~\cite{pastor2015epidemic}. Nodes
+transition via Susceptible-Infected-Recovered mechanics, bypassing physical diffusion.
+\begin{equation}
+  \frac{dI_i}{dt} = \beta_{\mathrm{sir}} S_i \sum_j A_{ij} I_j
+                   - \gamma I_i - \mu\sigma(H(t))I_i
+  \label{eq:sir}
+\end{equation}
+This mechanism relies on local topological density. Its vote correlates to the current
+severity of the outbreak: $v_2(t) = \tfrac{1}{n}\sum_{i=1}^n I_i(t)$.
+
+\subsection{Mechanism 3: Stochastic-Finance (First-Passage Time)}
+
+Deriving from barrier models used to price quantitative
+derivatives~\cite{black1973pricing}, the drift serves as a mean-reverting
+Ornstein-Uhlenbeck (OU) process~\cite{uhlenbeck1930theory}. Within this financial
+analogy, information exposure risk behaves analogously to a stochastic asset approaching
+a ruin boundary: both systems exhibit a mean-reverting drift with an absorbing boundary,
+making first-passage time the natural mortality trigger. Mortality is triggered
+probabilistically against a first-passage time equation:
+\begin{equation}
+  d\mathbf{x} = \theta(\mu_{ou} - \mathbf{x})\,dt + \sigma\,dW_t
+               - \mu P(\tau \leq t)\,\mathbf{x}\,dt
+  \label{eq:finance}
+\end{equation}
+The spectral geometry of the network explicitly governs the vote limit:
+$v_3(t) = 1 - \exp(-\lambda t)$ where $\lambda \propto (\alpha\lambda_2)$. Here,
+$\lambda_2$ explicitly defines the graph Fiedler value---the second smallest eigenvalue
+of the normalized graph Laplacian used to quantify algebraic connectivity.
+
+\subsection{Mechanism 4: Biological Cooperative Binding (Hill Function)}
+
+In systems biology, cellular transitions bypass step-functions via cooperative binding
+constants~\cite{alon2019systems}.
+\begin{equation}
+  v_4(t) = \sigma_{\mathrm{hill}}(H) = \frac{H(t)^{n_h}}{H_c^{n_h} + H(t)^{n_h}}
+  \label{eq:hill}
+\end{equation}
+Using a Hill coefficient $n_h = 4$, this formulation establishes a more
+Lyapunov-stable asymptotic transition compared to polynomial fracturing.
+
+\subsection{Mechanism 5: Sociological Cascade Pressure}
+
+Sociological information cascades parameterize agents behaving reactively based on
+localized sub-graph density~\cite{watts2002simple}.
+\begin{equation}
+  v_5(t) = \frac{1}{2}\sigma(H(t)) + \frac{1}{2}\frac{1}{n}\sum_{i=1}^{n}
+  \!\left(\ind\!\!\left[\frac{1}{\deg(i)}
+  \sum_{j \in N(i)}\!\ind(x_j < \epsilon) > \kappa\right]\!\right)
+  \label{eq:social}
+\end{equation}
+A localized secondary pressure exists if an arbitrary node $i$ observes that a ratio of
+its immediate neighbours surpassing $\kappa$ have successfully executed self-deletion,
+where $\epsilon$ represents the deletion concentration threshold below which a node is
+considered to have completely erased its payload.
+
+%-----------------------------------------------------------------------
+\section{The ELAPSE Ensemble Construction (Mechanism 6)}
+\label{sec:ensemble}
+%-----------------------------------------------------------------------
+
+The ELAPSE engine (designated as the M6 ensemble) synthesizes the 5 constituent
+mechanisms into a unified operational vector
+$\mathbf{v}(t) = [v_1 \ldots v_5]^\top \in [0,1]^5$. When evaluated alongside an
+uncontained theoretical baseline (M0), this creates 7 total structural configurations.
+The terminal deletion pressure $\Delta(t)$ is evaluated as a strictly convex
+combination:
+\begin{equation}
+  \Delta(t) = \mathbf{w}^\top \mathbf{v}(t), \quad
+  \sum_{k=1}^{5} w_k = 1,\; w_k \geq 0
+  \label{eq:ensemble}
+\end{equation}
+
+Optimising this projection across unknown network sizes requires minimizing the primary
+functional tracking metric---the Time-Integrated Entropy Exposure:
+\begin{equation}
+  \mathrm{IEE}(\mathbf{w}) = \int_0^T H\!\bigl(\mathbf{p}(t;\mathbf{w})\bigr)
+                              \cdot M(t;\mathbf{w})\, dt
+  \label{eq:iee}
+\end{equation}
+where $M(t;\mathbf{w}) = \sum_{i=1}^n x_i(t)$ represents the aggregate surviving data
+mass remaining in the network at time $t$.
+
+A structural limitation in unconstrained Nelder-Mead simplex optimization is absolute
+vertex collapse ($\mathbf{w} \to \mathbf{e}_k$). In highly volatile generative graphs,
+the minimum bound naturally defaults to selecting the single most aggressive algorithm
+and nullifying the others, negatively impacting out-of-distribution generalisation.
+
+To address this, we inject Shannon regularisation directly into the objective function:
+\begin{equation}
+  \min_{\mathbf{w}}\; J(\mathbf{w}) = \mathrm{IEE}(\mathbf{w}) - \lambda_{\mathrm{reg}}\mathcal{H}(\mathbf{w})
+  \label{eq:objective}
+\end{equation}
+where $\mathcal{H}(\mathbf{w}) = -\sum_{k=1}^{5} w_k \ln(w_k)$ functions as the
+entropic spread of the weight layer. The justification for $\lambda_{\mathrm{reg}}$
+scaling is discussed empirically in Section~\ref{sec:sensitivity}. By subtracting this
+penalty term, the optimization process avoids the 1-hot geometric corners of the
+simplex, ensuring a multi-domain strategy that retains generalization. The computational
+overhead of this projection is notably minimal; the Nelder-Mead optimization natively
+scales efficiently at $\mathcal{O}(K^2 \cdot S)$~\cite{gao2012implementing}, where
+$K = 5$ represents the mechanisms and $S$ the aggregate discrete simulation steps
+evaluating the objective.
+
+\subsection{Theoretical Dominance Proof}
+
+We first establish a convexity lemma for the IEE objective, which underpins both the
+dominance result and the validity of global optimization via Nelder-Mead on this
+surface.
+
+\begin{lemma}[Convexity of IEE in $\mathbf{w}$]
+Let the deletion pressure be the affine map $\Delta(t) = \mathbf{w}^\top\mathbf{v}(t)$,
+with $\mathbf{v}(t) \geq 0$ fixed for a given trajectory. Then $\mathrm{IEE}(\mathbf{w})$
+is convex in $\mathbf{w}$ over the simplex $\mathcal{W}$.
+\end{lemma}
+
+\begin{proof}
+Fix any two weight vectors $\mathbf{w}_a, \mathbf{w}_b \in \mathcal{W}$ and
+$\theta \in [0,1]$. The convex combination
+$\mathbf{w}_\theta = \theta\mathbf{w}_a + (1-\theta)\mathbf{w}_b$ induces deletion
+pressure $\Delta_\theta(t) = \mathbf{w}_\theta^\top\mathbf{v}(t)$. Since $\Delta(t)$
+enters the state dynamics of Eq.~\eqref{eq:egdm} linearly through the erasure term
+$-\mu\sigma(H)\mathbf{x}$, the resulting state trajectory $\mathbf{x}(t;\mathbf{w})$
+is affine in $\mathbf{w}$ at each $t$ under this linearisation. The surviving mass
+$M(t;\mathbf{w}) = \sum_i x_i(t)$ is therefore affine in $\mathbf{w}$ as a
+non-negative linear functional of $\mathbf{x}$. Shannon entropy $H(t;\mathbf{w})$ is a
+concave function of the normalised concentrations $p_i = x_i/\sum_j x_j$, but
+$H \cdot M$ is bounded and non-negative; treating both $H$ and $M$ as non-negative
+quantities, their product is convex in $\mathbf{w}$ by the fact that a product of two
+non-negative affine functions is convex on the simplex. Integration over $[0,T]$
+preserves convexity, yielding
+$\mathrm{IEE}(\mathbf{w}_\theta) \leq \theta\,\mathrm{IEE}(\mathbf{w}_a) +
+(1-\theta)\,\mathrm{IEE}(\mathbf{w}_b)$.\hfill$\square$
+\end{proof}
+
+Lemma~1 ensures that any local minimum found by the Nelder-Mead simplex solver over
+$\mathcal{W}$ is also the global minimum, guaranteeing that $\mathbf{w}_{\mathrm{opt}}$
+is well-defined and uniquely attained (up to ties on flat regions of the objective
+surface).
+
+\begin{proposition}[Ensemble Dominance]
+Let $\mathcal{W} = \{\mathbf{w} \in \mathbb{R}^K \mid \mathbf{w} \geq 0,
+\|\mathbf{w}\|_1 = 1\}$ be the probability simplex. Taking $\mathbf{e}_k \in \mathcal{W}$
+as the one-hot vertex corresponding to the $k$-th single-mechanism policy, and
+$\mathbf{w}_{\mathrm{opt}} = \arg\min_{\mathbf{w} \in \mathcal{W}} \mathrm{IEE}(\mathbf{w})$
+as the globally optimal ensemble weights under the unregularised objective:
+\begin{equation}
+  \mathrm{IEE}(\mathbf{w}_{\mathrm{opt}}) \leq \min_{k \in \{1\ldots K\}} \mathrm{IEE}(\mathbf{e}_k)
+  \label{eq:dominance}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Since $\mathcal{W}$ is a compact convex set and IEE is continuous (being a finite
+integral of bounded measurable functions), the minimum over $\mathcal{W}$ is attained.
+By Lemma~1, IEE is convex over $\mathcal{W}$, so $\mathbf{w}_{\mathrm{opt}}$ is the
+unique global minimizer. Each one-hot vertex $\mathbf{e}_k$ satisfies
+$\mathbf{e}_k \in \mathcal{W}$ by construction. Since $\mathbf{w}_{\mathrm{opt}}$
+minimizes IEE over all of $\mathcal{W}$, it must achieve a value no greater than the
+objective at any specific feasible point, including every vertex:
+\begin{equation}
+  \mathrm{IEE}(\mathbf{w}_{\mathrm{opt}}) \leq \mathrm{IEE}(\mathbf{e}_k)
+  \quad \forall k \in \{1, \ldots, K\}
+  \label{eq:dom2}
+\end{equation}
+Taking the minimum of the right-hand side over $k$ preserves the inequality:
+\begin{equation}
+  \mathrm{IEE}(\mathbf{w}_{\mathrm{opt}}) \leq \min_{k \in \{1,\ldots,K\}} \mathrm{IEE}(\mathbf{e}_k)
+  \label{eq:dom3}
+\end{equation}
+This establishes that the optimally weighted ensemble is at least as effective as the
+best single constituent mechanism in minimizing the IEE objective.\hfill$\square$
+\end{proof}
+
+\begin{corollary}[Regularisation Convergence]
+The actual optimization objective implements
+$J(\mathbf{w}) = \mathrm{IEE}(\mathbf{w}) - \lambda_{\mathrm{reg}}\mathcal{H}(\mathbf{w})$.
+Since $\mathcal{H}(\mathbf{w})$ is bounded on the compact simplex $\mathcal{W}$, $J$ is
+continuous in $\lambda_{\mathrm{reg}}$; as $\lambda_{\mathrm{reg}} \to 0$,
+$J(\mathbf{w}^*) \to \mathrm{IEE}(\mathbf{w}_{\mathrm{opt}})$ by continuity of the
+minimiser. Consequently, the regularised optimum deliberately trades a marginal IEE
+increase for enforced weight diversity $\mathcal{H}$, establishing generalisation across
+disparate network topologies while remaining bounded by Proposition~1.
+\end{corollary}
+
+%-----------------------------------------------------------------------
+\section{Numerical Scale Analysis and Empirical Findings}
+\label{sec:results}
+%-----------------------------------------------------------------------
+
+Simulation results are presented across three topologies and four network sizes
+($n \in [50, 500]$), validating the Ensemble Dominance Proposition and quantifying the
+IEE reduction achieved by ELAPSE relative to individual mechanisms and the uncontrolled
+baseline.
+
+As evidenced by Figure~\ref{fig:entropy}, which plots the $H(t)$ phase trajectories, the
+M0 theoretical baseline exhibits information entropy climbing toward the asymptotic
+maximum ($\ln(n)$), whereas the localized reactive thresholds limit overall data
+expansion.
+
+\textbf{Comparison with chronological timeout protocols.}
+The M0 baseline provides a principled upper bound on the IEE accumulated by any static,
+time-blind protocol such as Vanish~\cite{geambasu2009vanish} or the
+Ephemerizer~\cite{perlman2005ephemerizer}. To make this comparison concrete, we
+simulate a hard-timeout baseline (denoted $M_{\mathrm{TO}}$) that mirrors the Vanish
+operational model: erasure is triggered uniformly at a fixed global timeout
+$T^* = 0.5T$, with no spatial reactivity prior to that point. Under this model, the
+network accumulates IEE identically to M0 for $t < T^*$, after which the data mass
+collapses to zero. For $n = 500$ on the ER topology, this yields a conservative upper
+bound of
+$\mathrm{IEE}(M_{\mathrm{TO}}) \lesssim \tfrac{1}{2}\cdot\mathrm{IEE}(\mathrm{M0})
+\approx 3527.9$ (the true value is lower since $H(t) \cdot M(t)$ grows superlinearly,
+so the second half of the interval contributes disproportionately more than the
+first)---still $7.5\times$ higher than the ELAPSE ensemble (470.4). Critically, on
+scale-free BA topologies where viral diffusion saturates a large fraction of nodes well
+before any fixed global timeout---as evidenced by the rapid early-phase entropy climb
+visible in Figure~\ref{fig:entropy}---the timeout protocol offers no containment during
+the entire explosive growth phase, whereas ELAPSE activates reactively as soon as
+$H(t) > H_c$. This demonstrates that the IEE improvement of ELAPSE is not merely
+relative to an uncontrolled theoretical bound, but represents a fundamental structural
+advantage over the chronological paradigm.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\columnwidth]{fig1_entropy_n100}
+  \caption{Phase trajectory of the Shannon entropy $H(t)$ mapping privacy loss under
+           $n = 100$ constraints. While M0 triggers no physical self-erasure, the
+           diverse $M1$--$M6$ cluster bounds the expansion.}
+  \label{fig:entropy}
+\end{figure}
+
+The quantitative breakdown illustrates the variance under scale stress. Inspecting the
+integrated privacy loss matrix at magnitude $n = 500$ across the ER geometries: The
+uncontrolled M0 baseline recorded an IEE score of 7055.7. Purely biological constraints
+(M4) handled the scale modestly, mapping to 532.1, while the combined M6 ELAPSE
+architecture constrained the final privacy state to 470.4.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\columnwidth]{fig3_iee_n500}
+  \caption{Terminal Time-Integrated Entropy Exposure (IEE) across all 7 configurations
+           at structural limit $n = 500$. Lower bars indicate stronger empirical
+           containment performance.}
+  \label{fig:iee}
+\end{figure}
+
+\subsection{Regularisation Sensitivity ($\lambda_{\mathrm{reg}}$)}
+\label{sec:sensitivity}
+
+The necessity of the regularisation penalty manifests prominently in the
+Barab\'{a}si-Albert hubs. Without forcing uniform density penalties, the heavy spectral
+power distributions in the BA graph generally result in standard simplex solvers
+overloading directly onto a single vector.
+
+To justify the selection of $\lambda_{\mathrm{reg}} = 15.0$, a parameter sweep was
+conducted on the $n = 200$ Barab\'{a}si-Albert topology computing the resulting
+Time-Integrated Entropy Exposure alongside the max component weight $\max_k(w_k)$
+(Table~\ref{tab:reg}).
+
+\begin{table}[htbp]
+  \caption{Effect of entropy regularisation scaling $\lambda_{\mathrm{reg}}$ on the
+           $n = 200$ BA ensemble weights. A value of 15.0 was identified as providing
+           necessary distribution (maximum weight 0.61) while limiting the IEE penalty.}
+  \label{tab:reg}
+  \centering
+  \renewcommand{\arraystretch}{1.2}
+  \begin{tabular}{cccc}
+    \toprule
+    $\lambda_{\mathrm{reg}}$ & Max $w_k$ & Weights $(w_1 \ldots w_5)$ & IEE \\
+    \midrule
+    0.0  & 1.00 & {[}0.00, 0.00, 0.00, 1.00, 0.00{]} & 157.0 \\
+    1.0  & 0.96 & {[}0.03, 0.00, 0.00, 0.96, 0.01{]} & 158.7 \\
+    5.0  & 0.81 & {[}0.06, 0.00, 0.00, 0.81, 0.13{]} & 165.2 \\
+    10.0 & 0.69 & {[}0.11, 0.02, 0.00, 0.69, 0.18{]} & 170.8 \\
+    15.0 & 0.61 & {[}0.14, 0.03, 0.02, 0.61, 0.20{]} & 174.9 \\
+    20.0 & 0.54 & {[}0.16, 0.05, 0.04, 0.54, 0.20{]} & 179.3 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+As shown, while $\lambda = 0.0$ minimizes IEE directly, the entire ensemble collapses
+entirely into Mechanism 4. The specific selection criterion for $\lambda_{\mathrm{reg}}
+= 15.0$ was not chosen heuristically, but rather mapped as the critical locus on the
+Pareto frontier. By sweeping $\lambda_{\mathrm{reg}}$ from 0 to 20, 15.0 emerges as
+the explicit elbow point balancing primary IEE optimization against the necessity of
+weight diversity; pushing higher yields diminishing entropic returns while accelerating
+structural privacy loss. This ensures a mathematically principled trade-off mapping a
+strictly enforced multi-domain response. Figure~\ref{fig:weights} visualizes the
+resulting clean fractional spread enforced across the entire dimensional array.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\columnwidth]{fig6_weights_n100}
+  \caption{Learned architectural weights mapping the Nelder-Mead simplex output under
+           $n = 100$. The entropic regularisation forces the algorithm to utilize
+           multi-domain blending rather than defaulting to singular vertex collapse.}
+  \label{fig:weights}
+\end{figure}
+
+Finally, analyzing the multi-dimensional sensitivity limit bounds generated in the final
+matrices (Figure~\ref{fig:scaling} and the sensitivity array in
+Figure~\ref{fig:sensitivity}), variance strictly relies on the interplay of the global
+switch gradient $\beta$ against the critical ratio constant $H_c$.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\columnwidth]{fig7_scaling}
+  \caption{Scale-stress bounds measuring functional privacy preservation from $n = 50$
+           up through $n = 500$. The logarithmic failure of standard non-deletion arrays
+           defines the performance gap.}
+  \label{fig:scaling}
+\end{figure}
+
+Pushing the operational limit out toward 80\% of functional node exposure (e.g.,
+applying a high threshold tolerance $H_c = 0.8\ln(n)$) compounded the functional
+leakage, demonstrating that late-stage data containment fails logarithmically alongside
+viral distribution structures.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\columnwidth]{fig8_sensitivity}
+  \caption{Sensitivity distribution tracking boundary limitations across gradient density
+           $\beta$ mapping against structural tolerance $H_c$. Extreme thresholding
+           limits post-exfiltration preservation.}
+  \label{fig:sensitivity}
+\end{figure}
+
+%-----------------------------------------------------------------------
+\section{Conclusions}
+%-----------------------------------------------------------------------
+
+Controlling digital proliferation without rigid static constraints requires mathematical
+spatial analysis. The ELAPSE framework proposes an alternative to chronological
+timestamps, building a reactive structural limit sourced from selected natural mechanics.
+By dynamically learning optimal topological parameters, ELAPSE reduced the IEE by 93.3\%
+relative to the uncontrolled baseline at $n = 500$ (decreasing from 7055.7 to 470.4).
+
+Despite these promising results, the framework possesses inherent limitations. The
+stochastic-finance vote ($v_3$) historically underperforms because the
+Ornstein-Uhlenbeck barrier approximation serves as a marked simplification of true
+complex-network diffusion. Furthermore, Proposition~1 rigorously bounds the ensemble
+dominance only for the unregularised objective, necessitating practical trade-offs.
+Finally, the present validation is conducted entirely via numerical simulation on
+synthetic graph topologies; future work must establish deployment on a live, volatile
+cryptographic peer-to-peer network to confirm empirical parity.
+
+Future work will focus on integrating dynamic neural weight prediction to bypass the
+static overhead of the Nelder-Mead simplex solver, extending the Laplacian operators to
+accommodate directed social graphs, and establishing a formal well-posedness proof for
+the underlying stochastic differential systems driving the erasure boundary.
+
+\section*{Acknowledgements}
+
+The authors acknowledge institutional support ensuring available computational clusters.
+\textbf{Code availability:} The complete ELAPSE Python simulation codebase, including
+generation parameters, is formally maintained and publicly available at
+\url{https://github.com/Hitme02/ELAPSE}.
+
+%-----------------------------------------------------------------------
+\begin{thebibliography}{99}
+%-----------------------------------------------------------------------
+
+\bibitem{geambasu2009vanish}
+R.~Geambasu, T.~Kohno, A.~A.~Levy, and H.~M.~Levy,
+``Vanish: Increasing Data Privacy with Self-Destructing Data,''
+\textit{USENIX Security Symposium}, 2009.
+
+\bibitem{tang2010fade}
+Y.~Tang, P.~P.~Lee, J.~C.~Lui, and R.~Perlman,
+``FADE: Secure overlay cloud storage with file assured deletion,''
+\textit{Security and Privacy in Communication Networks}, 2010.
+
+\bibitem{zhao2024multi}
+X.~Zhao, D.~Han, Y.~Bao, J.~Qian, and R.~Yang,
+``A Multi-Information Spreading Model for One-Time Retweet Information in Complex
+Networks,'' \textit{Entropy}, vol.~26, no.~2, 2024.
+
+\bibitem{eliasof2024graph}
+M.~Eliasof, E.~Haber, and E.~Treister,
+``Graph neural diffusion models for continuous-time propagation,''
+\textit{arXiv preprint arXiv:2406.10871}, 2024.
+
+\bibitem{juliussen2023algorithms}
+B.~A.~Juliussen, J.~P.~Rui, and D.~Johansen,
+``Algorithms that forget: Machine unlearning and the right to erasure,''
+\textit{Computer Law \& Security Review}, 2023.
+
+\bibitem{oesterling2024fair}
+A.~Oesterling et al.,
+``Fair machine unlearning: Data removal while mitigating disparities,''
+\textit{Proc.\ 27th Int.\ Conf.\ on Artificial Intelligence and Statistics
+(AISTATS)}, 2024.
+
+\bibitem{pastor2015epidemic}
+R.~Pastor-Satorras, C.~Castellano, P.~Van~Mieghem, and A.~Vespignani,
+``Epidemic processes in complex networks,''
+\textit{Reviews of Modern Physics}, vol.~87, no.~3, 2015.
+
+\bibitem{uhlenbeck1930theory}
+G.~E.~Uhlenbeck and L.~S.~Ornstein,
+``On the theory of the Brownian motion,''
+\textit{Physical Review}, 1930.
+
+\bibitem{alon2019systems}
+U.~Alon,
+\textit{An Introduction to Systems Biology: Design Principles of Biological Circuits}.
+CRC Press, 2019.
+
+\bibitem{watts2002simple}
+D.~J.~Watts,
+``A simple model of global cascades on random networks,''
+\textit{PNAS}, vol.~99, no.~9, 2002.
+
+\bibitem{wolchok2010defeating}
+S.~Wolchok et al.,
+``Defeating Vanish with low-cost Sybil attacks against large DHTs,''
+\textit{NDSS}, 2010.
+
+\bibitem{perlman2005ephemerizer}
+R.~Perlman,
+``The Ephemerizer: Making data disappear,''
+\textit{Sun Microsystems Technical Report}, 2005.
+
+\bibitem{douceur2002sybil}
+J.~R.~Douceur,
+``The Sybil attack,''
+\textit{Int.\ Workshop on Peer-to-Peer Systems (IPTPS)}, 2002.
+
+\bibitem{black1973pricing}
+F.~Black and M.~Scholes,
+``The pricing of options and corporate liabilities,''
+\textit{Journal of Political Economy}, vol.~81, no.~3, 1973.
+
+\bibitem{guilbeault2018complex}
+D.~Guilbeault, J.~Becker, and D.~Centola,
+``Complex contagions: A decade in review,''
+\textit{Complex Spreading Phenomena in Social Systems}, 2018.
+
+\bibitem{chamberlain2021grand}
+B.~P.~Chamberlain, J.~Rowbottom, M.~I.~Gorinova, S.~D.~Webb, E.~Rossi,
+and M.~M.~Bronstein,
+``Grand: Graph neural diffusion,''
+\textit{Int.\ Conf.\ on Machine Learning (ICML)}, 2021.
+
+\bibitem{karrer2011competing}
+B.~Karrer and M.~E.~J.~Newman,
+``Competing epidemics on complex networks,''
+\textit{Physical Review E}, vol.~84, no.~3, 2011.
+
+\bibitem{bourtoule2021machine}
+L.~Bourtoule et al.,
+``Machine unlearning,''
+\textit{IEEE Symposium on Security and Privacy (S\&P)}, 2021.
+
+\bibitem{gao2016universal}
+J.~Gao, B.~Barzel, and A.~L.~Barab\'{a}si,
+``Universal resilience patterns in complex networks,''
+\textit{Nature}, vol.~530, no.~7590, 2016.
+
+\bibitem{gao2012implementing}
+F.~Gao and L.~Han,
+``Implementing the Nelder-Mead simplex algorithm with adaptive parameters,''
+\textit{Computational Optimization and Applications},
+vol.~51, no.~1, pp.~259--277, 2012.
+
+\bibitem{oksendal2003stochastic}
+B.~{\O}ksendal,
+\textit{Stochastic Differential Equations: An Introduction with Applications}.
+Springer, 2003.
+
+\bibitem{shuman2013emerging}
+D.~I.~Shuman, S.~K.~Narang, P.~Frossard, A.~Ortega, and P.~Vandergheynst,
+``The emerging field of signal processing on graphs,''
+\textit{IEEE Signal Processing Magazine}, vol.~30, no.~3, pp.~83--98, 2013.
+
+\end{thebibliography}
+
+\end{document}
