@@ -1,96 +1,183 @@
 # ELAPSE: Entropy-Linked Autonomous Propagation and Self-Erasure
 
-![Python](https://img.shields.io/badge/python-3.10%2B-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
+A mathematical framework for active data containment in distributed networks,
+submitted to *Applied Mathematical Modelling* (Elsevier).
 
-Welcome to the official repository for the **ELAPSE** framework. This project is a mathematical simulation engine designed to solve a major problem in data privacy: **how do we stop sensitive data from spreading forever once it leaves our hands?**
-
----
-
-## The Problem: Why Current Systems Fail
-
-Imagine you send a highly sensitive photo or document over a decentralized network. 
-Normally, people try to secure this by using **Time-Based Deletion** (like Snapchat, or protocols like *Vanish*). They attach a timer: *"Delete this file after 8 hours."*
-
-**The flaw:** On a massive, highly connected network, 8 hours is an eternity. A viral file can be copied to thousands of computers in minutes. By the time the 8-hour clock runs out, the data is already everywhere. The "timer" has no idea what is actually happening in the real world.
-
-## The ELAPSE Solution: Deleting Based on "Space", Not "Time"
-
-**ELAPSE** throws away the clock. Instead of deleting data based on *time*, it deletes data based on *space* (how widely it has spread). 
-
-We measure this spread using a mathematical concept called **Shannon Entropy**. If the data stays contained to a few trusted computers, the entropy is low, and the data stays alive. But the second the data starts "going viral" and leaking to too many computers, the entropy spikes. **ELAPSE detects this spike and triggers a network-wide self-erasure protocol.** It's like a fire sprinkler system that turns on the exact moment it senses too much smoke.
+**Core idea:** instead of time-based deletion, ELAPSE triggers data erasure
+when network-wide Shannon entropy $H(t)$ exceeds a threshold $H_c$, meaning
+the data has spread too widely to be recalled.  An ensemble of five deletion
+mechanisms (epidemic, stochastic-finance, biology, social cascade, and
+diffusion) learns optimal voting weights via regularised Nelder-Mead
+optimisation to minimise time-integrated entropy exposure (IEE).
 
 ---
 
-## How It Works: The 5 Core Mechanisms
+## Repository layout
 
-Because computer networks come in all shapes and sizes, a single "delete switch" doesn't always work. To fix this, ELAPSE acts as an "ensemble"—it combines the math from **5 different scientific fields** to vote on when the data should kill itself:
-
-1. **The Physics Model (Diffusion):** Treats data like heat spreading across a metal plate.
-2. **The Epidemiology Model (SIR):** Treats data like a virus spreading through a population.
-3. **The Finance Model (First-Passage Time):** Treats the data's survival like a fluctuating stock market price hitting a stop-loss limit.
-4. **The Systems Biology Model (Hill Function):** Treats the deletion trigger like a cooperative protein binding in a living cell.
-5. **The Sociology Model (Information Cascade):** Assumes computers will delete the data if they see enough of their "neighbors" deleting it (herd behavior).
-
-### The "Brain" (Nelder-Mead Optimization)
-Instead of guessing which of these 5 models is best, ELAPSE uses an AI optimization algorithm. It continuously tests the network and assigns weights to each of the 5 models, blending them together. This guarantees the tightest possible containment no matter what network the data is on.
-
----
-
-## Key Results
-
-Through extensive simulations on networks of up to 500 nodes (using Erdős–Rényi, Barabási–Albert, and Watts–Strogatz graphs):
-- **Doing Nothing (Baseline):** Privacy exposure skyrockets to a massive score of **7,055**.
-- **ELAPSE Ensemble:** Privacy exposure is rapidly crushed and bounded to just **470**.
-- **Result:** A **93.3% reduction** in privacy loss compared to uncontained networks.
-
----
-
-## 📂 Repository Structure
-
-```text
-ELAPSE/
-├── src/                # Core Python Simulation Engine
-│   ├── networks.py     # Graph topologies (ER, BA, WS)
-│   ├── math_utils.py   # Matrix Laplacians, entropy equations
-│   ├── m0_baseline.py  # Model 0: Uncontained theoretical diffusion
-│   ├── m1_egdm.py      # Model 1: Physical Diffusion
-│   ├── m2_epidemic.py  # Model 2: Epidemiological SIR
-│   ├── m3_finance.py   # Model 3: Financial Stochastic
-│   ├── m4_biology.py   # Model 4: Biological Switch
-│   ├── m5_social.py    # Model 5: Sociological Cascade
-│   ├── m6_ensemble.py  # Model 6: The ELAPSE Brain (Optimization)
-│   ├── run_simulation.py
-│   └── plot_results.py
-├── paper/              # LaTeX source code and the final compiled Publication PDF
-├── output/             # Auto-generated experiment dumps and graphical charts
-├── run_all.py          # Master CLI entrypoint to run the entire project
-└── requirements.txt    # Python dependencies
+```
+EL/
+├── src/                     Python simulation codebase
+│   ├── math_utils.py        entropy, sigma, Hill, first-passage functions
+│   ├── networks.py          ER, BA, WS graph generators; Fiedler value
+│   ├── m0_baseline.py       M0: pure diffusion (no deletion)
+│   ├── m1_egdm.py           M1: EGDM entropy-gate (polynomial threshold)
+│   ├── m2_epidemic.py       M2: SIR epidemic mortality
+│   ├── m3_finance.py        M3: OU first-passage deletion
+│   ├── m4_biology.py        M4: Hill-function cooperative mortality
+│   ├── m5_social.py         M5: social cascade threshold deletion
+│   ├── m6_ensemble.py       M6: ELAPSE ensemble (entropy-regularised Nelder-Mead)
+│   ├── run_simulation.py    original single-seed runner (legacy)
+│   ├── run_simulation_ci.py N=30 seeds + 95 % CI runner (primary)
+│   ├── snap_loader.py       Stanford SNAP Gnutella downloader / parser
+│   ├── convexity_check.py   Phase 2A: IEE convexity numerical check
+│   ├── adversarial.py       Phase 2D: adversarial hub-throttling model
+│   ├── gossip_entropy.py    Phase 2E: k-hop gossip entropy estimator
+│   ├── plot_extended.py     publication figures (300 DPI, PDF + PNG)
+│   └── generate_tables.py   LaTeX table cells for \input{} commands
+├── run_extended.py          Master runner (phase-by-phase or all at once)
+├── paper/
+│   ├── ELAPSE_AMM.tex       Compilable AMM Elsevier paper (32 pages)
+│   ├── ELAPSE_AMM.bib       Bibliography (35 references)
+│   ├── elsarticle.cls       Elsevier article class (local copy for compilation)
+│   ├── elsarticle-num.bst   Numeric citation style
+│   └── tables/              Auto-generated LaTeX cell files (t{n}_{topo}_{model}.tex)
+├── output/
+│   ├── ci_results.pkl       Main simulation results (N=30 seeds, n=50/100/200/500)
+│   ├── ci_snap.pkl          SNAP P2P real-world validation results
+│   ├── adversarial_results.pkl  Phase 2D adversarial study
+│   ├── gossip_results.pkl   Phase 2E gossip estimation study
+│   ├── m3_analysis.pkl      Phase 2F M3 mechanistic analysis
+│   ├── convexity_check.pkl  Phase 2A convexity violation data
+│   ├── iee_summary.csv      Human-readable IEE table (all n, topo, model)
+│   └── figures/             All publication figures (PDF + PNG, 300 DPI)
+└── data/
+    └── snap/                Downloaded SNAP Gnutella datasets (auto-downloaded)
 ```
 
 ---
 
-## Quick Start Guide
+## Reproducing all results
 
-Want to run the simulations yourself and generate the graphs from the paper? It's incredibly easy.
+### Prerequisites
 
-**1. Install Dependencies**
-Make sure you have Python installed, then install the required math and graphing libraries:
 ```bash
-pip install -r requirements.txt
+pip install numpy scipy networkx matplotlib
 ```
 
-**2. Run a Quick Smoke Test**
-If you just want to verify the code works without waiting for large graphs to render, run a quick limit test (50 computers):
+A working TeX Live installation with `pdflatex` is needed to compile the paper.
+`elsarticle.cls` is included locally so no separate package installation is
+required.
+
+### Step 1 — Run all phases (approx. 100 min on a modern laptop)
+
 ```bash
-python run_all.py --quick
+python3 run_extended.py
 ```
 
-**3. Run the Full Scale Study**
-This will execute the entire ELAPSE framework across all network topologies and all mathematical models. **(Note: This takes a few minutes to complete).**
+To run individual phases:
+
 ```bash
-python run_all.py
+python3 run_extended.py --phase 2A    # convexity check (Dirichlet simplex sampling)
+python3 run_extended.py --phase 2B    # main N=30 CI simulation, all sizes/topologies
+python3 run_extended.py --phase 2C    # SNAP real-world validation (downloads data)
+python3 run_extended.py --phase 2D    # adversarial hub-throttling model
+python3 run_extended.py --phase 2E    # k-hop gossip entropy estimation
+python3 run_extended.py --phase 2F    # M3 mechanistic analysis
+python3 run_extended.py --phase figs  # generate all publication figures
 ```
 
-## Viewing Results
-Once the simulation finishes running, head into the `output/figures/` folder. The engine will automatically generate all the beautiful Trajectory, Bar, Heatmap, and Scaling charts seen in the official paper!
+### Step 2 — Generate LaTeX table cells
+
+```bash
+python3 src/generate_tables.py
+```
+
+Creates `paper/tables/t{n}_{topo}_{model}.tex` (individual cells) and
+`paper/tables/iee_table_n{n}.tex` (full tables) used by the paper's
+`\input{}` commands.
+
+### Step 3 — Compile the paper
+
+```bash
+cd paper
+pdflatex ELAPSE_AMM.tex
+bibtex   ELAPSE_AMM
+pdflatex ELAPSE_AMM.tex
+pdflatex ELAPSE_AMM.tex   # second pass resolves cross-references
+```
+
+Output: `paper/ELAPSE_AMM.pdf` (32 pages).
+
+---
+
+## Key empirical results
+
+All statistics are mean ± 95 % CI over N=30 independent seeds.
+
+### IEE at n=500 (lower is better)
+
+| Mechanism         |       ER |       BA |       WS |
+|-------------------|----------|----------|----------|
+| M0 (no deletion)  | 7016 ± 32| 6960 ± 32| 6939 ± 31|
+| M1 (EGDM)         |  462 ± 1 |  -- |  -- |
+| M4 (Biology-Hill) |  532 ± 2 |  521 ± 2 |  522 ± 2 |
+| M5 (Social)       |  454 ± 2 |  -- |  -- |
+| **M6 (ELAPSE)**   | **469 ± 2**| **627 ± 2**| **624 ± 2**|
+
+M6 achieves ≥ 90 % IEE reduction vs M0 on all combinations.
+At n=500, weight collapse (M4 weight ≈ 0.88–1.00 on BA/WS) means M6
+approximates M4 rather than a true ensemble — a known limitation documented
+in the paper (§4.4).
+
+### SNAP real-world validation (n=500 subgraphs)
+
+| Mechanism | Gnutella08 (λ₂=0.303) | Gnutella31 (λ₂=0.071) |
+|-----------|----------------------|----------------------|
+| M0        |    6960 ± 32         |     6780 ± 30        |
+| M4        |     523 ± 2          |      518 ± 2         |
+| M5        |     473 ± 3          |      533 ± 9         |
+| M6        |     619 ± 2          |      670 ± 3         |
+
+M6/M0 IEE ratio ≥ 9× on both real-world datasets.
+
+---
+
+## Simulation design
+
+| Parameter | Value |
+|-----------|-------|
+| Integration | Euler-Maruyama SDE |
+| Time horizon T | 15 time units |
+| Step size dt | 0.02 |
+| Noise | CIR-type: σ_n √max(x,0) dW, σ_n=0.015 |
+| Seeds N | 30 per (topology × size × mechanism) |
+| CI | scipy.stats.t.interval, α=0.05, df=29 |
+| Weight learning | Nelder-Mead, 2 restarts, λ_reg=15, dt=0.05 for speed |
+| Network sizes | 50, 100, 200, 500 |
+| Topologies | ER (p=0.15), BA (m=3), WS (k=6, p=0.1) |
+| SNAP subgraphs | BFS-seeded, 500 nodes from Gnutella08/31 |
+
+---
+
+## Mathematical notes
+
+**Lemma 1 (convexity):** The paper restricts the IEE convexity proof to the
+*linearised* system (σ(H) = const).  A numerical check on 1000 random weight
+pairs drawn from the Dirichlet(1,...,1) simplex finds a **14.1 % Jensen
+inequality violation rate** (maximum violation ≈ 109) under the full nonlinear
+SDE.  Weight learning is therefore a non-convex problem; multiple Nelder-Mead
+restarts are used to avoid local minima.
+
+**M3 underperformance:** The Finance-OU vote v₃(t) = 1−exp(−λ_fp t) uses the
+*static* Fiedler value λ₂.  On BA networks with small λ₂ ≈ 1.28, v₃ grows
+too slowly to match rapid hub-driven entropy growth.  A time-varying spectral
+gap is proposed as a fix (§8 of the paper).
+
+**Adversarial model:** At f=0.3 (30 % adversarial nodes throttling outgoing
+diffusion by 70 %), IEE increases by 4.5 % on BA and 2.5 % on ER.  An
+adaptive H_c countermeasure (lowering the deletion threshold when entropy
+growth is anomalously slow) recovers ≈35 % of the degradation on BA.
+
+**Gossip estimation:** k=3 hop neighbourhood estimates achieve 0 % false-early
+and < 0.1 % missed-trigger rates on ER and BA.  The Watts-Strogatz topology
+requires larger k due to ring-lattice clustering (23.5 % missed at k=3).

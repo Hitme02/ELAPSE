@@ -1,0 +1,309 @@
+%% changes_summary.tex — ELAPSE AMM Revision Cover Letter Attachment
+%% One-page summary of all modifications for the reviewer / editor.
+
+\documentclass[11pt,a4paper]{article}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{amssymb}
+
+\title{\textbf{Summary of Revisions}\\
+\large ELAPSE: Entropy-Linked Adaptive Privacy-Shielding Engine\\
+AMM Elsevier Submission}
+\author{}
+\date{April 2026}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+This document details every substantive change made in the revision.
+For each change we give the \textbf{location} in the manuscript,
+the \textbf{old text/value}, and the \textbf{new text/value}.
+
+\medskip
+\noindent\rule{\linewidth}{0.4pt}
+
+\section*{Fix 1 — Narrative correction: M5 outperforms M6 on ER topology}
+
+\begin{itemize}
+\item \textbf{Location}: Abstract (line~2), Conclusions (final paragraph).
+\item \textbf{Old}: ``M6 (ELAPSE) outperforms every individual mechanism across all
+  topologies and network sizes.''
+\item \textbf{New}: ``M6 achieves the lowest IEE across all topologies \emph{jointly},
+  matching or exceeding any single mechanism on BA and WS, while trading marginal
+  ER performance for cross-topology generalisation.''
+\item \textbf{Location}: New subsection~5.3 ``M5 vs M6 on ER'' (after Table~1).
+\item \textbf{Added}: Welch two-sample $t$-test on per-seed IEE arrays at $n=500$,
+  ER topology.  Results: $t = -12.18$, $\mathrm{df} = 37.8$, $p < 10^{-13}$
+  (M5 mean 453.8 vs M6 mean 468.4, $N_{\mathrm{test}}=20$).  Effect explained by the ensemble
+  regularisation penalty preventing collapse to the social-only mechanism
+  on a topology that is already well-served by M5.
+\item \textbf{Reason}: Prior claim was factually incorrect; M5 strictly dominates
+  M6 on ER at all four network sizes tested.
+\end{itemize}
+
+\section*{Fix 2 — Lemma~1 removed; replaced by Observation~1 and approximate Proposition~1}
+
+\begin{itemize}
+\item \textbf{Location}: Section~4 (formerly ``Theoretical Dominance Result'',
+  now ``Ensemble Dominance: Approximation Result and Empirical Evidence'').
+\item \textbf{Old}: Lemma~1 claimed $\mathrm{IEE}(w)$ is convex in the ensemble
+  weights $w$, with a formal proof asserting affinity.
+\item \textbf{Problem}: $H(t)$ is \emph{concave} in the node probabilities
+  $p_i = x_i / M$ (each is a ratio of affine functions of $w$); the product
+  $H(t)\cdot M(t)$ is therefore \emph{not} guaranteed to be convex in $w$.
+  The ``proof'' was incorrect.
+\item \textbf{New}: Lemma~1 replaced by \textbf{Observation~1} (empirical
+  near-convexity): over 1{,}000 random weight-pair samples on $n=50$ ER
+  graphs, the IEE surface violates convexity in only $14.1\%$ of pairs
+  ($85.9\%$ convexity rate).  The formal proof block is removed.
+\item \textbf{New}: Proposition~1 recast as an \emph{approximate} dominance
+  result: ``Since $\mathcal{W}$ is compact and Nelder-Mead finds a local
+  minimum, and empirical convexity holds on ${\approx}85.9\%$ of sampled
+  weight pairs, the ensemble weight vector $w^*$ achieves near-optimal IEE
+  in expectation.''
+\end{itemize}
+
+\section*{Fix 3 — Reference verification and replacement}
+
+\begin{itemize}
+\item \textbf{Old reference}: Capriglione et al.\ (2024),
+  DOI \texttt{10.1016/j.apm.2023.10.021}.
+\item \textbf{Problem}: CrossRef API confirmed the DOI resolves to an unrelated
+  fluid-dynamics paper (pipe-flow modelling).  Reference was fabricated.
+\item \textbf{New reference}: Truex et al.\ (2019), ``A hybrid approach to
+  privacy-preserving federated learning,'' ACM AISec Workshop,
+  DOI \texttt{10.1145/3338501.3357370} (verified via CrossRef).
+\item \textbf{Location}: Section~2 (related work on distributed privacy),
+  bibliography entry \texttt{truex2019hybrid}.
+\end{itemize}
+
+\section*{Fix 4 — Train/test split for unbiased evaluation}
+
+\begin{itemize}
+\item \textbf{Old}: All 30 seeds used for both M6 weight learning
+  (Nelder-Mead optimisation) and IEE evaluation.
+\item \textbf{New}: Strict train/test split.
+  \begin{itemize}
+  \item \textbf{Train set}: seed~0 only (drawn from seeds $\{0\ldots9\}$)
+    — used exclusively for M6 Nelder-Mead weight learning.
+  \item \textbf{Test set}: seeds $\{10\ldots29\}$ ($N_{\mathrm{test}} = 20$)
+    — used for \emph{all} reported IEE means, confidence intervals, and t-tests.
+  \end{itemize}
+\item \textbf{Location}: Section~5.1 (Experimental Setup), Table~1 caption.
+\item \textbf{Consequence}: Table~1 values now represent genuine
+  out-of-sample performance.  M5 still outperforms M6 on ER
+  under out-of-sample evaluation.
+\end{itemize}
+
+\section*{Fix 5 — SNAP validation: random subgraph comparison}
+
+\begin{itemize}
+\item \textbf{Old}: SNAP Gnutella subgraphs extracted by BFS from the
+  highest-degree hub only.
+\item \textbf{New}: Two extraction strategies compared side-by-side:
+  \begin{enumerate}
+  \item \textbf{BFS-hub} (as before): BFS from highest-degree node.
+  \item \textbf{Random}: uniformly random sample of 500 nodes; induced
+    subgraph's largest connected component used (resampled if $|$LCC$| < 400$).
+  \end{enumerate}
+\item \textbf{Location}: Section~5.4 (SNAP Validation), new Table~4.
+\item \textbf{Finding}: Random 500-node sampling fails for both Gnutella
+  datasets — the largest connected component is only 71 nodes (Gnutella08)
+  or $\leq 2$ nodes (Gnutella31) even after 20 resampling attempts.
+  Gnutella P2P graphs are ultra-sparse locally (global mean degree $< 5$),
+  so BFS-hub extraction remains the only viable strategy for $n=500$
+  connected subgraphs.  Table~4 now documents this limitation explicitly.
+\end{itemize}
+
+\section*{Fix 6A — Gossip entropy estimation extended to $k \in \{2,3,4,5\}$}
+
+\begin{itemize}
+\item \textbf{Old}: Only $k=2$ and $k=3$ hop-neighbourhood sizes studied.
+\item \textbf{New}: Extended to $k \in \{2,3,4,5\}$.  New Table~5 reports
+  false-early-trigger rate and missed-trigger rate per $(k, \text{topology})$.
+\item \textbf{Key finding}: Minimum $k$ achieving $<5\%$ missed-trigger rate
+  differs by topology: ER~$\to k^*=2$, BA~$\to k^*=3$, WS~$\to k^*=4$.
+  Practitioners on WS-like (lattice-heavy) networks should use at least
+  $k=4$ for reliable distributed triggering.
+\item \textbf{Location}: Section~5.5 (Gossip Estimation), Table~5.
+\end{itemize}
+
+\section*{Fix 6B — Symmetric adversarial Laplacian; aggressive threshold}
+
+\begin{itemize}
+\item \textbf{Old}: Adversarial Laplacian formed by column-only scaling,
+  breaking graph symmetry ($L \neq L^\top$).  Only conservative threshold
+  $H_c = 0.65\,H_{\max}$ studied.
+\item \textbf{New (Eq.~13)}: Symmetric formulation — for each adversarial
+  node $j$, \emph{all} incident edges scaled: $A^{\mathrm{adv}}_{ij}
+  = A^{\mathrm{adv}}_{ji} = (1-f)A_{ij}$.  Adversarial–adversarial edges
+  corrected for double-counting; $L^{\mathrm{adv}} = D^{\mathrm{adv}}
+  - A^{\mathrm{adv}}$ remains symmetric PSD.
+\item \textbf{Added}: Aggressive threshold $H_c = 0.50\,H_{\max}$ comparison.
+\item \textbf{Results}:
+  \begin{center}
+  \begin{tabular}{lcc}
+  \toprule
+  Threshold & BA IEE increase ($f{=}0.3$) & ER IEE increase ($f{=}0.3$) \\
+  \midrule
+  $H_c = 0.65\,H_{\max}$ & $+6.6\%$ ($+6.53$ units) & $+2.1\%$ ($+1.26$ units) \\
+  $H_c = 0.50\,H_{\max}$ & $+4.8\%$ ($+3.96$ units) & $+1.4\%$ ($+0.83$ units) \\
+  \bottomrule
+  \end{tabular}
+  \end{center}
+\item \textbf{Interpretation}: Tighter deletion thresholds (more aggressive
+  privacy protection) reduce adversarial leverage because ELAPSE responds
+  earlier, before adversarial nodes can accumulate influence.
+\end{itemize}
+
+\section*{Fix 7 — Conclusion bullet contradiction resolved}
+
+\begin{itemize}
+\item \textbf{Old}: ``ELAPSE \ldots outperforms every individual mechanism
+  across all topologies.''
+\item \textbf{Problem}: Directly contradicted by Table~1 (M5 beats M6 on ER,
+  $t=-12.18$, $p<10^{-13}$) which the paper itself proves.
+\item \textbf{New}: ``achieves the lowest topology-averaged IEE across all
+  scales.  The M5 mechanism strictly dominates M6 on ER\ldots a trade-off
+  discussed in Section~5.4.''
+\end{itemize}
+
+\section*{Fix 8 — Train/test caption inconsistency resolved}
+
+\begin{itemize}
+\item \textbf{Old caption}: ``weights learned on $N_{\mathrm{train}}=10$ held-out seeds''
+\item \textbf{Actual procedure}: One seed (seed~0) used for weight learning
+\item \textbf{New caption}: ``M6 weights learned on training seed~0 only''
+\item \textbf{Reason}: Using all 10 seeds for Nelder-Mead makes each objective
+  evaluation 10$\times$ slower; single-seed learning is tractable while still
+  being genuinely held-out from the test set (seeds 10--29).
+\end{itemize}
+
+\section*{Fix 9 — Table 4 Gnutella footnote expanded to dedicated subsection}
+
+\begin{itemize}
+\item \textbf{Added}: New subsection~6.3 ``Topology of Gnutella P2P Networks
+  and Sampling Limitations'' explaining why random sampling fails (expected edge
+  count formula, empirical LCC measurements) and clarifying the scientific
+  scope of BFS-hub validation.
+\end{itemize}
+
+\section*{Fix 10 — Figure 4 caption corrected}
+
+\begin{itemize}
+\item \textbf{Old}: ``M6 maintains the largest margin over the best single
+  mechanism at all scales'' (false on ER)
+\item \textbf{New}: ``M6 achieves the lowest topology-averaged IEE at all
+  scales'' (accurate; includes note about ER exception)
+\end{itemize}
+
+\section*{Fix 11 — §7 adversarial $n=200$ disambiguated from §5 $n=500$}
+
+\begin{itemize}
+\item Added explicit note at the start of Section~7: adversarial experiments
+  use $n=200$; Table~1 uses $n=500$; the IEE values are not directly comparable.
+\end{itemize}
+
+\section*{Fix 12 — $x_i(0)$ initialisation defined in §3.1}
+
+\begin{itemize}
+\item Added one paragraph to Section~3.1 (Network and Notation) specifying:
+  $x_i(0) \sim \mathrm{Uniform}(0.5,1.0)$ for 10\% randomly chosen source nodes,
+  $x_i(0)=0$ otherwise; total initial mass $M(0) \in (0, n/10]$;
+  IEE has units [nats $\times$ data-mass $\times$ time].
+\end{itemize}
+
+\section*{Fix 13 — References [18] and [20] re-verified and corrected}
+
+\begin{itemize}
+\item \textbf{Old [18] / \texttt{juliussen2023algorithms}}: Listed authors
+  Nguyen et al. with DOI \texttt{10.1145/3603620}.  CrossRef shows that DOI
+  belongs to Xu et al.\ ``Machine Unlearning: A Survey'' (2023).
+  Corrected to \texttt{xu2023machine} with verified author list.
+\item \textbf{Old [20] / \texttt{liu2024machine}}: Listed authors Liu,
+  Yao, Bai, \emph{Papadimitriou} with DOI \texttt{10.1145/3649464}.
+  CrossRef shows that DOI belongs to a spintronic spiking neural networks
+  paper — another fabricated reference.  Replaced with
+  \texttt{nguyen2025survey}: Nguyen et al.\ ``A Survey of Machine
+  Unlearning,'' ACM TIST 2025, DOI \texttt{10.1145/3749987} (verified).
+\end{itemize}
+
+\section*{Fix 14 — Table 5 greyscale legibility}
+
+\begin{itemize}
+\item Replaced ``Shaded: first $k$ achieving MS $<5\%$'' with a
+  $\checkmark$ column and ``$k^*=2/3/4$'' annotations directly in the
+  table, which are legible in B\&W print.
+\end{itemize}
+
+\bigskip
+\noindent\rule{\linewidth}{0.4pt}
+
+\section*{Q1 Upgrade — Fix 15: Topology-refined IEE bound (Corollary~2)}
+
+\begin{itemize}
+\item \textbf{Added}: Corollary~2 (Topology-refined IEE bound via algebraic
+  connectivity) following Theorem~2.
+\item \textbf{Key result}: The normalised distribution $p(t)=\mathbf{x}(t)/M(t)$
+  satisfies $\dot{p}=-\alpha Lp$ regardless of mortality (mortality terms
+  cancel). Spectral decomposition + $\chi^2$--KL inequality gives
+  $H(t) \geq \ln(n) - C_0 e^{-2\alpha\lambda_2 t}$ where $C_0 = n\|p(0)-\mathbf{1}/n\|_2^2$.
+  The spectral trigger time $\tau(\lambda_2) = (2\alpha\lambda_2)^{-1}
+  \ln(C_0/(\ln n - H_c))$ is an explicit upper bound on the trigger time.
+\item \textbf{New bound}: $\mathrm{IEE}(\mathbf{w}) \leq \ln(n)M_0
+  [\tau(\lambda_2) + (1-e^{-\mu\delta_{\min}(T-\tau)})/(\mu\delta_{\min})]$,
+  a topology-dependent tightening of Theorem~2.
+\item \textbf{Interpretation}: Dense graphs (large $\lambda_2$, small $\tau$)
+  trigger earlier, consistent with empirical ER~$<$~BA~$<$~WS IEE ordering.
+\end{itemize}
+
+\section*{Q1 Upgrade — Fix 16: Residual-mass privacy guarantee (Proposition~3)}
+
+\begin{itemize}
+\item \textbf{Added}: Proposition~3 (IEE bound implies residual-mass privacy
+  guarantee) and Remark~5 (relation to differential privacy).
+\item \textbf{Key result}: From $M(T) \leq M_0 e^{-\mu\delta_{\min}T}$,
+  an adversary sampling $Q$ uniform random nodes at time $T$ recovers
+  expected mass fraction $\leq Qe^{-\mu\delta_{\min}T}/n$.
+  Choosing $\mu\delta_{\min} \geq T^{-1}\ln(Qn/\eta)$ ensures recovery
+  probability $\leq \eta/n$ per node — no better than blind random search.
+\item \textbf{Relation to DP}: Formally distinct from differential privacy
+  (DP bounds inference leakage; Proposition~3 bounds physical mass recovery),
+  but shares the exponential-decay parameterisation $\varepsilon(T)=e^{-\mu\delta_{\min}T}$.
+\end{itemize}
+
+\section*{Q1 Upgrade — Fix 17: Chronological-timer baseline M7 (Proposition~4)}
+
+\begin{itemize}
+\item \textbf{Added}: Proposition~4 (ELAPSE IEE is bounded above by the
+  matched chronological timer) in Section~4.
+\item \textbf{New mechanism}: M7 (Vanish-style fixed-timer deletion) implemented
+  in \texttt{src/m7\_timer.py}.  Timer is calibrated to M6's mean trigger time
+  $t^*(\mathbf{w}^*)$, giving both baselines identical deletion budgets.
+\item \textbf{Key result}: Since ELAPSE applies gradual mortality from $t=0$,
+  $H(t;\mathbf{w}^*) \leq H_0(t)$ and $M(t;\mathbf{w}^*) \leq M_0$ throughout
+  $[0,t^*)$, so the pre-trigger IEE integral is strictly smaller than M7's.
+  The post-trigger residual $R$ is bounded by $\frac{\ln(n)}{2}M_0 \cdot
+  (1-e^{-\mu\delta_{\min}(T-t^*)})/(\mu\delta_{\min})$, which is dominated
+  by the pre-trigger gap.
+\item \textbf{Subsection~5.6} added: ``Comparison with Chronological-Timer
+  Baseline (M7)'' in the Numerical Scale Analysis section.
+\end{itemize}
+
+\bigskip
+\noindent\rule{\linewidth}{0.4pt}
+
+\noindent\textbf{Simulation re-runs.} All quantitative results in
+Sections~5.1--5.5 were re-computed with the corrected code (symmetric
+Laplacian, train/test split, $k\in\{2,3,4,5\}$, both thresholds).
+All figures~2--8 were regenerated from the new data.
+M7 simulation data (Table~6) computed from \texttt{m7\_timer.py}.
+
+\end{document}

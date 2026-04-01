@@ -227,7 +227,7 @@ def learn_weights(training_data, theta=DEFAULT_THETA, lambda_reg=15.0,
             w0,
             args=(training_data, theta, lambda_reg),
             method='Nelder-Mead',
-            options={'maxiter': 1000, 'xatol': 1e-4, 'fatol': 1e-4}
+            options={'maxiter': 500, 'xatol': 1e-3, 'fatol': 1e-3}
         )
 
         # Softmax to recover actual weights (stabilised)
