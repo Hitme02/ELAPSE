@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.19)  30 MAR 2026 23:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.19)  2 APR 2026 08:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -495,17 +495,18 @@ L/cmm/m/it/10 t\OT1/cmr/m/n/10 )) + [][] []  []
  []
 
 [3]
-<../output/figures/fig1_entropy_n100.png, id=168, 1073.4504pt x 383.5128pt>
-File: ../output/figures/fig1_entropy_n100.png Graphic file (type png)
-<use ../output/figures/fig1_entropy_n100.png>
-Package pdftex.def Info: ../output/figures/fig1_entropy_n100.png  used on input
- line 431.
-(pdftex.def)             Requested size: 252.0pt x 90.03188pt.
-<../output/figures/fig3_iee_n500.png, id=170, 929.874pt x 351.714pt>
-File: ../output/figures/fig3_iee_n500.png Graphic file (type png)
-<use ../output/figures/fig3_iee_n500.png>
-Package pdftex.def Info: ../output/figures/fig3_iee_n500.png  used on input lin
-e 446.
+<../../output/figures/fig1_entropy_n100.pdf, id=168, 1073.7765pt x 383.93437pt>
+
+File: ../../output/figures/fig1_entropy_n100.pdf Graphic file (type pdf)
+<use ../../output/figures/fig1_entropy_n100.pdf>
+Package pdftex.def Info: ../../output/figures/fig1_entropy_n100.pdf  used on in
+put line 431.
+(pdftex.def)             Requested size: 252.0pt x 90.10156pt.
+<../../output/figures/fig3_iee_n500.png, id=169, 929.874pt x 351.714pt>
+File: ../../output/figures/fig3_iee_n500.png Graphic file (type png)
+<use ../../output/figures/fig3_iee_n500.png>
+Package pdftex.def Info: ../../output/figures/fig3_iee_n500.png  used on input 
+line 446.
 (pdftex.def)             Requested size: 252.0pt x 95.31288pt.
 
 
@@ -524,28 +525,28 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 453.
 
-<../output/figures/fig6_weights_n100.png, id=173, 930.3558pt x 321.3606pt>
-File: ../output/figures/fig6_weights_n100.png Graphic file (type png)
-<use ../output/figures/fig6_weights_n100.png>
-Package pdftex.def Info: ../output/figures/fig6_weights_n100.png  used on input
- line 499.
+<../../output/figures/fig6_weights_n100.png, id=173, 930.3558pt x 321.3606pt>
+File: ../../output/figures/fig6_weights_n100.png Graphic file (type png)
+<use ../../output/figures/fig6_weights_n100.png>
+Package pdftex.def Info: ../../output/figures/fig6_weights_n100.png  used on in
+put line 499.
 (pdftex.def)             Requested size: 252.0pt x 87.0431pt.
-[4 <../output/figures/fig1_entropy_n100.png> <../output/figures/fig3_iee_n500.p
-ng>]
-<../output/figures/fig7_scaling.png, id=191, 713.064pt x 352.1958pt>
-File: ../output/figures/fig7_scaling.png Graphic file (type png)
-<use ../output/figures/fig7_scaling.png>
-Package pdftex.def Info: ../output/figures/fig7_scaling.png  used on input line
- 513.
+[4 <../../output/figures/fig1_entropy_n100.pdf> <../../output/figures/fig3_iee_
+n500.png>]
+<../../output/figures/fig7_scaling.png, id=291, 713.064pt x 352.1958pt>
+File: ../../output/figures/fig7_scaling.png Graphic file (type png)
+<use ../../output/figures/fig7_scaling.png>
+Package pdftex.def Info: ../../output/figures/fig7_scaling.png  used on input l
+ine 513.
 (pdftex.def)             Requested size: 252.0pt x 124.4688pt.
-<../output/figures/fig8_sensitivity.png, id=192, 930.3558pt x 357.0138pt>
-File: ../output/figures/fig8_sensitivity.png Graphic file (type png)
-<use ../output/figures/fig8_sensitivity.png>
-Package pdftex.def Info: ../output/figures/fig8_sensitivity.png  used on input 
-line 527.
+<../../output/figures/fig8_sensitivity.png, id=292, 930.3558pt x 357.0138pt>
+File: ../../output/figures/fig8_sensitivity.png Graphic file (type png)
+<use ../../output/figures/fig8_sensitivity.png>
+Package pdftex.def Info: ../../output/figures/fig8_sensitivity.png  used on inp
+ut line 527.
 (pdftex.def)             Requested size: 252.0pt x 96.70007pt.
- [5 <../output/figures/fig6_weights_n100.png> <../output/figures/fig7_scaling.p
-ng> <../output/figures/fig8_sensitivity.png>]
+ [5 <../../output/figures/fig6_weights_n100.png> <../../output/figures/fig7_sca
+ling.png> <../../output/figures/fig8_sensitivity.png>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -568,10 +569,10 @@ Package rerunfilecheck Info: File `ELAPSE_ieee.out' has not changed.
 (rerunfilecheck)             Checksum: 4E255A5B502B067BF05A1602EB4F14A3;3210.
  ) 
 Here is how much of TeX's memory you used:
- 11436 strings out of 469006
- 178405 string characters out of 5454813
- 612933 words of memory out of 5000000
- 39923 multiletter control sequences out of 15000+600000
+ 11434 strings out of 469006
+ 178480 string characters out of 5454813
+ 612936 words of memory out of 5000000
+ 39921 multiletter control sequences out of 15000+600000
  668947 words of font info for 123 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  75i,11n,79p,548b,586s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -599,10 +600,10 @@ cal/texlive/2026basic/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/t
 exlive/2026basic/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texli
 ve/2026basic/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/20
 26basic/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ELAPSE_ieee.pdf (6 pages, 838313 bytes).
+Output written on ELAPSE_ieee.pdf (6 pages, 985391 bytes).
 PDF statistics:
- 322 PDF objects out of 1000 (max. 8388607)
- 255 compressed objects within 3 object streams
+ 422 PDF objects out of 1000 (max. 8388607)
+ 272 compressed objects within 3 object streams
  66 named destinations out of 1000 (max. 500000)
  138 words of extra memory for PDF output out of 10000 (max. 10000000)
 

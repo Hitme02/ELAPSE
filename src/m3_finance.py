@@ -24,13 +24,34 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from math_utils import entropy, max_entropy, first_passage_prob
 
 
-def derivatives(x, params, t, lambda2):
+def _effective_lambda2(x, lambda2_static, H, H_max, M0):
     """
-    x      : current data concentration (n,)
-    params : theta (OU reversion speed), mu_ou (OU mean), sigma_ou,
-             mu_mort (mortality rate), H_c, alpha, s
-    t      : current time
-    lambda2: Fiedler value of network (used in first-passage rate)
+    Time-varying effective spectral gap (Eq. A.1 in Appendix B).
+
+    Scales the static Fiedler value by (H/H_max) * (M/M0) to reflect:
+    - H/H_max: how much spreading has occurred (entropy proxy)
+    - M/M0: surviving mass fraction (mortality reduces effective connectivity)
+
+    This approximates the instantaneous spreading rate without the O(n^3)
+    cost of recomputing eigenvalues at each timestep.
+    """
+    M = x.sum()
+    if M0 <= 0 or H_max <= 0:
+        return lambda2_static
+    h_frac = H / H_max
+    m_frac = M / M0
+    return float(lambda2_static * max(h_frac, 1e-4) * max(m_frac, 1e-4))
+
+
+def derivatives(x, params, t, lambda2, M0=None, time_varying=False):
+    """
+    x            : current data concentration (n,)
+    params       : theta (OU reversion speed), mu_ou (OU mean), sigma_ou,
+                   mu_mort (mortality rate), H_c, alpha, s
+    t            : current time
+    lambda2      : Fiedler value of network (static)
+    M0           : initial total mass (needed for time_varying scaling)
+    time_varying : if True, use time-varying lambda2 approximation (Eq. A.1)
     """
     n         = len(x)
     theta     = params.get('theta_ou', 0.5)
@@ -46,8 +67,13 @@ def derivatives(x, params, t, lambda2):
     H     = entropy(x)
     H_max = max_entropy(n)
 
+    # Optionally use time-varying lambda2
+    lam = lambda2
+    if time_varying and M0 is not None and M0 > 0:
+        lam = _effective_lambda2(x, lambda2, H, H_max, M0)
+
     # First-passage probability (smooth probabilistic mortality)
-    fp_prob = first_passage_prob(H, H_c, H_max, t, alpha, lambda2)
+    fp_prob = first_passage_prob(H, H_c, H_max, t, alpha, lam)
 
     # OU mean reversion (deterministic part)
     ou_drift  = theta * (mu_ou - x)
@@ -58,30 +84,38 @@ def derivatives(x, params, t, lambda2):
     return ou_drift + mortality + s
 
 
-def vote(x, params, t, lambda2):
+def vote(x, params, t, lambda2, M0=None, time_varying=False):
     """
     Finance vote: first-passage probability P(tau <= t).
     Grows from 0 toward 1 as time passes and crossing becomes more likely.
     Value in [0, 1].
+
+    time_varying : if True, use time-varying lambda2 (Eq. A.1)
     """
     n     = len(x)
     H     = entropy(x)
     H_max = max_entropy(n)
     H_c   = params['H_c']
     alpha = params['alpha']
-    return first_passage_prob(H, H_c, H_max, t, alpha, lambda2)
+    lam   = lambda2
+    if time_varying and M0 is not None and M0 > 0:
+        lam = _effective_lambda2(x, lambda2, H, H_max, M0)
+    return first_passage_prob(H, H_c, H_max, t, alpha, lam)
 
 
-def simulate(x0, L, params, lambda2, T=20.0, dt=0.01, stochastic=True):
+def simulate(x0, L, params, lambda2, T=20.0, dt=0.01, stochastic=True,
+             time_varying=False):
     """
-    x0      : initial data concentration (n,)
-    L       : Laplacian (used to compute lambda2 if not provided)
-    params  : model parameters
-    lambda2 : Fiedler value
+    x0           : initial data concentration (n,)
+    L            : Laplacian (used to compute lambda2 if not provided)
+    params       : model parameters
+    lambda2      : static Fiedler value
+    time_varying : if True, use time-varying lambda2 approximation (Eq. A.1)
     """
     n     = len(x0)
     steps = int(T / dt)
     x     = x0.copy()
+    M0    = x0.sum()
 
     sigma_ou = params.get('sigma_ou', 0.05)
 
@@ -96,7 +130,8 @@ def simulate(x0, L, params, lambda2, T=20.0, dt=0.01, stochastic=True):
 
     for i in range(steps):
         t_curr = i * dt
-        dxdt   = derivatives(x, params, t_curr, lambda2)
+        dxdt   = derivatives(x, params, t_curr, lambda2,
+                              M0=M0, time_varying=time_varying)
         x      = x + dxdt * dt
 
         if stochastic:

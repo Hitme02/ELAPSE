@@ -1,0 +1,236 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{geambasu2009vanish}
+R.~Geambasu, T.~Kohno, A.~A. Levy, H.~M. Levy, Vanish: Increasing data privacy
+  with self-destructing data, USENIX Security Symposium 9 (2009) 299--315.
+
+\bibitem{tang2010fade}
+Y.~Tang, P.~P. Lee, J.~C. Lui, R.~Perlman, Fade: Secure overlay cloud storage
+  with file assured deletion, in: International Conference on Security and
+  Privacy in Communication Systems, Springer, 2010, pp. 380--397.
+
+\bibitem{snapnets}
+J.~Leskovec, A.~Krevl, \href{http://snap.stanford.edu/data}{{SNAP Datasets}:
+  {Stanford} large network dataset collection} (2014).
+\newline\urlprefix\url{http://snap.stanford.edu/data}
+
+\bibitem{gdpr2016}
+{European Parliament}, Regulation (eu) 2016/679 — general data protection
+  regulation, official Journal of the European Union, L 119, 4 May 2016,
+  pp.~1--88 (2016).
+
+\bibitem{ibm2024breach}
+{IBM Security}, \href{https://www.ibm.com/reports/data-breach}{Cost of a data
+  breach report 2024}, Tech. rep., IBM (2024).
+\newline\urlprefix\url{https://www.ibm.com/reports/data-breach}
+
+\bibitem{verizon2024dbir}
+{Verizon}, \href{https://www.verizon.com/business/resources/reports/dbir/}{2024
+  data breach investigations report}, Verizon Business (2024).
+\newline\urlprefix\url{https://www.verizon.com/business/resources/reports/dbir/}
+
+\bibitem{barabasi1999emergence}
+A.-L. Barab{\'a}si, R.~Albert, Emergence of scaling in random networks, Science
+  286~(5439) (1999) 509--512.
+\newblock \href {https://doi.org/10.1126/science.286.5439.509}
+  {\path{doi:10.1126/science.286.5439.509}}.
+
+\bibitem{pastor2015epidemic}
+R.~Pastor-Satorras, C.~Castellano, P.~Van~Mieghem, A.~Vespignani, Epidemic
+  processes in complex networks, Reviews of Modern Physics 87~(3) (2015)
+  925--979.
+\newblock \href {https://doi.org/10.1103/RevModPhys.87.925}
+  {\path{doi:10.1103/RevModPhys.87.925}}.
+
+\bibitem{zhao2024multi}
+L.~Zhao, Z.~Jin, G.-Q. Sun, Multi-scale entropy analysis of complex networks,
+  Chaos, Solitons \& Fractals 183 (2024) 114919.
+\newblock \href {https://doi.org/10.1016/j.chaos.2024.114919}
+  {\path{doi:10.1016/j.chaos.2024.114919}}.
+
+\bibitem{shuman2013emerging}
+D.~I. Shuman, S.~K. Narang, P.~Frossard, A.~Ortega, P.~Vandergheynst, The
+  emerging field of signal processing on graphs, IEEE Signal Processing
+  Magazine 30~(3) (2013) 83--98.
+\newblock \href {https://doi.org/10.1109/MSP.2012.2235192}
+  {\path{doi:10.1109/MSP.2012.2235192}}.
+
+\bibitem{chamberlain2021grand}
+B.~Chamberlain, J.~Rowbottom, M.~Gorinova, M.~Bronstein, S.~Webb, E.~Rossi,
+  {GRAND}: Graph neural diffusion, in: International Conference on Machine
+  Learning (ICML), 2021, pp. 1407--1418.
+
+\bibitem{eliasof2024graph}
+M.~Eliasof, E.~Haber, E.~Treister, Graph neural networks with learnable
+  spectral frequencies, IEEE Transactions on Neural Networks and Learning
+  Systems (2024).
+\newblock \href {https://doi.org/10.1109/TNNLS.2024.3351631}
+  {\path{doi:10.1109/TNNLS.2024.3351631}}.
+
+\bibitem{fan2024graph}
+W.~Fan, Y.~Liu, X.~Zhao, J.~Tang, Graph neural network diffusion models for
+  node-level structural estimation, Pattern Recognition 147 (2024) 110011.
+\newblock \href {https://doi.org/10.1016/j.patcog.2023.110011}
+  {\path{doi:10.1016/j.patcog.2023.110011}}.
+
+\bibitem{gao2016universal}
+J.~Gao, B.~Barzel, A.-L. Barab{\'a}si, Universal resilience patterns in complex
+  networks, Nature 530~(7590) (2016) 307--312.
+\newblock \href {https://doi.org/10.1038/nature16948}
+  {\path{doi:10.1038/nature16948}}.
+
+\bibitem{wolchok2010defeating}
+S.~Wolchok, O.~S. Hofmann, N.~Heninger, E.~W. Felten, J.~A. Halderman, C.~J.
+  Rossbach, B.~Waters, E.~Witchel, Defeating vanish with low-cost sybil attacks
+  against large {DHT}s, in: NDSS, 2010.
+
+\bibitem{perlman2005ephemerizer}
+R.~Perlman, The ephemerizer: Making data disappear, in: IFIP TC-11 WG 11.4,
+  2005.
+
+\bibitem{rondeau2021secure}
+C.~M. Rondeau, M.~A. Temple, Secure data deletion: Past, present and future,
+  IEEE Access 9 (2021) 93013--93026.
+\newblock \href {https://doi.org/10.1109/ACCESS.2021.3090992}
+  {\path{doi:10.1109/ACCESS.2021.3090992}}.
+
+\bibitem{truex2019hybrid}
+S.~Truex, N.~Baracaldo, A.~Anwar, T.~Steinke, H.~Ludwig, R.~Zhang, Y.~Zhou, A
+  hybrid approach to privacy-preserving federated learning, in: Proceedings of
+  the 12th {ACM} Workshop on Artificial Intelligence and Security ({AISec
+  '19}), ACM, 2019, pp. 1--11.
+\newblock \href {https://doi.org/10.1145/3338501.3357370}
+  {\path{doi:10.1145/3338501.3357370}}.
+
+\bibitem{bourtoule2021machine}
+L.~Bourtoule, V.~Chandrasekaran, C.~A. Choquette-Choo, H.~Jia, A.~Travers,
+  B.~Zhang, D.~Lie, N.~Papernot, Machine unlearning, IEEE Symposium on Security
+  and Privacy (2021) 141--159\href {https://doi.org/10.1109/SP40001.2021.00019}
+  {\path{doi:10.1109/SP40001.2021.00019}}.
+
+\bibitem{nguyen2025survey}
+T.~T. Nguyen, T.~T. Huynh, Z.~Ren, P.~L. Nguyen, A.~W.-C. Liew, H.~Yin,
+  Q.~V.~H. Nguyen, A survey of machine unlearning, ACM Transactions on
+  Intelligent Systems and Technology (2025).
+\newblock \href {https://doi.org/10.1145/3749987} {\path{doi:10.1145/3749987}}.
+
+\bibitem{xu2023machine}
+H.~Xu, T.~Zhu, L.~Zhang, W.~Zhou, P.~S. Yu, Machine unlearning: A survey, ACM
+  Computing Surveys 56~(1) (2023).
+\newblock \href {https://doi.org/10.1145/3603620} {\path{doi:10.1145/3603620}}.
+
+\bibitem{oesterling2024fair}
+A.~Oesterling, J.~Ma, F.~P. Calmon, Fair machine unlearning: Data removal while
+  mitigating disparate impact, arXiv preprint arXiv:2307.14754 (2024).
+
+\bibitem{dwork2014algorithmic}
+C.~Dwork, A.~Roth, The algorithmic foundations of differential privacy,
+  Foundations and Trends in Theoretical Computer Science 9~(3--4) (2014)
+  211--407.
+\newblock \href {https://doi.org/10.1561/0400000042}
+  {\path{doi:10.1561/0400000042}}.
+
+\bibitem{carmona2018probabilistic}
+R.~Carmona, F.~Delarue, Probabilistic theory of mean field games with
+  applications, Springer (2018).
+\newblock \href {https://doi.org/10.1007/978-3-319-56436-4}
+  {\path{doi:10.1007/978-3-319-56436-4}}.
+
+\bibitem{achdou2020mean}
+Y.~Achdou, I.~Capuzzo-Dolcetta, Mean field games: Numerical methods, SIAM
+  Journal on Numerical Analysis 48~(3) (2010) 1136--1162.
+\newblock \href {https://doi.org/10.1137/090758477}
+  {\path{doi:10.1137/090758477}}.
+
+\bibitem{bianchin2021online}
+G.~Bianchin, J.~Cortes, E.~Dall'Anese, Online optimization in closed-loop on
+  the power flow manifold, IEEE Control Systems Letters 5~(1) (2021) 175--180.
+\newblock \href {https://doi.org/10.1109/LCSYS.2020.3000643}
+  {\path{doi:10.1109/LCSYS.2020.3000643}}.
+
+\bibitem{karrer2011competing}
+B.~Karrer, M.~E. Newman, Competing epidemics on complex networks, Physical
+  Review E 84~(3) (2011) 036106.
+\newblock \href {https://doi.org/10.1103/PhysRevE.84.036106}
+  {\path{doi:10.1103/PhysRevE.84.036106}}.
+
+\bibitem{guilbeault2018complex}
+D.~Guilbeault, J.~Becker, D.~Centola, Complex contagions: A decade in review,
+  Complex Spreading Phenomena in Social Systems (2018) 3--25\href
+  {https://doi.org/10.1007/978-3-319-77332-2_1}
+  {\path{doi:10.1007/978-3-319-77332-2_1}}.
+
+\bibitem{chung1997spectral}
+F.~R. Chung, Spectral graph theory, American Mathematical Society (1997).
+
+\bibitem{oksendal2003stochastic}
+B.~{\O}ksendal, Stochastic Differential Equations, 6th Edition, Springer,
+  Berlin, 2003.
+
+\bibitem{black1973pricing}
+F.~Black, M.~Scholes, The pricing of options and corporate liabilities, Journal
+  of Political Economy 81~(3) (1973) 637--654.
+\newblock \href {https://doi.org/10.1086/260062} {\path{doi:10.1086/260062}}.
+
+\bibitem{uhlenbeck1930theory}
+G.~E. Uhlenbeck, L.~S. Ornstein, On the theory of {Brownian} motion, Physical
+  Review 36~(5) (1930) 823--841.
+\newblock \href {https://doi.org/10.1103/PhysRev.36.823}
+  {\path{doi:10.1103/PhysRev.36.823}}.
+
+\bibitem{alon2019systems}
+U.~Alon, An Introduction to Systems Biology: Design Principles of Biological
+  Circuits, 2nd Edition, CRC Press, 2019.
+
+\bibitem{watts2002simple}
+D.~J. Watts, A simple model of global cascades on random networks, Proceedings
+  of the National Academy of Sciences 99~(9) (2002) 5766--5771.
+\newblock \href {https://doi.org/10.1073/pnas.082090499}
+  {\path{doi:10.1073/pnas.082090499}}.
+
+\bibitem{feller1951two}
+W.~Feller, Two singular diffusion problems, Annals of Mathematics 54~(1) (1951)
+  173--182.
+\newblock \href {https://doi.org/10.2307/1969318} {\path{doi:10.2307/1969318}}.
+
+\bibitem{revuzyor1999}
+D.~Revuz, M.~Yor, Continuous Martingales and Brownian Motion, 3rd Edition,
+  Springer, Berlin, 1999.
+\newblock \href {https://doi.org/10.1007/978-3-662-06400-9}
+  {\path{doi:10.1007/978-3-662-06400-9}}.
+
+\bibitem{bollobas2006percolation}
+B.~Bollob\'as, O.~Riordan, Percolation, Cambridge University Press, Cambridge,
+  2006.
+\newblock \href {https://doi.org/10.1017/CBO9781139167383}
+  {\path{doi:10.1017/CBO9781139167383}}.
+
+\bibitem{kloeden1992numerical}
+P.~E. Kloeden, E.~Platen, Numerical solution of stochastic differential
+  equations, Springer (1992).
+\newblock \href {https://doi.org/10.1007/978-3-662-12616-5}
+  {\path{doi:10.1007/978-3-662-12616-5}}.
+
+\bibitem{erdos1960evolution}
+P.~Erd{\H{o}}s, A.~R{\'e}nyi, On the evolution of random graphs, Publications
+  of the Mathematical Institute of the Hungarian Academy of Sciences 5 (1960)
+  17--60.
+
+\bibitem{watts1998collective}
+D.~J. Watts, S.~H. Strogatz, Collective dynamics of `small-world' networks,
+  Nature 393~(6684) (1998) 440--442.
+\newblock \href {https://doi.org/10.1038/30918} {\path{doi:10.1038/30918}}.
+
+\bibitem{leskovec2007graph}
+J.~Leskovec, J.~Kleinberg, C.~Faloutsos, Graph evolution: Densification and
+  shrinking diameters, in: ACM Transactions on Knowledge Discovery from Data,
+  Vol.~1, 2007, pp. 2--es.
+\newblock \href {https://doi.org/10.1145/1217299.1217301}
+  {\path{doi:10.1145/1217299.1217301}}.
+
+\end{thebibliography}

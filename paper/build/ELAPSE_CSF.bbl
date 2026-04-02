@@ -14,11 +14,6 @@ Y.~Tang, P.~P. Lee, J.~C. Lui, R.~Perlman, Fade: Secure overlay cloud storage
   with file assured deletion, in: International Conference on Security and
   Privacy in Communication Systems, Springer, 2010, pp. 380--397.
 
-\bibitem{snapnets}
-J.~Leskovec, A.~Krevl, \href{http://snap.stanford.edu/data}{{SNAP Datasets}:
-  {Stanford} large network dataset collection} (2014).
-\newline\urlprefix\url{http://snap.stanford.edu/data}
-
 \bibitem{gdpr2016}
 {European Parliament}, Regulation (eu) 2016/679 — general data protection
   regulation, official Journal of the European Union, L 119, 4 May 2016,
@@ -46,6 +41,17 @@ R.~Pastor-Satorras, C.~Castellano, P.~Van~Mieghem, A.~Vespignani, Epidemic
   925--979.
 \newblock \href {https://doi.org/10.1103/RevModPhys.87.925}
   {\path{doi:10.1103/RevModPhys.87.925}}.
+
+\bibitem{snapnets}
+J.~Leskovec, A.~Krevl, \href{http://snap.stanford.edu/data}{{SNAP Datasets}:
+  {Stanford} large network dataset collection} (2014).
+\newline\urlprefix\url{http://snap.stanford.edu/data}
+
+\bibitem{gao2016universal}
+J.~Gao, B.~Barzel, A.-L. Barab{\'a}si, Universal resilience patterns in complex
+  networks, Nature 530~(7590) (2016) 307--312.
+\newblock \href {https://doi.org/10.1038/nature16948}
+  {\path{doi:10.1038/nature16948}}.
 
 \bibitem{zhao2024multi}
 L.~Zhao, Z.~Jin, G.-Q. Sun, Multi-scale entropy analysis of complex networks,
@@ -77,12 +83,6 @@ W.~Fan, Y.~Liu, X.~Zhao, J.~Tang, Graph neural network diffusion models for
   node-level structural estimation, Pattern Recognition 147 (2024) 110011.
 \newblock \href {https://doi.org/10.1016/j.patcog.2023.110011}
   {\path{doi:10.1016/j.patcog.2023.110011}}.
-
-\bibitem{gao2016universal}
-J.~Gao, B.~Barzel, A.-L. Barab{\'a}si, Universal resilience patterns in complex
-  networks, Nature 530~(7590) (2016) 307--312.
-\newblock \href {https://doi.org/10.1038/nature16948}
-  {\path{doi:10.1038/nature16948}}.
 
 \bibitem{wolchok2010defeating}
 S.~Wolchok, O.~S. Hofmann, N.~Heninger, E.~W. Felten, J.~A. Halderman, C.~J.
@@ -135,6 +135,24 @@ C.~Dwork, A.~Roth, The algorithmic foundations of differential privacy,
 \newblock \href {https://doi.org/10.1561/0400000042}
   {\path{doi:10.1561/0400000042}}.
 
+\bibitem{carmona2018probabilistic}
+R.~Carmona, F.~Delarue, Probabilistic theory of mean field games with
+  applications, Springer (2018).
+\newblock \href {https://doi.org/10.1007/978-3-319-56436-4}
+  {\path{doi:10.1007/978-3-319-56436-4}}.
+
+\bibitem{achdou2020mean}
+Y.~Achdou, I.~Capuzzo-Dolcetta, Mean field games: Numerical methods, SIAM
+  Journal on Numerical Analysis 48~(3) (2010) 1136--1162.
+\newblock \href {https://doi.org/10.1137/090758477}
+  {\path{doi:10.1137/090758477}}.
+
+\bibitem{bianchin2021online}
+G.~Bianchin, J.~Cortes, E.~Dall'Anese, Online optimization in closed-loop on
+  the power flow manifold, IEEE Control Systems Letters 5~(1) (2021) 175--180.
+\newblock \href {https://doi.org/10.1109/LCSYS.2020.3000643}
+  {\path{doi:10.1109/LCSYS.2020.3000643}}.
+
 \bibitem{karrer2011competing}
 B.~Karrer, M.~E. Newman, Competing epidemics on complex networks, Physical
   Review E 84~(3) (2011) 036106.
@@ -174,6 +192,29 @@ D.~J. Watts, A simple model of global cascades on random networks, Proceedings
   of the National Academy of Sciences 99~(9) (2002) 5766--5771.
 \newblock \href {https://doi.org/10.1073/pnas.082090499}
   {\path{doi:10.1073/pnas.082090499}}.
+
+\bibitem{feller1951two}
+W.~Feller, Two singular diffusion problems, Annals of Mathematics 54~(1) (1951)
+  173--182.
+\newblock \href {https://doi.org/10.2307/1969318} {\path{doi:10.2307/1969318}}.
+
+\bibitem{revuzyor1999}
+D.~Revuz, M.~Yor, Continuous Martingales and Brownian Motion, 3rd Edition,
+  Springer, Berlin, 1999.
+\newblock \href {https://doi.org/10.1007/978-3-662-06400-9}
+  {\path{doi:10.1007/978-3-662-06400-9}}.
+
+\bibitem{bollobas2006percolation}
+B.~Bollob\'as, O.~Riordan, Percolation, Cambridge University Press, Cambridge,
+  2006.
+\newblock \href {https://doi.org/10.1017/CBO9781139167383}
+  {\path{doi:10.1017/CBO9781139167383}}.
+
+\bibitem{kloeden1992numerical}
+P.~E. Kloeden, E.~Platen, Numerical solution of stochastic differential
+  equations, Springer (1992).
+\newblock \href {https://doi.org/10.1007/978-3-662-12616-5}
+  {\path{doi:10.1007/978-3-662-12616-5}}.
 
 \bibitem{erdos1960evolution}
 P.~Erd{\H{o}}s, A.~R{\'e}nyi, On the evolution of random graphs, Publications
