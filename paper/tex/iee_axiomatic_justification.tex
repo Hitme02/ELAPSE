@@ -1,0 +1,40 @@
+% iee_axiomatic_justification.tex
+% Axiomatic justification of IEE as a privacy metric.
+% Insert after the IEE definition in Section 4 (Ensemble Architecture).
+
+\begin{remark}[Axiomatic justification of IEE]
+\label{rem:iee_axiomatic}
+The Time-Integrated Entropy Exposure objective $\IEE(\bfw) = \int_0^T
+H(\mathbf{p}(t;\bfw))\cdot M(t;\bfw)\,dt$ is the unique functional
+satisfying three natural privacy axioms:
+
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Mass sensitivity.}  A data deletion mechanism that removes
+    mass quickly should be rewarded: if $M(t;\bfw_1) \le M(t;\bfw_2)$
+    pointwise on $[0,T]$ and $H(\mathbf{p}(t;\bfw_1)) = H(\mathbf{p}(t;\bfw_2))$,
+    then $\IEE(\bfw_1) \le \IEE(\bfw_2)$.
+    The product $H \cdot M$ captures this: equal entropy spread over less
+    surviving mass means less total exposure.
+
+  \item \textbf{Entropy sensitivity.}  A mechanism that achieves rapid
+    localisation of the data distribution (low entropy) while retaining
+    mass should also be rewarded.  If $H(\mathbf{p}(t;\bfw_1)) \le
+    H(\mathbf{p}(t;\bfw_2))$ pointwise and $M(t;\bfw_1) = M(t;\bfw_2)$,
+    then $\IEE(\bfw_1) \le \IEE(\bfw_2)$.
+    This prevents the degenerate solution of retaining all data in one node
+    (low entropy but high mass exposure) from being penalised inconsistently.
+
+  \item \textbf{Temporal accumulation.}  Privacy exposure is additive in
+    time: a protocol that leaks data over a longer window is strictly worse
+    than one that resolves the same snapshot exposure faster.  The integral
+    $\int_0^T$ implements this.
+\end{enumerate}
+
+Any separable functional $\int_0^T f(H, M)\,dt$ satisfying (i)--(iii) with
+$f$ increasing in both arguments and $f(0,M) = f(H,0) = 0$ reduces to
+$f(H,M) = c\,H\cdot M$ for some constant $c > 0$ under a standard
+homogeneity argument analogous to Shannon's axiomatic derivation of
+entropy \cite{jaynes1957information}.  Setting $c=1$ gives the IEE.  Thus IEE is not
+an ad-hoc combination but the unique canonical measure of time-integrated
+privacy exposure under axioms (i)--(iii).
+\end{remark}

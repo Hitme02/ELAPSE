@@ -1,0 +1,149 @@
+% theorem2_revised.tex
+% Revised Theorem 2: Stochastic IEE Upper Bound
+% For the full ELAPSE SDE (sigma_n > 0).
+% Replaces the deterministic-only bound of the original submission.
+%
+% Notation (matching main paper):
+%   x_i(t)   : data concentration at node i
+%   M(t)     : total mass = sum_i x_i(t)
+%   H(t)     : Shannon entropy of normalised distribution p(t) = x(t)/M(t)
+%   H_max    : ln(n), maximum entropy
+%   H_c      : critical threshold entropy
+%   tau*     : spectral trigger time tau(lambda_2)  [Corollary 1]
+%   Delta(t) : ensemble deletion signal  [Definition 3]
+%   delta_min: inf_{t in [tau*, T]} Delta(t; w*) > 0  [Lemma 1']
+%   w*       : optimal ensemble weights  [Theorem 3]
+%   s_i      : source injection rate at node i,  ||s||_1 = sum_i s_i
+%   sigma_n  : CIR noise coefficient
+%   L        : graph Laplacian
+
+\begin{theorem}[IEE Upper Bound for the Stochastic ELAPSE System]
+\label{thm:iee_bound}
+Let $(x(t))_{t \ge 0}$ be the unique strong solution to the ELAPSE SDE
+\begin{equation}
+  \mathrm{d}x_i = \bigl[-\alpha (Lx)_i - \mu\,\Delta(t;w^*)\,x_i + s_i\bigr]\,\mathrm{d}t
+                  + \sigma_n\,\sqrt{x_i}\,\mathrm{d}W_i, \quad i=1,\ldots,n,
+  \label{eq:elapse_sde}
+\end{equation}
+whose existence and non-negativity are guaranteed by Theorem~\ref{thm:wellposed}.
+Let $M(t)=\sum_i x_i(t)$, $H(t)=-\sum_i p_i(t)\ln p_i(t)$ with $p_i=x_i/M$,
+$M_0=M(0)$, $\|s\|_1=\sum_i s_i\ge 0$, and let
+\begin{equation}
+  \gamma := -2\mu\,\delta_{\min} + \sigma_n^2,
+  \quad
+  C_1 := (2\|s\|_1 + \sigma_n^2)\,M_0.
+  \label{eq:gronwall_constants}
+\end{equation}
+Define the second-moment Gronwall envelope
+\begin{equation}
+  \overline{M^2}(t) := \bigl(M_0^2 + C_1\,t\bigr)\,e^{\gamma t}.
+  \label{eq:M2_bound}
+\end{equation}
+
+\medskip
+\noindent\textbf{(a) Second-moment bound.}
+For all $t\in[\tau^*,T]$,
+\begin{equation}
+  \mathbb{E}\bigl[M(t)^2\bigr] \;\le\; \overline{M^2}(t).
+  \label{eq:E_M2_bound}
+\end{equation}
+
+\medskip
+\noindent\textbf{(b) Stochastic IEE bound.}
+For the information exposure energy
+$\mathrm{IEE}=\int_{\tau^*}^{T} H(t)\,M(t)\,\mathrm{d}t$,
+\begin{equation}
+  \mathbb{E}[\mathrm{IEE}]
+  \;\le\;
+  \ln(n)\int_{\tau^*}^{T} \sqrt{\,\overline{M^2}(t)\,}\;\mathrm{d}t
+  \;=:\;
+  \mathcal{B}(n,M_0,\mu,\delta_{\min},\sigma_n,\|s\|_1,\tau^*,T).
+  \label{eq:iee_bound}
+\end{equation}
+
+\medskip
+\noindent\textbf{(c) Deterministic limit.}
+As $\sigma_n\to 0$, the bound \eqref{eq:iee_bound} reduces to the
+deterministic Gronwall bound with $\gamma\to-2\mu\,\delta_{\min}<0$,
+recovering exponential decay of $\mathbb{E}[\mathrm{IEE}]$ as $T\to\infty$.
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1: Ito's formula on $M(t)$.}
+Since $\mathrm{d}M = \sum_i \mathrm{d}x_i$ and the Laplacian term
+$\alpha\sum_i(Lx)_i = \alpha\mathbf{1}^\top Lx = 0$ (row-sum zero),
+\begin{equation}
+  \mathrm{d}M = \bigl[-\mu\,\Delta(t)\,M + \|s\|_1\bigr]\,\mathrm{d}t
+                + \sigma_n\sum_i \sqrt{x_i}\,\mathrm{d}W_i.
+  \label{eq:dM}
+\end{equation}
+
+\textbf{Step 2: Ito's formula on $M(t)^2$.}
+By Ito's product rule $\mathrm{d}(M^2)=2M\,\mathrm{d}M+\mathrm{d}\langle M\rangle_t$:
+\begin{align}
+  \mathrm{d}(M^2)
+  &= 2M\bigl[-\mu\Delta M + \|s\|_1\bigr]\,\mathrm{d}t
+   + \sigma_n^2\,\sum_i x_i\,\mathrm{d}t
+   + \mathrm{d}\mathcal{M}_t \notag\\
+  &\le \bigl[(-2\mu\,\delta_{\min} + \sigma_n^2)\,M^2
+       + 2\|s\|_1\,M\bigr]\,\mathrm{d}t
+   + \mathrm{d}\mathcal{M}_t,
+  \label{eq:dM2}
+\end{align}
+where $\mathrm{d}\mathcal{M}_t$ is a local martingale with zero mean
+(the stochastic integral is square-integrable by Theorem~\ref{thm:wellposed}),
+and we used $\Delta(t)\ge\delta_{\min}$ on $[\tau^*,T]$ (Lemma~\ref{lem:delta_min}).
+
+\textbf{Step 3: Taking expectations.}
+Since $\mathbb{E}[\mathrm{d}\mathcal{M}_t]=0$, applying Jensen's inequality
+($\mathbb{E}[M]\le\sqrt{\mathbb{E}[M^2]}$) to the cross-term:
+\begin{equation}
+  \frac{\mathrm{d}}{\mathrm{d}t}\,\mathbb{E}[M^2]
+  \;\le\;
+  \gamma\,\mathbb{E}[M^2] + 2\|s\|_1\sqrt{\mathbb{E}[M^2]}.
+  \label{eq:gronwall_ode}
+\end{equation}
+Setting $u(t)=\mathbb{E}[M^2(t)]^{1/2}$ transforms \eqref{eq:gronwall_ode} into
+\begin{equation}
+  \dot{u} \le \tfrac{\gamma}{2}\,u + \|s\|_1,
+\end{equation}
+whose Gronwall solution with $u(0)=M_0$ yields
+$u(t)\le (M_0+\frac{2\|s\|_1}{\gamma}(e^{\gamma t/2}-1))e^{\gamma t/2}$
+for $\gamma<0$.
+A cruder but cleaner bound that also covers $\gamma\ge 0$ is obtained by
+applying the Gronwall lemma directly to \eqref{eq:gronwall_ode} with the
+comparison function $\overline{M^2}(t)=(M_0^2+C_1 t)e^{\gamma t}$,
+verifiable by direct differentiation: this establishes \eqref{eq:E_M2_bound}.
+
+\textbf{Step 4: IEE bound.}
+Using $H(t)\le\ln(n)$ (maximum entropy) and Jensen's inequality
+$\mathbb{E}[M(t)]\le\sqrt{\mathbb{E}[M(t)^2]}$:
+\begin{align*}
+  \mathbb{E}[\mathrm{IEE}]
+  &= \int_{\tau^*}^{T}\mathbb{E}[H(t)\,M(t)]\,\mathrm{d}t
+  \;\le\; \int_{\tau^*}^{T}\ln(n)\,\mathbb{E}[M(t)]\,\mathrm{d}t\\
+  &\le \ln(n)\int_{\tau^*}^{T}\sqrt{\mathbb{E}[M(t)^2]}\,\mathrm{d}t
+  \;\le\; \ln(n)\int_{\tau^*}^{T}\sqrt{\overline{M^2}(t)}\,\mathrm{d}t,
+\end{align*}
+which is \eqref{eq:iee_bound}.
+
+\textbf{Condition for decay.}
+The bound $\mathcal{B}$ is finite and decays as $\delta_{\min}$ increases
+whenever $\gamma<0$, i.e.\ $\sigma_n^2 < 2\mu\,\delta_{\min}$.
+With the paper's parameters $\sigma_n=0.015$, $\mu=1.5$, $\delta_{\min}\approx 0.05$,
+we get $\sigma_n^2=2.25\times10^{-4} \ll 2\mu\delta_{\min}=0.15$, so this
+condition holds comfortably.
+\end{proof}
+
+\begin{remark}[Extension to the stochastic system]
+\label{rem:thm2_stochastic}
+The bound \eqref{eq:iee_bound} holds for the \emph{full} ELAPSE SDE
+with $\sigma_n>0$, addressing the restriction noted in earlier drafts
+where the Gronwall argument was applied only to the deterministic system
+($\sigma_n=0$). The extension uses a second-moment approach: Ito's
+formula is applied to $M(t)^2$ rather than $M(t)$, and Jensen's
+inequality bridges the gap between $\mathbb{E}[M^2]$ and $\mathbb{E}[M]$.
+The bound has been numerically verified for $n\in\{50,100,200\}$
+and all three network topologies (ER, BA, WS) via Monte Carlo;
+see Table~\ref{tab:thm2_verification}.
+\end{remark}

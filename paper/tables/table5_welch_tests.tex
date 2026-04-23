@@ -1,0 +1,19 @@
+\begin{table}[htbp]
+\caption{Welch two-sample $t$-tests comparing M5 (Social threshold) against M6 ensemble variants across topologies ($n=100$, $N=50$ seeds). Bonferroni correction applied for 6 simultaneous comparisons. Cohen's $d$ measures standardised effect size (positive = M5 $>$ M6, i.e.\ M6 reduces IEE). $^{***}$: $p<0.001$; $^{**}$: $p<0.01$; $^{*}$: $p<0.05$.}
+\label{tab:welch_tests}
+\centering
+\begin{tabular}{llccc}
+\toprule
+Topology & Comparison & $t$-statistic & $p$-value (Bonf.) & Cohen's $d$ \\
+\midrule
+Erdos-Renyi & M5 vs.\ M6(topo-matched) & -45.622 & 0.0000$^{***}$ & -9.124 \\
+ & M5 vs.\ M6(mixed) & -45.841 & 0.0000$^{***}$ & -9.168 \\
+\midrule
+Barabasi-Albert & M5 vs.\ M6(topo-matched) & -47.464 & 0.0000$^{***}$ & -9.493 \\
+ & M5 vs.\ M6(mixed) & -49.006 & 0.0000$^{***}$ & -9.801 \\
+\midrule
+Watts-Strogatz & M5 vs.\ M6(topo-matched) & -34.736 & 0.0000$^{***}$ & -6.947 \\
+ & M5 vs.\ M6(mixed) & -36.642 & 0.0000$^{***}$ & -7.328 \\
+\bottomrule
+\end{tabular}
+\end{table}

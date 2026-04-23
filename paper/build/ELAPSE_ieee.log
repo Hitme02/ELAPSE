@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.19)  2 APR 2026 08:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.19)  22 APR 2026 23:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -409,50 +409,61 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count317
 \@thisrulewidth=\dimen199
 )
-\c@lemma=\count318
-\c@proposition=\count319
-\c@corollary=\count320
+(/Users/user/Library/texmf/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2025/02/06 v3.11 Customized lists
+\labelindent=\skip59
+\enit@outerparindent=\dimen256
+\enit@toks=\toks30
+\enit@inbox=\box57
+\enit@count@id=\count318
+\enitdp@description=\count319
+)
+\c@theorem=\count320
+\c@lemma=\count321
+\c@proposition=\count322
+\c@corollary=\count323
+\c@remark=\count324
 
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/l3backend/l3backend-pdftex.d
 ef
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count321
+\l__color_backend_stack_int=\count325
 ) (./ELAPSE_ieee.aux)
 \openout1 = `ELAPSE_ieee.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
 
 -- Lines per column: 56 (exact).
 (/usr/local/texlive/2026basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count322
-\scratchdimen=\dimen256
-\scratchbox=\box57
-\nofMPsegments=\count323
-\nofMParguments=\count324
-\everyMPshowfont=\toks30
-\MPscratchCnt=\count325
-\MPscratchDim=\dimen257
-\MPnumerator=\count326
-\makeMPintoPDFobject=\count327
-\everyMPtoPDFconversion=\toks31
+\scratchcounter=\count326
+\scratchdimen=\dimen257
+\scratchbox=\box58
+\nofMPsegments=\count327
+\nofMParguments=\count328
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count329
+\MPscratchDim=\dimen258
+\MPnumerator=\count330
+\makeMPintoPDFobject=\count331
+\everyMPtoPDFconversion=\toks32
 ) (/Users/user/Library/texmf/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -462,91 +473,105 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 21.
+Package hyperref Info: Link coloring OFF on input line 32.
  (./ELAPSE_ieee.out) (./ELAPSE_ieee.out)
 \@outlinefile=\write3
 \openout3 = `ELAPSE_ieee.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 67.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 66.
 
 
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 67.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 66.
 
 
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 6047) in paragraph at lines 82--89
-[]\OT1/ptm/m/n/10 Controlling the prop-a-ga-tion of sen-si-tive data post-
+Underfull \hbox (badness 2680) in paragraph at lines 157--162
+[]\OT1/ptm/b/n/10 Multi-mechanism en-sem-ble meth-ods. \OT1/ptm/m/n/10 Cas-cade
+ mod-
  []
 
 [1{/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/
 usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
-] [2]
-Overfull \hbox (12.4001pt too wide) detected at line 258
-[][][]\OML/cmm/m/it/10 v[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) 
-= []\OML/cmm/m/it/10 ^^[\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 H\OT1/cmr/m/n/10 (\OM
-L/cmm/m/it/10 t\OT1/cmr/m/n/10 )) + [][] []  []
+]
+Underfull \hbox (badness 10000) in paragraph at lines 318--324
+[]\OT1/ptm/b/n/10 (A) Lo-cal
  []
 
-[3]
-<../../output/figures/fig1_entropy_n100.pdf, id=168, 1073.7765pt x 383.93437pt>
+[2]
+Underfull \hbox (badness 1603) in paragraph at lines 373--381
+[]\OT1/ptm/m/n/10 Apply It[]o's for-mula to $\OML/cmm/m/it/10 M\OT1/cmr/m/n/10 
+(\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 )[]$\OT1/ptm/m/n/10 : $\OML/cmm/m/it/10 d\OT
+1/cmr/m/n/10 (\OML/cmm/m/it/10 M[]\OT1/cmr/m/n/10 ) =
+ []
+
+
+Underfull \hbox (badness 3623) in paragraph at lines 406--417
+[]\OT1/ptm/m/n/10 By It[]o's quo-tient rule ap-plied to $\OML/cmm/m/it/10 p[] \
+OT1/cmr/m/n/10 =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 436--442
+[]\OT1/ptm/m/n/10 Simulations run three topolo-gies (Erd[]os-R[]enyi
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 436--442
+\OT1/ptm/m/n/10 ER, Barab[]asi-Albert BA, Watts-Strogatz WS) at
+ []
+
+<../../output/figures/fig1_entropy_n100.pdf, id=170, 1073.7765pt x 383.93437pt>
 
 File: ../../output/figures/fig1_entropy_n100.pdf Graphic file (type pdf)
 <use ../../output/figures/fig1_entropy_n100.pdf>
 Package pdftex.def Info: ../../output/figures/fig1_entropy_n100.pdf  used on in
-put line 431.
+put line 452.
 (pdftex.def)             Requested size: 252.0pt x 90.10156pt.
-<../../output/figures/fig3_iee_n500.png, id=169, 929.874pt x 351.714pt>
-File: ../../output/figures/fig3_iee_n500.png Graphic file (type png)
-<use ../../output/figures/fig3_iee_n500.png>
-Package pdftex.def Info: ../../output/figures/fig3_iee_n500.png  used on input 
-line 446.
-(pdftex.def)             Requested size: 252.0pt x 95.31288pt.
+<../../output/figures/fig2_iee_n500.pdf, id=173, 1002.23494pt x 388.4579pt>
+File: ../../output/figures/fig2_iee_n500.pdf Graphic file (type pdf)
+<use ../../output/figures/fig2_iee_n500.pdf>
+Package pdftex.def Info: ../../output/figures/fig2_iee_n500.pdf  used on input 
+line 496.
+(pdftex.def)             Requested size: 252.0pt x 97.6714pt.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 503.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 453.
+(hyperref)                removing `subscript' on input line 503.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\lambda' on input line 453.
+(hyperref)                removing `math shift' on input line 503.
+
+[3 <../../output/figures/fig1_entropy_n100.pdf>]
+<../../output/figures/fig4_scaling.pdf, id=301, 713.15494pt x 388.04036pt>
+File: ../../output/figures/fig4_scaling.pdf Graphic file (type pdf)
+<use ../../output/figures/fig4_scaling.pdf>
+Package pdftex.def Info: ../../output/figures/fig4_scaling.pdf  used on input l
+ine 563.
+(pdftex.def)             Requested size: 252.0pt x 137.11877pt.
+
+Underfull \hbox (badness 2635) in paragraph at lines 580--586
+\OT1/ptm/m/n/10 well-posedness is es-tab-lished via a non-circular Feller-
+ []
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 453.
+Underfull \hbox (badness 1845) in paragraph at lines 587--597
+[]\OT1/ptm/m/n/10 The ob-served sharp ac-ti-va-tion at $\OML/cmm/m/it/10 H[]$ \
+OT1/ptm/m/n/10 is a finite-size
+ []
 
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 453.
-
-<../../output/figures/fig6_weights_n100.png, id=173, 930.3558pt x 321.3606pt>
-File: ../../output/figures/fig6_weights_n100.png Graphic file (type png)
-<use ../../output/figures/fig6_weights_n100.png>
-Package pdftex.def Info: ../../output/figures/fig6_weights_n100.png  used on in
-put line 499.
-(pdftex.def)             Requested size: 252.0pt x 87.0431pt.
-[4 <../../output/figures/fig1_entropy_n100.pdf> <../../output/figures/fig3_iee_
-n500.png>]
-<../../output/figures/fig7_scaling.png, id=291, 713.064pt x 352.1958pt>
-File: ../../output/figures/fig7_scaling.png Graphic file (type png)
-<use ../../output/figures/fig7_scaling.png>
-Package pdftex.def Info: ../../output/figures/fig7_scaling.png  used on input l
-ine 513.
-(pdftex.def)             Requested size: 252.0pt x 124.4688pt.
-<../../output/figures/fig8_sensitivity.png, id=292, 930.3558pt x 357.0138pt>
-File: ../../output/figures/fig8_sensitivity.png Graphic file (type png)
-<use ../../output/figures/fig8_sensitivity.png>
-Package pdftex.def Info: ../../output/figures/fig8_sensitivity.png  used on inp
-ut line 527.
-(pdftex.def)             Requested size: 252.0pt x 96.70007pt.
- [5 <../../output/figures/fig6_weights_n100.png> <../../output/figures/fig7_sca
-ling.png> <../../output/figures/fig8_sensitivity.png>]
+[4 <../../output/figures/fig2_iee_n500.pdf> <../../output/figures/fig4_scaling.
+pdf>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -558,7 +583,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[6
+[5
 
 ] (./ELAPSE_ieee.aux)
  ***********
@@ -566,44 +591,49 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `ELAPSE_ieee.out' has not changed.
-(rerunfilecheck)             Checksum: 4E255A5B502B067BF05A1602EB4F14A3;3210.
+(rerunfilecheck)             Checksum: 8663601E4762D601AA786DA8B3993ECC;2556.
  ) 
 Here is how much of TeX's memory you used:
- 11434 strings out of 469006
- 178480 string characters out of 5454813
- 612936 words of memory out of 5000000
- 39921 multiletter control sequences out of 15000+600000
- 668947 words of font info for 123 fonts, out of 8000000 for 9000
+ 11772 strings out of 469006
+ 183574 string characters out of 5454813
+ 625230 words of memory out of 5000000
+ 40248 multiletter control sequences out of 15000+600000
+ 670333 words of font info for 125 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 75i,11n,79p,548b,586s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,548b,582s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
 0.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mbx7.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmex10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmmi10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi5.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026basic/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2026basic/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2026basic/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026basic/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2026basic/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026basic/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2026basic
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2026ba
-sic/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texli
-ve/2026basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/lo
-cal/texlive/2026basic/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/t
-exlive/2026basic/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texli
-ve/2026basic/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/20
-26basic/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ELAPSE_ieee.pdf (6 pages, 985391 bytes).
+m/cmbx8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmbx9.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmex10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2026basic/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2026basic/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026basic/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2026basic/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2026basic/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2026basic/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026basic/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2026basi
+c/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026
+basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2
+026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texliv
+e/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/tex
+live/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/
+texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/loc
+al/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+</usr/local/texlive/2026basic/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr
+/local/texlive/2026basic/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/loc
+al/texlive/2026basic/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/te
+xlive/2026basic/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on ELAPSE_ieee.pdf (5 pages, 704209 bytes).
 PDF statistics:
- 422 PDF objects out of 1000 (max. 8388607)
- 272 compressed objects within 3 object streams
- 66 named destinations out of 1000 (max. 500000)
- 138 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 602 PDF objects out of 1000 (max. 8388607)
+ 321 compressed objects within 4 object streams
+ 71 named destinations out of 1000 (max. 500000)
+ 144 words of extra memory for PDF output out of 10000 (max. 10000000)
 

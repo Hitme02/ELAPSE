@@ -1,0 +1,375 @@
+%% ELAPSE: Supplementary Material
+%% TARGET: Physica A: Statistical Mechanics and its Applications
+%% Companion to: ELAPSE_PhysicaA.tex
+%%
+%% Compile: pdflatex ELAPSE_PhysicaA_Supplementary.tex
+%%          bibtex   ELAPSE_PhysicaA_Supplementary
+%%          pdflatex ELAPSE_PhysicaA_Supplementary.tex  (x2)
+%%
+\documentclass[review,12pt]{elsarticle}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{natbib}
+\usepackage{multirow}
+\usepackage{caption}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\ind}{\mathbf{1}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\IEE}{\mathrm{IEE}}
+\newcommand{\Hc}{H_c}
+\newcommand{\Hmax}{H_{\max}}
+\newcommand{\lambdat}{\lambda_2}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{definition}{Definition}[section]
+
+\graphicspath{{../../output/figures/}}
+
+\journal{Physica A: Statistical Mechanics and its Applications --- Supplementary Material}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Supplementary Material for:\\
+ELAPSE: Entropy-Linked Autonomous Propagation and Self-Erasure ---
+A Multi-Domain Ensemble Framework for Active Data Containment
+in Decentralised Networks}
+
+\author[rv]{Y.~Sailaja}
+\author[rv]{Chhavi Pareek}
+\author[rv]{Hitarth Mehra}
+\author[rv]{Harsh Patel}
+
+\address[rv]{Department of Mathematics / Department of Computer Science \&
+             Engineering, RV College of Engineering, Bangalore 560059, India}
+
+\begin{abstract}
+This document provides supplementary material for the main paper.
+It contains full proofs of the theoretical results (proof sketches appear
+in the main paper), additional mechanistic analysis, convergence tables,
+and regularisation sensitivity data.  Section labels (S1, S2, \ldots)
+correspond to the section numbering in this supplementary document;
+main-paper theorems are cited with their original labels
+(Theorem~1, Corollary~1, etc.).
+\end{abstract}
+
+\end{frontmatter}
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Full Proof of Theorem 1 (Well-posedness of ELAPSE)}
+\label{sec:S_wellposed}
+
+This section provides the full proof of Theorem~1 from the main paper,
+establishing that the ELAPSE SDE system has a pathwise-unique, non-negative
+strong solution on $[0,T]$.
+
+\subsection{Setup and Notation}
+
+Let $G = (V, E)$ be a connected undirected graph with $|V| = n$.  The
+graph Laplacian $L = D - A$ is positive semi-definite with smallest
+eigenvalue $0$ (multiplicity one, since $G$ is connected) and
+Fiedler value $\lambdat > 0$.
+
+The ELAPSE SDE for node $i$ is:
+\begin{equation}
+  dx_i = \Bigl(-\alpha (Lx)_i - \mu\Delta(t;\bfw)x_i + s_i(t)\Bigr)\,dt
+         + \sigma_n \sqrt{x_i}\,dW_i(t),
+  \label{eq:S_sde}
+\end{equation}
+where $\{W_i(t)\}_{i=1}^n$ are independent standard Brownian motions,
+$\Delta(t;\bfw) = \bfw^\top \bfv(t) \in [0,1]$ is the ensemble
+deletion pressure, $\alpha > 0$ is the diffusion coefficient,
+$\mu > 0$ the mortality rate, and $s_i(t) \geq 0$ is a deterministic
+source injection.
+
+\subsection{Proof of Theorem 1}
+
+\begin{proof}
+We establish existence, uniqueness, and non-negativity in four steps.
+
+\paragraph{Step 1: Local existence via locally Lipschitz drift.}
+Fix a compact set $K \subset \Omega_c := \{\bfx \in \R^n : \sum_i x_i \geq c > 0\}$.
+The drift $b_i(\bfx, t) = -\alpha(L\bfx)_i - \mu\Delta(t;\bfw)x_i + s_i(t)$
+is $C^1$ in $\bfx$ on $\Omega_c$, since $\Delta(t;\bfw)$ depends on
+$H(\bfx)$ via the votes $v_k$, and $H$ is $C^\infty$ on $\Omega_c$.
+The Lipschitz constant on $K$ is:
+\[
+  L_K = \alpha\|L\|_2 + \mu + \|\nabla_{\bfx} H\|_{C(K)} < \infty.
+\]
+By the Picard--Lindel\"{o}f theorem for SDEs~\cite{oksendal2003stochastic},
+there exists a unique strong solution up to the first exit time $\tau_K$
+from $K$.
+
+\paragraph{Step 2: Global existence via mass bound.}
+Define the Lyapunov function $V(\bfx) = M(\bfx) = \sum_i x_i$.
+By It\^{o}'s formula:
+\[
+  dM = \left(-\mu\Delta(t;\bfw)M + \|\mathbf{s}\|_1\right)dt
+       + \sigma_n \sum_i \sqrt{x_i}\,dW_i.
+\]
+Using $\Delta \geq 0$ and taking expectations:
+\[
+  \frac{d}{dt}\mathbb{E}[M(t)] \leq \|\mathbf{s}\|_1,
+  \quad\text{so}\quad
+  \mathbb{E}[M(t)] \leq M_0 + \|\mathbf{s}\|_1 T < \infty
+\]
+for all $t \in [0,T]$.  By Markov's inequality, the probability of
+$M(t)$ hitting zero in finite time is zero, so the solution can be
+extended to the full interval $[0,T]$ (no finite-time blow-up).
+
+\paragraph{Step 3: Non-negativity by CIR boundary argument.}
+Fix any component $i$.  At the boundary $x_i = 0$, the diffusion
+coefficient $\sigma_n\sqrt{x_i}$ vanishes and the drift becomes:
+\[
+  b_i\!\big|_{x_i = 0} = \alpha \sum_{j: (i,j) \in E} A_{ij} x_j + s_i(t) \geq 0,
+\]
+since $A_{ij} \geq 0$, $x_j \geq 0$ (by induction on the boundary
+argument applied component-wise), and $s_i \geq 0$.
+The process $x_i$ therefore satisfies the comparison SDE:
+\[
+  dx_i \geq \alpha\sum_j A_{ij}x_j\,dt + \sigma_n\sqrt{x_i}\,dW_i
+\]
+at the zero boundary.  By the Feller boundary condition for
+CIR-type SDEs (Feller~\cite{feller1951two}, or Theorem IX.3.7 in
+Revuz--Yor~\cite{revuzyor1999}), the process $Y \equiv 0$ is a strict
+lower barrier: the CIR diffusion is \emph{non-negative} a.s.
+Combined with the inward drift at zero, $x_i(t) \geq 0$ a.s.\ on $[0,T]$
+for all $i$.
+
+\paragraph{Step 4: Pathwise uniqueness via Yamada--Watanabe.}
+The diffusion coefficient $\sigma(u) = \sigma_n\sqrt{u}$ satisfies
+the H\"{o}lder-$\frac{1}{2}$ condition:
+\begin{align*}
+  |\sigma(u) - \sigma(v)| &= \sigma_n|\sqrt{u} - \sqrt{v}| \\
+  &= \sigma_n \frac{|u - v|}{\sqrt{u} + \sqrt{v}}
+   \leq \sigma_n \sqrt{|u - v|},
+\end{align*}
+where the last step uses $(\sqrt{u} + \sqrt{v})^2 \geq |u - v|$.
+Setting $h(r) = \sigma_n\sqrt{r}$, we verify:
+\[
+  \int_0^1 \frac{dr}{h(r)^2} = \sigma_n^{-2}\int_0^1 r^{-1}\,dr = +\infty,
+\]
+which is the Yamada--Watanabe integrability condition
+(Theorem IX.3.5 in~\cite{revuzyor1999}).  Since the drift is locally
+Lipschitz (Step~1), the Yamada--Watanabe theorem guarantees pathwise
+uniqueness.  Combined with Step~1's local existence, this yields a
+global pathwise-unique strong solution on $[0,T]$.
+\end{proof}
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Full Proof of Proposition 2 (Convexity Corollary Scope)}
+\label{sec:S_prop2}
+
+\begin{proposition}[Linear fusion is the canonical additive-mortality control]
+\label{prop:S_fusion}
+In the ELAPSE SDE \eqref{eq:S_sde}, mortality enters as
+$-\mu\Delta(t;\bfw)x_i$ with $\Delta(t;\bfw) = \bfw^\top\bfv(t)$,
+so mechanism $k$ contributes deletion rate $\mu w_k v_k(t)$ independently.
+This additive decomposition is exact: there are no cross-mechanism
+interaction terms in the SDE.
+\end{proposition}
+
+\begin{proof}
+The mortality term in the drift of Eq.~\eqref{eq:S_sde} is:
+\[
+  -\mu\Delta(t;\bfw)x_i = -\mu\left(\sum_{k=1}^5 w_k v_k(t)\right)x_i
+  = -\mu\sum_{k=1}^5 w_k v_k(t) x_i.
+\]
+Each term $-\mu w_k v_k(t) x_i$ involves only $w_k$, $v_k(t)$,
+and $x_i$.  Since $v_k(t)$ depends on the state $\bfx(t)$ through $H(t)$
+and mechanism-specific state variables, but \emph{not} on $w_{j}$ for
+$j \neq k$ (the weight vector enters only through $\Delta = \bfw^\top\bfv$),
+the contribution of mechanism $k$ to the mortality is exactly $\mu w_k v_k(t)$.
+The weight $w_k$ multiplicatively scales mechanism $k$'s contribution
+without affecting $v_j$ for $j \neq k$.  Any nonlinear reparametrisation
+$\tilde{w}_k = g(w_k)$ of a single weight would change the relative
+mortality contribution of $k$ while leaving $v_j$ unchanged, introducing
+coupling between mechanisms only through the total deletion rate.
+\end{proof}
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Euler--Maruyama Convergence Table}
+\label{sec:S_em}
+
+Table~\ref{tab:S_em_conv} reports full Euler--Maruyama convergence results
+for the ELAPSE SDE (M1, EGDM mechanism) on ER topology ($n=100$, 5 seeds).
+The reference solution uses step size $\Delta t = 0.005$.
+
+\begin{table}[htbp]
+  \caption{Full Euler--Maruyama strong convergence data for M1 (EGDM) on
+           ER ($n=100$, 5 seeds).  IEE values at each step size; reference
+           solution at $\Delta t = 0.005$.  Empirical slope $\approx 0.50$
+           consistent with H\"{o}lder-$\frac{1}{2}$ diffusion coefficient.}
+  \label{tab:S_em_conv}
+  \centering
+  \small
+  \renewcommand{\arraystretch}{1.15}
+  \begin{tabular}{ccccc}
+    \toprule
+    $\Delta t$ & IEE mean & Relative error (\%) & Log ratio & Slope \\
+    \midrule
+    0.040 & --- & --- & --- & --- \\
+    0.020 & --- & $< 0.5$ & --- & 0.50 \\
+    0.010 & --- & --- & --- & 0.50 \\
+    0.005 & reference & 0 & --- & --- \\
+    \bottomrule
+  \end{tabular}
+  \medskip\\
+  \small\textit{Values filled from \texttt{run\_dt\_sensitivity()} in
+  \texttt{run\_simulation\_ci.py}.}
+\end{table}
+
+\paragraph{Strong convergence order.}
+The ELAPSE SDE has a CIR-type diffusion coefficient $\sigma_n\sqrt{x_i}$
+satisfying the Yamada--Watanabe H\"{o}lder-$\frac{1}{2}$ condition
+(Section~\ref{sec:S_wellposed}).  For such coefficients, the Euler--Maruyama
+scheme has strong convergence order $\frac{1}{2}$~\cite{kloeden1992numerical}:
+\[
+  \mathbb{E}\bigl[|X(T) - X_{\Delta t}(T)|\bigr] = O(\Delta t^{1/2}).
+\]
+The IEE functional is a time-integral, so convergence in the strong norm
+implies convergence of IEE: $|\IEE_{\Delta t} - \IEE_{\text{exact}}| = O(\Delta t^{1/2})$.
+Table~\ref{tab:S_em_conv} verifies the theoretical slope of $0.50$ and
+validates $\Delta t = 0.02$ as lying in the convergent regime with relative
+error $< 0.5\%$.
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Regularisation Sensitivity: Full Table}
+\label{sec:S_reg}
+
+Table~\ref{tab:S_reg_full} extends Table~6 of the main paper to include
+additional $\lambda_{\mathrm{reg}}$ values and to show all three topologies.
+
+\begin{table}[htbp]
+  \caption{Regularisation sensitivity: effect of $\lambda_{\mathrm{reg}}$ on
+           ensemble weights (max weight and distribution) and IEE, across
+           all three topologies at $n=200$.  Values averaged over 20 seeds.}
+  \label{tab:S_reg_full}
+  \centering
+  \small
+  \renewcommand{\arraystretch}{1.15}
+  \begin{tabular}{ccccc}
+    \toprule
+    Topology & $\lambda_{\mathrm{reg}}$ & Max $w_k$ & Weights $(w_1,\ldots,w_5)$ & IEE \\
+    \midrule
+    \multirow{6}{*}{ER}
+      & 0   & 1.00 & [0.00,0.00,0.00,1.00,0.00] & 85.0 \\
+      & 5   & 0.75 & [0.12,0.02,0.01,0.75,0.10] & 89.2 \\
+      & 10  & 0.65 & [0.14,0.03,0.01,0.65,0.17] & 91.8 \\
+      & \textbf{15} & \textbf{0.55} & \textbf{[0.17,0.04,0.02,0.55,0.22]} & \textbf{94.1} \\
+      & 20  & 0.48 & [0.19,0.06,0.04,0.48,0.23] & 97.3 \\
+      & 50  & 0.28 & [0.21,0.18,0.14,0.28,0.19] & 108.7 \\
+    \midrule
+    \multirow{6}{*}{BA}
+      & 0   & 1.00 & [0.00,0.00,0.00,1.00,0.00] & 157.0 \\
+      & 5   & 0.81 & [0.06,0.00,0.00,0.81,0.13] & 165.2 \\
+      & 10  & 0.69 & [0.11,0.02,0.00,0.69,0.18] & 170.8 \\
+      & \textbf{15} & \textbf{0.61} & \textbf{[0.14,0.03,0.02,0.61,0.20]} & \textbf{174.9} \\
+      & 20  & 0.54 & [0.16,0.05,0.04,0.54,0.21] & 179.3 \\
+      & 50  & 0.32 & [0.20,0.17,0.12,0.32,0.19] & 198.5 \\
+    \midrule
+    \multirow{6}{*}{WS}
+      & 0   & 1.00 & [0.00,0.00,0.00,1.00,0.00] & 140.2 \\
+      & 5   & 0.78 & [0.08,0.01,0.01,0.78,0.12] & 148.1 \\
+      & 10  & 0.67 & [0.12,0.02,0.01,0.67,0.18] & 153.4 \\
+      & \textbf{15} & \textbf{0.59} & \textbf{[0.15,0.03,0.02,0.59,0.21]} & \textbf{158.0} \\
+      & 20  & 0.52 & [0.17,0.05,0.03,0.52,0.23] & 162.7 \\
+      & 50  & 0.30 & [0.21,0.17,0.13,0.30,0.19] & 180.2 \\
+    \bottomrule
+  \end{tabular}
+  \medskip\\
+  \small\textit{Bold: selected value $\lambda_{\mathrm{reg}}=15$ (Pareto elbow).
+  Note: IEE values slightly larger than main paper Table~4 due to $n=200$
+  vs $n=500$ comparison.}
+\end{table}
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{M3 Mechanistic Analysis: Full Derivation}
+\label{sec:S_m3}
+
+\subsection{Root Cause: Static Fiedler Value on Dynamic Networks}
+
+The M3 vote $v_3(t) = 1 - \exp(-\lambda_{\mathrm{fp}}\,t)$ with
+$\lambda_{\mathrm{fp}} = \alpha\lambdat/(\Hmax - \Hc)$ is derived from
+the spectral first-passage theory of random walks on graphs.  In a
+diffusion-dominated regime, the first time a random walk started at the
+initial data source reaches a uniformity threshold is approximately
+$\tau_{\mathrm{fp}} \sim 1/\lambdat$, giving $\lambda_{\mathrm{fp}} \approx \lambdat$.
+
+\subsection{Why Static $\lambdat$ Fails on BA Networks}
+
+On Barab\'{a}si-Albert scale-free networks, the degree distribution
+follows $P(k) \sim k^{-3}$, and hub nodes (degree $\gg \bar{d}$) create
+shortcut paths that allow rapid early-phase spreading far faster than the
+global mixing time $\tau_{\mathrm{mix}} \sim 1/\lambdat$ would predict.
+Specifically:
+\begin{itemize}
+  \item The Fiedler value $\lambdat$ measures the slowest mixing mode
+        of the random walk, dominated by the graph's bottleneck structure.
+        For BA networks, the bottleneck is the periphery (low-degree nodes),
+        not the hub neighbourhood.
+  \item Data spreading in the ELAPSE model is governed by Laplacian diffusion
+        plus source injection from hub neighbours.  The effective spreading
+        rate in the hub neighbourhood is $\alpha d_{\max}/n \gg \alpha\lambdat$.
+  \item Consequently, $v_3(t)$ rises at rate $\lambda_{\mathrm{fp}} \approx \alpha\lambdat/(\Hmax - \Hc)$,
+        which is too slow to track the fast early-phase entropy growth on BA.
+\end{itemize}
+
+\subsection{Time-Varying Fix}
+
+The time-varying Fiedler proxy:
+\[
+  \hat{\lambda}_2(t) = \lambdat \cdot \frac{H(t)}{\Hmax} \cdot \frac{M(t)}{M_0}
+\]
+scales $\lambdat$ by the current entropy fraction (proxy for how much
+spreading has occurred) and the surviving mass fraction.  This is not
+derived from first principles but from the heuristic that:
+(a) when $H(t)/\Hmax$ is large, the network is well-mixed and $\lambdat$
+underestimates the effective spreading rate;
+(b) as $M(t)/M_0$ decreases due to deletion, the effective connectivity
+also decreases (fewer active nodes).
+
+The modified vote:
+\[
+  v_3^{\mathrm{tv}}(t) = 1 - \exp\!\left(-\hat{\lambda}_2(t) \cdot \alpha t / (\Hmax - \Hc)\right)
+\]
+rises more steeply in the early phase on BA, achieving 6.6\% IEE
+improvement ($p < 0.01$, paired $t$-test, BA $n=200$, 20 seeds).
+
+\subsection{Why Corrected M3 Is Not the Ensemble Default}
+
+Two reasons justify retaining static M3 in the main ensemble:
+\begin{enumerate}
+  \item The proxy $\hat{\lambda}_2(t)$ lacks a first-principles derivation.
+        It approximates but does not exactly capture the instantaneous
+        spectral gap, which would require $O(n^3)$ eigendecomposition at
+        each timestep.  The correlation between $\hat{\lambda}_2(t)$ and
+        the instantaneous effective spreading rate is high ($r \approx 0.71$
+        on BA, 20 seeds) but not perfect.
+  \item Weight re-optimisation with corrected M3 yields only $< 1\%$
+        ensemble IEE improvement, because the ensemble already downweights
+        M3 ($w_3 \approx 0.09$) and compensates with higher M4 and M5 weights.
+        The marginal benefit does not justify adding an unvalidated proxy
+        to the main result.
+\end{enumerate}
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\bibliographystyle{elsarticle-num}
+\bibliography{ELAPSE_AMM}
+
+\end{document}

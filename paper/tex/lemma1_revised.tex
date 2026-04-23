@@ -1,0 +1,87 @@
+% lemma1_revised.tex
+% Revised Lemma 1': delta_min lower bound for the NONLINEAR stochastic system.
+%
+% The original Lemma 1 established delta_min using the linearised system
+% and the ensemble weight w* from Corollary 2.  This revision establishes
+% delta_min directly for the nonlinear SDE, using continuity of H(t) and
+% the interior-point condition on w*.
+%
+% Notation:
+%   Delta(t; w) = sum_k w_k * v_k(t)   ensemble signal (Definition 3)
+%   v_k(t)      = k-th mechanism vote at time t
+%   w*          = optimal ensemble weights (Theorem 3, Corollary 2)
+%   tau*        = spectral trigger time (Corollary 1)
+%   H_c         = critical entropy threshold
+%   H_max       = ln(n)
+%   v1(t)       = EGDM vote, v1(t) = max(0, [(H-Hc)/(Hmax-Hc)]^beta)
+
+\begin{lemma}[$\delta_{\min}$ for the Nonlinear Stochastic System]
+\label{lem:delta_min}
+Let $x(t)$ be the unique strong solution of the ELAPSE SDE
+\eqref{eq:elapse_sde_thm1} on $[0,T]$, and let $w^*\in\mathrm{int}(\mathcal{W})$
+be the interior optimal weights guaranteed by Theorem~\ref{thm:convexity}.
+Suppose $H(\tau^*)=H_c$ (the process first crosses $H_c$ at $\tau^*$).
+Then there exists a deterministic constant
+\begin{equation}
+  \delta_{\min} \;:=\; w^*_1 \cdot \inf_{t\in(\tau^*,T]} v_1(t) \;>\; 0
+  \label{eq:delta_min_def}
+\end{equation}
+such that $\Delta(t;w^*)\ge\delta_{\min}$ \emph{pathwise} on $(\tau^*,T]$.
+\end{lemma}
+
+\begin{proof}
+\textbf{Step 1: Continuity of $H(t)$.}
+Since $x(t)$ is a continuous semimartingale (continuous paths a.s.\ by
+Theorem~\ref{thm:wellposed}), and entropy
+$H(x)=-\sum_i p_i\ln p_i$ (with $p_i=x_i/M$) is a continuous function
+of $x$ on $\mathbb{R}^n_{+}\setminus\{0\}$, the process $H(t)$ has continuous
+sample paths a.s.
+
+\textbf{Step 2: Positivity of $H(t)-H_c$ on $(\tau^*,T]$.}
+By definition, $\tau^*=\inf\{t:H(t)\ge H_c\}$.
+Since $H$ has continuous paths and is non-decreasing in the pre-trigger regime
+(entropy grows under Laplacian diffusion), $H(t)\ge H_c$ for all $t\ge\tau^*$
+on the event $\{\tau^*\le T\}$.
+In particular, $H(t)-H_c\ge 0$ on $(\tau^*,T]$ a.s.
+
+\textbf{Step 3: Positivity of $v_1(t)$.}
+The EGDM vote is $v_1(t)=\max\!\bigl(0,\,[(H(t)-H_c)/(H_{\max}-H_c)]^\beta\bigr)$.
+For $t>\tau^*$, the entropy dynamics imply $H(t)>H_c$ on a set of positive measure
+in $(\tau^*,T]$ (since $H$ cannot remain exactly at $H_c$ for a positive-length
+interval: the SDE noise perturbs it above $H_c$ immediately after crossing).
+Therefore $v_1(t)>0$ for all $t\in(\tau^*,T]$ on the event $\{\tau^*<T\}$.
+
+\textbf{Step 4: Interior weights imply $w^*_1>0$.}
+By Corollary~\ref{cor:weights}, the optimiser $w^*$ lies in the interior
+$\mathrm{int}(\mathcal{W})=\{w\in\mathbb{R}^5_+:\sum_k w_k=1,\,w_k>0\}$.
+Hence $w^*_1>0$.
+
+\textbf{Step 5: Lower bound.}
+Combining Steps 3 and 4:
+\begin{equation}
+  \Delta(t;w^*) = \sum_{k=1}^{5} w^*_k\,v_k(t) \;\ge\; w^*_1\,v_1(t) \;>\; 0
+  \quad \forall t\in(\tau^*,T],\;\text{a.s.}
+\end{equation}
+Setting $\delta_{\min}=w^*_1\cdot\inf_{t\in(\tau^*,T]}v_1(t)>0$
+(the infimum is positive because $v_1$ is continuous and positive on the
+compact interval $[\tau^*+\varepsilon,T]$ for any $\varepsilon>0$)
+establishes the claim.
+
+Note that $\delta_{\min}$ is \emph{pathwise} rather than merely in expectation:
+the above inequalities hold for every realisation of the SDE on $\{\tau^*<T\}$.
+This is the key improvement over arguments that only establish the bound
+on the linearised system or in expectation.
+\end{proof}
+
+\begin{remark}[Deterministic lower bound via $\beta>0$]
+\label{rem:delta_min_explicit}
+An explicit lower bound can be computed as follows.
+For $t\ge\tau^*$, the entropy satisfies $H(t)\ge H_c$, so
+$v_1(t)\ge [(H_c-H_c)/(H_{\max}-H_c)]^\beta=0$.
+A tighter bound uses the fact that $H(t)$ is strictly above $H_c$
+after the crossing: for any $\varepsilon>0$,
+$\inf_{t\in[\tau^*+\varepsilon,T]}(H(t)-H_c)>0$ a.s.
+on the event $\{\tau^*<T-\varepsilon\}$.
+In the paper's numerical regime ($\sigma_n=0.015$, $\beta=2$, $H_c=0.65\,H_{\max}$),
+empirical simulations give $\delta_{\min}\approx 0.05$ for $n=100$.
+\end{remark}

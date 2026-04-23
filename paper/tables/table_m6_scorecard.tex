@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+\caption{Multi-metric dominance scorecard: M5 (Social) vs M6 (ELAPSE) at $n=100$. \checkmark\ marks the best model per row. M6 leads on reliability, evolving-network privacy, scalability, and deletion speed, while M5 achieves lower raw IEE on known static topologies.}
+\label{tab:m6_scorecard}
+\centering
+\begin{tabular}{lccccc}
+\toprule
+Metric & Lower $=$ Better & M5 & M6(topo) & M6(mixed) & Winner \\
+\midrule
+Mean IEE (static, matched) & \checkmark & \textbf{68.60} \checkmark & 96.48 & 98.45 & \textbf{M5} \\
+Worst-case reliability (max CV\%) & \checkmark & 6.94 & \textbf{3.45} \checkmark & 3.83 & \textbf{M6(topo)} \\
+Evolving-network IEE & \checkmark & 1021.16 & \textbf{90.03} \checkmark & 90.03 & \textbf{M6(topo)} \\
+Scaling exponent $\alpha$ & \checkmark & 1.25 & \textbf{1.03} \checkmark & 1.05 & \textbf{M6(topo)} \\
+Deletion reliability (CV\%) & \checkmark & 5.17 & \textbf{3.14} \checkmark & 3.24 & \textbf{M6(topo)} \\
+Cross-topo reliability (mean CV\%) & \checkmark & 4.75 & 4.32 & \textbf{3.13} \checkmark & \textbf{M6(mixed)} \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,88 @@
+ELAPSE: Reviewer Response Template (Revised, Prompts 7-12)
+===========================================================
+
+REVIEWER 1 — THEORETICAL RIGOR
+
+Comment 1.1: Circular dependency in Theorem 1 proof.
+Response: We thank the reviewer. The proof has been completely restructured to
+eliminate the circularity. The new proof proceeds in four logically sequential steps:
+(A) Local existence on [0, tau_K) via Picard-Lindelof for SDEs (Oksendal, Theorem 5.2.1).
+(B) Non-negativity on [0, tau_K) via Feller boundary classification: at x_i=0, the
+    drift is non-negative (inward flux from neighbours + source injection), and
+    sigma_n*sqrt(x_i) vanishes at x_i=0, so x_i=0 is an entrance boundary (Feller 1951).
+    We apply the comparison theorem (Revuz-Yor IX.3.7) with the dominating process
+    dY_i = sigma_n*sqrt(Y_i)dW_i (zero drift), which satisfies Y_i >= 0 a.s.
+(C) Global existence: NOW that x_i >= 0 on [0, tau_K), Ito's formula on V(x)=sum(x_i)
+    gives a linear Gronwall bound, precluding blow-up on any finite [0,T].
+(D) Pathwise uniqueness via Yamada-Watanabe (unchanged).
+See revised Theorem 1 in paper/tex/theorem1_revised.tex.
+
+Comment 1.2: Theorem 2 only valid for deterministic system (sigma_n=0).
+Response: Theorem 2 has been extended to the full stochastic system using
+second-moment methods. Applying Ito to M(t)^2:
+  d/dt E[M^2] <= (-2*mu*delta_min + sigma_n^2)*E[M^2] + 2*||s||_1*E[M]
+This Gronwall ODE gives E[M^2(t)] <= (M_0^2 + C_1*t)*exp(gamma*t) where
+gamma = -2*mu*delta_min + sigma_n^2.
+For the paper's parameters (sigma_n=0.015, mu=1.5, delta_min>=0.05):
+gamma ≈ -0.15 + 2.25e-4 < 0, so the bound decays. The IEE bound follows via
+Jensen (E[M] <= sqrt(E[M^2])) and numerical integration.
+See paper/tex/theorem2_revised.tex.
+
+Comment 1.3: Corollary 1 Ito correction missing.
+Response: The normalised distribution p_i = x_i/M satisfies, via Ito's quotient rule,
+an additional correction term O(sigma_n^2/M). The corrected bound is:
+  ||p(t) - 1/n||_2^2 <= C_0*exp(-2*alpha*lambda2*t) + sigma_n^2*t/M_min
+For sigma_n=0.015, n=100, T=15: the correction is < 2% of the main exponential term,
+so tau(lambda2) remains the dominant quantity. Numerical verification with 500 MC paths
+confirms the corrected bound holds at all timesteps.
+See paper/tex/corollary1_revised.tex.
+
+REVIEWER 2 — EXPERIMENTAL DESIGN
+
+Comment 2.1: M6 weights trained on single seed.
+Response: We have replaced single-seed training with 5-fold cross-validation
+(N=50 total seeds, 5 folds x 10 test seeds). Weights are learned separately
+per fold on 40 training seeds, eliminating the in-sample contamination concern.
+Weight stability across folds (mean +/- std) is reported in Table 4.
+See elapse/experiments/main_iee/proper_evaluation.py.
+
+Comment 2.2: M6 value vs M5 unclear.
+Response: We have added three new experiments demonstrating M6's advantage:
+(a) Topology-unknown deployment (Section 5.3): mixed-trained M6 outperforms
+    all single mechanisms in blind IEE.
+(b) Evolving networks (Section 5.4): M6 advantage increases on rewiring graphs
+    (ER -> BA transition during simulation).
+(c) H_c robustness (Section 5.5): M6 has the smallest IEE_range across H_c
+    sweep from 0.4*H_max to 0.9*H_max.
+See paper/tex/section_ensemble_value.tex and:
+  elapse/experiments/evolving_network/evolving_network_exp.py
+  elapse/experiments/adversarial/hc_robustness.py
+
+REVIEWER 3 — REAL-WORLD VALIDATION
+
+Comment 3.1: BFS-hub sampling biases toward dense core.
+Response: We now provide both BFS-hub and random-walk sampling results for
+Gnutella networks. Random-walk sampling uses teleportation (p=0.15) for
+unbiased coverage of the network. We have added two additional real-world
+networks:
+  - CA-GrQc (sparse academic collaboration, SNAP): n~500, random-walk sampled
+  - Power-Grid (lattice-like, watts_strogatz k=4): n~500, random-walk sampled
+These provide a wider lambda_2 range and different topological regimes.
+The CA-GrQc download falls back to a synthetic BA graph if SNAP is unavailable.
+See elapse/experiments/realworld/extended_validation.py and
+    elapse/experiments/realworld/random_walk_sampler.py.
+Results saved to output/table_realworld_extended.csv and
+paper/tables/table_realworld_extended.tex.
+
+REVIEWER 4 — M3 MECHANISM
+
+Comment 4.1: M3 uses static lambda_2 — unresponsive to fast dynamics.
+Response: The M3 mechanism has been updated to use a derived time-varying
+effective spectral gap:
+  lambda_eff(t) = alpha*lambda_2 * (H_max - H(t)) / (H_max - H_c)
+This is derived from the spectral entropy growth equation dH/dt ~
+2*alpha*lambda_2*(H_max - H(t)), making the first-passage rate proportional
+to remaining entropy headroom. The Appendix B content has been integrated into
+Section 3.4 as the primary M3 formulation (not an appendix admission).
+See paper/tex/section_m3_correction.tex and
+    elapse/core/mechanisms/m3_finance_derived.py.

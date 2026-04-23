@@ -3,50 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: ELAPSE_PhysicaA.aux
 The style file: elsarticle-num.bst
 Database file #1: ELAPSE_AMM.bib
-Warning--entry type for "gdpr2016" isn't style-file defined
---line 225 of file ELAPSE_AMM.bib
-Warning--empty pages in wolchok2010defeating
-Warning--empty pages in perlman2005ephemerizer
-Warning--can't use both volume and number fields in leskovec2007graph
-You've used 42 entries,
+You've used 48 entries,
             2952 wiz_defined-function locations,
-            935 strings with 12219 characters,
-and the built_in function-call counts, 13102 in all, are:
-= -- 1273
-> -- 412
-< -- 12
-+ -- 163
-- -- 121
-* -- 947
-:= -- 1755
-add.period$ -- 67
-call.type$ -- 42
-change.case$ -- 46
+            990 strings with 13365 characters,
+and the built_in function-call counts, 15345 in all, are:
+= -- 1551
+> -- 442
+< -- 11
++ -- 177
+- -- 129
+* -- 1188
+:= -- 2037
+add.period$ -- 82
+call.type$ -- 48
+change.case$ -- 52
 chr.to.int$ -- 21
-cite$ -- 45
-duplicate$ -- 398
-empty$ -- 1484
-format.name$ -- 153
-if$ -- 3405
+cite$ -- 48
+duplicate$ -- 435
+empty$ -- 1697
+format.name$ -- 166
+if$ -- 3946
 int.to.chr$ -- 0
-int.to.str$ -- 42
-missing$ -- 43
-newline$ -- 162
-num.names$ -- 42
-pop$ -- 280
+int.to.str$ -- 48
+missing$ -- 50
+newline$ -- 187
+num.names$ -- 48
+pop$ -- 274
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 875
+skip$ -- 1001
 stack$ -- 0
-substring$ -- 633
-swap$ -- 132
-text.length$ -- 5
+substring$ -- 910
+swap$ -- 154
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 3
-while$ -- 96
-width$ -- 44
-write$ -- 400
-(There were 4 warnings)
+warning$ -- 0
+while$ -- 124
+width$ -- 50
+write$ -- 464

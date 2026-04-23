@@ -5,20 +5,52 @@
 \expandafter\ifx\csname href\endcsname\relax
   \def\href#1#2{#2} \def\path#1{#1}\fi
 
-\bibitem{gdpr2016}
-{European Parliament}, Regulation (eu) 2016/679 — general data protection
-  regulation, official Journal of the European Union, L 119, 4 May 2016,
-  pp.~1--88 (2016).
+\bibitem{barabasi1999emergence}
+A.-L. Barab{\'a}si, R.~Albert, Emergence of scaling in random networks, Science
+  286~(5439) (1999) 509--512.
+\newblock \href {https://doi.org/10.1126/science.286.5439.509}
+  {\path{doi:10.1126/science.286.5439.509}}.
 
-\bibitem{ibm2024breach}
-{IBM Security}, \href{https://www.ibm.com/reports/data-breach}{Cost of a data
-  breach report 2024}, Tech. rep., IBM (2024).
-\newline\urlprefix\url{https://www.ibm.com/reports/data-breach}
+\bibitem{watts1998collective}
+D.~J. Watts, S.~H. Strogatz, Collective dynamics of `small-world' networks,
+  Nature 393~(6684) (1998) 440--442.
+\newblock \href {https://doi.org/10.1038/30918} {\path{doi:10.1038/30918}}.
 
-\bibitem{verizon2024dbir}
-{Verizon}, \href{https://www.verizon.com/business/resources/reports/dbir/}{2024
-  data breach investigations report}, Verizon Business (2024).
-\newline\urlprefix\url{https://www.verizon.com/business/resources/reports/dbir/}
+\bibitem{pastor2001epidemic}
+R.~Pastor-Satorras, A.~Vespignani, Epidemic spreading in scale-free networks,
+  Physical Review Letters 86~(14) (2001) 3200--3203.
+\newblock \href {https://doi.org/10.1103/PhysRevLett.86.3200}
+  {\path{doi:10.1103/PhysRevLett.86.3200}}.
+
+\bibitem{albert2002statistical}
+R.~Albert, A.-L. Barab{\'a}si, Statistical mechanics of complex networks,
+  Reviews of Modern Physics 74~(1) (2002) 47--97.
+\newblock \href {https://doi.org/10.1103/RevModPhys.74.47}
+  {\path{doi:10.1103/RevModPhys.74.47}}.
+
+\bibitem{boccaletti2006complex}
+S.~Boccaletti, V.~Latora, Y.~Moreno, M.~Chavez, D.-U. Hwang, Complex networks:
+  Structure and dynamics, Physics Reports 424~(4--5) (2006) 175--308.
+\newblock \href {https://doi.org/10.1016/j.physrep.2005.10.009}
+  {\path{doi:10.1016/j.physrep.2005.10.009}}.
+
+\bibitem{newman2003structure}
+M.~E.~J. Newman, The structure and function of complex networks, SIAM Review
+  45~(2) (2003) 167--256.
+\newblock \href {https://doi.org/10.1137/S003614450342480}
+  {\path{doi:10.1137/S003614450342480}}.
+
+\bibitem{dorogovtsev2008critical}
+S.~N. Dorogovtsev, A.~V. Goltsev, J.~F.~F. Mendes, Critical phenomena in
+  complex networks, Reviews of Modern Physics 80~(4) (2008) 1275--1335.
+\newblock \href {https://doi.org/10.1103/RevModPhys.80.1275}
+  {\path{doi:10.1103/RevModPhys.80.1275}}.
+
+\bibitem{zhao2024multi}
+L.~Zhao, Z.~Jin, G.-Q. Sun, Multi-scale entropy analysis of complex networks,
+  Chaos, Solitons \& Fractals 183 (2024) 114919.
+\newblock \href {https://doi.org/10.1016/j.chaos.2024.114919}
+  {\path{doi:10.1016/j.chaos.2024.114919}}.
 
 \bibitem{geambasu2009vanish}
 R.~Geambasu, T.~Kohno, A.~A. Levy, H.~M. Levy, Vanish: Increasing data privacy
@@ -29,12 +61,6 @@ Y.~Tang, P.~P. Lee, J.~C. Lui, R.~Perlman, Fade: Secure overlay cloud storage
   with file assured deletion, in: International Conference on Security and
   Privacy in Communication Systems, Springer, 2010, pp. 380--397.
 
-\bibitem{barabasi1999emergence}
-A.-L. Barab{\'a}si, R.~Albert, Emergence of scaling in random networks, Science
-  286~(5439) (1999) 509--512.
-\newblock \href {https://doi.org/10.1126/science.286.5439.509}
-  {\path{doi:10.1126/science.286.5439.509}}.
-
 \bibitem{pastor2015epidemic}
 R.~Pastor-Satorras, C.~Castellano, P.~Van~Mieghem, A.~Vespignani, Epidemic
   processes in complex networks, Reviews of Modern Physics 87~(3) (2015)
@@ -42,16 +68,11 @@ R.~Pastor-Satorras, C.~Castellano, P.~Van~Mieghem, A.~Vespignani, Epidemic
 \newblock \href {https://doi.org/10.1103/RevModPhys.87.925}
   {\path{doi:10.1103/RevModPhys.87.925}}.
 
-\bibitem{snapnets}
-J.~Leskovec, A.~Krevl, \href{http://snap.stanford.edu/data}{{SNAP Datasets}:
-  {Stanford} large network dataset collection} (2014).
-\newline\urlprefix\url{http://snap.stanford.edu/data}
-
-\bibitem{zhao2024multi}
-L.~Zhao, Z.~Jin, G.-Q. Sun, Multi-scale entropy analysis of complex networks,
-  Chaos, Solitons \& Fractals 183 (2024) 114919.
-\newblock \href {https://doi.org/10.1016/j.chaos.2024.114919}
-  {\path{doi:10.1016/j.chaos.2024.114919}}.
+\bibitem{moreno2002epidemic}
+Y.~Moreno, R.~Pastor-Satorras, A.~Vespignani, Epidemic outbreaks in complex
+  heterogeneous networks, European Physical Journal B 26~(4) (2002) 521--529.
+\newblock \href {https://doi.org/10.1140/epjb/e20020122}
+  {\path{doi:10.1140/epjb/e20020122}}.
 
 \bibitem{shuman2013emerging}
 D.~I. Shuman, S.~K. Narang, P.~Frossard, A.~Ortega, P.~Vandergheynst, The
@@ -84,14 +105,35 @@ J.~Gao, B.~Barzel, A.-L. Barab{\'a}si, Universal resilience patterns in complex
 \newblock \href {https://doi.org/10.1038/nature16948}
   {\path{doi:10.1038/nature16948}}.
 
-\bibitem{wolchok2010defeating}
-S.~Wolchok, O.~S. Hofmann, N.~Heninger, E.~W. Felten, J.~A. Halderman, C.~J.
-  Rossbach, B.~Waters, E.~Witchel, Defeating vanish with low-cost sybil attacks
-  against large {DHT}s, in: NDSS, 2010.
+\bibitem{callaway2000network}
+D.~S. Callaway, M.~E.~J. Newman, S.~H. Strogatz, D.~J. Watts, Network
+  robustness and fragility: Percolation on random graphs, Physical Review
+  Letters 85~(25) (2000) 5468--5471.
+\newblock \href {https://doi.org/10.1103/PhysRevLett.85.5468}
+  {\path{doi:10.1103/PhysRevLett.85.5468}}.
+
+\bibitem{newman2001random}
+M.~E.~J. Newman, S.~H. Strogatz, D.~J. Watts, Random graphs with arbitrary
+  degree distributions and their applications, Physical Review E 64~(2) (2001)
+  026118.
+\newblock \href {https://doi.org/10.1103/PhysRevE.64.026118}
+  {\path{doi:10.1103/PhysRevE.64.026118}}.
+
+\bibitem{vespignani2012modelling}
+A.~Vespignani, Modelling dynamical processes in complex socio-technical
+  systems, Nature Physics 8~(1) (2012) 32--39.
+\newblock \href {https://doi.org/10.1038/nphys2160}
+  {\path{doi:10.1038/nphys2160}}.
 
 \bibitem{perlman2005ephemerizer}
-R.~Perlman, The ephemerizer: Making data disappear, in: IFIP TC-11 WG 11.4,
-  2005.
+R.~Perlman, The ephemerizer: Making data disappear, in: Proceedings of the IFIP
+  TC-11 Working Group 11.4 on Network Security, 2005, pp. 1--14.
+
+\bibitem{wolchok2010defeating}
+S.~Wolchok, O.~S. Hofmann, N.~Heninger, E.~W. Felten, J.~A. Halderman, C.~J.
+  Rossbach, B.~Waters, E.~Witchel, Defeating {Vanish} with low-cost {Sybil}
+  attacks against large {DHT}s, in: Proceedings of the Network and Distributed
+  System Security Symposium (NDSS), 2010, pp. 1--16.
 
 \bibitem{rondeau2021secure}
 C.~M. Rondeau, M.~A. Temple, Secure data deletion: Past, present and future,
@@ -99,34 +141,16 @@ C.~M. Rondeau, M.~A. Temple, Secure data deletion: Past, present and future,
 \newblock \href {https://doi.org/10.1109/ACCESS.2021.3090992}
   {\path{doi:10.1109/ACCESS.2021.3090992}}.
 
-\bibitem{truex2019hybrid}
-S.~Truex, N.~Baracaldo, A.~Anwar, T.~Steinke, H.~Ludwig, R.~Zhang, Y.~Zhou, A
-  hybrid approach to privacy-preserving federated learning, in: Proceedings of
-  the 12th {ACM} Workshop on Artificial Intelligence and Security ({AISec
-  '19}), ACM, 2019, pp. 1--11.
-\newblock \href {https://doi.org/10.1145/3338501.3357370}
-  {\path{doi:10.1145/3338501.3357370}}.
-
 \bibitem{bourtoule2021machine}
 L.~Bourtoule, V.~Chandrasekaran, C.~A. Choquette-Choo, H.~Jia, A.~Travers,
   B.~Zhang, D.~Lie, N.~Papernot, Machine unlearning, IEEE Symposium on Security
   and Privacy (2021) 141--159\href {https://doi.org/10.1109/SP40001.2021.00019}
   {\path{doi:10.1109/SP40001.2021.00019}}.
 
-\bibitem{nguyen2025survey}
-T.~T. Nguyen, T.~T. Huynh, Z.~Ren, P.~L. Nguyen, A.~W.-C. Liew, H.~Yin,
-  Q.~V.~H. Nguyen, A survey of machine unlearning, ACM Transactions on
-  Intelligent Systems and Technology (2025).
-\newblock \href {https://doi.org/10.1145/3749987} {\path{doi:10.1145/3749987}}.
-
 \bibitem{xu2023machine}
 H.~Xu, T.~Zhu, L.~Zhang, W.~Zhou, P.~S. Yu, Machine unlearning: A survey, ACM
   Computing Surveys 56~(1) (2023).
 \newblock \href {https://doi.org/10.1145/3603620} {\path{doi:10.1145/3603620}}.
-
-\bibitem{oesterling2024fair}
-A.~Oesterling, J.~Ma, F.~P. Calmon, Fair machine unlearning: Data removal while
-  mitigating disparate impact, arXiv preprint arXiv:2307.14754 (2024).
 
 \bibitem{dwork2014algorithmic}
 C.~Dwork, A.~Roth, The algorithmic foundations of differential privacy,
@@ -193,6 +217,12 @@ D.~J. Watts, A simple model of global cascades on random networks, Proceedings
 \newblock \href {https://doi.org/10.1073/pnas.082090499}
   {\path{doi:10.1073/pnas.082090499}}.
 
+\bibitem{jaynes1957information}
+E.~T. Jaynes, Information theory and statistical mechanics, Physical Review
+  106~(4) (1957) 620--630.
+\newblock \href {https://doi.org/10.1103/PhysRev.106.620}
+  {\path{doi:10.1103/PhysRev.106.620}}.
+
 \bibitem{feller1951two}
 W.~Feller, Two singular diffusion problems, Annals of Mathematics 54~(1) (1951)
   173--182.
@@ -210,6 +240,13 @@ B.~Bollob\'as, O.~Riordan, Percolation, Cambridge University Press, Cambridge,
 \newblock \href {https://doi.org/10.1017/CBO9781139167383}
   {\path{doi:10.1017/CBO9781139167383}}.
 
+\bibitem{gao2012implementing}
+F.~Gao, L.~Han, Implementing the {Nelder-Mead} simplex algorithm with adaptive
+  parameters, Computational Optimization and Applications 51~(1) (2012)
+  259--277.
+\newblock \href {https://doi.org/10.1007/s10589-010-9329-3}
+  {\path{doi:10.1007/s10589-010-9329-3}}.
+
 \bibitem{kloeden1992numerical}
 P.~E. Kloeden, E.~Platen, Numerical solution of stochastic differential
   equations, Springer (1992).
@@ -221,19 +258,25 @@ P.~Erd{\H{o}}s, A.~R{\'e}nyi, On the evolution of random graphs, Publications
   of the Mathematical Institute of the Hungarian Academy of Sciences 5 (1960)
   17--60.
 
-\bibitem{watts1998collective}
-D.~J. Watts, S.~H. Strogatz, Collective dynamics of `small-world' networks,
-  Nature 393~(6684) (1998) 440--442.
-\newblock \href {https://doi.org/10.1038/30918} {\path{doi:10.1038/30918}}.
+\bibitem{snapnets}
+J.~Leskovec, A.~Krevl, \href{http://snap.stanford.edu/data}{{SNAP Datasets}:
+  {Stanford} large network dataset collection} (2014).
+\newline\urlprefix\url{http://snap.stanford.edu/data}
 
 \bibitem{leskovec2007graph}
 J.~Leskovec, J.~Kleinberg, C.~Faloutsos, Graph evolution: Densification and
-  shrinking diameters, in: ACM Transactions on Knowledge Discovery from Data,
-  Vol.~1, 2007, pp. 2--es.
+  shrinking diameters, ACM Transactions on Knowledge Discovery from Data 1~(1)
+  (2007) 2.
 \newblock \href {https://doi.org/10.1145/1217299.1217301}
   {\path{doi:10.1145/1217299.1217301}}.
 
 \bibitem{douceur2002sybil}
 J.~R. Douceur, The {Sybil} attack, Peer-to-peer Systems (2002) 251--260.
+
+\bibitem{gdpr2016}
+{European Parliament and Council of the European Union}, Regulation ({EU})
+  2016/679 on the protection of natural persons with regard to the processing
+  of personal data ({GDPR}), Tech. rep., Official Journal of the European
+  Union, l 119, 4 May 2016, pp.~1--88 (2016).
 
 \end{thebibliography}

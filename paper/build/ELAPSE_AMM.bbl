@@ -20,9 +20,10 @@ J.~Leskovec, A.~Krevl, \href{http://snap.stanford.edu/data}{{SNAP Datasets}:
 \newline\urlprefix\url{http://snap.stanford.edu/data}
 
 \bibitem{gdpr2016}
-{European Parliament}, Regulation (eu) 2016/679 — general data protection
-  regulation, official Journal of the European Union, L 119, 4 May 2016,
-  pp.~1--88 (2016).
+{European Parliament and Council of the European Union}, Regulation ({EU})
+  2016/679 on the protection of natural persons with regard to the processing
+  of personal data ({GDPR}), Tech. rep., Official Journal of the European
+  Union, l 119, 4 May 2016, pp.~1--88 (2016).
 
 \bibitem{ibm2024breach}
 {IBM Security}, \href{https://www.ibm.com/reports/data-breach}{Cost of a data
@@ -86,12 +87,13 @@ J.~Gao, B.~Barzel, A.-L. Barab{\'a}si, Universal resilience patterns in complex
 
 \bibitem{wolchok2010defeating}
 S.~Wolchok, O.~S. Hofmann, N.~Heninger, E.~W. Felten, J.~A. Halderman, C.~J.
-  Rossbach, B.~Waters, E.~Witchel, Defeating vanish with low-cost sybil attacks
-  against large {DHT}s, in: NDSS, 2010.
+  Rossbach, B.~Waters, E.~Witchel, Defeating {Vanish} with low-cost {Sybil}
+  attacks against large {DHT}s, in: Proceedings of the Network and Distributed
+  System Security Symposium (NDSS), 2010, pp. 1--16.
 
 \bibitem{perlman2005ephemerizer}
-R.~Perlman, The ephemerizer: Making data disappear, in: IFIP TC-11 WG 11.4,
-  2005.
+R.~Perlman, The ephemerizer: Making data disappear, in: Proceedings of the IFIP
+  TC-11 Working Group 11.4 on Network Security, 2005, pp. 1--14.
 
 \bibitem{rondeau2021secure}
 C.~M. Rondeau, M.~A. Temple, Secure data deletion: Past, present and future,
@@ -210,6 +212,13 @@ B.~Bollob\'as, O.~Riordan, Percolation, Cambridge University Press, Cambridge,
 \newblock \href {https://doi.org/10.1017/CBO9781139167383}
   {\path{doi:10.1017/CBO9781139167383}}.
 
+\bibitem{gao2012implementing}
+F.~Gao, L.~Han, Implementing the {Nelder-Mead} simplex algorithm with adaptive
+  parameters, Computational Optimization and Applications 51~(1) (2012)
+  259--277.
+\newblock \href {https://doi.org/10.1007/s10589-010-9329-3}
+  {\path{doi:10.1007/s10589-010-9329-3}}.
+
 \bibitem{kloeden1992numerical}
 P.~E. Kloeden, E.~Platen, Numerical solution of stochastic differential
   equations, Springer (1992).
@@ -228,8 +237,8 @@ D.~J. Watts, S.~H. Strogatz, Collective dynamics of `small-world' networks,
 
 \bibitem{leskovec2007graph}
 J.~Leskovec, J.~Kleinberg, C.~Faloutsos, Graph evolution: Densification and
-  shrinking diameters, in: ACM Transactions on Knowledge Discovery from Data,
-  Vol.~1, 2007, pp. 2--es.
+  shrinking diameters, ACM Transactions on Knowledge Discovery from Data 1~(1)
+  (2007) 2.
 \newblock \href {https://doi.org/10.1145/1217299.1217301}
   {\path{doi:10.1145/1217299.1217301}}.
 

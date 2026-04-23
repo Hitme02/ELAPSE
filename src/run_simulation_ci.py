@@ -19,8 +19,11 @@ Also runs:
 """
 
 import numpy as np
-import pickle, os, sys, time
+import pickle, os, sys, time, multiprocessing
+import concurrent.futures
 from scipy import stats
+
+N_WORKERS = min(multiprocessing.cpu_count(), 8)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
@@ -156,6 +159,14 @@ def run_single_seed(n, G, L, seed, learned_weights=None,
     return result
 
 
+# ── Parallel worker (top-level for pickling) ─────────────────────────────────
+
+def _seed_worker(args):
+    n, G, L, seed, w_learned, m7_thr = args
+    return run_single_seed(n, G, L, seed,
+                           learned_weights=w_learned, m7_threshold=m7_thr)
+
+
 # ── Learn weights on TRAIN seeds ──────────────────────────────────────────────
 
 def learn_topology_weights(n, G, L, train_seeds=None, verbose=True):
@@ -255,8 +266,10 @@ def run_all_ci(sizes=None, n_seeds=N_SEEDS, verbose=True):
             x0_train     = make_x0(n, seed=0)
             A_train = np.abs((L - np.diag(np.diag(L))) * -1)
             lam2    = fiedler_value(L)
-            _, _, H_tr, M_tr = sim_m6(x0_train, L, A_train, params_train, lam2,
-                                       weights=w_learned, T=T, dt=DT, stochastic=False)
+            _, _, H_tr, M_tr, _, _ = sim_m6(
+                x0_train, L, A_train, params_train, lam2,
+                weights=w_learned, T=T, dt=DT, stochastic=False
+            )
             t_train = np.arange(len(M_tr)) * DT
             M0_tr   = M_tr[0]
             below   = np.where(M_tr < 0.5 * M0_tr)[0]
@@ -268,15 +281,17 @@ def run_all_ci(sizes=None, n_seeds=N_SEEDS, verbose=True):
                 print(f"  Evaluating on {len(TEST_SEEDS)} test seeds ...")
 
             t0 = time.time()
-            for seed in TEST_SEEDS:
-                r = run_single_seed(n, G, L, seed, learned_weights=w_learned,
-                                    m7_threshold=m7_thr)
-                for m in MODEL_NAMES:
-                    raw_results[n][topo_name][m].append(r[m])
-
-                if verbose and ((seed - TEST_SEEDS[0] + 1) % 10 == 0):
-                    print(f"    Test seed {seed}  "
-                          f"({time.time()-t0:.0f}s elapsed)")
+            seed_args = [(n, G, L, seed, w_learned, m7_thr)
+                         for seed in TEST_SEEDS]
+            with concurrent.futures.ProcessPoolExecutor(
+                    max_workers=N_WORKERS) as pool:
+                for seed, r in zip(TEST_SEEDS,
+                                   pool.map(_seed_worker, seed_args)):
+                    for m in MODEL_NAMES:
+                        raw_results[n][topo_name][m].append(r[m])
+            if verbose:
+                print(f"    {len(TEST_SEEDS)} seeds done in "
+                      f"{time.time()-t0:.0f}s")
 
             # ── Aggregate CIs (TEST seeds only) ───────────────────────
             for m in MODEL_NAMES:

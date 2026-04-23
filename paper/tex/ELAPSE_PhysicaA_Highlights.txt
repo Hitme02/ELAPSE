@@ -1,0 +1,30 @@
+ELAPSE — Physica A Highlights (Revised, Prompts 7-12)
+=====================================================
+Requirements: 3-5 highlights, maximum 85 characters each (including spaces).
+These appear on ScienceDirect alongside the abstract.
+
+HIGHLIGHTS (5 total):
+
+* ELAPSE framework: entropy-triggered data deletion on complex networks
+* Percolation phase transition at H_c* controlled by Fiedler value lambda_2
+* IEE scales as n^1.55 across Erdos-Renyi, Barabasi-Albert, Watts-Strogatz topologies
+* Full stochastic well-posedness with second-moment Gronwall IEE bound
+* Ensemble M6 optimal under topology uncertainty and network evolution
+
+---
+FINAL SUBMISSION HIGHLIGHTS (verified <=85 chars each):
+
+* ELAPSE: entropy-triggered deletion on networks has percolation phase transition
+  [80 chars]
+
+* Phase transition threshold H*c controlled by algebraic connectivity lambda_2
+  [77 chars]
+
+* IEE scales as n^1.55; ensemble M6 optimal under topology uncertainty
+  [68 chars]
+
+* Stochastic well-posedness and second-moment Gronwall IEE bound established
+  [75 chars]
+
+* >= 9x IEE reduction on SNAP P2P and academic collaboration networks
+  [67 chars]

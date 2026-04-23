@@ -1,0 +1,23 @@
+% Revised abstract for ELAPSE paper (Physica A submission)
+% Word count target: <=200 words
+
+We establish that entropy-triggered data deletion on complex networks undergoes
+a percolation-like phase transition at a critical threshold $H_c^*$, controlled
+by the algebraic connectivity $\lambda_2$ of the network Laplacian.
+The time-integrated entropy exposure (IEE), measuring cumulative privacy risk,
+serves as the order parameter: IEE diverges algebraically as $H_c \to H_c^*$
+from below, and scales as $\mathrm{IEE} \sim n^{\alpha}$ with $\alpha \approx
+1.55$ across Erd\H{o}s--R\'enyi, Barab\'asi--Albert, and Watts--Strogatz
+topologies.
+We compare five deletion mechanisms---EGDM entropy-gate (M1), SIR epidemic
+spread (M2), stochastic first-passage (M3), Hill-function cooperative mortality
+(M4), and social cascade pressure (M5)---and an ensemble (M6) whose voting
+weights are learned via entropy-regularised Nelder--Mead optimisation.
+Theoretical guarantees cover the full stochastic system: well-posedness (Theorem~1),
+a second-moment Gronwall IEE bound (Theorem~2), and spectral convergence of
+the normalised distribution with It\^{o} correction (Corollary~1).
+Real-world validation on SNAP Gnutella P2P and academic collaboration networks
+confirms $\geq 9\times$ IEE reduction versus the no-deletion baseline.
+M6 outperforms any single mechanism under topology uncertainty, on evolving
+networks, and when the critical threshold $H_c$ is misspecified, establishing
+the ensemble's value beyond the single-topology setting.

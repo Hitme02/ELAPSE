@@ -1,0 +1,166 @@
+%% Cover Letter — Physica A Submission
+%% ELAPSE: Entropy-Linked Autonomous Propagation and Self-Erasure
+%%
+%% Compile: pdflatex ELAPSE_PhysicaA_CoverLetter.tex
+%%
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\begin{document}
+
+\noindent
+\textbf{To the Editors of Physica A: Statistical Mechanics and its Applications}
+
+\medskip
+
+\noindent
+Dear Editor-in-Chief,
+
+\medskip
+
+We submit for your consideration the manuscript:
+
+\begin{center}
+  \textbf{ELAPSE: Entropy-Linked Autonomous Propagation and Self-Erasure ---\\
+  A Multi-Domain Ensemble Framework for Active Data Containment\\
+  in Decentralised Networks}
+
+  \smallskip
+  Y.\ Sailaja, Chhavi Pareek, Hitarth Mehra, Harsh Patel\\
+  RV College of Engineering, Bangalore, India
+\end{center}
+
+\bigskip
+
+\noindent\textbf{Why this paper belongs in Physica A.}
+
+This manuscript addresses a canonical problem in statistical mechanics: the
+controlled containment of a diffusing payload on a complex network, viewed
+as a phase-transition problem in the space of entropy threshold parameters.
+The central result is a percolation-like phase transition at a critical
+entropy threshold $H_c^*$, separating a subcritical regime (where
+entropy-triggered deletion fires before data infects the bulk) from a
+supercritical regime (where the network saturates before deletion can act).
+The transition width is controlled by the algebraic connectivity $\lambda_2$
+of the network Laplacian, directly connecting the result to Physica A's
+long tradition of spectral graph theory and spreading phenomena.
+
+\medskip
+
+The paper contributes to three active areas in the Physica A community:
+
+\begin{enumerate}
+  \item \textbf{Information spreading and epidemic models on complex networks}
+    (Pastor-Satorras \& Vespignani 2001; Boccaletti et al.\ 2006):
+    We extend the standard SIR spreading framework to include active entropy-gated
+    deletion, establishing scaling laws IEE~$\sim n^\alpha$ with
+    topology-dependent exponents $\alpha \in [1.12, 1.40]$ across ER, BA,
+    and WS topologies.
+
+  \item \textbf{Percolation and phase transitions on random graphs}
+    (Callaway et al.\ 2000; Newman et al.\ 2001):
+    The critical entropy threshold $H_c^* = H_{\max} - C_0 e^{-2\alpha\lambda_2 T}$
+    plays the role of a bond-percolation threshold, with the transition sharpness
+    controlled by $\lambda_2$ (sharp for ER; diffuse for WS).
+
+  \item \textbf{Stochastic diffusion processes on graphs}
+    (Spectral graph theory; Fokker--Planck on networks):
+    The ELAPSE framework is formalised as a stochastic differential equation
+    with CIR-type noise, with well-posedness established via Yamada--Watanabe
+    and a closed-form spectral IEE bound derived from the spectral gap.
+\end{enumerate}
+
+\medskip
+
+\noindent\textbf{Summary of key findings.}
+
+\begin{enumerate}
+  \item A percolation-like entropy phase transition at $H_c^*$ with
+    topology-dependent transition width $\sim 1/(2\alpha\lambda_2 T)$,
+    empirically confirmed for ER, BA, and WS networks at $n \in \{100, 200, 500\}$.
+  \item IEE scaling laws IEE~$\sim n^\alpha$ with $\alpha_{\rm ER} \approx 1.12$,
+    $\alpha_{\rm BA} \approx 1.31$, $\alpha_{\rm WS} \approx 1.40$,
+    consistent with the spectral prediction $\alpha \approx 1 + \beta$
+    where $\lambda_2 \sim n^{-\beta}$.
+  \item Five rigorous theoretical results including well-posedness
+    (Yamada--Watanabe), a spectral IEE upper bound (via the Fiedler value),
+    and exact convexity of the linearised IEE objective.
+  \item A five-mechanism ensemble achieving $\geq 9\times$ IEE reduction
+    over the uncontrolled baseline, validated on synthetic (ER/BA/WS)
+    and real-world (Stanford SNAP Gnutella, Karate Club, Les Mis\'erables) networks.
+  \item Connection to Jaynes' maximum entropy principle: the ensemble
+    regulariser is the Gibbs distribution at a critical temperature
+    identified by the Pareto elbow of the IEE--diversity trade-off.
+\end{enumerate}
+
+\medskip
+
+\noindent\textbf{Manuscript details.}
+
+\begin{itemize}
+  \item Word count (main manuscript): approximately 11,500 words.
+  \item Number of figures (main): 14 (Figs.\ 1--14), including 6 new
+    simulation-driven figures (phase diagram, degree scaling, epidemic
+    threshold, mechanism diversity, $n=1000$ scaling, extended real-world).
+  \item Number of tables (main): 8.
+  \item Number of references: 42.
+  \item Supplementary material: 1 document (proofs, full tables).
+  \item Highlights: 5 (submitted separately).
+\end{itemize}
+
+\medskip
+
+\noindent\textbf{Suggested reviewers.}
+
+We suggest the following experts with relevant expertise in the areas
+addressed by this manuscript:
+
+\begin{enumerate}
+  \item \textbf{Prof.\ Romualdo Pastor-Satorras} (Universitat Polit\`ecnica
+    de Catalunya) --- epidemic spreading on complex networks, SIR models,
+    threshold phenomena.
+  \item \textbf{Prof.\ Alessandro Vespignani} (Northeastern University) ---
+    epidemic spreading, network dynamics, information diffusion.
+  \item \textbf{Prof.\ Santo Fortunato} (Indiana University) --- community
+    structure, network science, stochastic processes on graphs.
+  \item \textbf{Prof.\ Sergey Dorogovtsev} (Universidade de Aveiro) ---
+    critical phenomena on complex networks, percolation theory.
+  \item \textbf{Prof.\ Marc Barth\'el\'emy} (CEA Saclay) --- dynamical
+    processes on complex networks, spatial networks, spreading phenomena.
+\end{enumerate}
+
+\medskip
+
+\noindent\textbf{Declarations.}
+
+\begin{itemize}
+  \item This manuscript is not currently under review elsewhere.
+  \item The authors have no conflicts of interest to declare.
+  \item All authors have reviewed and approved the manuscript.
+  \item Data and code availability: simulation code and data will be made
+    available on acceptance.
+\end{itemize}
+
+\medskip
+
+We believe this paper makes a substantive contribution to the statistical
+physics of controlled diffusion on complex networks, and that Physica A is
+the most appropriate venue for this work.  We look forward to the review
+process.
+
+\bigskip
+
+\noindent Sincerely,
+
+\bigskip\bigskip
+
+\noindent Dr.\ Y.\ Sailaja (Corresponding Author)\\
+Department of Mathematics\\
+RV College of Engineering\\
+Bangalore 560059, India\\
+Email: sailaja@rvce.edu.in
+
+\end{document}

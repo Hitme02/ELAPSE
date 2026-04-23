@@ -84,19 +84,33 @@ def derivatives(x, params, t, lambda2, M0=None, time_varying=False):
     return ou_drift + mortality + s
 
 
-def vote(x, params, t, lambda2, M0=None, time_varying=False):
+def vote(x, params, t, lambda2, M0=None, time_varying=False, use_derived=False):
     """
     Finance vote: first-passage probability P(tau <= t).
     Grows from 0 toward 1 as time passes and crossing becomes more likely.
     Value in [0, 1].
 
-    time_varying : if True, use time-varying lambda2 (Eq. A.1)
+    time_varying : if True, use Appendix B time-varying lambda2 heuristic (Eq. A.1)
+    use_derived  : if True, use the derived time-varying lambda_eff from the
+                   spectral entropy growth equation (see elapse/core/mechanisms/
+                   m3_finance_derived.py). This is the PREFERRED option for the
+                   revised paper; it supersedes the Appendix B heuristic.
     """
     n     = len(x)
     H     = entropy(x)
     H_max = max_entropy(n)
     H_c   = params['H_c']
     alpha = params['alpha']
+
+    if use_derived:
+        # Import derived formulation (avoids circular import at module level)
+        import sys, os
+        _drv_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                '..', 'elapse', 'core', 'mechanisms')
+        sys.path.insert(0, os.path.abspath(_drv_dir))
+        from m3_finance_derived import first_passage_prob_derived
+        return first_passage_prob_derived(H, H_c, H_max, t, alpha, lambda2)
+
     lam   = lambda2
     if time_varying and M0 is not None and M0 > 0:
         lam = _effective_lambda2(x, lambda2, H, H_max, M0)
@@ -104,13 +118,14 @@ def vote(x, params, t, lambda2, M0=None, time_varying=False):
 
 
 def simulate(x0, L, params, lambda2, T=20.0, dt=0.01, stochastic=True,
-             time_varying=False):
+             time_varying=False, use_derived=False):
     """
     x0           : initial data concentration (n,)
     L            : Laplacian (used to compute lambda2 if not provided)
     params       : model parameters
     lambda2      : static Fiedler value
-    time_varying : if True, use time-varying lambda2 approximation (Eq. A.1)
+    time_varying : if True, use Appendix B time-varying lambda2 heuristic
+    use_derived  : if True, use the derived time-varying lambda_eff (preferred)
     """
     n     = len(x0)
     steps = int(T / dt)
@@ -130,8 +145,16 @@ def simulate(x0, L, params, lambda2, T=20.0, dt=0.01, stochastic=True,
 
     for i in range(steps):
         t_curr = i * dt
-        dxdt   = derivatives(x, params, t_curr, lambda2,
-                              M0=M0, time_varying=time_varying)
+        if use_derived:
+            import sys, os
+            _drv_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                    '..', 'elapse', 'core', 'mechanisms')
+            sys.path.insert(0, os.path.abspath(_drv_dir))
+            from m3_finance_derived import derivatives as _derived_deriv
+            dxdt = -params['alpha'] * (L @ x) + _derived_deriv(x, params, t_curr, lambda2)
+        else:
+            dxdt = derivatives(x, params, t_curr, lambda2,
+                                M0=M0, time_varying=time_varying)
         x      = x + dxdt * dt
 
         if stochastic:

@@ -1,0 +1,64 @@
+% Revised conclusion for ELAPSE (Physica A)
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+This paper establishes a rigorous mathematical framework for entropy-triggered
+data deletion in distributed networks. The central finding is that the
+time-integrated entropy exposure (IEE)---a network-level privacy risk
+functional---exhibits a percolation-like phase transition at a critical
+entropy threshold $H_c^*$ controlled by the algebraic connectivity $\lambda_2$
+of the network Laplacian. Below $H_c^*$, deletion mechanisms contain
+propagation efficiently; above $H_c^*$, the IEE diverges as a power law in
+network size, with exponent $\alpha \approx 1.55$ consistent across synthetic
+topologies. This scaling law, predicted analytically by Corollary~\ref{cor:spectral_decay}
+and confirmed numerically for $n \in [50, 500]$, gives network operators a
+principled design rule: target $H_c < H_c^*$ to guarantee sub-linear IEE growth.
+
+Among the five mechanisms studied, M5 (social cascade pressure) achieves the
+lowest IEE in topology-matched experiments, owing to its sensitivity to local
+degree heterogeneity. However, the M6 ensemble---whose weights are learned via
+entropy-regularised Nelder--Mead optimisation---provides a robust alternative
+under topology uncertainty, network evolution, and threshold misspecification.
+The key insight is that ensemble weights aggregated across mechanism types
+act as a form of meta-regularisation: no single mechanism dominates unless
+it is optimally matched to the unknown true topology, making M6 the safer
+default in heterogeneous or unknown-topology deployments.
+
+The theoretical contributions of this work connect ELAPSE to three areas of
+statistical physics. First, the phase transition in IEE resembles bond
+percolation on random graphs~\cite{Erdos1960}: the critical threshold
+$H_c^*(\lambda_2)$ plays the role of the bond occupation probability $p_c$.
+Second, the maximum-entropy principle underlying the IEE objective reflects
+Jaynes's entropy maximisation framework, casting data deletion as the
+\emph{inverse} of entropy maximisation: we seek the control $\Delta(t;\mathbf{w})$
+that \emph{minimises} entropy exposure. Third, the spectral trigger time
+$\tau(\lambda_2)$---the time at which $\|\mathbf{p}(t) - \mathbf{1}/n\|_2$ crosses a
+threshold---connects ELAPSE to the spectral theory of Markov chains and
+diffusion on graphs, providing a mechanistic explanation for the $\lambda_2$
+dependence observed empirically.
+
+Several directions remain open. The first-passage distribution of entropy
+$H(t)$ for the full SDE system is analytically
+intractable; a Laplace-method approximation or large-deviation bound
+may replace the Gronwall moment bound of Theorem~\ref{thm:iee_bound} in
+future work.
+Second, the ensemble weight-learning problem is currently solved offline
+via Nelder--Mead; online adaptive learning---updating $\mathbf{w}$ as
+the network evolves---is an open stochastic control problem.
+Third, the dependence of the IEE scaling exponent $\alpha \approx 1.55$ on
+the degree exponent $\gamma$ of scale-free networks remains to be characterised
+analytically.
+Finally, extending ELAPSE to directed or weighted graphs requires replacing
+the symmetric Laplacian with a non-self-adjoint operator, for which the
+spectral gap theory requires significant modification.
+
+Beyond network privacy, the ELAPSE framework applies to any system where
+a diffusing quantity must be contained below a threshold: epidemic control
+(data = infection, $H_c$ = herd-immunity threshold), social cascade
+suppression (data = misinformation, $H_c$ = virality threshold), and GDPR
+compliance (data = personal information copies, $H_c$ = regulatory limit).
+In each case, the mathematical structure---SDE with entropy-triggered
+mortality, ensemble voting, Nelder--Mead weight learning---transfers
+directly, suggesting ELAPSE as a unifying framework for entropy-aware
+containment on complex networks.

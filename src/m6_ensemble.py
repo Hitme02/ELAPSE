@@ -172,6 +172,7 @@ def objective(weights_raw, training_data, theta=DEFAULT_THETA, lambda_reg=5.0):
     w = w_exp / w_exp.sum()
 
     total_exposure = 0.0
+    n_samples = len(training_data)
 
     for (x0, L, A, params, lambda2) in training_data:
         _, _, H_arr, M_arr, _, _ = simulate(
@@ -185,17 +186,22 @@ def objective(weights_raw, training_data, theta=DEFAULT_THETA, lambda_reg=5.0):
         exposure = float(np.sum(H_arr * M_arr) * dt_val)
         total_exposure += exposure
 
+    # Normalise by sample count so lambda_reg scale is invariant to N_train.
+    # Without this, total_exposure ~ N_train * 40-90, making lambda_reg=15
+    # (designed for ~1-3 samples) negligible at N_train=40 and causing collapse.
+    mean_exposure = total_exposure / max(n_samples, 1)
+
     # Entropy regularisation: penalise weight collapse.
     # weight_entropy = -sum(w * log(w)):
     #   = log(5) ≈ 1.61 at uniform distribution (maximum diversity)
     #   = 0              at one-hot (total collapse)
     # We SUBTRACT lambda_reg * weight_entropy from the loss, so the optimiser
     # is penalised for LOW entropy (= collapse) and rewarded for HIGH entropy
-    # (= diversity).  loss = IEE - lambda_reg * weight_entropy
+    # (= diversity).  loss = mean_IEE - lambda_reg * weight_entropy
     weight_entropy = -float(np.sum(w * np.log(w + 1e-12)))
     regularisation = -lambda_reg * weight_entropy   # NOTE: negative sign
 
-    return total_exposure + regularisation
+    return mean_exposure + regularisation
 
 
 def learn_weights(training_data, theta=DEFAULT_THETA, lambda_reg=15.0,

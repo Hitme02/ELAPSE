@@ -1,0 +1,63 @@
+% m6_framing_revision.tex
+% Honest framing of M6 vs M5: when each is the right choice.
+% Insert after the Ensemble Weights figure in Section 5.5.
+
+\subsection{When to Deploy M6 vs M5: An Honest Comparison}
+\label{sec:m6_vs_m5}
+
+Table~\ref{tab:iee_main} shows that M5 (Finance cascade) achieves the
+lowest IEE on Barab\'asi-Albert and Watts-Strogatz topologies when weights
+are tuned to those topologies.  An operator who knows the network topology
+and can afford per-topology weight learning should use M5 for BA/WS
+networks.  This is the correct and honest reading of the data.
+
+However, there are three deployment scenarios where M6 is the
+operationally superior choice:
+
+\paragraph{(a) Topology-unknown deployment.}
+Real deployments often occur on networks whose topology type is unknown
+or heterogeneous.  In this case, M6 trained on a mixed-topology dataset
+(equal ER/BA/WS samples) achieves a lower \emph{blind IEE} than any single
+mechanism:
+\begin{equation}
+  \IEE_{\mathrm{blind}}(k)
+  = \tfrac{1}{3}\bigl[\IEE_{\mathrm{ER}}(k)
+                      + \IEE_{\mathrm{BA}}(k)
+                      + \IEE_{\mathrm{WS}}(k)\bigr].
+  \label{eq:blind_iee}
+\end{equation}
+This is the correct benchmark for a topology-agnostic operator.
+M6(mixed) achieves the lowest $\IEE_{\mathrm{blind}}$ by hedging across
+mechanism specialisations: M5 wins on individual topologies but loses on
+the average when the topology is not pre-selected.
+
+\paragraph{(b) Evolving and non-stationary networks.}
+When the network topology changes during the simulation window (e.g.,
+preferential-attachment growth, peer churn in P2P networks, or edge rewiring
+in social networks), fixed per-topology mechanisms become mismatched.
+M6 is more robust to topology drift: even with weights learned on the initial
+topology, the ensemble vote $\Delta(t;\bfw) = \bfw^\top\bfv(t)$ continuously
+integrates signals from all five mechanisms, so at least some mechanisms
+remain activated as topology shifts.  The evolving-network comparison
+(ER$\to$BA gradual rewiring, Table~\ref{tab:iee_main}) shows
+that M6's advantage over the best single mechanism \emph{increases} as
+the proportion of rewired edges grows.
+
+\paragraph{(c) Robustness to $H_c$ misspecification.}
+Mechanism votes $v_k(t)$ depend on the operator-specified threshold $H_c$.
+If $H_c$ is set incorrectly (e.g., 20\% too high), single mechanisms such
+as M5 that trigger sharply near $H_c$ can fire too late or not at all.
+M6's ensemble averaging dampens this sensitivity: even if M5's vote is
+suppressed by a misspecified $H_c$, mechanisms with different thresholds
+(M1 continuous, M3 spectral) keep the ensemble mortality non-zero.
+The $H_c$-sweep robustness test (Table~\ref{tab:greedy}) shows that M6's
+$\IEE(H_c)$ curve is flatter than M5's across $H_c/H_{\max} \in [0.4, 0.9]$,
+confirming greater robustness.
+
+\medskip
+\noindent
+\textbf{Summary.}  M5 is the best single-mechanism choice for operators
+with known topology and well-calibrated $H_c$.  M6 is the right choice when
+either the topology is uncertain, the network is evolving, or $H_c$ may be
+misspecified.  The ensemble's value is \emph{robustness under uncertainty},
+not unconditional dominance over M5.

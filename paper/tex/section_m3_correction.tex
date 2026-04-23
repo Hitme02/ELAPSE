@@ -1,0 +1,48 @@
+% Section 3.4: M3 Derived Time-Varying Formulation
+% Replaces the Appendix B content
+
+\subsection{M3: Stochastic First-Passage Deletion (Derived Time-Varying)}
+\label{sec:m3_derived}
+
+The M3 mechanism uses a first-passage probability $\mathcal{P}(\tau \leq t)$
+as its vote, where $\tau$ is the first time entropy crosses $H_c$.
+The original formulation used the \emph{static} Fiedler value $\lambda_2$
+as the crossing rate parameter. We now derive the correct time-varying
+formulation from the spectral entropy growth equation.
+
+\paragraph{Derivation.}
+The spectral decay of the normalised distribution satisfies
+(Corollary~\ref{cor:spectral_decay})
+\begin{equation}
+  \|\mathbf{p}(t) - \tfrac{1}{n}\mathbf{1}\|_2^2 \approx
+  C_0 e^{-2\alpha\lambda_2 t},
+\end{equation}
+implying the instantaneous entropy growth rate
+\begin{equation}
+  \frac{dH}{dt} \approx 2\alpha\lambda_2\bigl(H_{\max} - H(t)\bigr).
+\end{equation}
+The \emph{effective spectral gap} governing entropy spreading at time $t$ is
+therefore
+\begin{equation}
+  \label{eq:lambda_eff_derived}
+  \lambda_{\mathrm{eff}}(t) = \alpha\lambda_2
+    \frac{H_{\max} - H(t)}{H_{\max} - H_c},
+\end{equation}
+which correctly approaches zero as $H(t) \to H_{\max}$ (spreading saturates)
+and equals $\alpha\lambda_2$ when $H(t) = H_c$ (at the trigger threshold).
+
+\paragraph{Vote function.}
+Substituting~\eqref{eq:lambda_eff_derived} into the exponential first-passage
+approximation gives the derived M3 vote:
+\begin{equation}
+  v_3^{\mathrm{tv}}(t) = 1 - \exp\!\bigl(-\lambda_{\mathrm{eff}}(t)\cdot t\bigr).
+\end{equation}
+Unlike the static formulation, $v_3^{\mathrm{tv}}$ responds to the
+\emph{current} entropy state rather than elapsed time alone.
+
+\paragraph{Comparison with Appendix B heuristic.}
+The time-varying approximation of Appendix~B scaled $\lambda_2$ by
+$(H/H_{\max})(M/M_0)$, which conflates entropy saturation with mass decay.
+The derived formula~\eqref{eq:lambda_eff_derived} separates these effects
+and has a clean interpretation: the effective crossing rate is proportional
+to the remaining entropy headroom.

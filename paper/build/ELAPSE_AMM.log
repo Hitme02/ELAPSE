@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.19)  2 APR 2026 08:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.19)  22 APR 2026 23:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -486,36 +486,63 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ]
 [3] [4] [5] [6] [7]
 
-LaTeX Warning: Reference `eq:sde' on page 8 undefined on input line 310.
+LaTeX Warning: Reference `eq:sde' on page 8 undefined on input line 324.
 
-[8]
-Overfull \hbox (12.97816pt too wide) in paragraph at lines 327--329
+[8] [9]
+Overfull \hbox (12.97816pt too wide) in paragraph at lines 357--359
 []\T1/cmr/m/n/12 Table []1[] sum-marises how ELAPSE dif-fers from the three dom
 -i-nant paradigms
  []
 
 
-Overfull \hbox (32.74321pt too wide) in paragraph at lines 339--356
+Overfull \hbox (32.74321pt too wide) in paragraph at lines 369--386
  [][] 
  []
 
-[9]
-Overfull \hbox (1.19559pt too wide) in paragraph at lines 388--391
+
+LaTeX Warning: Reference `prop:gossip_lambda' on page 10 undefined on input lin
+e 394.
+
+[10]
+Overfull \hbox (1.19559pt too wide) in paragraph at lines 418--421
 \OT1/cmr/m/n/12 [0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1]$\T1/cmr/m/n/12 , mea-su
 r-ing ur-gency of era-sure. The com-pos-ite mor-tal-ity pres-sure $\OT1/cmr/m/n
 /12 ^^A(\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 ) =
  []
 
-[10] [11] [12] [13] [14]
-Overfull \hbox (2.39136pt too wide) in paragraph at lines 581--592
+[11] [12] [13] [14]
+Overfull \hbox (7.52359pt too wide) in paragraph at lines 583--594
+\T1/cmr/m/it/12 with $\OT1/cmr/m/n/12 ^^A(\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 ; \
+OT1/cmr/bx/n/12 w\OT1/cmr/m/n/12 ) = \OT1/cmr/bx/n/12 w[]v\OT1/cmr/m/n/12 (\OML
+/cmm/m/it/12 t\OT1/cmr/m/n/12 )$\T1/cmr/m/it/12 , so that mech-a-nism $\OML/cmm
+/m/it/12 k$ \T1/cmr/m/it/12 con-tributes dele-tion rate $\OML/cmm/m/it/12 ^^Vw[
+]v[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )$
+ []
+
+[15]
+Overfull \hbox (1.82336pt too wide) in paragraph at lines 606--618
+\T1/cmr/m/it/12 product-of-experts $\OT1/cmr/m/n/12 ^^A[](\OML/cmm/m/it/12 t\OT
+1/cmr/m/n/12 ) = [][] \OML/cmm/m/it/12 v[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\O
+T1/cmr/m/n/12 )[]$ \T1/cmr/m/n/12 (ge-o-met-ric mean) and the \T1/cmr/m/it/12 m
+aximum-
+ []
+
+
+Overfull \hbox (10.5318pt too wide) in paragraph at lines 606--618
+\T1/cmr/m/n/12 and de-lays $\OT1/cmr/m/n/12 ^^A$ \T1/cmr/m/n/12 even when four 
+of five mech-a-nisms sig-nal high en-tropy. Maximum-
+ []
+
+[16] [17]
+Overfull \hbox (2.39136pt too wide) in paragraph at lines 687--698
 [][] \OML/cmm/m/it/12 h\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 r\OT1/cmr/m/n/12 )[] \
 OML/cmm/m/it/12 dr \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 ^^[[] [][] r[] dr \OT1/cm
 r/m/n/12 = +\OMS/cmsy/m/n/12 1$\T1/cmr/m/n/12 , ver-i-fy-ing the Yamada--Watana
 be Hölder-
  []
 
-[15] [16] [17] [18] [19]
-Overfull \hbox (24.79936pt too wide) in paragraph at lines 831--838
+[18] [19] [20] [21] [22] [23]
+Overfull \hbox (24.79936pt too wide) in paragraph at lines 959--966
 []\T1/cmr/m/n/12 Homogeneous mor-tal-ity re-duces $\OML/cmm/m/it/12 M\OT1/cmr/m
 /n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )$ \T1/cmr/m/n/12 at rate $\OML/cmm/m/
 it/12 ^^V\OT1/cmr/m/n/12 ^^A(\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/
@@ -525,137 +552,161 @@ it/12 ^^V\OT1/cmr/m/n/12 ^^A(\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/
  []
 
 
-Overfull \hbox (0.70032pt too wide) in paragraph at lines 842--849
+Overfull \hbox (0.70032pt too wide) in paragraph at lines 983--990
 \T1/cmr/m/it/12 the \T1/cmr/m/n/12 phys-i-cal re-cov-ery \T1/cmr/m/it/12 of dat
 a whose net-work life-time is con-trolled by ELAPSE.
  []
 
-[20] [21]
-Overfull \hbox (22.11346pt too wide) in paragraph at lines 899--902
-[]\T1/cmr/m/n/12 Since ELAPSE ap-plies mor-tal-ity con-tin-u-ously from $\OML/c
-mm/m/it/12 t \OT1/cmr/m/n/12 = 0$\T1/cmr/m/n/12 , both $\OML/cmm/m/it/12 H\OT1/
-cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 ; \OT1/cmr/bx/n/12 w[]\OT1/cmr/m/
-n/12 ) \OMS/cmsy/m/n/12 ^^T
- []
-
-[22] [23] [24]
-<../../output/figures/fig1_entropy_n100.pdf, id=576, 1073.7765pt x 383.93437pt>
+[24] [25] [26] [27] [28] [29] [30]
+<../../output/figures/fig1_entropy_n100.pdf, id=631, 1073.7765pt x 383.93437pt>
 
 File: ../../output/figures/fig1_entropy_n100.pdf Graphic file (type pdf)
 <use ../../output/figures/fig1_entropy_n100.pdf>
 Package pdftex.def Info: ../../output/figures/fig1_entropy_n100.pdf  used on in
-put line 1029.
+put line 1245.
 (pdftex.def)             Requested size: 390.0pt x 139.44652pt.
- (../tables/t500_ER_M0.tex) (../tables/t500_BA_M0.tex)
-(../tables/t500_WS_M0.tex) (../tables/t500_ER_M1.tex) (../tables/t500_BA_M1.tex
-) (../tables/t500_WS_M1.tex) (../tables/t500_ER_M2.tex)
-(../tables/t500_BA_M2.tex) (../tables/t500_WS_M2.tex) (../tables/t500_ER_M3.tex
-) (../tables/t500_BA_M3.tex) (../tables/t500_WS_M3.tex)
-(../tables/t500_ER_M4.tex) (../tables/t500_BA_M4.tex) (../tables/t500_WS_M4.tex
-) (../tables/t500_ER_M5.tex) (../tables/t500_BA_M5.tex)
-(../tables/t500_WS_M5.tex) (../tables/t500_ER_M6.tex) (../tables/t500_BA_M6.tex
-) (../tables/t500_WS_M6.tex) [25 <../../output/figures/fig1_entropy_n100.pdf>]
-<../../output/figures/fig2_iee_n500.pdf, id=690, 1002.23494pt x 388.4579pt>
+ (../tables/t500_ER_M0.tex)
+(../tables/t500_BA_M0.tex) (../tables/t500_WS_M0.tex) (../tables/t500_ER_M1.tex
+) (../tables/t500_BA_M1.tex) (../tables/t500_WS_M1.tex)
+(../tables/t500_ER_M2.tex) (../tables/t500_BA_M2.tex) (../tables/t500_WS_M2.tex
+) (../tables/t500_ER_M3.tex) (../tables/t500_BA_M3.tex)
+(../tables/t500_WS_M3.tex) (../tables/t500_ER_M4.tex) (../tables/t500_BA_M4.tex
+) (../tables/t500_WS_M4.tex) (../tables/t500_ER_M5.tex)
+(../tables/t500_BA_M5.tex) (../tables/t500_WS_M5.tex) (../tables/t500_ER_M6.tex
+) (../tables/t500_BA_M6.tex) (../tables/t500_WS_M6.tex)
+<../../output/figures/fig2_iee_n500.pdf, id=634, 1002.23494pt x 388.4579pt>
 File: ../../output/figures/fig2_iee_n500.pdf Graphic file (type pdf)
 <use ../../output/figures/fig2_iee_n500.pdf>
 Package pdftex.def Info: ../../output/figures/fig2_iee_n500.pdf  used on input 
-line 1071.
+line 1289.
 (pdftex.def)             Requested size: 390.0pt x 151.1601pt.
-
-[26] [27 <../../output/figures/fig2_iee_n500.pdf>]
-<../../output/figures/fig3_weights_n100.pdf, id=781, 930.33571pt x 320.91206pt>
+ [31] [32 <../../output/figures/fig1_entropy_n100.pdf>] [33 <../../output/figur
+es/fig2_iee_n500.pdf>]
+<../../output/figures/fig3_weights_n100.pdf, id=834, 930.33571pt x 320.91206pt>
 
 File: ../../output/figures/fig3_weights_n100.pdf Graphic file (type pdf)
 <use ../../output/figures/fig3_weights_n100.pdf>
 Package pdftex.def Info: ../../output/figures/fig3_weights_n100.pdf  used on in
-put line 1126.
+put line 1352.
 (pdftex.def)             Requested size: 390.0pt x 134.52751pt.
- [28 <../../output/figures/fig3_weights_n100.pdf>]
-<../../output/figures/fig4_scaling.pdf, id=886, 709.24367pt x 388.04036pt>
+<../../output/figures/fig4_scaling.pdf, id=836, 713.15494pt x 388.04036pt>
 File: ../../output/figures/fig4_scaling.pdf Graphic file (type pdf)
 <use ../../output/figures/fig4_scaling.pdf>
 Package pdftex.def Info: ../../output/figures/fig4_scaling.pdf  used on input l
-ine 1142.
-(pdftex.def)             Requested size: 390.0pt x 213.38141pt.
-<../../output/figures/fig5_sensitivity.pdf, id=890, 930.29117pt x 356.4837pt>
-File: ../../output/figures/fig5_sensitivity.pdf Graphic file (type pdf)
-<use ../../output/figures/fig5_sensitivity.pdf>
-Package pdftex.def Info: ../../output/figures/fig5_sensitivity.pdf  used on inp
-ut line 1182.
-(pdftex.def)             Requested size: 312.00119pt x 119.55467pt.
- [29 <../../output/figures/fig4_scaling.pdf>] [30 <../../output/figures/fig5_se
-nsitivity.pdf>] [31] [32] (../tables/t_snap_g08_bfs_M6.tex) (../tables/t_snap_g
-31_bfs_M6.tex) [33] [34] [35] [36]
-<../../output/figures/fig6_adversarial.pdf, id=1120, 929.91476pt x 710.45552pt>
+ine 1368.
+(pdftex.def)             Requested size: 390.0pt x 212.20905pt.
 
-File: ../../output/figures/fig6_adversarial.pdf Graphic file (type pdf)
-<use ../../output/figures/fig6_adversarial.pdf>
-Package pdftex.def Info: ../../output/figures/fig6_adversarial.pdf  used on inp
-ut line 1428.
-(pdftex.def)             Requested size: 390.0pt x 297.95566pt.
- [37] [38 <../../output/figures/fig6_adversarial.pdf>]
-<../../output/figures/fig7_gossip.pdf, id=1234, 1073.3756pt x 330.67665pt>
-File: ../../output/figures/fig7_gossip.pdf Graphic file (type pdf)
-<use ../../output/figures/fig7_gossip.pdf>
-Package pdftex.def Info: ../../output/figures/fig7_gossip.pdf  used on input li
-ne 1494.
-(pdftex.def)             Requested size: 390.0pt x 120.14851pt.
- [39] [40 <../../output/figures/fig7_gossip.pdf>]
+[34]
+
+! LaTeX Error: File `fig5_sensitivity' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1410 ...s[width=0.8\textwidth]{fig5_sensitivity}
+                                                  
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[35 <../../output/figures/fig3_weights_n100.pdf>] [36 <../../output/figures/fig
+4_scaling.pdf>]
+Overfull \hbox (3.42609pt too wide) in paragraph at lines 1444--1449
+[]\T1/cmr/bx/n/12 Moderately in-flu-en-tial \T1/cmr/m/n/12 ($\OT1/cmr/m/n/12 5%
+$\T1/cmr/m/n/12 --$\OT1/cmr/m/n/12 20%$\T1/cmr/m/n/12 ): $\OML/cmm/m/it/12 $ \
+T1/cmr/m/n/12 ($\OT1/cmr/m/n/12 +11%$ \T1/cmr/m/n/12 at $\OMS/cmsy/m/n/12 ^^@\O
+T1/cmr/m/n/12 50%$\T1/cmr/m/n/12 , be-cause slower
+ []
+
+[37] [38] [39]
+Overfull \hbox (5.26999pt too wide) in paragraph at lines 1546--1554
+[]\T1/cmr/m/n/12 The mech-a-nism is as fol-lows. The bang-bang ap-plies \T1/cmr
+/m/it/12 full \T1/cmr/m/n/12 mor-tal-ity $\OML/cmm/m/it/12 ^^V\OT1/cmr/m/n/12 ^
+^A[] =
+ []
+
+
+Overfull \hbox (0.60463pt too wide) in paragraph at lines 1565--1573
+\OT1/cmr/bx/n/12 w[]v\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 ) \OML/
+cmm/m/it/12 > \OT1/cmr/m/n/12 0$ \T1/cmr/m/it/12 and M6 ap-plies pos-i-tive mor
+-tal-ity through-out, giv-ing $[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 M\OT1/cmr/m/
+n/12 6) \OML/cmm/m/it/12 <
+ []
+
+[40] [41] [42] (../tables/t_snap_g08_bfs_M6.tex)
+(../tables/t_snap_g31_bfs_M6.tex) [43] [44] [45] [46] [47] [48]
+
+! LaTeX Error: File `fig6_adversarial' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1865 ...hics[width=\textwidth]{fig6_adversarial}
+                                                  
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[49]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1573.
+(hyperref)                removing `math shift' on input line 1931.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\lambda' on input line 1573.
+(hyperref)                removing `\lambda' on input line 1931.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 1573.
+(hyperref)                removing `subscript' on input line 1931.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1573.
+(hyperref)                removing `math shift' on input line 1931.
 
-[41]
-<../../output/figures/fig8_m3_analysis.pdf, id=1347, 1002.20425pt x 391.74481pt
+[50]
+<../../output/figures/fig8_m3_analysis.pdf, id=1133, 1002.20425pt x 391.74481pt
 >
 File: ../../output/figures/fig8_m3_analysis.pdf Graphic file (type pdf)
 <use ../../output/figures/fig8_m3_analysis.pdf>
 Package pdftex.def Info: ../../output/figures/fig8_m3_analysis.pdf  used on inp
-ut line 1594.
+ut line 1952.
 (pdftex.def)             Requested size: 390.0pt x 152.44511pt.
- [42 <../../output/figures/fig8_m3_analysis.pdf>] [43]
-Overfull \hbox (5.96442pt too wide) in paragraph at lines 1645--1652
+ [51 <../../output/figures/fig8_m3_analysis.pdf>] [52] [53]
+Overfull \hbox (5.96442pt too wide) in paragraph at lines 2032--2039
 []\T1/cmr/m/n/12 Five the-o-ret-i-cal re-sults: well-posedness (The-o-rem []1[]
 ), spec-tral IEE bound
  []
 
 
-Overfull \hbox (7.00151pt too wide) in paragraph at lines 1652--1656
+Overfull \hbox (7.00151pt too wide) in paragraph at lines 2039--2043
 []\T1/cmr/m/n/12 Analytical dom-i-nance over chrono-log-i-cal timer (Propo-si-t
-ion []2[]): ELAPSE
+ion []3[]): ELAPSE
  []
 
-[44] [45] (./ELAPSE_AMM.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 33--36
+[54] [55] [56] (./ELAPSE_AMM.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 34--37
 \T1/cmr/m/n/12 URL []$\T1/cmtt/m/n/12 https : / / www . verizon . com / busines
 s / resources / reports /
  []
 
-[46] [47] [48]
-Underfull \hbox (badness 1748) in paragraph at lines 128--130
+[57] [58] [59]
+Underfull \hbox (badness 1748) in paragraph at lines 130--132
 []\T1/cmr/m/n/12 A. Oester-ling, J. Ma, F. P. Cal-mon, Fair ma-chine un-learn-i
 ng:
  []
 
 
-Underfull \hbox (badness 1917) in paragraph at lines 128--130
+Underfull \hbox (badness 1917) in paragraph at lines 130--132
 \T1/cmr/m/n/12 Data re-moval while mit-i-gat-ing dis-parate im-pact, arXiv prep
 rint
  []
 
-[49] [50]) [51] (./ELAPSE_AMM.aux)
+[60] [61]) [62] (./ELAPSE_AMM.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -665,60 +716,62 @@ L3 programming layer <2026-01-19>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `ELAPSE_AMM.out' has not changed.
-(rerunfilecheck)             Checksum: 8E703D9849287A1C2B3105BAE4EDEDC6;10789.
+(rerunfilecheck)             Checksum: 8C7916F403CFA4B5FA711B8DAE58AE06;11291.
  ) 
 Here is how much of TeX's memory you used:
- 13710 strings out of 469006
- 216898 string characters out of 5454813
- 623402 words of memory out of 5000000
- 41919 multiletter control sequences out of 15000+600000
- 653446 words of font info for 107 fonts, out of 8000000 for 9000
+ 13778 strings out of 469006
+ 217720 string characters out of 5454813
+ 624446 words of memory out of 5000000
+ 41962 multiletter control sequences out of 15000+600000
+ 654145 words of font info for 108 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 75i,12n,79p,547b,702s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,597b,696s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/user/Library/texlive/2026basic/texmf-var/fonts/pk/ljfour/jknappen/ec
 /ectt1200.600pk> </Users/user/Library/texlive/2026basic/texmf-var/fonts/pk/ljfo
-ur/jknappen/ec/tcrm1200.600pk> </Users/user/Library/texlive/2026basic/texmf-var
-/fonts/pk/ljfour/jknappen/ec/ecbi1200.600pk> </Users/user/Library/texlive/2026b
-asic/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </Users/user/Library
-/texlive/2026basic/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </User
-s/user/Library/texlive/2026basic/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200
+ur/jknappen/ec/ecbx1000.600pk> </Users/user/Library/texlive/2026basic/texmf-var
+/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk> </Users/user/Library/texlive/2026b
+asic/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> </Users/user/Library
+/texlive/2026basic/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1200.600pk> </User
+s/user/Library/texlive/2026basic/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095
 .600pk> </Users/user/Library/texlive/2026basic/texmf-var/fonts/pk/ljfour/jknapp
-en/ec/ecrm1000.600pk> </Users/user/Library/texlive/2026basic/texmf-var/fonts/pk
-/ljfour/jknappen/ec/ectt1000.600pk> </Users/user/Library/texlive/2026basic/texm
-f-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </Users/user/Library/texlive/
-2026basic/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </Users/user/Li
-brary/texlive/2026basic/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti0700.600pk> <
-/Users/user/Library/texlive/2026basic/texmf-var/fonts/pk/ljfour/jknappen/ec/ecr
-m0800.600pk> </Users/user/Library/texlive/2026basic/texmf-var/fonts/pk/ljfour/j
-knappen/ec/ecrm1200.600pk> </Users/user/Library/texlive/2026basic/texmf-var/fon
-ts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/local/texlive/2026basic/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026basic/texmf
--dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2026basic/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2026basi
-c/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2026
-basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/
-2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texl
-ive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/t
-exlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loca
-l/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/l
-ocal/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></
-usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
-></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.
-pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr7.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy7.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/pub
-lic/amsfonts/symbols/msam10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/
-type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2026basic/texmf-di
-st/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on ELAPSE_AMM.pdf (51 pages, 1389166 bytes).
+en/ec/ecrm1095.600pk> </Users/user/Library/texlive/2026basic/texmf-var/fonts/pk
+/ljfour/jknappen/ec/ecti1200.600pk> </Users/user/Library/texlive/2026basic/texm
+f-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </Users/user/Library/texlive/
+2026basic/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </Users/user/Li
+brary/texlive/2026basic/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> <
+/Users/user/Library/texlive/2026basic/texmf-var/fonts/pk/ljfour/jknappen/ec/ect
+i1000.600pk> </Users/user/Library/texlive/2026basic/texmf-var/fonts/pk/ljfour/j
+knappen/ec/ecti0700.600pk> </Users/user/Library/texlive/2026basic/texmf-var/fon
+ts/pk/ljfour/jknappen/ec/ecrm0800.600pk> </Users/user/Library/texlive/2026basic
+/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </Users/user/Library/tex
+live/2026basic/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/local
+/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/l
+ocal/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
+sr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb>
+</usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.
+pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi7.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2026basic/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2026basic/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026basic/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026basic/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2026basic/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2026basic/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026basi
+c/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive
+/2026basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/loca
+l/texlive/2026basic/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on ELAPSE_AMM.pdf (62 pages, 1119545 bytes).
 PDF statistics:
- 2292 PDF objects out of 2487 (max. 8388607)
- 1010 compressed objects within 11 object streams
- 224 named destinations out of 1000 (max. 500000)
- 465 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2206 PDF objects out of 2487 (max. 8388607)
+ 1055 compressed objects within 11 object streams
+ 248 named destinations out of 1000 (max. 500000)
+ 442 words of extra memory for PDF output out of 10000 (max. 10000000)
 

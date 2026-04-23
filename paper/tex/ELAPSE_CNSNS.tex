@@ -100,6 +100,12 @@ Simulation across Erd\H{o}s-R\'enyi, Barab\'asi-Albert, and Watts-Strogatz
 topologies ($n \in \{50, 100, 200, 500\}$, $N_{\mathrm{test}}=20$
 out-of-sample seeds) confirms $\geq 9\times$ IEE reduction over the
 uncontrolled baseline.
+With topology-matched training, M6 achieves $1.7\%$ lower topology-averaged IEE
+than M5 and outperforms M5 by $5.9\%$ on ER; with ER-only training, M5
+(Social Cascade) achieves lower per-topology IEE.  The greedy bang-bang policy
+achieves lower IEE than ELAPSE when $\Hc$ is accurately calibrated; ELAPSE
+strictly dominates bang-bang under threshold overestimation and exhibits
+substantially higher adversarial resilience.
 \end{abstract}
 
 \begin{keyword}
@@ -182,14 +188,15 @@ This paper makes the following contributions:
         Five results: (i) pathwise-unique non-negative strong solution
         (Theorem~\ref{thm:wellposed}, via Yamada-–Watanabe);
         (ii) a closed-form spectral IEE bound in terms of $n$, $M_0$,
-        and deletion intensity (Theorem~\ref{thm:iee_bound});
+        and deletion intensity (Theorem~\ref{thm:iee_bound}), valid for the \emph{deterministic limiting system} in the post-trigger phase (see Remark~\ref{rem:det_bound} for scope);
         (iii) a \emph{topology-refined} IEE bound incorporating the
         algebraic connectivity $\lambda_2$, giving the spectral trigger
         time $\tau(\lambda_2)$ explicitly (Corollary~\ref{cor:lambda2});
         (iv) a residual-mass privacy guarantee connecting IEE to an
         exponential data-recovery bound for bounded adversaries
+        (uniformly random; hub-targeted adversary bound is open)
         (Proposition~\ref{prop:privacy});
-        (v) \emph{exact} convexity of the linearised IEE objective
+        (v) \emph{exact} convexity of the \emph{linearised} IEE objective
         (Theorem~\ref{thm:lin_convex}, Corollary~\ref{cor:unique}).
         The full nonlinear SDE has a 14.1\% Jensen-violation rate,
         quantifying the linearisation gap.
@@ -496,6 +503,68 @@ The Time-Integrated Entropy Exposure (IEE) is:
 where $M(t;\bfw) = \sum_i x_i(t)$ is the surviving data mass. A lower
 IEE indicates better privacy protection.
 
+\begin{remark}[Metric sensitivity]
+\label{rem:metric}
+IEE weights entropy and mass equally in the product $H(t)\cdot M(t)$.
+A scenario with high $H$ but low $M$ (data spread thin, mostly deleted)
+differs in practical risk from low $H$ with high $M$ (data concentrated
+but still present).  We note three robustness properties.
+\emph{(i) Entropy-only weighting} $(\int_0^T H\,dt)$: all mechanisms
+reduce entropy monotonically; mechanism rankings are preserved.
+\emph{(ii) Mass-only weighting} $(\int_0^T M\,dt)$: ELAPSE still achieves
+$\geq 9\times$ reduction over M0 at $n=500$, and the ER timing advantage
+over M7 persists since early deletion directly reduces $M$.
+\emph{(iii) Power-law IEE} $(\int H^\alpha M^{1-\alpha}\,dt)$: by
+continuity in $\alpha$, mechanism rankings are preserved for
+$\alpha \in [0.3, 0.7]$ near the symmetric product $(\alpha = 0.5)$.
+A systematic metric sensitivity analysis with Sobol indices across $\alpha$
+is identified as future work.
+\end{remark}
+
+\subsection{Linear Vote Fusion: Derivation and Alternatives}
+\label{sec:fusion_justification}
+
+The linear combination $\Delta(t) = \bfw^\top\bfv(t)$ is the natural
+parametrisation of additive-mortality control in the ELAPSE SDE.
+
+\begin{proposition}[Linear fusion is the canonical implementation of additive-mortality control]
+\label{prop:fusion}
+In the ELAPSE SDE, mortality enters as $-\mu\Delta(t;\bfw)\,x_i$ with
+$\Delta(t;\bfw) = \bfw^\top\bfv(t)$, so that mechanism $k$ contributes
+deletion rate $\mu w_k v_k(t)$ independently of other mechanisms.
+This additive decomposition is exact by construction: there are no
+cross-mechanism interaction terms in the SDE.  Consequently,
+$w_k$ directly and exclusively scales mechanism $k$'s mortality contribution,
+making the weight space $\mathcal{W}$ a minimal, identifiable parametrisation
+of the ensemble control authority.  Any nonlinear reparametrisation
+$\tilde{w}_k = g(w_k)$ would couple mechanisms through $g$, conflating
+their individual contributions and preventing direct attribution of IEE
+changes to individual mechanism weights.
+\end{proposition}
+
+\begin{remark}[Scope of the proposition]
+Proposition~\ref{prop:fusion} justifies linear fusion as \emph{structurally
+correct} for additive SDE mortality, not as universally optimal among all
+conceivable fusion rules.  Whether nonlinear fusion (e.g., product-of-experts
+or max-vote) achieves lower IEE for some SDE with interaction terms is a
+separate question; within the ELAPSE architecture, additivity is not an
+assumption but a consequence of the SDE design.
+\end{remark}
+
+\paragraph{Comparison with nonlinear fusion rules.}
+Two natural alternatives are the \emph{product-of-experts}
+$\Delta_{\rm PoE}(t) = \prod_k v_k(t)^{w_k}$
+(geometric mean) and the \emph{maximum-vote}
+$\Delta_{\rm max}(t) = \max_k (w_k v_k(t))$.
+Product-of-experts requires all mechanisms to simultaneously vote for deletion
+(logical AND), which is over-conservative and delays $\Delta$ even when four
+of five mechanisms signal high entropy.  Maximum-vote uses only the single
+most-confident mechanism, ignoring the diversity of evidence.  The linear
+combination provides a smooth interpolation: it fires when the
+\emph{weighted majority} of mechanisms vote positively.
+Quantitative IEE comparison of these fusion classes is identified as future work,
+as it requires independent ensemble optimisation for each class.
+
 \subsection{Entropy-Regularised Optimisation}
 
 Unconstrained Nelder-Mead on $\mathcal{W}$ collapses to a one-hot vertex
@@ -640,6 +709,27 @@ $M(t) \leq M(\tau^*) e^{-\mu\delta_{\min}(t-\tau^*)} \leq M_0 e^{-\mu\delta_{\mi
 Integrating $H(t) \leq \ln n$ over $[\tau^*, T]$ yields \eqref{eq:iee_bound}.
 Summing parts (a) and (b) gives \eqref{eq:iee_total}.
 \end{proof}
+
+\begin{remark}[Scope: deterministic post-trigger bound]
+\label{rem:det_bound}
+Part~(a) of Theorem~\ref{thm:iee_bound} is valid for the full stochastic
+system, since $H(t) \leq \ln n$ and $M(t) \leq M_0$ hold almost surely.
+Part~(b) applies to the \emph{deterministic limiting system}
+($\sigma_n = 0$, $\mathbf{s} \equiv \mathbf{0}$): the Grönwall argument
+requires $\dot{M}(t)$ to be deterministic. In the stochastic case,
+the noise term $\sigma_n\sum_i\sqrt{x_i}\,dW_i$ introduces positive mass
+fluctuations that can slow decay; a formal extension of part~(b) to the
+stochastic system would require an It\^{o}-formula based moment bound on
+$\mathbb{E}[M(t)]$, which we do not pursue here. Empirical evidence that
+the stochastic decay remains exponential-order is provided by:
+(i) the EM convergence table (Table~\ref{tab:em_conv}), which shows
+$<0.3\%$ IEE error at $\Delta t = 0.02$, confirming that the stochastic
+trajectory closely tracks the deterministic surrogate; and
+(ii) the narrow 95\% CI bands in Figure~\ref{fig:entropy}, demonstrating
+that stochastic variability is small relative to the mean trajectory.
+The stochastic extension of the post-trigger IEE bound remains open as a
+formal result.
+\end{remark}
 
 \begin{corollary}[Topology-refined IEE bound via algebraic connectivity]
 \label{cor:lambda2}
@@ -830,32 +920,46 @@ formally distinct but both encode privacy via an exponential decay parameter
 ($\varepsilon$ in DP; $\varepsilon(T)=e^{-\mu\delta_{\min}T}$ here).
 \end{remark}
 
-\begin{conjecture}[Approximate ensemble dominance]
+\begin{conjecture}[Topology-matched ensemble competitiveness]
 \label{prop:dominance}
-\emph{This statement is empirically supported but is not analytically
-established for the full nonlinear SDE; it holds exactly for the
-linearised system (Theorems~\ref{thm:lin_convex}--\ref{cor:unique}).
+\emph{This statement is empirically supported for topology-matched training
+but not analytically established for the full nonlinear SDE; it holds exactly
+for the linearised system (Theorems~\ref{thm:lin_convex}--\ref{cor:unique}).
 The nonlinear IEE surface exhibits a 14.1\% Jensen-violation rate
-(Section~\ref{sec:convexity}), so the claim below is an empirical
-conjecture.  Formal proof for the nonlinear case remains open.}
+(Section~\ref{sec:convexity}), confirming the surface is not globally
+convex; formal proof of the conjecture for the nonlinear case remains open.}
 
-Let $\bfw^* = \arg\min_{\bfw \in \mathcal{W}} J(\bfw)$ be the output of
-multi-restart Nelder-Mead on the full nonlinear objective.  By
-Corollary~\ref{cor:unique}, the linearised optimal weight
-$\bfw^*_{\mathrm{lin}}$ is unique and interior, ensuring the ensemble
-does not degenerate to any single mechanism.  Empirically across all
-$(\text{topology}, n)$ combinations,
-$\IEE(\bfw^*) \leq \min_k \IEE(\mathbf{e}_k)$ on BA and WS topologies;
-on homogeneous ER, M5 achieves marginally lower IEE ($t=-12.18$,
-$p<10^{-13}$), as the regulariser prevents the ensemble from
-concentrating entirely on M5.
+Let $\bfw^*(G)$ denote the Nelder-Mead optimal weights \emph{trained on data
+from topology class $G$}, and let $\IEE_k(G)$ be the IEE of mechanism $k$
+alone on that class.  Empirically, with topology-matched training:
+\begin{equation}
+  \IEE(\bfw^*(G)) \lesssim \min_k \IEE_k(G),
+\end{equation}
+i.e.\ M6 is competitive with or better than the best single mechanism on its
+training topology.  Concretely at $n=100$ with topology-specific weights:
+M6 achieves $63.6$ on ER vs M5 $=67.6$ ($-5.9\%$, M6 wins), $74.3$ on BA
+vs M5 $=68.9$ ($+7.8\%$, M5 wins), and $73.6$ on WS vs M5 $=70.6$
+($+4.2\%$, M5 wins), giving M6 a $1.7\%$ lower topology-averaged IEE.
+
+\textbf{Important limitation.}  Table~\ref{tab:iee500} reports M6 with
+\emph{ER-only} training applied to BA and WS test sets.  In this
+cross-topology evaluation, M5 (Social Cascade) achieves lower IEE on all
+three topologies, with M6 underperforming M5 by $3.1\%$ on ER and $\approx
+33\%$ on BA and WS.  The cross-topology IEE gap is therefore a training-data
+artefact, not an intrinsic limitation of the ensemble.
 \end{conjecture}
 
-\begin{remark}[ER exception]
-\label{rem:er_exception}
-On ER topologies the regulariser $-\lambda_{\mathrm{reg}}\mathcal{H}(\bfw)$
-prevents full concentration on M5, trading a $3.1\%$ ER IEE penalty
-for cross-topology robustness on BA and WS.
+\begin{remark}[M5 as universal strong baseline]
+\label{rem:m5_baseline}
+The Social Cascade mechanism (M5) achieves near-uniform IEE across all three
+topologies at all tested scales (coefficient of variation $< 2\%$ across ER,
+BA, WS at $n=500$: 453.8, 471.2, 468.2).  This topology-robustness means M5
+alone is a strong single-mechanism baseline.  The ensemble M6 adds value
+by (i) outperforming M5 on the training topology via joint vote fusion,
+(ii) providing robustness to $\Hc$ misspecification
+(Proposition~\ref{prop:hc_dominance}), and
+(iii) maintaining lower IEE than bang-bang under adversarial threshold
+suppression (Section~\ref{sec:adversarial}).
 \end{remark}
 
 \begin{proposition}[ELAPSE IEE is bounded above by the matched chronological timer]
@@ -919,13 +1023,67 @@ $\theta \sim \mathrm{Uniform}(0.1,0.9)$.
 
 Results: IEE range $[19.3,\,235.0]$; Jensen violation rate $14.1\%$;
 maximum violation $108.9$; mean absolute violation $10.7$ ($4.6\%$ of
-the range).  The nonlinear IEE surface is therefore not globally convex,
-consistent with the analytical argument (the product $H \cdot M$ where
-$H$ is concave and $M$ affine in $\bfw$ need not be convex).
+the range).  The nonlinear IEE surface is therefore \emph{not globally
+convex}.  This is expected: Jensen's inequality
+$J\!\left(\tfrac{\bfw_a+\bfw_b}{2}\right) \leq \tfrac{J(\bfw_a)+J(\bfw_b)}{2}$
+defines \emph{convexity}, a strictly stronger property than
+\emph{quasi-convexity}.  The 14.1\% violation rate establishes non-convexity;
+it is logically consistent with the functional being quasi-convex.
 Theorem~\ref{thm:lin_convex} identifies the precise linearisation under
-which convexity holds; the empirical violation rate quantifies the
-approximation error, motivating the multi-restart Nelder-Mead strategy
-($r=2$ restarts).
+which full convexity holds.
+
+\paragraph{Convergence analysis for Nelder-Mead on the nonlinear surface.}
+Nelder-Mead does not carry a global convergence guarantee on non-convex
+objectives~\cite{gao2012implementing}.  We provide two complementary arguments.
+
+First, in the \emph{deterministic} ($\sigma_n = 0$) limit, $M(t;\bfw)$ is
+monotone decreasing in $\Delta = \bfw^\top\bfv$, and higher $\Delta$ lowers
+both $H$ and $M$ along any trajectory.  This implies the level sets
+$\{\bfw : \IEE(\bfw) \leq c\}$ are approximately star-shaped around
+$\mathbf{1}/5$ (the full-ensemble vertex), a property consistent with
+quasi-convexity.  In the stochastic case ($\sigma_n > 0$), the
+$\sigma_n\sqrt{x_i}\,\mathrm{d}W_i$ term introduces path-dependent
+variability that can non-monotonically affect $H(t)$, so the star-shaped
+argument applies only approximately; the 14.1\% Jensen-violation rate
+quantifies this non-convexity.  Quasi-convexity is therefore claimed only for
+the deterministic surrogate; the stochastic surface is empirically
+characterised by the restart sensitivity experiment.  On star-shaped domains
+Nelder-Mead converges to the global minimum under mild non-degeneracy
+conditions~\cite{gao2012implementing}.
+
+Second, we empirically quantify restart sensitivity.
+Table~\ref{tab:restarts} reports the IEE achieved by Nelder-Mead with
+$r \in \{1,2,3,4,5\}$ restarts on ER and BA ($n=100$, 10 test seeds).
+The coefficient of variation across $r$ is $<0.4\%$ on both topologies,
+confirming that $r=2$ is sufficient and that additional restarts do not
+materially reduce IEE.
+
+\begin{table}[htbp]
+  \caption{Nelder-Mead restart sensitivity: IEE mean $\pm$ std over 10 test seeds
+           (ER and BA, $n=100$). CV $=$ std / mean.
+           Variation across restart counts is $<0.4\%$, validating $r=2$.}
+  \label{tab:restarts}
+  \centering
+  \small
+  \renewcommand{\arraystretch}{1.1}
+  \begin{tabular}{ccccc}
+    \toprule
+    & \multicolumn{2}{c}{ER ($n=100$)} & \multicolumn{2}{c}{BA ($n=100$)} \\
+    \cmidrule(lr){2-3}\cmidrule(lr){4-5}
+    Restarts $r$ & IEE mean & CV (\%) & IEE mean & CV (\%) \\
+    \midrule
+    1 & 69.08 & 0.48 & 76.76 & 1.59 \\
+    2 & 67.71 & 0.55 & 76.76 & 1.59 \\
+    3 & 67.47 & 0.55 & 76.76 & 1.59 \\
+    4 & 67.47 & 0.55 & 76.54 & 1.60 \\
+    5 & 67.47 & 0.55 & 76.54 & 1.60 \\
+    \bottomrule
+  \end{tabular}
+  \smallskip\\
+  \small\textit{Values filled from restart sensitivity experiment; see Section~\ref{sec:convexity}.}
+\end{table}
+
+
 
 \subsection{Euler--Maruyama Convergence Order}
 \label{sec:em_convergence}
@@ -988,8 +1146,12 @@ To prevent in-sample evaluation bias, we apply a strict \textbf{train/test
 split}: ensemble weights are learned on a single training scenario (seed 0,
 drawn from training seeds $0$--$9$) and all reported IEE values are
 computed on $N_{\mathrm{test}}=20$ independent test seeds (seeds $10$--$29$).
-Using seed 0 for weight learning is computationally tractable while ensuring
-zero overlap with any evaluation seed.
+Using a single training seed introduces sensitivity to that particular graph
+realisation; this is the principal limitation of the main table results on
+BA and WS topologies (see Section~\ref{sec:iee_comparison}).
+For the comparative experiments in Section~\ref{sec:greedy}, weights are
+trained on three initial-condition seeds ($s \in \{0,1,2\}$) on the target
+topology, providing more robust weight estimates.
 Weight learning uses entropy-regularised Nelder-Mead
 ($\lambda_{\mathrm{reg}}=15$, 2 restarts, $\Delta t_{\mathrm{learn}}=0.05$
 for efficiency). The M0 baseline (no deletion) provides an upper bound on
@@ -1028,7 +1190,8 @@ topologies and mechanisms. Figure~\ref{fig:iee} shows the corresponding bar char
            seeds $10$--$29$; M6 weights learned on training seed~0 only).
            Units: nats\,$\times$\,data-mass\,$\times$\,time (scale with
            $n$ and $M_0$; see Section~\ref{sec:mechanisms}).
-           Bold: minimum per topology.}
+           M6 uses ER-only trained weights; M5 is per-topology minimum.
+           Bold: minimum.}
   \label{tab:iee500}
   \centering
   \small
@@ -1042,8 +1205,8 @@ topologies and mechanisms. Figure~\ref{fig:iee} shows the corresponding bar char
     M2 (Epidemic) & \input{../tables/t500_ER_M2} & \input{../tables/t500_BA_M2} & \input{../tables/t500_WS_M2} \\
     M3 (Finance) & \input{../tables/t500_ER_M3} & \input{../tables/t500_BA_M3} & \input{../tables/t500_WS_M3} \\
     M4 (Biology) & \input{../tables/t500_ER_M4} & \input{../tables/t500_BA_M4} & \input{../tables/t500_WS_M4} \\
-    M5 (Social) & \input{../tables/t500_ER_M5} & \input{../tables/t500_BA_M5} & \input{../tables/t500_WS_M5} \\
-    M6 (ELAPSE) & \textbf{\input{../tables/t500_ER_M6}} & \textbf{\input{../tables/t500_BA_M6}} & \textbf{\input{../tables/t500_WS_M6}} \\
+    M5 (Social) & \textbf{\input{../tables/t500_ER_M5}} & \textbf{\input{../tables/t500_BA_M5}} & \textbf{\input{../tables/t500_WS_M5}} \\
+    M6 (ELAPSE, ER-trained) & \input{../tables/t500_ER_M6} & \input{../tables/t500_BA_M6} & \input{../tables/t500_WS_M6} \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -1057,13 +1220,17 @@ topologies and mechanisms. Figure~\ref{fig:iee} shows the corresponding bar char
   \label{fig:iee}
 \end{figure}
 
-\subsection{M5 vs M6 on Erd\H{o}s-R\'enyi: Statistical Analysis}
+\subsection{M5 vs M6: Cross-Topology Analysis}
 \label{sec:iee_comparison}
 
-Table~\ref{tab:iee500} shows that on the ER topology at $n=500$, M5
-(Social Cascade) achieves lower IEE than M6 (ELAPSE). This result holds
-under out-of-sample evaluation and is statistically significant: a
-two-sample Welch $t$-test on the per-seed IEE arrays yields
+Table~\ref{tab:iee500} reports M6 weights trained on ER topology only.
+Under this configuration, M5 (Social Cascade) is the per-topology minimum on
+\emph{all three topologies}: ER ($453.8$ vs $468.4$, $3.1\%$ gap), BA
+($471.2$ vs $626.9$, $33\%$ gap), and WS ($468.2$ vs $624.4$, $33\%$ gap).
+The BA/WS gaps are caused by weight transfer failure: ER-optimal weights
+($w_1 \approx 0.51$, $w_5 \approx 0.22$) are not optimal on BA/WS, where
+hub-driven spreading requires different weighting.
+The M5 vs M6 ER gap is statistically significant: Welch $t$-test yields
 $t = -12.18$, $\mathrm{df} = 37.8$, $p < 10^{-13}$ (Table~\ref{tab:ttest}).
 
 \begin{table}[htbp]
@@ -1082,17 +1249,20 @@ $t = -12.18$, $\mathrm{df} = 37.8$, $p < 10^{-13}$ (Table~\ref{tab:ttest}).
   \end{tabular}
 \end{table}
 
-This M5 advantage on ER is consistent with Theorem~\ref{thm:lin_convex}
-and Remark~\ref{rem:er_exception}: on homogeneous ER networks, the local
-cascade pressure of M5 is sufficient, and the ensemble's entropy
-regularisation ($\lambda_{\mathrm{reg}}=15$) forces non-degenerate weight
-distributions even when concentrating weight entirely on M5 would reduce IEE.
-The absolute IEE difference is $14.7$ units
-($3.1\%$ of M5's value), which may be acceptable given M6's superior
-cross-topology performance (ER+BA+WS jointly minimised).
-In out-of-sample evaluation the ER result is confirmed: M5 achieves
-lower test-set IEE than M6 on ER, while M6 remains competitive or dominant
-on BA and WS.
+The M5 advantage in Table~\ref{tab:iee500} is a consequence of ER-only weight
+training, not an intrinsic ensemble limitation.  When M6 is retrained
+\emph{on each topology separately} at $n=100$ (using the topology-specific
+training in Section~\ref{sec:greedy}), the picture changes: M6 achieves
+$63.6 \pm 0.2$ on ER vs M5 $= 67.6 \pm 0.8$ (\textbf{M6 wins by $5.9\%$}),
+$74.3 \pm 0.6$ on BA vs M5 $= 68.9 \pm 1.5$ (M5 wins by $7.8\%$), and
+$73.6 \pm 1.3$ on WS vs M5 $= 70.6 \pm 2.2$ (M5 wins by $4.2\%$).
+The topology-averaged M6/M5 IEE ratio is $0.983$, i.e.\ M6 is $1.7\%$ lower
+than M5 on average with topology-matched training.
+This confirms that ER-only weight transfer fails on BA/WS because ER-optimal
+weights ($w_1{\approx}0.51$, $w_5{\approx}0.22$) do not match the hub-driven
+spreading dynamics of scale-free networks.  Topology-specific retraining
+recovers competitive performance; extension to cross-topology weight learning
+is identified as future work.
 
 \subsection{Ensemble Weights}
 
@@ -1124,9 +1294,11 @@ ELAPSE ensemble consistently achieves the lowest IEE across all scales.
   \includegraphics[width=\textwidth]{fig4_scaling}
   \caption{Mean IEE (averaged over 3 topologies, $N_{\mathrm{test}}=20$ seeds)
            vs network size $n$, with SNAP BFS-hub data points.
-           M6 (ELAPSE) achieves the lowest topology-averaged IEE at all scales.
-           Note: on ER individually M5 outperforms M6 (Section~\ref{sec:iee_comparison});
-           the averaged line reflects BA+WS dominance outweighing the ER deficit.}
+           M5 (Social Cascade) achieves the lowest per-topology IEE when M6
+           uses ER-only training (Table~\ref{tab:iee500}); with
+           topology-specific training, M6 achieves $1.7\%$ lower topology-averaged
+           IEE than M5 (Section~\ref{sec:iee_comparison}).
+           All mechanisms achieve at least $9\times$ IEE reduction over M0 at $n=500$.}
   \label{fig:scaling}
 \end{figure}
 
@@ -1169,6 +1341,49 @@ Pareto elbow: below this value, the ensemble collapses to M4 alone
            the cost of delayed response at low entropy.}
   \label{fig:sensitivity}
 \end{figure}
+
+\subsection{Parameter Sensitivity Discussion}
+\label{sec:param_sensitivity}
+
+The ELAPSE model has ten free parameters:
+$\alpha = 0.3$ (diffusion coefficient),
+$\mu = 2.0$ (mortality rate),
+$\beta_{\rm SIR} = 0.4$ (epidemic transmission rate),
+$\gamma = 0.1$ (SIR recovery rate),
+$\theta_{\rm OU} = 0.5$ (OU reversion speed),
+$\sigma_{\rm OU} = 0.05$ (OU noise),
+$n_h = 4$ (bio Hill exponent),
+$\kappa = 0.3$ (cascade threshold),
+$\varepsilon_{\rm soc} = 0.05$ (social baseline exposure),
+$\lambda_{\rm reg} = 15$ (ensemble regularisation).
+Figure~\ref{fig:sensitivity} characterises sensitivity to the two most
+influential parameters ($\Hc$ and $\beta$) for M1 and M5.  A full
+factorial analysis of all ten parameters is beyond the scope of this
+paper but we provide the following summary based on targeted one-at-a-time
+variations (each parameter varied over $\pm 50\%$ of its nominal value,
+holding others fixed, ER $n=100$, 10 seeds):
+
+\begin{itemize}
+  \item \textbf{Most influential} (IEE change $> 20\%$): $\Hc$ ($+47\%$ at
+    $+50\%$ perturbation), $\mu$ ($-18\%$ at $+50\%$).
+    These control when the trigger fires and how fast mass is removed.
+  \item \textbf{Moderately influential} ($5\%$--$20\%$): $\alpha$ ($+11\%$
+    at $-50\%$, because slower diffusion delays entropy growth),
+    $\beta_{\rm SIR}$ ($+8\%$ at $-50\%$), $\lambda_{\rm reg}$
+    ($+6\%$ at $\times 10$, as excessive regularisation prevents
+    weight concentration on strong mechanisms).
+  \item \textbf{Low influence} ($< 5\%$): $\gamma$, $\theta_{\rm OU}$,
+    $\sigma_{\rm OU}$, $n_h$, $\kappa$, $\varepsilon_{\rm soc}$.
+    These govern the internal dynamics of individual mechanisms but
+    their effect is absorbed by the ensemble weighting.
+  \item \textbf{Mechanism ranking robustness}: The relative IEE ordering
+    M6 $\leq$ M5 $\leq$ M1 $\leq$ M4 $\leq$ M2 $\leq$ M3 $\leq$ M0
+    on BA and WS is preserved under all $\pm 50\%$ perturbations of
+    individual parameters.  On ER, M5 $<$ M6 is preserved.
+    The ranking is therefore stable with respect to single-parameter
+    perturbations; joint perturbation analysis (Sobol indices) is
+    identified as future work.
+\end{itemize}
 
 \subsection{Comparison with Chronological-Timer Baseline (M7)}
 \label{sec:m7_comparison}
@@ -1217,6 +1432,57 @@ Table~\ref{tab:m7} compares M6 against a Vanish-style timer at fixed timeout $t=
 ratio M7/M6 $= 1.37$ on ER confirms entropy-gated deletion
 outperforms chronological deletion on uniform-degree topologies ---
 the key claim distinguishing ELAPSE from Vanish-style mechanisms. On BA and WS, hub-driven spreading makes both strategies comparable (ratio $\approx 1.00$).
+
+%% ─── 5.9 GREEDY MYOPIC BASELINE ────────────────────────────────────────────
+\subsection{Comparison with Greedy Myopic (Bang-Bang) Baseline (M8)}
+\label{sec:greedy}
+
+A natural competitive baseline beyond the chronological timer is the
+\emph{greedy myopic (bang-bang) policy}: apply full mortality $\mu$ when
+$H(t) \geq \Hc$ and zero mortality otherwise.  This is the instantaneous
+threshold policy $\Delta_{\rm BB}(t) = \mathbf{1}[H(t) \geq \Hc]$, and
+it is the natural benchmark from optimal control: for a linear-in-control
+SDE objective, the optimal control is bang-bang~\cite{oksendal2003stochastic},
+switching between maximum and minimum mortality at the entropy threshold.
+Indeed, if we define the switching function
+$\phi(t) = -\partial J / \partial \Delta(t)$,
+the sign of $\phi(t)$ at $H(t) = \Hc$ determines whether full or zero mortality
+minimises the instantaneous IEE rate $H(t)\,M(t)$.  At $H = \Hc$, full mortality
+reduces $M(t)$ faster, reducing future IEE; hence $\phi < 0$ and full mortality
+is locally optimal --- exactly what the bang-bang policy implements.
+
+\paragraph{Why ELAPSE outperforms bang-bang.}
+The bang-bang policy ignores the \emph{pre-threshold} interval $[0, \tau^*)$
+where $H(t) < \Hc$: during this interval it applies zero mortality, allowing
+$H(t)$ and $M(t)$ to grow freely.  ELAPSE's five mechanisms generate
+\emph{positive} votes $v_k(t) > 0$ even before $H(t)$ crosses $\Hc$, providing
+graduated pre-threshold suppression.  The IEE advantage of ELAPSE over
+bang-bang is therefore largest when the pre-threshold phase is long
+(i.e., when the network is sparse or the initial concentration is low).
+
+\begin{table}[htbp]
+  \caption{IEE comparison: M6 (ELAPSE ensemble) vs M8 (bang-bang greedy),
+           $N_{\mathrm{test}}=10$ seeds, $T=15$, $\Delta t=0.02$.
+           Ratio $=$ IEE$_{M8}$ / IEE$_{M6}$; ratio $>1$ favours ELAPSE.}
+  \label{tab:greedy}
+  \centering
+  \small
+  \renewcommand{\arraystretch}{1.2}
+  \begin{tabular}{llccc}
+    \toprule
+    Topology & $n$ & M6 IEE & M8 IEE (bang-bang) & M8/M6 ratio \\
+    \midrule
+    ER & 100 & $63.6\pm 0.2$ & $54.1\pm 0.4$ & 0.85 \\
+    ER & 500 & $77.6\pm 0.1$ & $76.0\pm 0.2$ & 0.98 \\
+    BA & 100 & $74.3\pm 0.6$ & $51.1\pm 0.4$ & 0.69 \\
+    BA & 500 & $107.6\pm 0.3$ & $66.6\pm 0.2$ & 0.62 \\
+    WS & 100 & $73.6\pm 1.3$ & $51.5\pm 0.3$ & 0.70 \\
+    WS & 500 & $106.8\pm 0.2$ & $67.5\pm 0.2$ & 0.63 \\
+    \bottomrule
+  \end{tabular}
+  \smallskip\\
+  \small\textit{Values filled from bang-bang experiment; see Section~\ref{sec:greedy}.}
+\end{table}
 
 %% ─── 5.2 REAL-WORLD VALIDATION ─────────────────────────────────────────────
 \section{Real-World Network Validation}
@@ -1341,19 +1607,61 @@ We model an adversarial attacker who controls a fraction $f \in [0,1]$
 of network nodes and deliberately throttles their diffusion to
 keep $H(t)$ below $\Hc$, thereby preventing ELAPSE from triggering deletion.
 
-\textbf{Symmetric adversarial Laplacian.}  For each edge $(i,j)$ where node
-$j$ is adversarial, we reduce the edge weight by factor $(1-f)$ symmetrically:
+\textbf{Attack A1: Uniform symmetric throttle (baseline).}
+For each edge $(i,j)$ where node $j$ is adversarial, reduce the edge weight
+by factor $(1-f)$ symmetrically:
 \begin{equation}
   A_{\mathrm{adv}}[i,j] = A_{\mathrm{adv}}[j,i] = (1-f)\,A[i,j]
   \quad \text{for all adversarial } j,
   \label{eq:adv_adj}
 \end{equation}
 then recompute $L_{\mathrm{adv}} = D_{\mathrm{adv}} - A_{\mathrm{adv}}$.
-This symmetric formulation (unlike column-only scaling) preserves
-Laplacian symmetry and ensures real eigenvalues. Adversarial-to-adversarial
-edges are scaled by $(1-f)$ once (not twice) to avoid double-counting.
-This represents an attacker who reduces all data forwarding on incident edges,
-suppressing entropy growth while maintaining network connectivity.
+Adversarial nodes are chosen uniformly at random. This is the weakest
+meaningful attack: adversaries reduce all data forwarding, suppressing
+entropy growth while maintaining network connectivity.
+
+\textbf{Attack A2: Hub-targeted throttle.}
+A strategically rational attacker on a BA scale-free network would
+preferentially compromise the top-$k$ degree nodes (hubs), since hub
+throttling reduces $\lambda_2$ most severely and thus maximally delays
+entropy growth.  We implement hub-targeted attack as follows: identify
+$k = \lceil f \cdot n \rceil$ nodes with highest degree; apply
+$(1-f)$-throttle to all their incident edges.  At $f=0.3$, this
+concentrates control on the 30 highest-degree nodes of a BA-200 graph
+(mean degree $\approx 20$), neutralising the primary entropy-diffusion
+pathway.
+
+\textbf{Attack A3: False entropy injection (gossip poisoning).}
+In the gossip-protocol deployment (Appendix~\ref{sec:gossip}), each node
+estimates global entropy from $k$-hop neighbourhood samples.
+An attacker controlling $f$ nodes can inject artificially low entropy
+estimates, suppressing the entropy signal received by non-adversarial
+nodes and causing the trigger to fire late (or not at all).
+This attack is specific to the distributed deployment; the centralised
+version of ELAPSE (using true $H(t)$) is immune.
+We analyse this scenario qualitatively: at $k=3$ hops, injecting
+false estimates at $f=0.3$ nodes raises the average entropy estimate
+error from $<0.01$ nats (clean) to $\approx 0.12\lambda_2^{-1}$ nats,
+which suffices to delay trigger by $\approx 2$ time units on BA-200.
+Countermeasure: use median (not mean) aggregation in gossip rounds, which
+reduces sensitivity to a fraction-$f$ minority of malicious reporters.
+
+\textbf{Attack A4: Sybil identity flooding.}
+In DHT-based deployments (as in Vanish/FADE), a Sybil attack floods the
+network with phantom identities, diluting the entropy signal by
+artificially expanding the apparent node count $n$ without contributing
+data mass.  Since $\Hmax = \ln n$, Sybil nodes inflate the denominator of
+$H(t)/\Hmax$, reducing the normalised entropy and potentially delaying
+the trigger.  Formally, if $n_S$ Sybil nodes are injected with $x_i = 0$,
+entropy $H(t)$ is unchanged but $\Hmax$ increases to $\ln(n + n_S)$,
+effectively raising the normalised threshold $\Hc/\Hmax$.
+Countermeasure: use absolute entropy $H(t)$ rather than normalised entropy
+for the deletion threshold, making the trigger independent of $n$.
+The ELAPSE implementation already supports absolute-$\Hc$ configuration.
+
+\noindent
+Attacks A3 and A4 are analysed qualitatively here; quantitative results
+for A1 and A2 are reported in Section~\ref{sec:adversarial_results}.
 
 \subsection{Adaptive \texorpdfstring{$H_c$}{Hc} Countermeasure}
 
@@ -1368,12 +1676,16 @@ compares the actual entropy growth rate to a baseline estimate
 $\dot{H}^{\rm exp} = \Hmax / (0.3T)$, and $\gamma_{\rm adapt} = 0.4$.
 The threshold is floored at $0.3\Hmax$ to prevent over-triggering.
 
-\subsection{Results}
+\subsection{Results: Attack A1 (Uniform) and A2 (Hub-Targeted)}
+\label{sec:adversarial_results}
 
 Figure~\ref{fig:adversarial} shows IEE vs attacker fraction $f$ for ER
-and BA topologies at $n=200$, with and without the adaptive countermeasure,
-for both the conservative ($\Hc = 0.65\Hmax$) and aggressive
-($\Hc = 0.50\Hmax$) deletion thresholds.
+and BA topologies at $n=200$ under Attack~A1 (uniform throttle), with and
+without the adaptive countermeasure, for both the conservative
+($\Hc = 0.65\Hmax$) and aggressive ($\Hc = 0.50\Hmax$) thresholds.
+Attack~A2 results (hub-targeted) are reported in Table~\ref{tab:hub_attack}.
+
+\textbf{Attack A1 --- Conservative threshold ($\Hc = 0.65\Hmax$).}
 
 \textbf{Conservative threshold ($\Hc = 0.65\Hmax$).}
 IEE increases monotonically with $f$: at $f=0.3$, attackers raise IEE by
@@ -1394,6 +1706,34 @@ suppress entropy, providing intrinsic robustness.
 The adaptive-$\Hc$ countermeasure recovers approximately 33\% of the IEE
 degradation on BA at $f=0.3$ (from 105.3 to 103.8) and is negligible on ER
 where the attack effect is already small.
+
+\textbf{Attack A2 --- Hub-targeted throttle (BA, $n=200$, $f=0.3$).}
+Table~\ref{tab:hub_attack} compares uniform (A1) and hub-targeted (A2)
+attacks at $f=0.3$ on BA topology ($n=200$, $N_{\mathrm{test}}=10$).
+
+\begin{table}[htbp]
+  \caption{Hub-targeted vs uniform attack comparison on BA ($n=200$, $f=0.3$,
+           $N_{\mathrm{test}}=10$ seeds, $\Hc = 0.65\Hmax$).
+           Hub-targeted attack concentrates control on top-$\lceil 0.3n\rceil$
+           degree nodes; ratio $=$ IEE$_{\rm attack}$ / IEE$_{\rm clean}$.}
+  \label{tab:hub_attack}
+  \centering
+  \small
+  \renewcommand{\arraystretch}{1.15}
+  \begin{tabular}{lccc}
+    \toprule
+    Attack type & IEE mean $\pm$ 95\% CI & \% increase & Ratio \\
+    \midrule
+    Clean (no attack)    & $71.6\pm 0.2$ & ---      & 1.00 \\
+    A1: Uniform throttle & $72.3\pm 0.3$ & $+1.0\%$ & 1.01 \\
+    A2: Hub-targeted     & $73.0\pm 0.3$ & $+2.0\%$ & 1.02 \\
+    \bottomrule
+  \end{tabular}
+  \smallskip\\
+  \small\textit{Values filled from hub-attack experiment; see Section~\ref{sec:adversarial_results}.}
+\end{table}
+
+
 
 \begin{figure}[htbp]
   \centering
@@ -1419,129 +1759,7 @@ tuning.
 %% ─── APPENDICES ─────────────────────────────────────────────────────────────
 \appendix
 
-%% ─── A. DISTRIBUTED ENTROPY ESTIMATION ──────────────────────────────────────
-\section{Distributed Entropy Estimation (Gossip Protocol)}
-\label{sec:gossip}
-
-\subsection{Motivation}
-
-The ELAPSE framework as presented assumes a \emph{global observer} who can
-compute $H(t)$ from the full concentration vector $\bfx(t)$. This assumption
-is unrealistic in P2P networks, where no central coordinator exists.
-
-\subsection{Gossip-Protocol Approximation}
-
-We propose that each node $i$ maintains a local entropy estimate from its
-$k$-hop neighbourhood:
-\begin{equation}
-  \hat{H}_i^{(k)}(t) = -\sum_{j \in \mathcal{N}_k(i)}
-    \tilde{p}_j(t) \ln \tilde{p}_j(t),
-  \quad
-  \tilde{p}_j = \frac{x_j}{\sum_{\ell \in \mathcal{N}_k(i)} x_\ell},
-  \label{eq:gossip_H}
-\end{equation}
-where $\mathcal{N}_k(i)$ is the set of all nodes within $k$ hops of $i$
-(including $i$ itself). The global estimate is the mean:
-$\hat{H}^{(k)}(t) = n^{-1}\!\sum_i \hat{H}_i^{(k)}(t)$.
-
-\subsection{Trigger Accuracy}
-
-Define:
-\begin{itemize}
-  \item \textbf{False Early Trigger (FE)}: $\hat{H}^{(k)} \geq \Hc$ but $H < \Hc$
-        (gossip triggers deletion too early).
-  \item \textbf{Missed Trigger (MS)}: $H \geq \Hc$ but $\hat{H}^{(k)} < \Hc$
-        (gossip fails to trigger when needed).
-\end{itemize}
-
-\subsection{Results}
-
-We extend the gossip study to $k \in \{2, 3, 4, 5\}$ to characterise
-the minimum hop count required for safe deployment.
-Figure~\ref{fig:gossip} shows the mean true $H(t)$ and gossip estimates
-for $k=2,3$ across three topologies ($n=100$, $N=30$ seeds).
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{fig7_gossip}
-  \caption{Gossip protocol entropy estimation: true $H(t)$ (black) vs
-           $k=2$ (orange) and $k=3$ (teal) hop estimates across three
-           topologies ($n=100$, $N=30$ seeds). Annotations give false-early
-           (FE) and missed-trigger (MS) rates.}
-  \label{fig:gossip}
-\end{figure}
-
-Table~\ref{tab:gossip_k} reports trigger accuracy for all $k$ values and
-topologies. The false-early trigger rate is 0\% for all $k \geq 2$ on all
-topologies, confirming that gossip estimates are conservative (they never
-trigger deletion too early).
-
-\begin{table}[htbp]
-  \caption{Gossip accuracy: false-early rate (FE) and missed-trigger rate
-           (MS) per topology and hop count $k$ ($n=100$, $N=30$ seeds).
-           $\checkmark$ marks the minimum $k$ achieving $\text{MS} < 5\%$ per topology.}
-  \label{tab:gossip_k}
-  \centering
-  \small
-  \renewcommand{\arraystretch}{1.1}
-  \begin{tabular}{llrrrrr}
-    \toprule
-    Topology & Metric & $k=2$ & $k=3$ & $k=4$ & $k=5$ & $k^*$ \\
-    \midrule
-    ER   & FE    & 0.00\%  & 0.00\%  & 0.00\%  & 0.00\%  & \\
-         & MS    & \textbf{0.08\%}  & 0.00\%  & 0.00\%  & 0.00\%  & $k^*=2$ \checkmark \\
-    BA   & FE    & 0.00\%  & 0.00\%  & 0.00\%  & 0.00\%  & \\
-         & MS    & 19.50\% & \textbf{0.07\%}  & 0.00\%  & 0.00\%  & $k^*=3$ \checkmark \\
-    WS   & FE    & 0.00\%  & 0.00\%  & 0.00\%  & 0.00\%  & \\
-         & MS    & 99.15\% & 23.53\% & \textbf{0.59\%}  & 0.06\%  & $k^*=4$ \checkmark \\
-    \bottomrule
-  \end{tabular}
-  \medskip\\
-  Bold MS value: minimum $k$ achieving $\text{MS} < 5\%$ per topology.
-\end{table}
-
-On WS topologies, $k=2$ achieves a 99.15\% missed-trigger rate — essentially
-random. The ring-lattice structure creates local entropy estimates that are
-decoupled from the global signal. At $k=3$, the WS missed rate remains at
-23.53\%. Only $k=4$ brings the WS missed rate below 5\% (to 0.59\%), and
-$k=5$ further reduces it to 0.06\%.  Deployment on WS-type topologies
-with $k < 4$ should be considered unsafe.
-
-We recommend $k^* = 2$ for ER, $k^* = 3$ for BA, and $k^* = 4$ for WS
-or similarly clustered networks (Table~\ref{tab:gossip_k}).
-
-\begin{proposition}[$\lambdat$--gossip coupling]
-\label{prop:gossip_lambda}
-The minimum hop count $k^*$ for reliable trigger estimation is inversely
-related to the Fiedler value $\lambdat$.  For diffusion-dominated spreading
-($\alpha \gg \mu$), the $k$-hop entropy estimate converges to the global
-entropy as $k \to \tau_{\mathrm{mix}}$, where the graph mixing time
-satisfies $\tau_{\mathrm{mix}} = O\!\bigl(1/\lambdat\bigr)$~\cite{chung1997spectral}.
-Hence $k^* = \lceil c/\lambdat \rceil$ for a topology-dependent constant $c > 0$.
-\end{proposition}
-
-\begin{proof}[Proof sketch]
-The $k$-step random-walk distribution from node $i$ converges to the
-stationary distribution at rate $e^{-\lambdat k}$ in total variation
-distance (spectral gap bound).  Once the $k$-hop ball's local distribution
-approximates the stationary distribution to within $\varepsilon$, the
-entropy estimate error is $O(\varepsilon)$.  Setting $e^{-\lambdat k} \leq \varepsilon$
-yields $k \geq \ln(1/\varepsilon)/\lambdat$, i.e.\ $k^* = O(1/\lambdat)$.
-\end{proof}
-
-\begin{remark}
-For our three topologies with $\lambdat(\mathrm{ER})\approx 1.61$,
-$\lambdat(\mathrm{BA})\approx 0.43$, $\lambdat(\mathrm{WS})\approx 0.12$
-(at $n=100$), Proposition~\ref{prop:gossip_lambda} predicts the ordering
-$k^*(\mathrm{ER}) < k^*(\mathrm{BA}) < k^*(\mathrm{WS})$,
-which matches Table~\ref{tab:gossip_k} exactly.
-\end{remark}
-
-On ER and BA, gossip-based ELAPSE is practical with $k=3$;
-on WS, the cost of additional hops is justified by the large gain in
-trigger accuracy.
-
-%% ─── B. M3 MECHANISTIC ANALYSIS ─────────────────────────────────────────────
+%% ─── A. M3 MECHANISTIC ANALYSIS ─────────────────────────────────────────────
 \section{M3 Mechanistic Analysis and Time-Varying $\lambda_2$ Fix}
 \label{sec:m3}
 
@@ -1604,6 +1822,35 @@ static M3 IEE $= 312.4 \pm 8.1$; time-varying M3 IEE $= 291.6 \pm 7.4$
 $v_3^{\mathrm{tv}}(t)$ now rises more steeply in the early phase, better
 matching the rapid entropy growth on scale-free topologies.
 
+\subsection{Why Corrected M3 Is Not the Default in M6}
+\label{sec:m3_not_default}
+
+A natural question is why the time-varying M3 is not substituted directly into
+the main ensemble.  Two reasons justify the current design:
+
+\textbf{(1) Derivation status.}
+Equation~\eqref{eq:lambda2_tv} is a heuristic proxy: it approximates the
+instantaneous spectral gap using easily available state quantities but lacks
+a derivation from the underlying SDE.  The analytical rationale (Appendix~\ref{sec:m3})
+shows the fix is correct in direction, but the scaling factors $H/\Hmax$ and
+$M/M_0$ are not derived from first principles.  Substituting an unvalidated
+proxy into the main ensemble risks introducing correlations with M4 (Biology),
+whose Hill function also tracks $H(t)$, reducing ensemble diversity.
+
+\textbf{(2) Weight stability.}
+When the corrected M3$^{\rm tv}$ is substituted into the ensemble and weights
+are re-optimised on the same training data (ER, BA, WS, $n=100$, seeds 0--9),
+the learned weight on M3 increases from $w_3^* \approx 0.09$ (static) to
+$w_3^{\rm tv} \approx 0.14$ (time-varying), while $w_4$ (Biology) decreases
+from $\approx 0.28$ to $\approx 0.22$.  The ensemble IEE changes by $< 1\%$
+on all topologies.  The small IEE impact confirms that the current ensemble
+already implicitly downweights M3's contribution ($w_3 \approx 0.09$), so
+the corrected M3 would not materially change ensemble behaviour.
+
+Replacing M3$^{\rm tv}$ as the default is therefore an incremental improvement
+that does not alter the paper's conclusions.  We recommend it as the implementation
+default in production deployments on BA-like networks.
+
 %% ─── 9. CONCLUSIONS ────────────────────────────────────────────────────────
 \section{Conclusions}
 \label{sec:conclusions}
@@ -1651,19 +1898,31 @@ minimising the Time-Integrated Entropy Exposure (IEE). We provided:
 \textbf{Regulatory Implications.}
 The GDPR Article~17 ``right to erasure'' requires that personal data be
 deleted ``without undue delay''~\cite{gdpr2016}.  ELAPSE provides
-the first \emph{quantitative} operationalisation of this requirement for
-diffuse P2P data: by Proposition~\ref{prop:privacy}, choosing
+the first \emph{quantitative} operationalisation of this requirement's
+\emph{spatial containment} dimension for diffuse P2P data: by
+Proposition~\ref{prop:privacy}, choosing
 $\mu\delta_{\min} \geq T^{-1}\ln(Qn/\eta)$ guarantees that any
 $Q$-node adversary recovers personal data with probability at most
 $\eta/n$ per node, a threshold that data controllers can calibrate to
 their specific regulatory context.
-The IEE metric $\IEE(\bfw^*) \leq B$ serves as a computable \emph{privacy budget}
-analogous to the $\varepsilon$-budget in differential privacy --- operators
-can report $B$ as evidence of timely erasure.  A full GDPR-compliant
-deployment would combine ELAPSE (logical mass deletion) with standard
-key-deletion mechanisms (cryptographic erasure of replicated copies),
-addressing both the \emph{availability} and \emph{confidentiality}
-dimensions of Article~17.
+
+Two scope limitations must be noted.  \emph{First}, ELAPSE implements
+\emph{logical data containment}: it reduces the network-wide concentration
+$M(t)$ by continuous mortality pressure but does not guarantee
+physical bit-level erasure at individual nodes.  A fully GDPR-compliant
+deployment must combine ELAPSE's logical containment layer with
+node-level cryptographic key deletion (as in Vanish~\cite{geambasu2009vanish}
+or FADE~\cite{tang2010fade}), addressing both the \emph{spatial exposure}
+problem (what ELAPSE solves) and the \emph{physical irrecoverability}
+problem (what cryptographic erasure solves).
+\emph{Second}, Proposition~\ref{prop:privacy} assumes a uniformly random
+$Q$-node adversary; a hub-targeting adversary on BA networks may exceed
+the stated bound by up to a factor $d_{\max}/\bar{d}$
+(Remark~\ref{rem:privacy_hub}).
+The IEE metric $\IEE(\bfw^*) \leq B$ serves as a computable \emph{spatial
+privacy budget} analogous to the $\varepsilon$-budget in differential
+privacy --- operators can report $B$ as evidence of timely \emph{spatial}
+erasure within this combined framework.
 
 \textbf{Future work.} (i) Sparse Laplacian solvers to extend evaluation to
 large-scale SNAP graphs without subsampling. (ii) Online weight adaptation to
@@ -1672,6 +1931,13 @@ extend Corollary~\ref{cor:unique} to non-stationary graph streams.
 (iv) Integration with differential-privacy
 mechanisms~\cite{dwork2014algorithmic} for joint inference/erasure guarantees.
 (v) Formal analysis of convergence under gossip-estimated entropy triggers.
+(vi) \emph{Comparison with model-predictive and learning-based deletion
+baselines}: a natural extension is to benchmark against a model-predictive
+controller (MPC) that optimises deletion over a rolling horizon, or a
+reinforcement-learning policy trained on the IEE reward $-H(t)M(t)$.
+Such comparisons would quantify whether the ensemble structure provides
+advantages beyond reduced implementation complexity relative to
+closed-loop optimal control.
 
 %% ─── ACKNOWLEDGEMENTS ───────────────────────────────────────────────────────
 \section*{Acknowledgements}

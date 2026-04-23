@@ -1,0 +1,135 @@
+% theorem1_revised.tex
+% Revised Theorem 1: Well-posedness of the ELAPSE SDE
+% Non-circular proof: local existence -> non-negativity -> global existence
+%                     -> uniqueness (in strict logical order).
+%
+% The original proof had a circular dependency: the Lyapunov argument
+% (global existence) invoked Markov's inequality on M(t)>0, which was
+% not yet established since non-negativity was proved later using global
+% existence. This revision removes that circularity via the Feller
+% boundary classification.
+%
+% References:
+%   [Ok03] Oksendal (2003) SDE 6th ed., Theorem 5.2.1 (Picard-Lindelof)
+%   [RY99] Revuz-Yor (1999) Brownian Motion, Theorem IX.3.7 (comparison)
+%   [Fe51] Feller (1951) Ann. Math. 54, pp. 173-182 (boundary classification)
+%   [YW71] Yamada-Watanabe (1971) (pathwise uniqueness for CIR)
+
+\begin{theorem}[Well-posedness of the ELAPSE SDE]
+\label{thm:wellposed}
+Fix $T>0$, $\alpha,\mu,\sigma_n>0$, source $s\ge 0$, and ensemble weight
+$w\in\mathcal{W}$.  Suppose $x_0\in\mathbb{R}^n_+$ (componentwise non-negative)
+and $x_{0,i}>0$ for at least one index $i$.  Then the ELAPSE SDE
+\begin{equation}
+  \mathrm{d}x_i = \underbrace{\bigl[-\alpha(Lx)_i - \mu\,\Delta(t;w)\,x_i + s_i\bigr]}_{b_i(x,t)}\mathrm{d}t
+                  + \sigma_n\sqrt{x_i}\,\mathrm{d}W_i, \quad i=1,\ldots,n,
+  \label{eq:elapse_sde_thm1}
+\end{equation}
+with independent Brownian motions $(W_i)$ on a filtered probability space,
+admits a unique strong solution $(x(t))_{t\in[0,T]}$ satisfying:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Local existence:} there exists a stopping time $\tau_K>0$ a.s.\
+    such that $x(t)$ is well-defined on $[0,\tau_K)$ for each compact
+    $K\subset\mathbb{R}^n_+$.
+  \item \textbf{Non-negativity:} $x_i(t)\ge 0$ for all $i$ and all
+    $t\in[0,\tau_K)$ a.s., without requiring global existence.
+  \item \textbf{Global existence:} the maximal solution interval is $[0,T]$;
+    i.e.\ $P(\tau_K<T)\to 0$ as $K\nearrow\mathbb{R}^n_+$.
+  \item \textbf{Pathwise uniqueness:} if $(x(t))$ and $(\tilde x(t))$ are
+    two solutions with $x(0)=\tilde x(0)=x_0$, then
+    $P(x(t)=\tilde x(t)\;\forall t\in[0,T])=1$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+We establish the four parts \emph{in strict logical order}, avoiding circular
+dependencies.
+
+\medskip
+\noindent\textbf{Step A: Local existence (part i).}
+On any compact $K=[-R,R]^n\cap\mathbb{R}^n_+$, the drift $b_i(x,t)$ is bounded
+and globally Lipschitz in $x$ (the Laplacian term is linear; the mortality term
+$-\mu\Delta(t)x_i$ is Lipschitz in $x_i$ since $\Delta\in[0,1]$; the source
+$s_i\ge 0$ is constant).
+The diffusion coefficient $\sigma_i(x)=\sigma_n\sqrt{x_i}$ satisfies
+$|\sigma_i(x)-\sigma_i(y)|\le\sigma_n|x_i-y_i|^{1/2}$, which is
+$1/2$-H\"older continuous, sufficient for strong existence by the
+Yamada--Watanabe criterion \cite{YamadaWatanabe1971}.
+By the SDE Picard--Lindel\"of theorem \cite[Thm.~5.2.1]{Oksendal2003},
+there exists a unique local strong solution on $[0,\tau_K)$ where
+$\tau_K=\inf\{t:\|x(t)\|>R\}$ is the first exit time from $K$.
+
+\medskip
+\noindent\textbf{Step B: Non-negativity on $[0,\tau_K)$ (part ii).}
+We establish non-negativity on the local solution interval \emph{without}
+appealing to global existence.
+Consider a single component $x_i$ on $[0,\tau_K)$.
+At the boundary $x_i=0$, the drift satisfies
+\begin{equation}
+  b_i(x,t)\big|_{x_i=0}
+  = \alpha\sum_{j\sim i} A_{ij}\,x_j + s_i
+  \;\ge\; 0,
+  \label{eq:inward_drift}
+\end{equation}
+since $A_{ij}\ge 0$ (adjacency matrix entries), $x_j\ge 0$ on $[0,\tau_K)$
+(by induction on the iteration/localisation), and $s_i\ge 0$.
+The diffusion coefficient vanishes: $\sigma_n\sqrt{0}=0$.
+By Feller's boundary classification \cite{Feller1951}, the combination of
+non-negative inward drift and vanishing diffusion at $x_i=0$ makes the
+boundary \emph{unattainable} from above: $x_i(t)$ cannot reach $0$ in finite
+time if $x_i(0)\ge 0$.  Formally, apply the comparison theorem
+\cite[Thm.~IX.3.7]{RevuzYor1999}: let $Y_i$ satisfy
+$\mathrm{d}Y_i=\sigma_n\sqrt{Y_i}\,\mathrm{d}W_i$ (zero-drift CIR boundary process)
+with $Y_i(0)=0$.  Since $b_i|_{x_i=0}\ge 0=$ (drift of $Y_i$), the comparison
+theorem gives $x_i(t)\ge Y_i(t)=0$ a.s.\ on $[0,\tau_K)$.
+
+Hence $x_i(t)\ge 0$ for all $i$ on $[0,\tau_K)$, established \emph{independently}
+of global existence.
+
+\medskip
+\noindent\textbf{Step C: Global existence (part iii).}
+\emph{Now} that non-negativity is established on $[0,\tau_K)$, we have
+$M(t)=\sum_i x_i(t)\ge 0$ on $[0,\tau_K)$.
+Apply Ito's formula to the Lyapunov function $V(x)=M(x)=\mathbf{1}^\top x$:
+\begin{equation}
+  \mathrm{d}M = \bigl[-\mu\,\Delta(t)\,M + \|s\|_1\bigr]\,\mathrm{d}t
+                + \sigma_n\sum_i\sqrt{x_i}\,\mathrm{d}W_i,
+  \label{eq:dM_lyapunov}
+\end{equation}
+using $\mathbf{1}^\top L=0$ (row-sum zero Laplacian).
+Taking expectations and using $\Delta(t)\ge 0$:
+\begin{equation}
+  \frac{\mathrm{d}}{\mathrm{d}t}\,\mathbb{E}[M(t)] \;\le\; \|s\|_1,
+  \quad\Rightarrow\quad
+  \mathbb{E}[M(t)] \;\le\; M_0 + \|s\|_1\,t \;<\; \infty \quad \forall\,t\in[0,T].
+  \label{eq:EM_bound}
+\end{equation}
+By Markov's inequality, $P(M(t)>R)\le(M_0+\|s\|_1 T)/R\to 0$ as $R\to\infty$.
+Combined with Doob's maximal inequality applied to the martingale part
+and a standard localisation argument (see \cite[Thm.~5.2.1]{Oksendal2003}),
+$P(\tau_K<T)\to 0$ as $K\nearrow\mathbb{R}^n_+$.
+Hence the solution exists globally on $[0,T]$.
+
+\medskip
+\noindent\textbf{Step D: Pathwise uniqueness (part iv).}
+Let $x(t)$ and $\tilde{x}(t)$ be two solutions with the same initial condition.
+Set $e_i=x_i-\tilde{x}_i$.  By the Yamada--Watanabe pathwise uniqueness
+criterion \cite{YamadaWatanabe1971}, it suffices to show that the diffusion
+coefficient $\sigma_i(x)=\sigma_n\sqrt{x_i}$ satisfies
+$|\sigma_i(x)-\sigma_i(y)|\le\rho(|x_i-y_i|)$ for a concave increasing
+$\rho$ with $\int_0^1 \rho^{-2}(u)\,\mathrm{d}u=\infty$.
+Taking $\rho(u)=\sigma_n\sqrt{u}$ gives $\int_0^1 u^{-1}\,\mathrm{d}u=+\infty$,
+satisfying the Yamada--Watanabe criterion.
+Combined with the Lipschitz drift established in Step~A, pathwise uniqueness follows.
+\end{proof}
+
+\begin{remark}[Logical ordering]
+\label{rem:thm1_ordering}
+The proof order---Steps A, B, C, D---is essential.  Non-negativity (Step~B) is
+established using only the local solution from Step~A, specifically via the
+Feller boundary argument that requires neither $M(t)>0$ nor global existence.
+The Lyapunov/Gronwall argument (Step~C) then \emph{uses} $M(t)\ge 0$ (proved in B)
+to conclude that $\mathbb{E}[M(t)]<\infty$, and hence that the solution cannot
+blow up.  Any proof that invokes $M(t)>0$ \emph{before} establishing
+non-negativity would be circular.
+\end{remark}

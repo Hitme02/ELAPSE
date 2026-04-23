@@ -20,18 +20,20 @@
 }
 
 @inproceedings{wolchok2010defeating,
-  title     = {Defeating Vanish with low-cost Sybil attacks against large {DHT}s},
+  title     = {Defeating {Vanish} with low-cost {Sybil} attacks against large {DHT}s},
   author    = {Wolchok, Scott and Hofmann, Owen S and Heninger, Nadia and Felten, Edward W
                and Halderman, J Alex and Rossbach, Christopher J and Waters, Brent
                and Witchel, Emmett},
-  booktitle = {NDSS},
+  booktitle = {Proceedings of the Network and Distributed System Security Symposium (NDSS)},
+  pages     = {1--16},
   year      = {2010}
 }
 
 @inproceedings{perlman2005ephemerizer,
   title     = {The ephemerizer: Making data disappear},
   author    = {Perlman, Radia},
-  booktitle = {IFIP TC-11 WG 11.4},
+  booktitle = {Proceedings of the IFIP TC-11 Working Group 11.4 on Network Security},
+  pages     = {1--14},
   year      = {2005}
 }
 
@@ -222,11 +224,13 @@
   doi     = {10.1561/0400000042}
 }
 
-@regulation{gdpr2016,
-  author  = {{European Parliament}},
-  title   = {Regulation (EU) 2016/679 — General Data Protection Regulation},
-  year    = {2016},
-  note    = {Official Journal of the European Union, L 119, 4 May 2016, pp.~1--88}
+@techreport{gdpr2016,
+  author      = {{European Parliament and Council of the European Union}},
+  title       = {Regulation ({EU}) 2016/679 on the Protection of Natural Persons
+                 with Regard to the Processing of Personal Data ({GDPR})},
+  institution = {Official Journal of the European Union},
+  year        = {2016},
+  note        = {L 119, 4 May 2016, pp.~1--88}
 }
 
 @techreport{ibm2024breach,
@@ -245,15 +249,15 @@
   url     = {https://www.verizon.com/business/resources/reports/dbir/}
 }
 
-@inproceedings{leskovec2007graph,
-  title     = {Graph evolution: Densification and shrinking diameters},
-  author    = {Leskovec, Jure and Kleinberg, Jon and Faloutsos, Christos},
-  booktitle = {ACM Transactions on Knowledge Discovery from Data},
-  volume    = {1},
-  number    = {1},
-  pages     = {2--es},
-  year      = {2007},
-  doi       = {10.1145/1217299.1217301}
+@article{leskovec2007graph,
+  title   = {Graph evolution: Densification and shrinking diameters},
+  author  = {Leskovec, Jure and Kleinberg, Jon and Faloutsos, Christos},
+  journal = {ACM Transactions on Knowledge Discovery from Data},
+  volume  = {1},
+  number  = {1},
+  pages   = {2},
+  year    = {2007},
+  doi     = {10.1145/1217299.1217301}
 }
 
 @misc{snapnets,
@@ -420,4 +424,118 @@
   journal = {ACM Transactions on Intelligent Systems and Technology},
   year    = {2025},
   doi     = {10.1145/3749987}
+}
+
+%% ── Standard network science references required for Physica A ──────────────
+
+@article{boccaletti2006complex,
+  title   = {Complex networks: Structure and dynamics},
+  author  = {Boccaletti, Stefano and Latora, Vito and Moreno, Yamir
+             and Chavez, Martin and Hwang, D.-U.},
+  journal = {Physics Reports},
+  volume  = {424},
+  number  = {4--5},
+  pages   = {175--308},
+  year    = {2006},
+  doi     = {10.1016/j.physrep.2005.10.009}
+}
+
+@article{newman2003structure,
+  title   = {The structure and function of complex networks},
+  author  = {Newman, Mark E. J.},
+  journal = {SIAM Review},
+  volume  = {45},
+  number  = {2},
+  pages   = {167--256},
+  year    = {2003},
+  doi     = {10.1137/S003614450342480}
+}
+
+@article{albert2002statistical,
+  title   = {Statistical mechanics of complex networks},
+  author  = {Albert, R{\'e}ka and Barab{\'a}si, Albert-L{\'a}szl{\'o}},
+  journal = {Reviews of Modern Physics},
+  volume  = {74},
+  number  = {1},
+  pages   = {47--97},
+  year    = {2002},
+  doi     = {10.1103/RevModPhys.74.47}
+}
+
+@article{pastor2001epidemic,
+  title   = {Epidemic spreading in scale-free networks},
+  author  = {Pastor-Satorras, Romualdo and Vespignani, Alessandro},
+  journal = {Physical Review Letters},
+  volume  = {86},
+  number  = {14},
+  pages   = {3200--3203},
+  year    = {2001},
+  doi     = {10.1103/PhysRevLett.86.3200}
+}
+
+@article{callaway2000network,
+  title   = {Network robustness and fragility: Percolation on random graphs},
+  author  = {Callaway, Duncan S and Newman, Mark E. J. and Strogatz, Steven H
+             and Watts, Duncan J},
+  journal = {Physical Review Letters},
+  volume  = {85},
+  number  = {25},
+  pages   = {5468--5471},
+  year    = {2000},
+  doi     = {10.1103/PhysRevLett.85.5468}
+}
+
+@article{newman2001random,
+  title   = {Random graphs with arbitrary degree distributions and their applications},
+  author  = {Newman, Mark E. J. and Strogatz, Steven H and Watts, Duncan J},
+  journal = {Physical Review E},
+  volume  = {64},
+  number  = {2},
+  pages   = {026118},
+  year    = {2001},
+  doi     = {10.1103/PhysRevE.64.026118}
+}
+
+@article{moreno2002epidemic,
+  title   = {Epidemic outbreaks in complex heterogeneous networks},
+  author  = {Moreno, Yamir and Pastor-Satorras, Romualdo and Vespignani, Alessandro},
+  journal = {European Physical Journal B},
+  volume  = {26},
+  number  = {4},
+  pages   = {521--529},
+  year    = {2002},
+  doi     = {10.1140/epjb/e20020122}
+}
+
+@article{jaynes1957information,
+  title   = {Information theory and statistical mechanics},
+  author  = {Jaynes, Edwin T},
+  journal = {Physical Review},
+  volume  = {106},
+  number  = {4},
+  pages   = {620--630},
+  year    = {1957},
+  doi     = {10.1103/PhysRev.106.620}
+}
+
+@article{vespignani2012modelling,
+  title   = {Modelling dynamical processes in complex socio-technical systems},
+  author  = {Vespignani, Alessandro},
+  journal = {Nature Physics},
+  volume  = {8},
+  number  = {1},
+  pages   = {32--39},
+  year    = {2012},
+  doi     = {10.1038/nphys2160}
+}
+
+@article{dorogovtsev2008critical,
+  title   = {Critical phenomena in complex networks},
+  author  = {Dorogovtsev, Sergey N and Goltsev, Alexander V and Mendes, Jose Fernando Ferreira},
+  journal = {Reviews of Modern Physics},
+  volume  = {80},
+  number  = {4},
+  pages   = {1275--1335},
+  year    = {2008},
+  doi     = {10.1103/RevModPhys.80.1275}
 }

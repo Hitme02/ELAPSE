@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.19)  2 APR 2026 08:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.19)  22 APR 2026 23:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -497,13 +497,13 @@ co-ef-fi-cient $\OML/cmm/m/it/12 ^^[[][]$\T1/cmr/m/n/12 ,
  []
 
 
-Overfull \hbox (4.67964pt too wide) in paragraph at lines 97--103
+Overfull \hbox (4.67964pt too wide) in paragraph at lines 97--109
 \T1/cmr/m/n/12 sis-tent with Hölder-$[]$ dif-fu-sion, ver-i-fied nu-mer-i-cally
 ). Sim-u-la-tion across Erd®s-
  []
 
 
-Overfull \hbox (11.62726pt too wide) in paragraph at lines 97--103
+Overfull \hbox (11.62726pt too wide) in paragraph at lines 97--109
 \T1/cmr/m/n/12 Rényi, Barabási-Albert, and Watts-Strogatz topolo-gies ($\OML/cm
 m/m/it/12 n \OMS/cmsy/m/n/12 2 f\OT1/cmr/m/n/12 50\OML/cmm/m/it/12 ; \OT1/cmr/m
 /n/12 100\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 200\OML/cmm/m/it/12 ; \OT1/cmr/m/n/
@@ -514,37 +514,71 @@ m/m/it/12 n \OMS/cmsy/m/n/12 2 f\OT1/cmr/m/n/12 50\OML/cmm/m/it/12 ; \OT1/cmr/m
 
 
 {/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2] [3] [4] [5] [6]
+[2] [3] [4]
 
-LaTeX Warning: Reference `eq:sde' on page 7 undefined on input line 296.
+LaTeX Warning: Reference `sec:gossip' on page 5 undefined on input line 214.
+
+
+LaTeX Warning: Reference `sec:gossip' on page 5 undefined on input line 229.
+
+[5] [6]
+
+LaTeX Warning: Reference `eq:sde' on page 7 undefined on input line 303.
 
 [7]
-Overfull \hbox (12.97816pt too wide) in paragraph at lines 311--313
+Overfull \hbox (12.97816pt too wide) in paragraph at lines 318--320
 []\T1/cmr/m/n/12 Table []1[] sum-marises how ELAPSE dif-fers from the three dom
 -i-nant paradigms
  []
 
 
-Overfull \hbox (32.74321pt too wide) in paragraph at lines 323--340
+Overfull \hbox (32.74321pt too wide) in paragraph at lines 330--347
  [][] 
  []
 
-[8]
-Overfull \hbox (1.19559pt too wide) in paragraph at lines 372--375
+
+LaTeX Warning: Reference `prop:gossip_lambda' on page 8 undefined on input line
+ 355.
+
+[8] [9]
+Overfull \hbox (1.19559pt too wide) in paragraph at lines 379--382
 \OT1/cmr/m/n/12 [0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1]$\T1/cmr/m/n/12 , mea-su
 r-ing ur-gency of era-sure. The com-pos-ite mor-tal-ity pres-sure $\OT1/cmr/m/n
 /12 ^^A(\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 ) =
  []
 
-[9] [10] [11] [12] [13]
-Overfull \hbox (2.39136pt too wide) in paragraph at lines 565--576
+[10] [11] [12]
+Overfull \hbox (7.52359pt too wide) in paragraph at lines 532--543
+\T1/cmr/m/it/12 with $\OT1/cmr/m/n/12 ^^A(\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 ; \
+OT1/cmr/bx/n/12 w\OT1/cmr/m/n/12 ) = \OT1/cmr/bx/n/12 w[]v\OT1/cmr/m/n/12 (\OML
+/cmm/m/it/12 t\OT1/cmr/m/n/12 )$\T1/cmr/m/it/12 , so that mech-a-nism $\OML/cmm
+/m/it/12 k$ \T1/cmr/m/it/12 con-tributes dele-tion rate $\OML/cmm/m/it/12 ^^Vw[
+]v[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )$
+ []
+
+[13]
+Overfull \hbox (1.82336pt too wide) in paragraph at lines 555--567
+\T1/cmr/m/it/12 product-of-experts $\OT1/cmr/m/n/12 ^^A[](\OML/cmm/m/it/12 t\OT
+1/cmr/m/n/12 ) = [][] \OML/cmm/m/it/12 v[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\O
+T1/cmr/m/n/12 )[]$ \T1/cmr/m/n/12 (ge-o-met-ric mean) and the \T1/cmr/m/it/12 m
+aximum-
+ []
+
+
+Overfull \hbox (10.5318pt too wide) in paragraph at lines 555--567
+\T1/cmr/m/n/12 and de-lays $\OT1/cmr/m/n/12 ^^A$ \T1/cmr/m/n/12 even when four 
+of five mech-a-nisms sig-nal high en-tropy. Maximum-
+ []
+
+[14] [15]
+Overfull \hbox (2.39136pt too wide) in paragraph at lines 634--645
 [][] \OML/cmm/m/it/12 h\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 r\OT1/cmr/m/n/12 )[] \
 OML/cmm/m/it/12 dr \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 ^^[[] [][] r[] dr \OT1/cm
 r/m/n/12 = +\OMS/cmsy/m/n/12 1$\T1/cmr/m/n/12 , ver-i-fy-ing the Yamada--Watana
 be Hölder-
  []
 
-[14] [15] [16] [17]
+[16] [17] [18] [19] [20]
 
 ! LaTeX Error: \mathrm allowed only in math mode.
 
@@ -552,13 +586,13 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.785 \emph{linearised} surrogate {\mathrm
+l.875 \emph{linearised} surrogate {\mathrm
                                           {lin}}$; the full nonlinear
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[18]
-Overfull \hbox (24.79936pt too wide) in paragraph at lines 813--820
+
+Overfull \hbox (24.79936pt too wide) in paragraph at lines 903--910
 []\T1/cmr/m/n/12 Homogeneous mor-tal-ity re-duces $\OML/cmm/m/it/12 M\OT1/cmr/m
 /n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )$ \T1/cmr/m/n/12 at rate $\OML/cmm/m/
 it/12 ^^V\OT1/cmr/m/n/12 ^^A(\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/
@@ -567,27 +601,32 @@ it/12 ^^V\OT1/cmr/m/n/12 ^^A(\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/
 \OMS/cmsy/m/n/12 ^^T
  []
 
-
-Overfull \hbox (0.70032pt too wide) in paragraph at lines 824--831
+[21]
+Overfull \hbox (0.70032pt too wide) in paragraph at lines 914--921
 \T1/cmr/m/it/12 the \T1/cmr/m/n/12 phys-i-cal re-cov-ery \T1/cmr/m/it/12 of dat
 a whose net-work life-time is con-trolled by ELAPSE.
  []
 
-[19] [20]
-Overfull \hbox (22.11346pt too wide) in paragraph at lines 881--884
+[22]
+
+LaTeX Warning: Reference `prop:hc_dominance' on page 23 undefined on input line
+ 960.
+
+
+Overfull \hbox (22.11346pt too wide) in paragraph at lines 985--988
 []\T1/cmr/m/n/12 Since ELAPSE ap-plies mor-tal-ity con-tin-u-ously from $\OML/c
 mm/m/it/12 t \OT1/cmr/m/n/12 = 0$\T1/cmr/m/n/12 , both $\OML/cmm/m/it/12 H\OT1/
 cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 ; \OT1/cmr/bx/n/12 w[]\OT1/cmr/m/
 n/12 ) \OMS/cmsy/m/n/12 ^^T
  []
 
-[21] [22] [23]
-<../../output/figures/fig1_entropy_n100.pdf, id=571, 1073.7765pt x 383.93437pt>
+[23] [24] [25] [26] [27]
+<../../output/figures/fig1_entropy_n100.pdf, id=604, 1073.7765pt x 383.93437pt>
 
 File: ../../output/figures/fig1_entropy_n100.pdf Graphic file (type pdf)
 <use ../../output/figures/fig1_entropy_n100.pdf>
 Package pdftex.def Info: ../../output/figures/fig1_entropy_n100.pdf  used on in
-put line 1011.
+put line 1173.
 (pdftex.def)             Requested size: 390.0pt x 139.44652pt.
  (../tables/t500_ER_M0.tex) (../tables/t500_BA_M0.tex)
 (../tables/t500_WS_M0.tex) (../tables/t500_ER_M1.tex) (../tables/t500_BA_M1.tex
@@ -597,108 +636,132 @@ put line 1011.
 (../tables/t500_ER_M4.tex) (../tables/t500_BA_M4.tex) (../tables/t500_WS_M4.tex
 ) (../tables/t500_ER_M5.tex) (../tables/t500_BA_M5.tex)
 (../tables/t500_WS_M5.tex) (../tables/t500_ER_M6.tex) (../tables/t500_BA_M6.tex
-) (../tables/t500_WS_M6.tex) [24 <../../output/figures/fig1_entropy_n100.pdf>]
-<../../output/figures/fig2_iee_n500.pdf, id=684, 1002.23494pt x 388.4579pt>
+) (../tables/t500_WS_M6.tex)
+<../../output/figures/fig2_iee_n500.pdf, id=609, 1002.23494pt x 388.4579pt>
 File: ../../output/figures/fig2_iee_n500.pdf Graphic file (type pdf)
 <use ../../output/figures/fig2_iee_n500.pdf>
 Package pdftex.def Info: ../../output/figures/fig2_iee_n500.pdf  used on input 
-line 1053.
+line 1216.
 (pdftex.def)             Requested size: 390.0pt x 151.1601pt.
-
-[25] [26 <../../output/figures/fig2_iee_n500.pdf>]
-<../../output/figures/fig3_weights_n100.pdf, id=776, 930.33571pt x 320.91206pt>
+ [28] [29 <../../output/figures/fig1_entropy_n100.pdf>] [30 <../../output/figur
+es/fig2_iee_n500.pdf>]
+<../../output/figures/fig3_weights_n100.pdf, id=806, 930.33571pt x 320.91206pt>
 
 File: ../../output/figures/fig3_weights_n100.pdf Graphic file (type pdf)
 <use ../../output/figures/fig3_weights_n100.pdf>
 Package pdftex.def Info: ../../output/figures/fig3_weights_n100.pdf  used on in
-put line 1108.
+put line 1278.
 (pdftex.def)             Requested size: 390.0pt x 134.52751pt.
- [27 <../../output/figures/fig3_weights_n100.pdf>]
-<../../output/figures/fig4_scaling.pdf, id=881, 709.24367pt x 388.04036pt>
+ [31 <../../output/figures/fig3_weights_n100.pdf>]
+<../../output/figures/fig4_scaling.pdf, id=912, 713.15494pt x 388.04036pt>
 File: ../../output/figures/fig4_scaling.pdf Graphic file (type pdf)
 <use ../../output/figures/fig4_scaling.pdf>
 Package pdftex.def Info: ../../output/figures/fig4_scaling.pdf  used on input l
-ine 1124.
-(pdftex.def)             Requested size: 390.0pt x 213.38141pt.
-<../../output/figures/fig5_sensitivity.pdf, id=885, 930.29117pt x 356.4837pt>
-File: ../../output/figures/fig5_sensitivity.pdf Graphic file (type pdf)
-<use ../../output/figures/fig5_sensitivity.pdf>
-Package pdftex.def Info: ../../output/figures/fig5_sensitivity.pdf  used on inp
-ut line 1164.
-(pdftex.def)             Requested size: 312.00119pt x 119.55467pt.
- [28 <../../output/figures/fig4_scaling.pdf>] [29 <../../output/figures/fig5_se
-nsitivity.pdf>] [30] (../tables/t_snap_g08_bfs_M6.tex)
-(../tables/t_snap_g31_bfs_M6.tex) [31] [32] [33] [34] [35]
-<../../output/figures/fig6_adversarial.pdf, id=1116, 929.91476pt x 710.45552pt>
+ine 1294.
+(pdftex.def)             Requested size: 390.0pt x 212.20905pt.
 
-File: ../../output/figures/fig6_adversarial.pdf Graphic file (type pdf)
-<use ../../output/figures/fig6_adversarial.pdf>
-Package pdftex.def Info: ../../output/figures/fig6_adversarial.pdf  used on inp
-ut line 1400.
-(pdftex.def)             Requested size: 390.0pt x 297.95566pt.
- [36 <../../output/figures/fig6_adversarial.pdf>] [37]
-<../../output/figures/fig7_gossip.pdf, id=1231, 1073.3756pt x 330.67665pt>
-File: ../../output/figures/fig7_gossip.pdf Graphic file (type pdf)
-<use ../../output/figures/fig7_gossip.pdf>
-Package pdftex.def Info: ../../output/figures/fig7_gossip.pdf  used on input li
-ne 1466.
-(pdftex.def)             Requested size: 390.0pt x 120.14851pt.
- [38 <../../output/figures/fig7_gossip.pdf>]
-[39]
+
+! LaTeX Error: File `fig5_sensitivity' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1336 ...s[width=0.8\textwidth]{fig5_sensitivity}
+                                                  
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[32 <../../output/figures/fig4_scaling.pdf>] [33]
+Overfull \hbox (3.42609pt too wide) in paragraph at lines 1370--1375
+[]\T1/cmr/bx/n/12 Moderately in-flu-en-tial \T1/cmr/m/n/12 ($\OT1/cmr/m/n/12 5%
+$\T1/cmr/m/n/12 --$\OT1/cmr/m/n/12 20%$\T1/cmr/m/n/12 ): $\OML/cmm/m/it/12 $ \
+T1/cmr/m/n/12 ($\OT1/cmr/m/n/12 +11%$ \T1/cmr/m/n/12 at $\OMS/cmsy/m/n/12 ^^@\O
+T1/cmr/m/n/12 50%$\T1/cmr/m/n/12 , be-cause slower
+ []
+
+[34] [35] [36] [37] (../tables/t_snap_g08_bfs_M6.tex)
+(../tables/t_snap_g31_bfs_M6.tex) [38] [39] [40]
+
+LaTeX Warning: Reference `sec:gossip' on page 41 undefined on input line 1635.
+
+[41] [42] [43]
+
+! LaTeX Error: File `fig6_adversarial' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1740 ...hics[width=\textwidth]{fig6_adversarial}
+                                                  
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1545.
+(hyperref)                removing `math shift' on input line 1763.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\lambda' on input line 1545.
+(hyperref)                removing `\lambda' on input line 1763.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 1545.
+(hyperref)                removing `subscript' on input line 1763.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1545.
+(hyperref)                removing `math shift' on input line 1763.
 
-<../../output/figures/fig8_m3_analysis.pdf, id=1337, 1002.20425pt x 391.74481pt
+[44]
+<../../output/figures/fig8_m3_analysis.pdf, id=1083, 1002.20425pt x 391.74481pt
 >
 File: ../../output/figures/fig8_m3_analysis.pdf Graphic file (type pdf)
 <use ../../output/figures/fig8_m3_analysis.pdf>
 Package pdftex.def Info: ../../output/figures/fig8_m3_analysis.pdf  used on inp
-ut line 1566.
+ut line 1784.
 (pdftex.def)             Requested size: 390.0pt x 152.44511pt.
-[40] [41 <../../output/figures/fig8_m3_analysis.pdf>]
-Overfull \hbox (5.96442pt too wide) in paragraph at lines 1617--1624
+ [45 <../../output/figures/fig8_m3_analysis.pdf>] [46] [47]
+Overfull \hbox (5.96442pt too wide) in paragraph at lines 1864--1871
 []\T1/cmr/m/n/12 Five the-o-ret-i-cal re-sults: well-posedness (The-o-rem []1[]
 ), spec-tral IEE bound
  []
 
 
-Overfull \hbox (7.00151pt too wide) in paragraph at lines 1624--1628
+Overfull \hbox (7.00151pt too wide) in paragraph at lines 1871--1875
 []\T1/cmr/m/n/12 Analytical dom-i-nance over chrono-log-i-cal timer (Propo-si-t
-ion []2[]): ELAPSE
+ion []3[]): ELAPSE
  []
 
-[42] [43] (./ELAPSE_CNSNS.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 19--22
+[48]
+
+LaTeX Warning: Reference `rem:privacy_hub' on page 49 undefined on input line 1
+921.
+
+[49] (./ELAPSE_CNSNS.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 20--23
 \T1/cmr/m/n/12 URL []$\T1/cmtt/m/n/12 https : / / www . verizon . com / busines
 s / resources / reports /
  []
 
-[44] [45] [46]
-Underfull \hbox (badness 1748) in paragraph at lines 128--130
+[50] [51] [52]
+Underfull \hbox (badness 1748) in paragraph at lines 130--132
 []\T1/cmr/m/n/12 A. Oester-ling, J. Ma, F. P. Cal-mon, Fair ma-chine un-learn-i
 ng:
  []
 
 
-Underfull \hbox (badness 1917) in paragraph at lines 128--130
+Underfull \hbox (badness 1917) in paragraph at lines 130--132
 \T1/cmr/m/n/12 Data re-moval while mit-i-gat-ing dis-parate im-pact, arXiv prep
 rint
  []
 
-[47] [48]) [49] (./ELAPSE_CNSNS.aux)
+[53] [54] [55]) [56] (./ELAPSE_CNSNS.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -707,20 +770,17 @@ L3 programming layer <2026-01-19>
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `ELAPSE_CNSNS.out' has not changed.
-(rerunfilecheck)             Checksum: 8E703D9849287A1C2B3105BAE4EDEDC6;10789.
+(rerunfilecheck)             Checksum: 8C7916F403CFA4B5FA711B8DAE58AE06;11291.
  ) 
 Here is how much of TeX's memory you used:
- 13712 strings out of 469006
- 216993 string characters out of 5454813
- 623239 words of memory out of 5000000
- 41921 multiletter control sequences out of 15000+600000
- 654451 words of font info for 109 fonts, out of 8000000 for 9000
+ 13765 strings out of 469006
+ 217667 string characters out of 5454813
+ 623989 words of memory out of 5000000
+ 41962 multiletter control sequences out of 15000+600000
+ 653685 words of font info for 108 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 75i,12n,79p,549b,688s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,599b,714s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/user/Library/texlive/2026basic/texmf-var/fonts/pk/ljfour/jknappen/ec
 /ectt1200.600pk> </Users/user/Library/texlive/2026basic/texmf-var/fonts/pk/ljfo
 ur/jknappen/ec/tcrm1200.600pk> </Users/user/Library/texlive/2026basic/texmf-var
@@ -763,10 +823,10 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026basi
 c/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive
 /2026basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/loca
 l/texlive/2026basic/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on ELAPSE_CNSNS.pdf (49 pages, 1400939 bytes).
+Output written on ELAPSE_CNSNS.pdf (56 pages, 1095631 bytes).
 PDF statistics:
- 2331 PDF objects out of 2487 (max. 8388607)
- 1008 compressed objects within 11 object streams
- 222 named destinations out of 1000 (max. 500000)
- 465 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2124 PDF objects out of 2487 (max. 8388607)
+ 1007 compressed objects within 11 object streams
+ 235 named destinations out of 1000 (max. 500000)
+ 442 words of extra memory for PDF output out of 10000 (max. 10000000)
 

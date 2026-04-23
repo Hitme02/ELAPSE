@@ -7,203 +7,224 @@
 \citation{snapnets}
 \Newlabel{rv}{a}
 \citation{gdpr2016}
-\citation{ibm2024breach}
-\citation{verizon2024dbir}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{3}{section.1}\protected@file@percent }
 \newlabel{sec:intro}{{1}{3}{Introduction}{section.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Motivation and Problem Statement}{3}{subsection.1.1}\protected@file@percent }
+\citation{ibm2024breach}
+\citation{verizon2024dbir}
 \citation{geambasu2009vanish}
 \citation{tang2010fade}
 \citation{barabasi1999emergence,pastor2015epidemic}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Limitations of Chronological Containment}{4}{subsection.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}The Entropy-Clock Approach}{4}{subsection.1.3}\protected@file@percent }
-\newlabel{eq:entropy}{{1}{4}{The Entropy-Clock Approach}{equation.1}{}}
-\citation{snapnets}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}The Entropy-Clock Approach}{5}{subsection.1.3}\protected@file@percent }
+\newlabel{eq:entropy}{{1}{5}{The Entropy-Clock Approach}{equation.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Contributions}{5}{subsection.1.4}\protected@file@percent }
+\citation{snapnets}
 \citation{pastor2015epidemic}
 \citation{zhao2024multi}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Paper Organisation}{6}{subsection.1.5}\protected@file@percent }
 \citation{shuman2013emerging}
 \citation{chamberlain2021grand}
 \citation{eliasof2024graph}
 \citation{fan2024graph}
 \citation{gao2016universal}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Paper Organisation}{6}{subsection.1.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{6}{section.2}\protected@file@percent }
-\newlabel{sec:related}{{2}{6}{Related Work}{section.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Information Diffusion and Entropy on Graphs}{6}{subsection.2.1}\protected@file@percent }
 \citation{geambasu2009vanish}
 \citation{wolchok2010defeating}
 \citation{tang2010fade}
 \citation{perlman2005ephemerizer}
 \citation{rondeau2021secure}
 \citation{truex2019hybrid}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{7}{section.2}\protected@file@percent }
+\newlabel{sec:related}{{2}{7}{Related Work}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Information Diffusion and Entropy on Graphs}{7}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Static and Active Data Containment}{7}{subsection.2.2}\protected@file@percent }
 \citation{bourtoule2021machine}
 \citation{nguyen2025survey}
 \citation{xu2023machine}
 \citation{oesterling2024fair}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Static and Active Data Containment}{7}{subsection.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Machine Unlearning and Algorithmic Forgetting}{7}{subsection.2.3}\protected@file@percent }
 \citation{dwork2014algorithmic}
 \citation{carmona2018probabilistic,achdou2020mean}
 \citation{bianchin2021online}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Machine Unlearning and Algorithmic Forgetting}{8}{subsection.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Differential Privacy and Information-Theoretic Bounds}{8}{subsection.2.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Control of Diffusion Processes on Graphs}{8}{subsection.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Comparison baselines: scope and limitations.}{9}{section*.1}\protected@file@percent }
 \citation{geambasu2009vanish,tang2010fade}
 \citation{bourtoule2021machine,xu2023machine}
 \citation{dwork2014algorithmic}
 \citation{karrer2011competing}
 \citation{guilbeault2018complex}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Positioning of ELAPSE}{9}{subsection.2.6}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of data-deletion paradigms. ELAPSE is the only approach that is simultaneously topology-aware, operates at network level, minimises a formal IEE objective, and provides distributed estimation.}}{9}{table.caption.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Positioning of ELAPSE}{10}{subsection.2.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of data-deletion paradigms. ELAPSE is the only approach that is simultaneously topology-aware, operates at network level, minimises a formal IEE objective, and provides distributed estimation.}}{10}{table.caption.2}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:positioning}{{1}{9}{Comparison of data-deletion paradigms. ELAPSE is the only approach that is simultaneously topology-aware, operates at network level, minimises a formal IEE objective, and provides distributed estimation}{table.caption.1}{}}
+\newlabel{tab:positioning}{{1}{10}{Comparison of data-deletion paradigms. ELAPSE is the only approach that is simultaneously topology-aware, operates at network level, minimises a formal IEE objective, and provides distributed estimation}{table.caption.2}{}}
 \citation{chung1997spectral}
-\@writefile{toc}{\contentsline {section}{\numberline {3}The Five Core Mechanisms}{10}{section.3}\protected@file@percent }
-\newlabel{sec:mechanisms}{{3}{10}{The Five Core Mechanisms}{section.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Network and Notation}{10}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}The Five Core Mechanisms}{11}{section.3}\protected@file@percent }
+\newlabel{sec:mechanisms}{{3}{11}{The Five Core Mechanisms}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Network and Notation}{11}{subsection.3.1}\protected@file@percent }
 \citation{oksendal2003stochastic}
 \citation{black1973pricing,uhlenbeck1930theory}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}M1: Entropy-Gated Diffusion Model (EGDM)}{11}{subsection.3.2}\protected@file@percent }
-\newlabel{eq:egdm}{{2}{11}{M1: Entropy-Gated Diffusion Model (EGDM)}{equation.2}{}}
-\newlabel{eq:v1}{{3}{11}{M1: Entropy-Gated Diffusion Model (EGDM)}{equation.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}M2: Epidemic-Entropy (Compartmental SIR)}{11}{subsection.3.3}\protected@file@percent }
-\newlabel{eq:sir}{{4}{11}{M2: Epidemic-Entropy (Compartmental SIR)}{equation.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}M1: Entropy-Gated Diffusion Model (EGDM)}{12}{subsection.3.2}\protected@file@percent }
+\newlabel{eq:egdm}{{2}{12}{M1: Entropy-Gated Diffusion Model (EGDM)}{equation.2}{}}
+\newlabel{eq:v1}{{3}{12}{M1: Entropy-Gated Diffusion Model (EGDM)}{equation.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}M2: Epidemic-Entropy (Compartmental SIR)}{12}{subsection.3.3}\protected@file@percent }
+\newlabel{eq:sir}{{4}{12}{M2: Epidemic-Entropy (Compartmental SIR)}{equation.4}{}}
 \citation{alon2019systems}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}M3: Stochastic-Finance (Ornstein-Uhlenbeck First-Passage)}{13}{subsection.3.4}\protected@file@percent }
+\newlabel{eq:finance}{{5}{13}{M3: Stochastic-Finance (Ornstein-Uhlenbeck First-Passage)}{equation.5}{}}
+\newlabel{eq:v3}{{6}{13}{M3: Stochastic-Finance (Ornstein-Uhlenbeck First-Passage)}{equation.6}{}}
+\newlabel{rem:m3_fix}{{1}{13}{M3 underperformance and recommended fix}{remark.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}M4: Biological Cooperative Binding (Hill Function)}{13}{subsection.3.5}\protected@file@percent }
+\newlabel{eq:hill}{{7}{13}{M4: Biological Cooperative Binding (Hill Function)}{equation.7}{}}
 \citation{watts2002simple,guilbeault2018complex}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}M3: Stochastic-Finance (Ornstein-Uhlenbeck First-Passage)}{12}{subsection.3.4}\protected@file@percent }
-\newlabel{eq:finance}{{5}{12}{M3: Stochastic-Finance (Ornstein-Uhlenbeck First-Passage)}{equation.5}{}}
-\newlabel{eq:v3}{{6}{12}{M3: Stochastic-Finance (Ornstein-Uhlenbeck First-Passage)}{equation.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}M4: Biological Cooperative Binding (Hill Function)}{12}{subsection.3.5}\protected@file@percent }
-\newlabel{eq:hill}{{7}{12}{M4: Biological Cooperative Binding (Hill Function)}{equation.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}M5: Sociological Cascade Pressure}{12}{subsection.3.6}\protected@file@percent }
-\newlabel{def:indicator}{{1}{13}{Indicator notation}{definition.1}{}}
-\newlabel{eq:social}{{8}{13}{M5: Sociological Cascade Pressure}{equation.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}The ELAPSE Ensemble}{13}{section.4}\protected@file@percent }
-\newlabel{sec:ensemble}{{4}{13}{The ELAPSE Ensemble}{section.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Ensemble Architecture}{13}{subsection.4.1}\protected@file@percent }
-\newlabel{eq:ensemble}{{9}{13}{Ensemble Architecture}{equation.9}{}}
-\newlabel{eq:iee}{{10}{13}{Ensemble Architecture}{equation.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}M5: Sociological Cascade Pressure}{14}{subsection.3.6}\protected@file@percent }
+\newlabel{def:indicator}{{1}{14}{Indicator notation}{definition.1}{}}
+\newlabel{eq:social}{{8}{14}{M5: Sociological Cascade Pressure}{equation.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}The ELAPSE Ensemble}{14}{section.4}\protected@file@percent }
+\newlabel{sec:ensemble}{{4}{14}{The ELAPSE Ensemble}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Ensemble Architecture}{14}{subsection.4.1}\protected@file@percent }
+\newlabel{eq:ensemble}{{9}{14}{Ensemble Architecture}{equation.9}{}}
+\newlabel{eq:iee}{{10}{15}{Ensemble Architecture}{equation.10}{}}
+\newlabel{rem:metric}{{2}{15}{Metric sensitivity}{remark.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Linear Vote Fusion: Derivation and Alternatives}{15}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:fusion_justification}{{4.2}{15}{Linear Vote Fusion: Derivation and Alternatives}{subsection.4.2}{}}
+\newlabel{prop:fusion}{{1}{15}{Linear fusion is the canonical implementation of additive-mortality control}{proposition.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Comparison with nonlinear fusion rules.}{16}{section*.3}\protected@file@percent }
 \citation{oksendal2003stochastic}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Entropy-Regularised Optimisation}{14}{subsection.4.2}\protected@file@percent }
-\newlabel{eq:objective}{{11}{14}{Entropy-Regularised Optimisation}{equation.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Theoretical Analysis}{14}{subsection.4.3}\protected@file@percent }
-\newlabel{sec:theory}{{4.3}{14}{Theoretical Analysis}{subsection.4.3}{}}
-\newlabel{thm:wellposed}{{1}{14}{Well-posedness of ELAPSE}{theorem.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Entropy-Regularised Optimisation}{17}{subsection.4.3}\protected@file@percent }
+\newlabel{eq:objective}{{11}{17}{Entropy-Regularised Optimisation}{equation.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Theoretical Analysis}{17}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:theory}{{4.4}{17}{Theoretical Analysis}{subsection.4.4}{}}
+\newlabel{thm:wellposed}{{1}{17}{Well-posedness of ELAPSE}{theorem.1}{}}
 \citation{feller1951two}
 \citation{revuzyor1999}
 \citation{revuzyor1999}
-\newlabel{lem:delta_pos}{{1}{15}{Positivity of deletion intensity}{lemma.1}{}}
-\newlabel{eq:delta_min}{{12}{15}{Positivity of deletion intensity}{equation.12}{}}
-\newlabel{thm:iee_bound}{{2}{16}{Spectral IEE bound}{theorem.2}{}}
-\newlabel{eq:iee_bound}{{13}{16}{Spectral IEE bound}{equation.13}{}}
-\newlabel{eq:iee_total}{{14}{16}{Spectral IEE bound}{equation.14}{}}
-\newlabel{cor:lambda2}{{1}{17}{Topology-refined IEE bound via algebraic connectivity}{corollary.1}{}}
-\newlabel{eq:tau_lambda}{{15}{17}{Topology-refined IEE bound via algebraic connectivity}{equation.15}{}}
-\newlabel{eq:iee_lambda2}{{16}{17}{Topology-refined IEE bound via algebraic connectivity}{equation.16}{}}
-\newlabel{eq:H_lower}{{17}{17}{Theoretical Analysis}{equation.17}{}}
+\newlabel{lem:delta_pos}{{1}{18}{Positivity of deletion intensity}{lemma.1}{}}
+\newlabel{eq:delta_min}{{12}{19}{Positivity of deletion intensity}{equation.12}{}}
+\newlabel{thm:iee_bound}{{2}{19}{Spectral IEE bound}{theorem.2}{}}
+\newlabel{eq:iee_bound}{{13}{19}{Spectral IEE bound}{equation.13}{}}
+\newlabel{eq:iee_total}{{14}{19}{Spectral IEE bound}{equation.14}{}}
+\newlabel{rem:det_bound}{{4}{20}{Scope: deterministic post-trigger bound}{remark.4}{}}
+\newlabel{cor:lambda2}{{1}{20}{Topology-refined IEE bound via algebraic connectivity}{corollary.1}{}}
+\newlabel{eq:tau_lambda}{{15}{20}{Topology-refined IEE bound via algebraic connectivity}{equation.15}{}}
 \citation{bollobas2006percolation}
-\newlabel{rem:percolation}{{1}{18}{Percolation-like transition at $\Hc $}{remark.1}{}}
-\newlabel{rem:lambda2}{{2}{18}{Quantitative topology ordering}{remark.2}{}}
-\newlabel{thm:lin_convex}{{3}{19}{Linearised IEE is convex in ensemble weights}{theorem.3}{}}
-\newlabel{eq:iee_lin}{{18}{19}{Linearised IEE is convex in ensemble weights}{equation.18}{}}
-\newlabel{eq:laplace_convex}{{19}{19}{Theoretical Analysis}{equation.19}{}}
-\newlabel{cor:unique}{{2}{19}{Unique regularised minimum}{corollary.2}{}}
+\newlabel{eq:iee_lambda2}{{16}{21}{Topology-refined IEE bound via algebraic connectivity}{equation.16}{}}
+\newlabel{eq:H_lower}{{17}{21}{Theoretical Analysis}{equation.17}{}}
+\newlabel{rem:percolation}{{5}{21}{Percolation-like transition at $\Hc $}{remark.5}{}}
+\newlabel{rem:lambda2}{{6}{22}{Quantitative topology ordering}{remark.6}{}}
+\newlabel{thm:lin_convex}{{3}{22}{Linearised IEE is convex in ensemble weights}{theorem.3}{}}
+\newlabel{eq:iee_lin}{{18}{22}{Linearised IEE is convex in ensemble weights}{equation.18}{}}
+\newlabel{eq:laplace_convex}{{19}{23}{Theoretical Analysis}{equation.19}{}}
+\newlabel{cor:unique}{{2}{23}{Unique regularised minimum}{corollary.2}{}}
+\newlabel{rem:corollary_scope}{{7}{23}{Scope of Corollary~\ref {cor:unique}}{remark.7}{}}
+\newlabel{prop:privacy}{{2}{23}{IEE bound implies residual-mass privacy guarantee}{proposition.2}{}}
+\citation{barabasi1999emergence}
 \citation{dwork2014algorithmic}
-\newlabel{rem:corollary_scope}{{3}{20}{Scope of Corollary~\ref {cor:unique}}{remark.3}{}}
-\newlabel{prop:privacy}{{1}{20}{IEE bound implies residual-mass privacy guarantee}{proposition.1}{}}
-\newlabel{eq:mass_recovery}{{20}{20}{IEE bound implies residual-mass privacy guarantee}{equation.20}{}}
-\newlabel{rem:dp}{{4}{20}{Relation to differential privacy}{remark.4}{}}
-\newlabel{prop:dominance}{{1}{21}{Approximate ensemble dominance}{conjecture.1}{}}
-\newlabel{rem:er_exception}{{5}{21}{ER exception}{remark.5}{}}
-\newlabel{prop:vs_timer}{{2}{21}{ELAPSE IEE is bounded above by the matched chronological timer}{proposition.2}{}}
-\newlabel{eq:iee_m7}{{21}{22}{ELAPSE IEE is bounded above by the matched chronological timer}{equation.21}{}}
-\newlabel{eq:elapse_vs_timer}{{22}{22}{ELAPSE IEE is bounded above by the matched chronological timer}{equation.22}{}}
-\newlabel{rem:m7}{{6}{22}{Calibrated comparison}{remark.6}{}}
+\newlabel{eq:mass_recovery}{{20}{24}{IEE bound implies residual-mass privacy guarantee}{equation.20}{}}
+\newlabel{rem:privacy_hub}{{8}{24}{Limitation: hub-targeted adversary}{remark.8}{}}
+\newlabel{rem:dp}{{9}{24}{Relation to differential privacy}{remark.9}{}}
+\newlabel{prop:dominance}{{1}{25}{Topology-matched ensemble competitiveness}{conjecture.1}{}}
+\newlabel{rem:m5_baseline}{{10}{26}{M5 as universal strong baseline}{remark.10}{}}
+\newlabel{prop:vs_timer}{{3}{26}{ELAPSE IEE is bounded above by the matched chronological timer}{proposition.3}{}}
+\newlabel{eq:iee_m7}{{22}{26}{ELAPSE IEE is bounded above by the matched chronological timer}{equation.22}{}}
+\newlabel{eq:elapse_vs_timer}{{23}{26}{ELAPSE IEE is bounded above by the matched chronological timer}{equation.23}{}}
+\newlabel{rem:m7}{{11}{27}{Calibrated comparison}{remark.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Numerical Convexity Verification}{27}{subsection.4.5}\protected@file@percent }
+\newlabel{sec:convexity}{{4.5}{27}{Numerical Convexity Verification}{subsection.4.5}{}}
+\citation{gao2012implementing}
+\citation{gao2012implementing}
+\@writefile{toc}{\contentsline {paragraph}{Convergence analysis for Nelder-Mead on the nonlinear surface.}{28}{section*.4}\protected@file@percent }
 \citation{kloeden1992numerical}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Numerical Convexity Verification}{23}{subsection.4.4}\protected@file@percent }
-\newlabel{sec:convexity}{{4.4}{23}{Numerical Convexity Verification}{subsection.4.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Euler--Maruyama Convergence Order}{23}{subsection.4.5}\protected@file@percent }
-\newlabel{sec:em_convergence}{{4.5}{23}{Euler--Maruyama Convergence Order}{subsection.4.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Nelder-Mead restart sensitivity: IEE mean $\pm $ std over 10 test seeds (ER and BA, $n=100$). CV $=$ std / mean. Variation across restart counts is $<0.4\%$, validating $r=2$.}}{29}{table.caption.5}\protected@file@percent }
+\newlabel{tab:restarts}{{2}{29}{Nelder-Mead restart sensitivity: IEE mean $\pm $ std over 10 test seeds (ER and BA, $n=100$). CV $=$ std / mean. Variation across restart counts is $<0.4\%$, validating $r=2$}{table.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Euler--Maruyama Convergence Order}{29}{subsection.4.6}\protected@file@percent }
+\newlabel{sec:em_convergence}{{4.6}{29}{Euler--Maruyama Convergence Order}{subsection.4.6}{}}
 \citation{erdos1960evolution}
 \citation{barabasi1999emergence}
 \citation{watts1998collective}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Euler-–Maruyama convergence for M1 (EGDM) on ER topology ($n=100$, 5 seeds, deterministic, $T=15$). IEE error relative to reference solution at $\Delta t = 0.005$. Relative error $<0.3\%$ at the working step size $\Delta t=0.02$, validating the numerical scheme. (Stochastic strong order $\tfrac  {1}{2}$ per Theorem~\ref {thm:wellposed}; deterministic Euler order $\sim 1$ observed here.)}}{24}{table.caption.2}\protected@file@percent }
-\newlabel{tab:em_conv}{{2}{24}{Euler-–Maruyama convergence for M1 (EGDM) on ER topology ($n=100$, 5 seeds, deterministic, $T=15$). IEE error relative to reference solution at $\Delta t = 0.005$. Relative error $<0.3\%$ at the working step size $\Delta t=0.02$, validating the numerical scheme. (Stochastic strong order $\tfrac {1}{2}$ per Theorem~\ref {thm:wellposed}; deterministic Euler order $\sim 1$ observed here.)}{table.caption.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Numerical Scale Analysis}{24}{section.5}\protected@file@percent }
-\newlabel{sec:results}{{5}{24}{Numerical Scale Analysis}{section.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Experimental Setup}{24}{subsection.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Entropy Trajectories}{25}{subsection.5.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Mean Shannon entropy trajectories $H(t)$ with 95\% CI bands ($N_{\mathrm  {test}}=20$ seeds, $n=100$). Each panel shows a topology; the dashed horizontal line marks $H_c= 0.65H_{\max }$. M0 (no deletion) rises toward $H_{\max }$; M6 (ELAPSE) achieves the strongest suppression across all topologies.}}{25}{figure.caption.3}\protected@file@percent }
-\newlabel{fig:entropy}{{1}{25}{Mean Shannon entropy trajectories $H(t)$ with 95\% CI bands ($N_{\mathrm {test}}=20$ seeds, $n=100$). Each panel shows a topology; the dashed horizontal line marks $\Hc = 0.65\Hmax $. M0 (no deletion) rises toward $\Hmax $; M6 (ELAPSE) achieves the strongest suppression across all topologies}{figure.caption.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}IEE Comparison at $n=500$}{26}{subsection.5.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces IEE (mean $\pm $ 95\% CI) at $n=500$ across all mechanisms and topologies ($N_{\mathrm  {test}}=20$ out-of-sample test seeds, seeds $10$--$29$; M6 weights learned on training seed~0 only). Units: nats\,$\times $\,data-mass\,$\times $\,time (scale with $n$ and $M_0$; see Section~\ref {sec:mechanisms}). Bold: minimum per topology.}}{26}{table.caption.4}\protected@file@percent }
-\newlabel{tab:iee500}{{3}{26}{IEE (mean $\pm $ 95\% CI) at $n=500$ across all mechanisms and topologies ($N_{\mathrm {test}}=20$ out-of-sample test seeds, seeds $10$--$29$; M6 weights learned on training seed~0 only). Units: nats\,$\times $\,data-mass\,$\times $\,time (scale with $n$ and $M_0$; see Section~\ref {sec:mechanisms}). Bold: minimum per topology}{table.caption.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}M5 vs M6 on Erd\H {o}s-R\'enyi: Statistical Analysis}{26}{subsection.5.4}\protected@file@percent }
-\newlabel{sec:iee_comparison}{{5.4}{26}{M5 vs M6 on Erd\H {o}s-R\'enyi: Statistical Analysis}{subsection.5.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces IEE bar chart at $n=500$ with 95\% CI error bars and SNAP real-world results (rightmost clusters). Lower = better containment. All values are out-of-sample ($N_{\mathrm  {test}}=20$).}}{27}{figure.caption.5}\protected@file@percent }
-\newlabel{fig:iee}{{2}{27}{IEE bar chart at $n=500$ with 95\% CI error bars and SNAP real-world results (rightmost clusters). Lower = better containment. All values are out-of-sample ($N_{\mathrm {test}}=20$)}{figure.caption.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Welch $t$-test: M5 vs M6 IEE on ER topology ($n=500$, $N_{\mathrm  {test}}=20$ out-of-sample seeds).}}{27}{table.caption.6}\protected@file@percent }
-\newlabel{tab:ttest}{{4}{27}{Welch $t$-test: M5 vs M6 IEE on ER topology ($n=500$, $N_{\mathrm {test}}=20$ out-of-sample seeds)}{table.caption.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Ensemble Weights}{28}{subsection.5.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces ELAPSE ensemble learned weights $\mathbf  {w}$ per topology at $n=100$, demonstrating distributed weight allocation under entropy regularisation $\lambda _{\mathrm  {reg}}=15$.}}{28}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:weights}{{3}{28}{ELAPSE ensemble learned weights $\bfw $ per topology at $n=100$, demonstrating distributed weight allocation under entropy regularisation $\lambda _{\mathrm {reg}}=15$}{figure.caption.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Scaling Behaviour}{29}{subsection.5.6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Mean IEE (averaged over 3 topologies, $N_{\mathrm  {test}}=20$ seeds) vs network size $n$, with SNAP BFS-hub data points. M6 (ELAPSE) achieves the lowest topology-averaged IEE at all scales. Note: on ER individually M5 outperforms M6 (Section~\ref {sec:iee_comparison}); the averaged line reflects BA+WS dominance outweighing the ER deficit.}}{29}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:scaling}{{4}{29}{Mean IEE (averaged over 3 topologies, $N_{\mathrm {test}}=20$ seeds) vs network size $n$, with SNAP BFS-hub data points. M6 (ELAPSE) achieves the lowest topology-averaged IEE at all scales. Note: on ER individually M5 outperforms M6 (Section~\ref {sec:iee_comparison}); the averaged line reflects BA+WS dominance outweighing the ER deficit}{figure.caption.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.7}Regularisation Sensitivity}{29}{subsection.5.7}\protected@file@percent }
-\newlabel{sec:sensitivity}{{5.7}{29}{Regularisation Sensitivity}{subsection.5.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Effect of $\lambda _{\mathrm  {reg}}$ on ensemble weights and IEE (BA topology, $n=200$). The elbow at $\lambda _{\mathrm  {reg}}=15$ balances IEE performance with weight diversity.}}{30}{table.caption.9}\protected@file@percent }
-\newlabel{tab:reg}{{5}{30}{Effect of $\lambda _{\mathrm {reg}}$ on ensemble weights and IEE (BA topology, $n=200$). The elbow at $\lambda _{\mathrm {reg}}=15$ balances IEE performance with weight diversity}{table.caption.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Sensitivity heatmap: IEE vs $H_c/H_{\max }$ and $\beta $ for M1 (left) and M5 (right) on ER ($n=100$). The colourbar measures IEE; darker = higher exposure. Both mechanisms are most sensitive to $H_c$; larger $\beta $ tightens the trigger at the cost of delayed response at low entropy.}}{30}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:sensitivity}{{5}{30}{Sensitivity heatmap: IEE vs $H_c/\Hmax $ and $\beta $ for M1 (left) and M5 (right) on ER ($n=100$). The colourbar measures IEE; darker = higher exposure. Both mechanisms are most sensitive to $H_c$; larger $\beta $ tightens the trigger at the cost of delayed response at low entropy}{figure.caption.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.8}Comparison with Chronological-Timer Baseline (M7)}{31}{subsection.5.8}\protected@file@percent }
-\newlabel{sec:m7_comparison}{{5.8}{31}{Comparison with Chronological-Timer Baseline (M7)}{subsection.5.8}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces IEE comparison: ELAPSE (M6) vs Vanish-style chronological timer (M7), at $n=500$ ($N_{\mathrm  {test}}=20$, seeds $10$--$29$). M7 uses a fixed timeout $t_{\mathrm  {timer}} = T/2 = 7.5$ (matching typical Vanish 8-hour DHT-churn window); M6 triggers adaptively at the mean entropy-crossing time $t^*$. Ratio $=$ IEE$_{M7}$ / IEE$_{M6}$; ratio $>1$ favours ELAPSE.}}{31}{table.caption.11}\protected@file@percent }
-\newlabel{tab:m7}{{6}{31}{IEE comparison: ELAPSE (M6) vs Vanish-style chronological timer (M7), at $n=500$ ($N_{\mathrm {test}}=20$, seeds $10$--$29$). M7 uses a fixed timeout $t_{\mathrm {timer}} = T/2 = 7.5$ (matching typical Vanish 8-hour DHT-churn window); M6 triggers adaptively at the mean entropy-crossing time $t^*$. Ratio $=$ IEE$_{M7}$ / IEE$_{M6}$; ratio $>1$ favours ELAPSE}{table.caption.11}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Euler-–Maruyama convergence for M1 (EGDM) on ER topology ($n=100$, 5 seeds, deterministic, $T=15$). IEE error relative to reference solution at $\Delta t = 0.005$. Relative error $<0.3\%$ at the working step size $\Delta t=0.02$, validating the numerical scheme. (Stochastic strong order $\tfrac  {1}{2}$ per Theorem~\ref {thm:wellposed}; deterministic Euler order $\sim 1$ observed here.)}}{30}{table.caption.6}\protected@file@percent }
+\newlabel{tab:em_conv}{{3}{30}{Euler-–Maruyama convergence for M1 (EGDM) on ER topology ($n=100$, 5 seeds, deterministic, $T=15$). IEE error relative to reference solution at $\Delta t = 0.005$. Relative error $<0.3\%$ at the working step size $\Delta t=0.02$, validating the numerical scheme. (Stochastic strong order $\tfrac {1}{2}$ per Theorem~\ref {thm:wellposed}; deterministic Euler order $\sim 1$ observed here.)}{table.caption.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Numerical Scale Analysis}{30}{section.5}\protected@file@percent }
+\newlabel{sec:results}{{5}{30}{Numerical Scale Analysis}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Experimental Setup}{30}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Entropy Trajectories}{31}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}IEE Comparison at $n=500$}{31}{subsection.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Mean Shannon entropy trajectories $H(t)$ with 95\% CI bands ($N_{\mathrm  {test}}=20$ seeds, $n=100$). Each panel shows a topology; the dashed horizontal line marks $H_c= 0.65H_{\max }$. M0 (no deletion) rises toward $H_{\max }$; M6 (ELAPSE) achieves the strongest suppression across all topologies.}}{32}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:entropy}{{1}{32}{Mean Shannon entropy trajectories $H(t)$ with 95\% CI bands ($N_{\mathrm {test}}=20$ seeds, $n=100$). Each panel shows a topology; the dashed horizontal line marks $\Hc = 0.65\Hmax $. M0 (no deletion) rises toward $\Hmax $; M6 (ELAPSE) achieves the strongest suppression across all topologies}{figure.caption.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces IEE (mean $\pm $ 95\% CI) at $n=500$ across all mechanisms and topologies ($N_{\mathrm  {test}}=20$ out-of-sample test seeds, seeds $10$--$29$). \textbf  {M6 uses weights trained on ER topology (seed~0) only; cross-topology M6 values therefore reflect ER-trained weights evaluated on BA/WS test sets, not topology-specific training.} Bold: per-topology minimum. Units: nats\,$\times $\,data-mass\,$\times $\,time.}}{32}{table.caption.8}\protected@file@percent }
+\newlabel{tab:iee500}{{4}{32}{IEE (mean $\pm $ 95\% CI) at $n=500$ across all mechanisms and topologies ($N_{\mathrm {test}}=20$ out-of-sample test seeds, seeds $10$--$29$). \textbf {M6 uses weights trained on ER topology (seed~0) only; cross-topology M6 values therefore reflect ER-trained weights evaluated on BA/WS test sets, not topology-specific training.} Bold: per-topology minimum. Units: nats\,$\times $\,data-mass\,$\times $\,time}{table.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces IEE bar chart at $n=500$ with 95\% CI error bars and SNAP real-world results (rightmost clusters). Lower = better containment. All values are out-of-sample ($N_{\mathrm  {test}}=20$).}}{33}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:iee}{{2}{33}{IEE bar chart at $n=500$ with 95\% CI error bars and SNAP real-world results (rightmost clusters). Lower = better containment. All values are out-of-sample ($N_{\mathrm {test}}=20$)}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}M5 vs M6: Cross-Topology Analysis}{33}{subsection.5.4}\protected@file@percent }
+\newlabel{sec:iee_comparison}{{5.4}{33}{M5 vs M6: Cross-Topology Analysis}{subsection.5.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Welch $t$-test: M5 vs M6 IEE on ER topology ($n=500$, $N_{\mathrm  {test}}=20$ out-of-sample seeds).}}{33}{table.caption.10}\protected@file@percent }
+\newlabel{tab:ttest}{{5}{33}{Welch $t$-test: M5 vs M6 IEE on ER topology ($n=500$, $N_{\mathrm {test}}=20$ out-of-sample seeds)}{table.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Ensemble Weights}{34}{subsection.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Scaling Behaviour}{34}{subsection.5.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces ELAPSE ensemble learned weights $\mathbf  {w}$ per topology at $n=100$, demonstrating distributed weight allocation under entropy regularisation $\lambda _{\mathrm  {reg}}=15$.}}{35}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:weights}{{3}{35}{ELAPSE ensemble learned weights $\bfw $ per topology at $n=100$, demonstrating distributed weight allocation under entropy regularisation $\lambda _{\mathrm {reg}}=15$}{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7}Regularisation Sensitivity}{35}{subsection.5.7}\protected@file@percent }
+\newlabel{sec:sensitivity}{{5.7}{35}{Regularisation Sensitivity}{subsection.5.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8}Parameter Sensitivity Discussion}{35}{subsection.5.8}\protected@file@percent }
+\newlabel{sec:param_sensitivity}{{5.8}{35}{Parameter Sensitivity Discussion}{subsection.5.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Mean IEE (averaged over 3 topologies, $N_{\mathrm  {test}}=20$ seeds) vs network size $n$, with SNAP BFS-hub data points. M5 (Social Cascade) achieves the lowest per-topology IEE when M6 uses ER-only training (Table~\ref {tab:iee500}); with topology-specific training, M6 achieves $1.7\%$ lower topology-averaged IEE than M5 (Section~\ref {sec:iee_comparison}). All mechanisms achieve at least $9\times $ IEE reduction over M0 at $n=500$.}}{36}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:scaling}{{4}{36}{Mean IEE (averaged over 3 topologies, $N_{\mathrm {test}}=20$ seeds) vs network size $n$, with SNAP BFS-hub data points. M5 (Social Cascade) achieves the lowest per-topology IEE when M6 uses ER-only training (Table~\ref {tab:iee500}); with topology-specific training, M6 achieves $1.7\%$ lower topology-averaged IEE than M5 (Section~\ref {sec:iee_comparison}). All mechanisms achieve at least $9\times $ IEE reduction over M0 at $n=500$}{figure.caption.12}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Effect of $\lambda _{\mathrm  {reg}}$ on ensemble weights and IEE (BA topology, $n=200$). The elbow at $\lambda _{\mathrm  {reg}}=15$ balances IEE performance with weight diversity.}}{36}{table.caption.13}\protected@file@percent }
+\newlabel{tab:reg}{{6}{36}{Effect of $\lambda _{\mathrm {reg}}$ on ensemble weights and IEE (BA topology, $n=200$). The elbow at $\lambda _{\mathrm {reg}}=15$ balances IEE performance with weight diversity}{table.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Sensitivity heatmap: IEE vs $H_c/H_{\max }$ and $\beta $ for M1 (left) and M5 (right) on ER ($n=100$). The colourbar measures IEE; darker = higher exposure. Both mechanisms are most sensitive to $H_c$; larger $\beta $ tightens the trigger at the cost of delayed response at low entropy.}}{37}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:sensitivity}{{5}{37}{Sensitivity heatmap: IEE vs $H_c/\Hmax $ and $\beta $ for M1 (left) and M5 (right) on ER ($n=100$). The colourbar measures IEE; darker = higher exposure. Both mechanisms are most sensitive to $H_c$; larger $\beta $ tightens the trigger at the cost of delayed response at low entropy}{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.9}Comparison with Chronological-Timer Baseline (M7)}{38}{subsection.5.9}\protected@file@percent }
+\newlabel{sec:m7_comparison}{{5.9}{38}{Comparison with Chronological-Timer Baseline (M7)}{subsection.5.9}{}}
+\citation{oksendal2003stochastic}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces IEE comparison: ELAPSE (M6) vs Vanish-style chronological timer (M7), at $n=500$ ($N_{\mathrm  {test}}=20$, seeds $10$--$29$). M7 uses a fixed timeout $t_{\mathrm  {timer}} = T/2 = 7.5$ (matching typical Vanish 8-hour DHT-churn window); M6 triggers adaptively at the mean entropy-crossing time $t^*$. Ratio $=$ IEE$_{M7}$ / IEE$_{M6}$; ratio $>1$ favours ELAPSE.}}{39}{table.caption.15}\protected@file@percent }
+\newlabel{tab:m7}{{7}{39}{IEE comparison: ELAPSE (M6) vs Vanish-style chronological timer (M7), at $n=500$ ($N_{\mathrm {test}}=20$, seeds $10$--$29$). M7 uses a fixed timeout $t_{\mathrm {timer}} = T/2 = 7.5$ (matching typical Vanish 8-hour DHT-churn window); M6 triggers adaptively at the mean entropy-crossing time $t^*$. Ratio $=$ IEE$_{M7}$ / IEE$_{M6}$; ratio $>1$ favours ELAPSE}{table.caption.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.10}Comparison with Greedy Myopic (Bang-Bang) Baseline (M8)}{39}{subsection.5.10}\protected@file@percent }
+\newlabel{sec:greedy}{{5.10}{39}{Comparison with Greedy Myopic (Bang-Bang) Baseline (M8)}{subsection.5.10}{}}
+\@writefile{toc}{\contentsline {paragraph}{Empirical result: bang-bang achieves lower IEE than M6.}{40}{section*.16}\protected@file@percent }
+\newlabel{prop:hc_dominance}{{4}{40}{M6 dominates M8 under threshold overestimation}{proposition.4}{}}
 \citation{snapnets,leskovec2007graph}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Real-World Network Validation}{32}{section.6}\protected@file@percent }
-\newlabel{sec:snap}{{6}{32}{Real-World Network Validation}{section.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Stanford SNAP Gnutella Datasets}{32}{subsection.6.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Topological statistics for SNAP Gnutella P2P subgraphs under two extraction strategies ($n_{\rm  sub} \approx 500$). BFS-hub samples the dense core; random sampling is less biased.}}{33}{table.caption.12}\protected@file@percent }
-\newlabel{tab:snap_stats}{{7}{33}{Topological statistics for SNAP Gnutella P2P subgraphs under two extraction strategies ($n_{\rm sub} \approx 500$). BFS-hub samples the dense core; random sampling is less biased}{table.caption.12}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Results on SNAP Subgraphs}{33}{subsection.6.2}\protected@file@percent }
-\newlabel{sec:snap_results}{{6.2}{33}{Results on SNAP Subgraphs}{subsection.6.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Topology of Gnutella P2P Networks and Sampling Limitations}{34}{subsection.6.3}\protected@file@percent }
-\newlabel{sec:snap_topology}{{6.3}{34}{Topology of Gnutella P2P Networks and Sampling Limitations}{subsection.6.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Adversarial Analysis}{35}{section.7}\protected@file@percent }
-\newlabel{sec:adversarial}{{7}{35}{Adversarial Analysis}{section.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Threat Model}{35}{subsection.7.1}\protected@file@percent }
-\newlabel{eq:adv_adj}{{23}{35}{Threat Model}{equation.23}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Adaptive $H_c$ Countermeasure}{36}{subsection.7.2}\protected@file@percent }
-\newlabel{eq:adaptive_hc}{{24}{36}{Adaptive \texorpdfstring {$H_c$}{Hc} Countermeasure}{equation.24}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Results}{36}{subsection.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{What ELAPSE provides that bang-bang does not.}{41}{section*.17}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces IEE comparison: M6 (ELAPSE ensemble) vs M8 (bang-bang greedy), $N_{\mathrm  {test}}=10$ seeds, $T=15$, $\Delta t=0.02$. Ratio $=$ IEE$_{M8}$ / IEE$_{M6}$; \textbf  {ratio $<1$ means M8 achieves lower IEE (M8 wins)}.}}{42}{table.caption.18}\protected@file@percent }
+\newlabel{tab:greedy}{{8}{42}{IEE comparison: M6 (ELAPSE ensemble) vs M8 (bang-bang greedy), $N_{\mathrm {test}}=10$ seeds, $T=15$, $\Delta t=0.02$. Ratio $=$ IEE$_{M8}$ / IEE$_{M6}$; \textbf {ratio $<1$ means M8 achieves lower IEE (M8 wins)}}{table.caption.18}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Real-World Network Validation}{42}{section.6}\protected@file@percent }
+\newlabel{sec:snap}{{6}{42}{Real-World Network Validation}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Stanford SNAP Gnutella Datasets}{42}{subsection.6.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Topological statistics for SNAP Gnutella P2P subgraphs under two extraction strategies ($n_{\rm  sub} \approx 500$). BFS-hub samples the dense core; random sampling is less biased.}}{43}{table.caption.19}\protected@file@percent }
+\newlabel{tab:snap_stats}{{9}{43}{Topological statistics for SNAP Gnutella P2P subgraphs under two extraction strategies ($n_{\rm sub} \approx 500$). BFS-hub samples the dense core; random sampling is less biased}{table.caption.19}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Results on SNAP Subgraphs}{43}{subsection.6.2}\protected@file@percent }
+\newlabel{sec:snap_results}{{6.2}{43}{Results on SNAP Subgraphs}{subsection.6.2}{}}
+\citation{snapnets}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Topology of Gnutella P2P Networks and Sampling Limitations}{44}{subsection.6.3}\protected@file@percent }
+\newlabel{sec:snap_topology}{{6.3}{44}{Topology of Gnutella P2P Networks and Sampling Limitations}{subsection.6.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Adversarial Analysis}{46}{section.7}\protected@file@percent }
+\newlabel{sec:adversarial}{{7}{46}{Adversarial Analysis}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Threat Model}{46}{subsection.7.1}\protected@file@percent }
+\newlabel{eq:adv_adj}{{24}{46}{Threat Model}{equation.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Adaptive $H_c$ Countermeasure}{48}{subsection.7.2}\protected@file@percent }
+\newlabel{eq:adaptive_hc}{{25}{48}{Adaptive \texorpdfstring {$H_c$}{Hc} Countermeasure}{equation.25}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Results: Attack A1 (Uniform) and A2 (Hub-Targeted)}{48}{subsection.7.3}\protected@file@percent }
+\newlabel{sec:adversarial_results}{{7.3}{48}{Results: Attack A1 (Uniform) and A2 (Hub-Targeted)}{subsection.7.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Adversarial degradation under Attack~A1 (uniform throttle): IEE vs attacker fraction $f$ for ER (left) and BA (right) topologies ($n=200$, $N=30$ seeds per $f$). Solid: no countermeasure. Dashed: adaptive $H_c$ countermeasure. Shaded: 95\% CI. BA is more susceptible due to hub concentration.}}{49}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:adversarial}{{6}{49}{Adversarial degradation under Attack~A1 (uniform throttle): IEE vs attacker fraction $f$ for ER (left) and BA (right) topologies ($n=200$, $N=30$ seeds per $f$). Solid: no countermeasure. Dashed: adaptive $\Hc $ countermeasure. Shaded: 95\% CI. BA is more susceptible due to hub concentration}{figure.caption.20}{}}
+\@writefile{toc}{\contentsline {paragraph}{Comparative fragility of bang-bang under attack.}{49}{section*.22}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Hub-targeted vs uniform attack comparison on BA ($n=200$, $f=0.3$, $N_{\mathrm  {test}}=10$ seeds, $H_c= 0.65H_{\max }$). Hub-targeted attack concentrates control on top-$\lceil 0.3n\rceil $ degree nodes; ratio $=$ IEE$_{\rm  attack}$ / IEE$_{\rm  clean}$.}}{50}{table.caption.21}\protected@file@percent }
+\newlabel{tab:hub_attack}{{10}{50}{Hub-targeted vs uniform attack comparison on BA ($n=200$, $f=0.3$, $N_{\mathrm {test}}=10$ seeds, $\Hc = 0.65\Hmax $). Hub-targeted attack concentrates control on top-$\lceil 0.3n\rceil $ degree nodes; ratio $=$ IEE$_{\rm attack}$ / IEE$_{\rm clean}$}{table.caption.21}{}}
 \@writefile{toc}{\let\numberline\tmptocnumberline}
-\@writefile{toc}{\contentsline {section}{\numberline {Appendix~A}Distributed Entropy Estimation (Gossip Protocol)}{37}{appendix.A}\protected@file@percent }
-\newlabel{sec:gossip}{{Appendix~A}{37}{Distributed Entropy Estimation (Gossip Protocol)}{appendix.A}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix~A.1}Motivation}{37}{subsection.A.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Adversarial degradation: IEE vs attacker fraction $f$ for ER (left) and BA (right) topologies ($n=200$, $N=30$ seeds per $f$). Solid: no countermeasure. Dashed: adaptive $H_c$ countermeasure. Shaded: 95\% CI. BA is more susceptible due to hub throttling.}}{38}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:adversarial}{{6}{38}{Adversarial degradation: IEE vs attacker fraction $f$ for ER (left) and BA (right) topologies ($n=200$, $N=30$ seeds per $f$). Solid: no countermeasure. Dashed: adaptive $\Hc $ countermeasure. Shaded: 95\% CI. BA is more susceptible due to hub throttling}{figure.caption.13}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix~A.2}Gossip-Protocol Approximation}{39}{subsection.A.2}\protected@file@percent }
-\newlabel{eq:gossip_H}{{A.1}{39}{Gossip-Protocol Approximation}{equation.A.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix~A.3}Trigger Accuracy}{39}{subsection.A.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix~A.4}Results}{39}{subsection.A.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {A.7}{\ignorespaces Gossip protocol entropy estimation: true $H(t)$ (black) vs $k=2$ (orange) and $k=3$ (teal) hop estimates across three topologies ($n=100$, $N=30$ seeds). Annotations give false-early (FE) and missed-trigger (MS) rates.}}{40}{figure.caption.14}\protected@file@percent }
-\newlabel{fig:gossip}{{A.7}{40}{Gossip protocol entropy estimation: true $H(t)$ (black) vs $k=2$ (orange) and $k=3$ (teal) hop estimates across three topologies ($n=100$, $N=30$ seeds). Annotations give false-early (FE) and missed-trigger (MS) rates}{figure.caption.14}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {A.8}{\ignorespaces Gossip accuracy: false-early rate (FE) and missed-trigger rate (MS) per topology and hop count $k$ ($n=100$, $N=30$ seeds). $\text  {$\mathsurround \z@ \mathchar "458$}$ marks the minimum $k$ achieving $\text  {MS} < 5\%$ per topology.}}{40}{table.caption.15}\protected@file@percent }
-\newlabel{tab:gossip_k}{{A.8}{40}{Gossip accuracy: false-early rate (FE) and missed-trigger rate (MS) per topology and hop count $k$ ($n=100$, $N=30$ seeds). $\checkmark $ marks the minimum $k$ achieving $\text {MS} < 5\%$ per topology}{table.caption.15}{}}
-\citation{chung1997spectral}
-\newlabel{prop:gossip_lambda}{{3}{41}{$\lambdat $--gossip coupling}{proposition.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {Appendix~B}M3 Mechanistic Analysis and Time-Varying $\lambda _2$ Fix}{42}{appendix.B}\protected@file@percent }
-\newlabel{sec:m3}{{Appendix~B}{42}{M3 Mechanistic Analysis and Time-Varying $\lambda _2$ Fix}{appendix.B}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix~B.1}Performance Gap}{42}{subsection.B.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix~B.2}Fiedler-Value Hypothesis}{42}{subsection.B.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {B.8}{\ignorespaces Individual mechanism votes $v_k(t)$ on BA (left) and ER (right) topologies ($n=200$, mean $\pm $ 1 std over 30 seeds). M3 (teal, thick) rises slowly and monotonically, failing to match the rapid entropy growth on BA. M4 (Biology) saturates early, driving the ensemble.}}{42}{figure.caption.16}\protected@file@percent }
-\newlabel{fig:m3}{{B.8}{42}{Individual mechanism votes $v_k(t)$ on BA (left) and ER (right) topologies ($n=200$, mean $\pm $ 1 std over 30 seeds). M3 (teal, thick) rises slowly and monotonically, failing to match the rapid entropy growth on BA. M4 (Biology) saturates early, driving the ensemble}{figure.caption.16}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix~B.3}Root Cause and Proposed Fix}{43}{subsection.B.3}\protected@file@percent }
-\newlabel{eq:lambda2_tv}{{B.1}{43}{Root Cause and Proposed Fix}{equation.B.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {Appendix~C}Conclusions}{43}{appendix.C}\protected@file@percent }
-\newlabel{sec:conclusions}{{Appendix~C}{43}{Conclusions}{appendix.C}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {Appendix~A}M3 Mechanistic Analysis and Time-Varying $\lambda _2$ Fix}{51}{appendix.A}\protected@file@percent }
+\newlabel{sec:m3}{{Appendix~A}{51}{M3 Mechanistic Analysis and Time-Varying $\lambda _2$ Fix}{appendix.A}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix~A.1}Performance Gap}{51}{subsection.A.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix~A.2}Fiedler-Value Hypothesis}{51}{subsection.A.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {A.7}{\ignorespaces Individual mechanism votes $v_k(t)$ on BA (left) and ER (right) topologies ($n=200$, mean $\pm $ 1 std over 30 seeds). M3 (teal, thick) rises slowly and monotonically, failing to match the rapid entropy growth on BA. M4 (Biology) saturates early, driving the ensemble.}}{51}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:m3}{{A.7}{51}{Individual mechanism votes $v_k(t)$ on BA (left) and ER (right) topologies ($n=200$, mean $\pm $ 1 std over 30 seeds). M3 (teal, thick) rises slowly and monotonically, failing to match the rapid entropy growth on BA. M4 (Biology) saturates early, driving the ensemble}{figure.caption.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix~A.3}Root Cause and Proposed Fix}{52}{subsection.A.3}\protected@file@percent }
+\newlabel{eq:lambda2_tv}{{A.1}{52}{Root Cause and Proposed Fix}{equation.A.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix~A.4}Why Corrected M3 Is Not the Default in M6}{52}{subsection.A.4}\protected@file@percent }
+\newlabel{sec:m3_not_default}{{Appendix~A.4}{52}{Why Corrected M3 Is Not the Default in M6}{subsection.A.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {Appendix~B}Conclusions}{53}{appendix.B}\protected@file@percent }
+\newlabel{sec:conclusions}{{Appendix~B}{53}{Conclusions}{appendix.B}{}}
 \citation{gdpr2016}
+\citation{geambasu2009vanish}
+\citation{tang2010fade}
 \citation{dwork2014algorithmic}
 \citation{snapnets}
 \bibstyle{elsarticle-num}
@@ -245,9 +266,10 @@
 \bibcite{feller1951two}{{35}{}{{}}{{}}}
 \bibcite{revuzyor1999}{{36}{}{{}}{{}}}
 \bibcite{bollobas2006percolation}{{37}{}{{}}{{}}}
-\bibcite{kloeden1992numerical}{{38}{}{{}}{{}}}
-\bibcite{erdos1960evolution}{{39}{}{{}}{{}}}
-\bibcite{watts1998collective}{{40}{}{{}}{{}}}
-\bibcite{leskovec2007graph}{{41}{}{{}}{{}}}
+\bibcite{gao2012implementing}{{38}{}{{}}{{}}}
+\bibcite{kloeden1992numerical}{{39}{}{{}}{{}}}
+\bibcite{erdos1960evolution}{{40}{}{{}}{{}}}
+\bibcite{watts1998collective}{{41}{}{{}}{{}}}
+\bibcite{leskovec2007graph}{{42}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\gdef \@abspage@last{51}
+\gdef \@abspage@last{62}

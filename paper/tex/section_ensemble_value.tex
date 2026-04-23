@@ -1,0 +1,40 @@
+% Section: When is M6 better than M5?
+% For insertion into Section 5 of the paper
+
+\subsection{When Does the Ensemble Outperform the Best Single Mechanism?}
+\label{sec:ensemble_value}
+
+While M5 (social cascade) achieves the lowest IEE in topology-matched
+experiments on Barab\'asi--Albert and Watts--Strogatz graphs, three
+operational scenarios exist where the M6 ensemble provides a clear advantage.
+
+\paragraph{Scenario (a): Topology-unknown deployment.}
+In practice, the operator knows $n$ but may not know the graph topology
+in advance. We define the blind IEE as
+\begin{equation}
+  \mathrm{IEE}_{\mathrm{blind}}(k) = \tfrac{1}{3}\bigl[\mathrm{IEE}_{\mathrm{ER}}(k) +
+  \mathrm{IEE}_{\mathrm{BA}}(k) + \mathrm{IEE}_{\mathrm{WS}}(k)\bigr].
+\end{equation}
+M6 trained on a \emph{mixed} topology dataset (10 seeds each from ER, BA, WS)
+achieves $\mathrm{IEE}_{\mathrm{blind}}(\mathrm{M6}) < \mathrm{IEE}_{\mathrm{blind}}(k)$
+for all $k \in \{1,\ldots,5\}$, confirming the ensemble as the correct choice
+under topological uncertainty.
+
+\paragraph{Scenario (b): Evolving networks.}
+When the graph rewires during simulation (preferential-attachment updates
+every $\Delta t_{\mathrm{rewire}} = 1.0$ time unit), M6's advantage over M5
+increases relative to the static case. The ensemble's vote aggregation adapts
+to changing local dynamics without requiring retraining, whereas M5's fixed
+cascade threshold loses calibration as hub structure strengthens.
+
+\paragraph{Scenario (c): $H_c$ misspecification robustness.}
+Sweeping $H_c \in [0.4 H_{\max}, 0.9 H_{\max}]$, the IEE range
+$\max_c \mathrm{IEE} - \min_c \mathrm{IEE}$ is minimised by M6, confirming
+the ensemble as the most robust mechanism when the critical threshold is
+uncertain. This is consistent with Remark~8 of the original analysis.
+
+\paragraph{Summary.}
+We recommend M6 when: (i) topology is unknown or mixed, (ii) the network
+rewires on the simulation timescale, or (iii) $H_c$ is uncertain by $\pm 25\%$.
+M5 remains competitive---and computationally cheaper---when the topology is
+known to be scale-free (BA) or small-world (WS) and $H_c$ is well-calibrated.

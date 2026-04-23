@@ -1,0 +1,19 @@
+\begin{table}[htbp]
+\caption{Mean IEE ($\pm$ 95\% CI) for all mechanisms under 5-fold cross-validated weight learning ($n=100$, $N=50$ seeds per topology). M6(topo-matched) uses weights learned on the same topology; M6(mixed) uses weights learned jointly on all three topologies. Bold values denote the minimum per topology column.}
+\label{tab:iee_main_cv}
+\centering
+\begin{tabular}{lcccc}
+\toprule
+Mechanism & ER (5-fold CV) & BA (5-fold CV) & WS (5-fold CV) & Mixed-topo mean \\
+\midrule
+M0 (Baseline) & 1037.74 $\pm$ 9.44 & 1029.45 $\pm$ 9.33 & 1025.30 $\pm$ 9.31 & 1030.83 \\
+M1 (EGDM) & 78.54 $\pm$ 0.52 & 104.85 $\pm$ 1.07 & 103.03 $\pm$ 1.52 & 95.47 \\
+M2 (Epidemic) & 285.40 $\pm$ 0.34 & 213.96 $\pm$ 0.73 & 263.85 $\pm$ 5.12 & 254.40 \\
+M3 (Finance) & 204.09 $\pm$ 1.01 & 254.87 $\pm$ 1.44 & 389.62 $\pm$ 2.50 & 282.86 \\
+M4 (Biology) & 78.37 $\pm$ 0.48 & 77.44 $\pm$ 0.48 & 77.50 $\pm$ 0.48 & 77.77 \\
+M5 (Social) & \textbf{67.46 $\pm$ 0.53} & \textbf{68.48 $\pm$ 1.05} & \textbf{69.86 $\pm$ 1.39} & 68.60 \\
+M6 (ELAPSE, topo-matched) & 89.81 $\pm$ 0.83 & 100.33 $\pm$ 0.85 & 99.30 $\pm$ 0.98 & 96.48 \\
+M6 (ELAPSE, mixed-trained) & 89.00 $\pm$ 0.78 & 103.86 $\pm$ 1.00 & 102.49 $\pm$ 1.13 & 98.45 \\
+\bottomrule
+\end{tabular}
+\end{table}
