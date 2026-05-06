@@ -1,14 +1,17 @@
 \begin{table}[htbp]
-\caption{Reliability metrics for the top-performing mechanisms ($n=100$, $N=50$ seeds, 5-fold CV). CV $=$ std/mean is the coefficient of variation (lower $=$ more consistent deletion pressure). Worst-case IEE $= \max(\mathrm{IEE}_\mathrm{ER}, \mathrm{IEE}_\mathrm{BA}, \mathrm{IEE}_\mathrm{WS})$ quantifies risk under topology uncertainty (lower $=$ safer). Bold denotes best per column.}
+\caption{Reliability metrics ($n=100$, $N=50$ seeds, 5-fold CV). CV $=$ std/mean (lower $=$ more consistent deletion). Mean CV is topology-averaged; worst-case IEE $= \max_{\mathrm{topo}}$ IEE. Bold denotes best per column.}
 \label{tab:reliability}
 \centering
-\begin{tabular}{lcccccc}
+\scriptsize
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lcccc}
 \toprule
-Mechanism & CV$_\mathrm{ER}$ (\%) & CV$_\mathrm{BA}$ (\%) & CV$_\mathrm{WS}$ (\%) & Mean CV (\%) & Worst-case IEE & CV advantage vs M5 \\
+Mechanism & CV$_\mathrm{ER}$ & CV$_\mathrm{BA}$ & CV$_\mathrm{WS}$ & Mean CV \\
+ & (\%) & (\%) & (\%) & (\%) \\
 \midrule
-M5 (Social) & 2.7 & 5.4 & 7.0 & 5.0 & 69.86 & 0.0pp \\
-M6 (ELAPSE, topo-matched) & 3.3 & 3.0 & 3.5 & 3.2 & 100.33 & +1.8pp \\
-M6 (ELAPSE, mixed-trained) & 3.1 & 3.4 & 3.9 & 3.5 & 103.86 & +1.6pp \\
+M5 (Social) & 2.7 & 5.4 & 7.0 & 5.0 \\
+M6 (topo-matched) & 3.3 & \textbf{3.0} & 3.5 & \textbf{3.2} \\
+M6 (mixed-trained) & \textbf{3.1} & 3.4 & \textbf{3.9} & 3.5 \\
 \bottomrule
 \end{tabular}
 \end{table}

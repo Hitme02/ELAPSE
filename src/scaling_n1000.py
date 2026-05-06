@@ -161,8 +161,8 @@ def plot_scaling(results):
 
         # Mark n=1000 point
         ax.axvline(1000, color='gray', linestyle=':', linewidth=1, alpha=0.6)
-        ax.text(1050, ax.get_ylim()[0] if ax.get_ylim()[0] > 0 else 0.01,
-                'n=1000\n(new)', fontsize=8, color='gray', va='bottom')
+        ax.text(0.97, 0.03, 'n=1000\n(new)', fontsize=8, color='gray',
+                va='bottom', ha='right', transform=ax.transAxes)
 
         # Power-law fits
         alpha_m5, c_m5 = power_law_fit(ns, m5_mean)

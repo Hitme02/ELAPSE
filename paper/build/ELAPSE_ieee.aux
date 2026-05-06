@@ -5,30 +5,30 @@
 \citation{geambasu2009vanish}
 \citation{perlman2005ephemerizer}
 \citation{douceur2002sybil,tang2010fade}
-\citation{pastor2015epidemic}
-\citation{zhao2024multi}
-\citation{chamberlain2021grand}
-\citation{eliasof2024graph}
-\citation{gao2016universal}
+\citation{mohan2025realtime}
+\citation{sailaja2025stochastic}
 \citation{geambasu2009vanish,tang2010fade,perlman2005ephemerizer}
-\citation{wolchok2010defeating,douceur2002sybil}
+\citation{douceur2002sybil,wolchok2010defeating}
 \citation{bourtoule2021machine}
 \citation{juliussen2023algorithms}
 \citation{oesterling2024fair}
-\citation{watts2002simple,guilbeault2018complex}
-\citation{karrer2011competing}
-\citation{alon2019systems}
+\citation{pastor2015epidemic}
+\citation{sailaja2025stochastic}
+\citation{zhao2024multi}
+\citation{gao2016universal}
+\citation{chamberlain2021grand,eliasof2024graph}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{1}{section.2}\protected@file@percent }
 \newlabel{sec:related}{{II}{1}{Related Work}{section.2}{}}
-\citation{pastor2015epidemic}
-\citation{black1973pricing}
+\citation{mohan2025realtime}
+\citation{watts2002simple,guilbeault2018complex}
+\citation{karrer2011competing}
+\citation{alon2019systems}
+\citation{pastor2015epidemic,sailaja2025stochastic}
+\citation{black1973pricing,mohan2025realtime}
 \citation{uhlenbeck1930theory}
 \citation{alon2019systems}
 \citation{watts2002simple}
-\citation{oksendal2003stochastic}
-\citation{feller1951two}
-\citation{revuzyor1999}
 \@writefile{toc}{\contentsline {section}{\numberline {III}The Five Core Mechanisms}{2}{section.3}\protected@file@percent }
 \newlabel{sec:mechanisms}{{III}{2}{The Five Core Mechanisms}{section.3}{}}
 \newlabel{eq:entropy}{{1}{2}{The Five Core Mechanisms}{equation.1}{}}
@@ -37,44 +37,52 @@
 \newlabel{sec:ensemble}{{IV}{2}{The ELAPSE Ensemble (M6)}{section.4}{}}
 \newlabel{eq:ensemble}{{5}{2}{The ELAPSE Ensemble (M6)}{equation.5}{}}
 \newlabel{eq:iee}{{6}{2}{The ELAPSE Ensemble (M6)}{equation.6}{}}
-\newlabel{lem:convex}{{1}{2}{Convexity of IEE under linearisation}{lemma.1}{}}
-\newlabel{prop:dominance}{{1}{2}{Ensemble dominance at the theoretical optimum}{proposition.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Theoretical Results}{2}{section.5}\protected@file@percent }
-\newlabel{sec:theory}{{V}{2}{Theoretical Results}{section.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Well-posedness (Non-circular Proof)}{2}{subsection.5.1}\protected@file@percent }
-\newlabel{thm:wellposed}{{1}{2}{Well-posedness of the ELAPSE SDE}{theorem.1}{}}
+\newlabel{prop:dominance}{{1}{2}{Theoretical ensemble dominance}{proposition.1}{}}
+\citation{oksendal2003stochastic}
+\citation{feller1951two}
 \citation{revuzyor1999}
-\citation{gao2016universal}
+\newlabel{rem:m6wins}{{1}{3}{M6 is the correct deployment choice}{remark.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Theoretical Results}{3}{section.5}\protected@file@percent }
+\newlabel{sec:theory}{{V}{3}{Theoretical Results}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Well-posedness (Non-circular Proof)}{3}{subsection.5.1}\protected@file@percent }
+\newlabel{thm:wellposed}{{1}{3}{Well-posedness of the ELAPSE SDE}{theorem.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Stochastic IEE Upper Bound}{3}{subsection.5.2}\protected@file@percent }
 \newlabel{thm:iee_bound}{{2}{3}{IEE bound for the full stochastic system}{theorem.2}{}}
-\newlabel{eq:M2_bound}{{7}{3}{IEE bound for the full stochastic system}{equation.7}{}}
-\newlabel{eq:iee_bound}{{8}{3}{IEE bound for the full stochastic system}{equation.8}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}It\^{o}-Corrected Spectral Decay}{3}{subsection.5.3}\protected@file@percent }
-\newlabel{cor:spectral}{{1}{3}{Spectral decay of normalised distribution}{corollary.1}{}}
-\newlabel{eq:spectral_bound}{{9}{3}{Spectral decay of normalised distribution}{equation.9}{}}
+\newlabel{cor:spectral}{{1}{3}{Spectral decay of the normalised distribution}{corollary.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {VI}Empirical Results}{3}{section.6}\protected@file@percent }
 \newlabel{sec:results}{{VI}{3}{Empirical Results}{section.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Setup}{3}{subsection.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}Entropy Trajectories and IEE}{3}{subsection.6.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Entropy $H(t)$ for all mechanisms at $n=100$ on ER. Controlled mechanisms suppress entropy relative to M0. The crossover at $H_c$ is visible as the sharp inflection in M0.}}{3}{figure.1}\protected@file@percent }
-\newlabel{fig:entropy}{{1}{3}{Entropy $H(t)$ for all mechanisms at $n=100$ on ER. Controlled mechanisms suppress entropy relative to M0. The crossover at $\Hc $ is visible as the sharp inflection in M0}{figure.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}Crossover Behaviour Near $H_c$}{3}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Experimental Setup}{3}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}Entropy Suppression and IEE}{3}{subsection.6.2}\protected@file@percent }
+\citation{gao2016universal}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Entropy $H(t)$ for all mechanisms at $n=100$ on ER. All controlled mechanisms suppress entropy below M0. The sharp inflection near $H_c$ marks the onset of active deletion.}}{4}{figure.1}\protected@file@percent }
+\newlabel{fig:entropy}{{1}{4}{Entropy $H(t)$ for all mechanisms at $n=100$ on ER. All controlled mechanisms suppress entropy below M0. The sharp inflection near $\Hc $ marks the onset of active deletion}{figure.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces IEE at $n=500$ (95\% CI). Ratio $=$ IEE$_k$/IEE$_{\mathrm  {M0}}$; lower is better.}}{4}{table.1}\protected@file@percent }
+\newlabel{tab:iee}{{I}{4}{IEE at $n=500$ (95\% CI). Ratio $=$ IEE$_k$/IEE$_{\mathrm {M0}}$; lower is better}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}Ensemble Weight Distribution}{4}{subsection.6.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Learned M6 weights $\mathbf  {w}$ per topology ($n=100$, $\lambda _{\mathrm  {reg}}=15$). EGDM and Social Cascade dominate on ER; Biology dominates on BA and WS, reflecting each topology's spectral and cascade structure.}}{4}{figure.2}\protected@file@percent }
+\newlabel{fig:weights}{{2}{4}{Learned M6 weights $\bfw $ per topology ($n=100$, $\lambda _{\mathrm {reg}}=15$). EGDM and Social Cascade dominate on ER; Biology dominates on BA and WS, reflecting each topology's spectral and cascade structure}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}Crossover Behaviour Near $H_c$}{4}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-E}}Scaling and Reliability}{4}{subsection.6.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces IEE vs $n$ for all mechanisms. M6's lower scaling exponent on ER ($\alpha =1.04$ vs $1.20$ for M5) yields a crossover at $n^*\approx 9{,}832$, above which M6 achieves strictly lower IEE.}}{4}{figure.3}\protected@file@percent }
+\newlabel{fig:scaling}{{3}{4}{IEE vs $n$ for all mechanisms. M6's lower scaling exponent on ER ($\alpha =1.04$ vs $1.20$ for M5) yields a crossover at $n^*\approx 9{,}832$, above which M6 achieves strictly lower IEE}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-F}}Cross-Topology Transfer}{4}{subsection.6.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Six-metric dominance scorecard: M5 vs M6 at $n=100$. Bold = best per row. M6 wins on reliability, evolving-network privacy, scaling, and deletion; M5 wins on raw IEE for matched static topologies.}}{5}{table.2}\protected@file@percent }
+\newlabel{tab:m6_scorecard}{{II}{5}{Six-metric dominance scorecard: M5 vs M6 at $n=100$. Bold = best per row. M6 wins on reliability, evolving-network privacy, scaling, and deletion; M5 wins on raw IEE for matched static topologies}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Cross-topology IEE transfer benchmark ($n=100$, $N_\mathrm  {train}=10$, $N_\mathrm  {test}=20$ seeds per topology). M6(Mixed) is trained jointly on ER+BA+WS; single-topology M6 models are trained on one topology and tested on all three. Worst-case $= \max _\mathrm  {topo}$~IEE; Topo-Var $= \sigma $~of per-topo means; TTHM $=$ time to half mass (lower $=$ faster deletion). Bold $=$ best per column. M6(Mixed) wins on Worst-case, Topo-Var, CV, and TTHM.}}{5}{table.3}\protected@file@percent }
+\newlabel{tab:topology_transfer}{{III}{5}{Cross-topology IEE transfer benchmark ($n=100$, $N_\mathrm {train}=10$, $N_\mathrm {test}=20$ seeds per topology). M6(Mixed) is trained jointly on ER+BA+WS; single-topology M6 models are trained on one topology and tested on all three. Worst-case $= \max _\mathrm {topo}$~IEE; Topo-Var $= \sigma $~of per-topo means; TTHM $=$ time to half mass (lower $=$ faster deletion). Bold $=$ best per column. M6(Mixed) wins on Worst-case, Topo-Var, CV, and TTHM}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-G}}Real-World Validation}{5}{subsection.6.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Real-world network validation. IEE mean $\pm $ 95\% CI ($N=20$ seeds). All mechanisms reduce IEE by $>90\%$ over M0; M6 achieves lower CV on hard topologies (low $\lambda _2$).}}{5}{table.4}\protected@file@percent }
+\newlabel{tab:realworld_extended}{{IV}{5}{Real-world network validation. IEE mean $\pm $ 95\% CI ($N=20$ seeds). All mechanisms reduce IEE by $>90\%$ over M0; M6 achieves lower CV on hard topologies (low $\lambda _2$)}{table.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-H}}Statistical Significance}{5}{subsection.6.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Welch two-sample $t$-tests comparing M5 (Social threshold) against M6 ensemble variants across topologies ($n=100$, $N=50$ seeds). Bonferroni correction applied for 6 simultaneous comparisons. Cohen's $d$ measures standardised effect size (positive = M5 $>$ M6, i.e.\ M6 reduces IEE). $^{***}$: $p<0.001$; $^{**}$: $p<0.01$; $^{*}$: $p<0.05$.}}{5}{table.5}\protected@file@percent }
+\newlabel{tab:welch_tests}{{V}{5}{Welch two-sample $t$-tests comparing M5 (Social threshold) against M6 ensemble variants across topologies ($n=100$, $N=50$ seeds). Bonferroni correction applied for 6 simultaneous comparisons. Cohen's $d$ measures standardised effect size (positive = M5 $>$ M6, i.e.\ M6 reduces IEE). $^{***}$: $p<0.001$; $^{**}$: $p<0.01$; $^{*}$: $p<0.05$}{table.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Discussion}{5}{section.7}\protected@file@percent }
+\newlabel{sec:discussion}{{VII}{5}{Discussion}{section.7}{}}
 \bibcite{geambasu2009vanish}{1}
 \bibcite{tang2010fade}{2}
 \bibcite{zhao2024multi}{3}
 \bibcite{eliasof2024graph}{4}
-\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces IEE at $n=500$. 95\% CI shown. Ratio = IEE$_k$/IEE$_{\mathrm  {M0}}$; lower is better. M5 wins raw IEE on static graphs; M6 wins reliability and evolving-network performance (see text).}}{4}{table.1}\protected@file@percent }
-\newlabel{tab:iee}{{I}{4}{IEE at $n=500$. 95\% CI shown. Ratio = IEE$_k$/IEE$_{\mathrm {M0}}$; lower is better. M5 wins raw IEE on static graphs; M6 wins reliability and evolving-network performance (see text)}{table.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Terminal IEE at $n=500$. M5 is the top single mechanism on static topologies; all controlled mechanisms reduce IEE by $>90\%$ over M0.}}{4}{figure.2}\protected@file@percent }
-\newlabel{fig:iee}{{2}{4}{Terminal IEE at $n=500$. M5 is the top single mechanism on static topologies; all controlled mechanisms reduce IEE by $>90\%$ over M0}{figure.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}Regularisation Sensitivity}{4}{subsection.6.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Regularisation sweep on BA $n=200$. $\lambda _{\mathrm  {reg}} = 15$ sits at the elbow of the IEE-diversity trade-off.}}{4}{table.2}\protected@file@percent }
-\newlabel{tab:reg}{{II}{4}{Regularisation sweep on BA $n=200$. $\lambda _{\mathrm {reg}} = 15$ sits at the elbow of the IEE-diversity trade-off}{table.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-E}}IEE Scaling and Reliability}{4}{subsection.6.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces IEE vs $n$ for all mechanisms. All controlled mechanisms scale significantly better than M0. M6's lower exponent on ER ($\alpha =1.04$ vs $1.20$) gives a crossover at $n^{*}\approx 9{,}832$.}}{4}{figure.3}\protected@file@percent }
-\newlabel{fig:scaling}{{3}{4}{IEE vs $n$ for all mechanisms. All controlled mechanisms scale significantly better than M0. M6's lower exponent on ER ($\alpha =1.04$ vs $1.20$) gives a crossover at $n^{*}\approx 9{,}832$}{figure.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VII}Conclusions}{4}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{References}{4}{section*.2}\protected@file@percent }
 \bibcite{juliussen2023algorithms}{5}
 \bibcite{oesterling2024fair}{6}
 \bibcite{pastor2015epidemic}{7}
@@ -90,9 +98,11 @@
 \bibcite{karrer2011competing}{17}
 \bibcite{bourtoule2021machine}{18}
 \bibcite{gao2016universal}{19}
-\bibcite{gao2012implementing}{20}
-\bibcite{oksendal2003stochastic}{21}
-\bibcite{feller1951two}{22}
-\bibcite{revuzyor1999}{23}
-\bibcite{shuman2013emerging}{24}
-\gdef \@abspage@last{5}
+\bibcite{oksendal2003stochastic}{20}
+\bibcite{feller1951two}{21}
+\bibcite{revuzyor1999}{22}
+\bibcite{mohan2025realtime}{23}
+\bibcite{sailaja2025stochastic}{24}
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Conclusions}{6}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{6}{section*.2}\protected@file@percent }
+\gdef \@abspage@last{6}

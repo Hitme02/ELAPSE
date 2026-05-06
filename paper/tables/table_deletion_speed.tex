@@ -2,6 +2,7 @@
 \caption{Deletion speed and early-phase privacy metrics ($n=100$, $N=30$ seeds per topology, topology-averaged). T50 = time for $M(t)$ to reach $\frac{1}{2}M_0$ (lower = faster deletion). Early IEE fraction = IEE in first third of simulation / total IEE (lower = less exposure when data most at risk). Deletion completeness = $1 - M(T)/M_0$ (higher = more data deleted). M6 ensemble wins on all four dimensions owing to its multi-path OR-gate trigger structure. Bold = best per column.}
 \label{tab:deletion_speed}
 \centering
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lcccc}
 \toprule
 Model & T50 (time to $\frac{1}{2}M_0$) & Early IEE fraction & Deletion completeness & Total IEE \\
@@ -11,5 +12,6 @@ M5 (Social) & \textbf{0.891} & 0.583 & \textbf{0.911} & \textbf{68.362} \\
 M6 (topo-matched) & 1.279 & 0.578 & 0.875 & 96.107 \\
 M6 (mixed) & 1.303 & 0.573 & 0.872 & 98.007 \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
