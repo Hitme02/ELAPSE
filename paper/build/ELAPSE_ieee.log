@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.19)  6 MAY 2026 17:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.19)  12 MAY 2026 18:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**../tex/ELAPSE_ieee.tex
-(../tex/ELAPSE_ieee.tex
+**ELAPSE_ieee.tex
+(./ELAPSE_ieee.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/ieeetran/IEEEtran.cls
@@ -306,7 +306,7 @@ Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
 \c@section@level=\count302
 )
-(/usr/local/texlive/2026basic/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+(/Users/user/Library/texmf/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count303
 )
@@ -428,7 +428,7 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 ef
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count325
-) (./ELAPSE_ieee.aux)
+) (../build/ELAPSE_ieee.aux)
 \openout1 = `ELAPSE_ieee.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
@@ -474,109 +474,120 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 Package hyperref Info: Link coloring OFF on input line 32.
- (./ELAPSE_ieee.out) (./ELAPSE_ieee.out)
+ (../build/ELAPSE_ieee.out) (../build/ELAPSE_ieee.out)
 \@outlinefile=\write3
 \openout3 = `ELAPSE_ieee.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 93.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 98.
 
 
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 93.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 98.
 
 
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1{/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-{/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/base/8r.enc}
+)
+Underfull \hbox (badness 5077) in paragraph at lines 92--100
+[]\OT1/ptm/b/n/9 Across three syn-thetic topolo-gies and five real-world
+ []
+
+
+Underfull \hbox (badness 1360) in paragraph at lines 92--100
+\OT1/ptm/b/n/9 networks---50 seeds, 5-fold cross-validation---every ELAPSE
+ []
+
+[1{/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/
+usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-Underfull \hbox (badness 6236) in paragraph at lines 245--252
+Underfull \hbox (badness 6236) in paragraph at lines 251--259
 \OT1/ptm/m/n/10 Drawn from gene-regulation switch-ing [[]9[]]: $\OML/cmm/m/it/1
 0 v[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) =
  []
 
-
-Underfull \hbox (badness 1596) in paragraph at lines 305--308
+[2]
+Underfull \hbox (badness 1596) in paragraph at lines 314--317
 [] [][] []\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 w\OT1/cmr/m/n/10 )$\OT1/ptm/m/it/10
  . Then $[]\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 w[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n
 /10 ^^T [][] []\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 e[]\OT1/cmr/m/n/10 )$\OT1/ptm/
 m/it/10 ,
  []
 
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 347--353
+
+Underfull \hbox (badness 10000) in paragraph at lines 354--360
 []\OT1/ptm/b/n/10 (A) Lo-cal
  []
 
 
-Underfull \hbox (badness 1603) in paragraph at lines 398--406
+Underfull \hbox (badness 1603) in paragraph at lines 405--413
 []\OT1/ptm/m/n/10 Apply It[]o's for-mula to $\OML/cmm/m/it/10 M\OT1/cmr/m/n/10 
 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 )[]$\OT1/ptm/m/n/10 : $\OML/cmm/m/it/10 d\OT
 1/cmr/m/n/10 (\OML/cmm/m/it/10 M[]\OT1/cmr/m/n/10 ) =
  []
 
-<../../output/figures/fig1_entropy_n100.pdf, id=181, 1073.7765pt x 383.93437pt>
+[3]
+<../../output/figures/fig1_entropy_n100.pdf, id=201, 1073.7765pt x 383.93437pt>
 
 File: ../../output/figures/fig1_entropy_n100.pdf Graphic file (type pdf)
 <use ../../output/figures/fig1_entropy_n100.pdf>
 Package pdftex.def Info: ../../output/figures/fig1_entropy_n100.pdf  used on in
-put line 472.
+put line 480.
 (pdftex.def)             Requested size: 252.0pt x 90.10156pt.
-[3]
-<../../output/figures/fig3_weights_n100.pdf, id=206, 930.33571pt x 320.91206pt>
+<../../output/figures/fig3_weights_n100.pdf, id=204, 930.33571pt x 320.91206pt>
 
 File: ../../output/figures/fig3_weights_n100.pdf Graphic file (type pdf)
 <use ../../output/figures/fig3_weights_n100.pdf>
 Package pdftex.def Info: ../../output/figures/fig3_weights_n100.pdf  used on in
-put line 530.
+put line 536.
 (pdftex.def)             Requested size: 252.0pt x 86.92162pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 538.
+(hyperref)                removing `math shift' on input line 544.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 538.
+(hyperref)                removing `subscript' on input line 544.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 538.
+(hyperref)                removing `math shift' on input line 544.
 
-<../../output/figures/fig4_scaling.pdf, id=209, 713.15494pt x 388.04036pt>
+<../../output/figures/fig4_scaling.pdf, id=207, 713.15494pt x 388.04036pt>
 File: ../../output/figures/fig4_scaling.pdf Graphic file (type pdf)
 <use ../../output/figures/fig4_scaling.pdf>
 Package pdftex.def Info: ../../output/figures/fig4_scaling.pdf  used on input l
-ine 576.
+ine 581.
 (pdftex.def)             Requested size: 252.0pt x 137.11877pt.
-(../tables/table_m6_scorecard.tex) [4 <../../output/figures/fig1_entropy_n100.p
-df> <../../output/figures/fig3_weights_n100.pdf> <../../output/figures/fig4_sca
-ling.pdf>] (../tables/table_topology_transfer.tex)
-(../tables/table_realworld_extended.tex) (../tables/table5_welch_tests.tex)
-[5]
-Underfull \hbox (badness 2229) in paragraph at lines 844--849
+(../build/../tables/table_m6_scorecard.tex)
+(../build/../tables/table_topology_transfer.tex [4 <../build/../../output/figur
+es/fig1_entropy_n100.pdf> <../build/../../output/figures/fig3_weights_n100.pdf>
+]) (../build/../tables/table_realworld_extended.tex)
+(../build/../tables/table5_welch_tests.tex) [5 <../build/../../output/figures/f
+ig4_scaling.pdf>]
+Underfull \hbox (badness 2229) in paragraph at lines 849--854
 \OT1/ptm/m/n/8 ``A Real-Time Sys-tem for Port-fo-lio Op-ti-miza-tion Us-ing Mar
 kov
  []
 
 
-Underfull \hbox (badness 4595) in paragraph at lines 844--849
+Underfull \hbox (badness 4595) in paragraph at lines 849--854
 \OT1/ptm/m/n/8 Chain Steady-State Anal-y-sis,'' \OT1/ptm/m/it/8 Proc. IEEE CSIT
 SS\OT1/ptm/m/n/8 , 2025, doi:
  []
 
 
-Underfull \hbox (badness 4492) in paragraph at lines 851--856
+Underfull \hbox (badness 4492) in paragraph at lines 856--861
 []\OT1/ptm/m/n/8 Y. Sailaja, S. Chakote, R. Shreyash-wini, and V. Khan-del-wal,
 
  []
 
 
-Underfull \hbox (badness 4279) in paragraph at lines 851--856
+Underfull \hbox (badness 4279) in paragraph at lines 856--861
 \OT1/ptm/m/n/8 cesses: A Sim-u-la-tion Study,'' \OT1/ptm/m/it/8 Proc. IEEE CSIT
 SS\OT1/ptm/m/n/8 , 2025, doi:
  []
@@ -592,7 +603,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[6] (./ELAPSE_ieee.aux)
+[6] (../build/ELAPSE_ieee.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -601,13 +612,13 @@ Package rerunfilecheck Info: File `ELAPSE_ieee.out' has not changed.
 (rerunfilecheck)             Checksum: ADF39C3DEB1D7965A16CB1A6DCA50513;3226.
  ) 
 Here is how much of TeX's memory you used:
- 11821 strings out of 469006
- 185082 string characters out of 5454813
- 626100 words of memory out of 5000000
+ 11822 strings out of 469006
+ 185203 string characters out of 5454813
+ 624100 words of memory out of 5000000
  40274 multiletter control sequences out of 15000+600000
  673625 words of font info for 128 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 75i,11n,79p,612b,506s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,605b,475s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
 0.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mbx7.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/c
@@ -637,7 +648,7 @@ al/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 /local/texlive/2026basic/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/loc
 al/texlive/2026basic/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/te
 xlive/2026basic/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ELAPSE_ieee.pdf (6 pages, 716581 bytes).
+Output written on ../build/ELAPSE_ieee.pdf (6 pages, 717190 bytes).
 PDF statistics:
  649 PDF objects out of 1000 (max. 8388607)
  345 compressed objects within 4 object streams
