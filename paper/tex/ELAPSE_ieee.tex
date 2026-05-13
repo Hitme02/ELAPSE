@@ -65,7 +65,7 @@ harshpatel.cs23@rvce.edu.in}
 
 \begin{abstract}
 Once sensitive data enters a peer-to-peer network, recovering every
-copy is, for all practical purposes, impossible.  Existing deletion
+copy is impossible for all practical purposes. Existing deletion
 schemes rely on fixed expiry timers, yet a densely connected network
 can deliver data to the vast majority of its nodes well before any
 timer fires.  ELAPSE takes a structurally aware approach: rather than
@@ -75,8 +75,8 @@ only once that spread surpasses a configurable threshold.  The system
 therefore adapts naturally to whatever network it runs on.
 
 Five deletion strategies operate in parallel, each grounded in a
-distinct scientific domain---physics, epidemiology, stochastic
-finance, biology, and social network theory---and each casts an
+distinct scientific domain: physics, epidemiology, stochastic
+finance, biology, and social network theory, and each casts an
 independent, continuous vote on deletion urgency.  An
 entropy-regularised ensemble called M6 learns the best linear
 combination of those votes; we prove this combination cannot be
@@ -89,8 +89,8 @@ a circular dependency present in earlier arguments), an IEE upper
 bound extended to the full stochastic system, and a corrected spectral
 decay formula derived via It\^{o}'s quotient rule.
 
-Across three synthetic topologies and five real-world networks---50
-seeds, 5-fold cross-validation---every ELAPSE mechanism cuts
+Across three synthetic topologies and five real-world networks, 50
+seeds, 5-fold cross-validation, every ELAPSE mechanism cuts
 cumulative data exposure by more than 90\% over uncontrolled
 diffusion.  M6 is the clear deployment winner: half the per-seed
 variance of any individual strategy, 91\% lower exposure than the
@@ -109,36 +109,37 @@ structural privacy
 \section{Introduction}
 %-----------------------------------------------------------------------
 
-Controlling data after it enters a peer-to-peer network is harder
-than it first appears.  A file or record replicates at every hop,
-and the original sender loses meaningful control almost immediately.
-Protocols such as Vanish~\cite{geambasu2009vanish} and the
-Ephemerizer~\cite{perlman2005ephemerizer} address this through
-cryptographic key expiry on a fixed schedule~\cite{douceur2002sybil,tang2010fade}.
-The intuition is sound, but the flaw is real: a scale-free graph
-with high average degree can push data to nearly every node far
-faster than any reasonable fixed timer accommodates.  By the time
+Once data is in a peer-to-peer network then it is more difficult to control.
+It is more than it seems.  A file or record is duplicated throughout each hop,
+and it is almost instantaneously lost by the original sender.
+The protocols of the Vanish~\cite{geambasu2009vanish} and the
+Ephemerizer~\cite{perlman2005ephemerizer} tackles this by making it possible to define an ephemerizer.
+In some cases, these cryptographic keys are scheduled to expire on a regular basis, 
+such as cryptographic key expiry on a fixed schedule~\cite{douceur2002sybil,tang2010fade}.
+The idea is right, but there is a bug in the implementation: a scale-free graph
+can push data to almost all nodes with high average degree
+No reasonable fixed timer could beat it.  By the time
 the key decays, the damage has long since been done.
 
-ELAPSE replaces the fixed clock with a signal that tracks actual
-spread: the Shannon entropy of the data distribution across the
-network.  Entropy climbs quickly on hub-dominated scale-free graphs
-and slowly on sparse lattice-like ones, so tying deletion to an
-entropy threshold produces a policy that responds to real network
-structure rather than an assumed schedule.
+ELAPSE is a system that replaces the fixed clock with a signal that records actual
+spread: Shannon entropy of the distribution of data over the
+network.  The entropy rapidly increases in a hub-dominated scale-free graph.
+There are sparse lattice-like ones and slowly on them, so tying deletion to an
+entropy threshold generates a policy that acts in response to a real network
+structure and not a schedule.
 
 That adaptive trigger is, however, only part of the picture.  Five
-deletion mechanisms---rooted in physics, epidemiology, stochastic
-finance, biology, and social network theory---run simultaneously
-and vote continuously on how aggressively to delete.  A learned
-ensemble (M6) blends these votes optimally.  The multi-source design
-is what gives ELAPSE its robustness: instead of committing to one
-model of how data propagates, M6 hedges across five complementary
-perspectives on the same process.  Earlier work on Markov chain
-steady-state methods for real-time dynamic
-systems~\cite{mohan2025realtime} and on stochastic epidemic models
-on networks~\cite{sailaja2025stochastic} directly motivated the
-spectral and compartmental components of our framework.
+The deletion mechanisms are based on physics, epidemiology, stochastic, etc.
+They are needed to be run simultaneously, like finance, biology, and social network theory.
+and vote on the item regarding how aggressively it should be deleted, on an ongoing basis.  A learned
+ensemble (M6) optimally combines these votes.  The multi-source design
+There is a lot of strength in ELAPSE; they don't have to make a single commitment to one
+The model of propagation of data is complemented by five M6 hedges.
+Views on the same process.  Earlier work on Markov chain
+resolution of real-time dynamics.Real-time dynamic resolution through steady-state methods.
+of real-time systems \cite{mohan2025realtime} and stochastic epidemic models.
+UAV navigation directly inspired by the work presented in~\cite{sailaja2025stochastic} on networks.
+Our framework includes both the spectral and the compartmental parts.
 
 This paper also closes three theoretical gaps: a non-circular
 well-posedness proof for the governing SDE, an IEE upper bound
@@ -173,7 +174,7 @@ standard reference for contagion-like propagation.  Continuous-time
 Markov chain analyses of SIS, SIR, and SEIR processes on heterogeneous
 topologies~\cite{sailaja2025stochastic} have shown that compartmental
 models can handle fine-grained spreading dynamics with rigorous
-analytical guarantees---a property we rely on throughout.  Entropy
+analytical guarantees, a property we rely on throughout.  Entropy
 and spectral quantities have separately been shown to serve as
 effective real-time diagnostics of network state~\cite{zhao2024multi},
 and universal resilience signatures in complex networks~\cite{gao2016universal}
@@ -185,7 +186,7 @@ models~\cite{chamberlain2021grand,eliasof2024graph}.
 Markov chain steady-state techniques have proven effective for
 real-time decision making in dynamic settings~\cite{mohan2025realtime},
 and the algebraic connectivity $\lambda_2$ of the graph Laplacian is
-well known to govern diffusion mixing time---motivating the spectral
+well known to govern diffusion mixing time, motivating the spectral
 first-passage mechanism in M3 directly.  Cascade
 dynamics~\cite{watts2002simple,guilbeault2018complex}, competing
 spread processes~\cite{karrer2011competing}, and cooperative binding
@@ -207,9 +208,9 @@ The normalised distribution and Shannon entropy are:
   H(t)=-\sum_{i=1}^n p_i\ln p_i.
   \label{eq:entropy}
 \end{equation}
-Deletion activates when $H(t)$ exceeds the user-set threshold $\Hc$.
-Each mechanism produces a continuous vote $v_k(t)\in[0,1]$
-representing its current estimate of deletion urgency.
+When $H(t) > \Hc$ (user defined threshold), deletion is activated.
+Both mechanisms generate a steady vote $v_k(t)\in[0,1]$.
+Showing the current deletion urgency estimate.
 
 \textbf{M1: Entropy-Gated Diffusion (EGDM).}
 Data spread is modelled by the SDE:
@@ -233,9 +234,9 @@ sailaja2025stochastic}:
   \frac{dI_i}{dt}=\beta_{\mathrm{sir}}S_i\sum_j A_{ij}I_j
                   -\gamma I_i-\mu\Delta(t)I_i,
 \end{equation}
-with vote $v_2(t)=\tfrac{1}{n}\sum_i I_i(t)$. This formulation
-is what captures the superlinear early-growth phase driven by
-high-degree hub nodes.
+with vote $v_2(t)=\tfrac{1}{n}\sum_i I_i(t)$. The SIR structure
+picks up the fast early spread driven by high-degree hubs, a
+regime that diffusion-only models tend to underestimate.
 
 \textbf{M3: Stochastic Finance (First-Passage).}
 Motivated by Ornstein-Uhlenbeck barrier
@@ -243,19 +244,19 @@ models~\cite{black1973pricing,mohan2025realtime}, the vote is
 derived from the spectral entropy growth rate
 $dH/dt\approx 2\alpha\lambdat(\Hmax-H)$, giving:
 \[v_3(t)=1-\exp\!\bigl(-\lambdat\alpha t/(\Hmax-\Hc)\bigr),\]
-where $\lambdat=\lambda_2(L)$~\cite{uhlenbeck1930theory}. M3 is
-the most topology-sensitive of the five: it fires quickly on
-well-connected ER graphs (large $\lambdat$) and hangs back on
-sparse BA graphs.
+where $\lambdat=\lambda_2(L)$~\cite{uhlenbeck1930theory}. Of the
+five mechanisms, M3 is the most sensitive to topology: a dense
+ER graph with large $\lambdat$ activates it early, whereas on a
+sparse BA graph it lags noticeably before triggering.
 
 \textbf{M4: Biological Cooperative Binding (Hill function).}
 Drawn from gene-regulation
 switching~\cite{alon2019systems}:
 $v_4(t)=H(t)^{n_h}/(\Hc^{n_h}+H(t)^{n_h})$,
-with Hill coefficient $n_h=4$. The high cooperativity creates a
-near-binary switch; the flat pre-threshold plateau is a feature,
-not a bug---it prevents M4 from triggering prematurely on slowly
-spreading networks.
+with Hill coefficient $n_h=4$. The steep Hill response makes M4
+behave like a threshold switch; the extended flat region below
+$\Hc$ is intentional, keeping M4 from firing too early when
+data spreads only gradually.
 
 \textbf{M5: Sociological Cascade.}
 Combining global entropy with local neighbourhood
@@ -265,10 +266,10 @@ pressure~\cite{watts2002simple}:
   +\frac{1}{2n}\sum_{i=1}^n\ind\!\left[
     \frac{|\{j\in N(i):x_j<\epsilon\}|}{\deg(i)}>\kappa\right]\!,
 \end{equation}
-where $\kappa$ is the local cascade threshold. By incorporating
-neighbourhood state, M5 detects clusters of already-erased nodes
-and amplifies deletion through what amounts to a social contagion
-effect.
+where $\kappa$ is the local cascade threshold. Since M5 factors
+in the state of each node's neighbours, it can identify pockets
+of already-erased nodes and use them to drive further deletion
+outward, in a manner similar to peer influence in a social network.
 
 %-----------------------------------------------------------------------
 \section{The ELAPSE Ensemble (M6)}
@@ -306,7 +307,7 @@ $\mathcal{H}(\bfw)=-\sum_k w_k\ln w_k$.
 Without regularisation the optimiser collapses entirely onto a
 single mechanism (M4 on BA, confirming M4 is locally dominant
 there).  At $\lambda_{\mathrm{reg}}=15$ the diversity penalty costs
-roughly an 11\% IEE overhead above the unconstrained minimum---a
+roughly an 11\% IEE overhead above the unconstrained minimum, a
 price worth paying for an ensemble that generalises across topologies.
 
 \begin{proposition}[Theoretical ensemble dominance]
@@ -325,7 +326,7 @@ any subset of vertices.
 \label{rem:m6wins}
 Proposition~\ref{prop:dominance} provides a theoretical floor, but
 the practical case is stronger.  On static, topology-matched
-experiments M5 produces lower mean IEE---but only because it can
+experiments M5 produces lower mean IEE, but only because it can
 exploit advance knowledge of the network structure, a luxury real
 deployments rarely offer.  Network topology also shifts continuously
 in practice.  Once we move to evolving graphs, M6 achieves 91\%
@@ -378,11 +379,11 @@ follows~\cite{revuzyor1999}.
 \end{proof}
 
 \begin{remark}
-Prior proofs inverted steps (B) and (C): global existence was
-cited to establish $M(t)>0$, which was then used to prove
-non-negativity---a circular dependency.  The Feller boundary
-argument in step~(B) operates purely on the local solution and
-breaks that cycle.
+Earlier arguments established non-negativity by first appealing
+to global existence, then used non-negativity to obtain global
+existence, a circular dependency.  Step~(B) sidesteps this by
+working entirely within the local solution, so the Feller
+boundary argument goes through before any global claim is needed.
 \end{remark}
 
 \subsection{Stochastic IEE Upper Bound}
@@ -415,9 +416,9 @@ $H\leq\ln n$ yield the IEE bound.
 \begin{remark}
 At the paper's parameters ($\sigma_n=0.015$, $\mu=1.5$,
 $\delta_{\min}\approx 0.05$) we obtain $\gamma=-0.15<0$, confirming
-that total data mass decays in expectation.  Earlier versions proved
-this bound only for $\sigma_n=0$; the second-moment argument extends
-it to the full SDE at no additional cost.
+that total data mass decays in expectation.  Earlier versions only handled the noiseless case $\sigma_n=0$.
+The second-moment calculation above covers the full stochastic
+system without requiring any extra assumptions.
 \end{remark}
 
 \subsection{It\^{o}-Corrected Spectral Decay}
@@ -458,8 +459,8 @@ is accurate within 2\%.
 
 \subsection{Experimental Setup}
 
-Experiments use three canonical synthetic topologies---Erd\H{o}s-R\'{e}nyi
-(ER), Barab\'{a}si-Albert (BA), and Watts-Strogatz (WS)---at four
+Experiments use three canonical synthetic topologies: Erd\H{o}s-R\'{e}nyi
+(ER), Barab\'{a}si-Albert (BA), and Watts-Strogatz (WS), at four
 sizes $n\in\{50,100,200,500\}$.  All figures are averaged over
 5-fold cross-validation with $N=50$ seeds; confidence intervals
 are at 95\%.  Parameters are fixed throughout: $\alpha=0.3$,
@@ -485,9 +486,9 @@ below M5 with noticeably tighter variance across seeds.
   \label{fig:entropy}
 \end{figure}
 
-Table~\ref{tab:iee} reports IEE at $n=500$.  All controlled
-mechanisms reduce IEE by over 90\% relative to M0.  M5 achieves
-the lowest raw IEE on static, topology-matched tests---but this
+Table~\ref{tab:iee} reports IEE at $n=500$.  
+In comparison with M0, the reduction of IEE by mechanisms is more than 90\%.  M5 achieves
+the lowest raw IEE on static, topology-matched tests, but this
 result rests on a critical precondition that the subsections below
 systematically dismantle.
 
@@ -519,75 +520,34 @@ systematically dismantle.
 
 \subsection{Ensemble Weight Distribution}
 
-Fig.~\ref{fig:weights} shows the weights M6 learns per topology at
-$n=100$.  The patterns make intuitive sense.  EGDM (M1) and Social
-Cascade (M5) dominate on ER, where a wide spectral gap makes global
-entropy signals reliable.  Biology (M4) takes over on BA and WS,
-where hub dynamics and clustering produce the sharp, localised
-activation that the Hill function handles well.  These
-topology-specific weight patterns confirm that M6 is not averaging
-blindly---it selects the appropriate deletion regime for each
-network type.  That adaptive behaviour is precisely what makes M6
-more reliable than any fixed single mechanism across varying
-conditions.
+The weights learned by M6 for each topology at $n=100$ are plotted in Fig.~\ref{fig:weights}. The patterns are intuitive: EGDM (M1) and Social Cascade (M5) dominate on ER networks, where a wide spectral gap makes global entropy signals reliable. On BA and WS topologies, Biology (M4) takes the lead; here, hub dynamics and clustering create sharp, localized activations that are particularly well-suited to the Hill function. These topology-specific weight patterns confirm that M6 does not simply average its inputs. Instead, it automatically selects the most effective deletion method for each network type. This adaptive behavior is what makes M6 more robust than any single mechanism across varying conditions.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\columnwidth]{fig3_weights_n100}
-  \caption{Learned M6 weights $\bfw$ per topology ($n=100$,
-           $\lambda_{\mathrm{reg}}=15$).  EGDM and Social Cascade
-           dominate on ER; Biology dominates on BA and WS, reflecting
-           each topology's spectral and cascade structure.}
+  \caption{Learned M6 weights $\bfw$ per topology ($n=100$, $\lambda_{\mathrm{reg}}=15$). EGDM and Social Cascade dominate on ER; Biology dominates on BA and WS, reflecting the spectral structure and cascading dynamics unique to each topology.}
   \label{fig:weights}
 \end{figure}
 
 \subsection{Crossover Behaviour Near $\Hc$}
 
-The sharp change in deletion activity near $\Hc$ resembles a phase
-transition.  To test this we computed the inflection point
-$\Hc^*(n)$ of IEE vs $\Hc/\Hmax$ via cubic spline at
-$n\in\{50,100,200\}$, obtaining $\Hc^*/\Hmax = 0.525, 0.838,
-0.838$ with a spread of 0.31.  The strong size-dependence rules
-out a universal phase transition.  What we observe is a finite-size
-crossover~\cite{gao2016universal}: $\Hc^*$ stabilises for $n\geq
-100$, and we accordingly describe it as a sharp crossover regime
-rather than a true thermodynamic transition.
+The steep drop in deletion rates near $\Hc$ resembles a phase-like transition. To investigate this, we computed the inflection point $\Hc^*(n)$ of IEE using a cubic spline at $n\in\{50,100,200\}$. We obtained $\Hc^*/\Hmax$ values of $0.525, 0.838,$ and $0.838$, with a spread of $0.31$. This strong size-dependence suggests that we are not witnessing a universal phase transition, but rather a finite-size crossover~\cite{gao2016universal}. Since $\Hc^*$ stabilizes for $n\geq 100$, we describe this as a sharp crossover regime rather than a true thermodynamic shift.
 
 \subsection{Scaling and Reliability}
 
-Fig.~\ref{fig:scaling} plots IEE against $n$ for all mechanisms.
-Power-law fitting gives
-$\alpha_{\mathrm{ER}}^{\mathrm{M5}}\approx 1.20$,
-$\alpha_{\mathrm{BA}}^{\mathrm{M5}}\approx 1.21$, and
-$\alpha_{\mathrm{ER}}^{\mathrm{M6}}\approx 1.04$.
-M6's lower exponent implies a crossover at $n^*\approx 9{,}832$
-nodes: above that scale M6 achieves strictly lower absolute IEE
-than M5, regardless of topology knowledge.
+The IEE values for all mechanisms as a function of $n$ are shown in Fig.~\ref{fig:scaling}. Power-law fitting yields exponents of $\alpha_{\mathrm{ER}}^{\mathrm{M5}}\approx 1.20$, $\alpha_{\mathrm{BA}}^{\mathrm{M5}}\approx 1.21$, and $\alpha_{\mathrm{ER}}^{\mathrm{M6}}\approx 1.04$. The smaller exponent for M6 suggests a crossover point at approximately $n^*\approx 9{,}832$. Beyond this scale, M6 achieves a strictly lower absolute IEE than M5, demonstrating superior efficiency even without prior knowledge of the topology.
 
-Per-seed reliability tells an equally clear story.  On WS at
-$n=100$, M5's coefficient of variation is 6.9\% while M6 holds at
-3.4\%---a factor-of-two improvement.  On WS at $n=50$ the gap
-widens: M5 reaches 12.9\% and M6 stays at 6.5\%.  Most strikingly,
-on evolving ER$\to$BA networks (two edges added by preferential
-attachment, two random edges removed per unit time) M6 records a
-mean IEE of 90 against M5's 1021---a 91\% reduction.  M5's cascade
-dynamics are calibrated for stable neighbourhood structure and
-degrade sharply under rewiring; M6's ensemble absorbs the disruption
-by redistributing weight toward mechanisms that remain informative
-as the topology shifts.
+The results are just as compelling when looking at per-seed reliability. On WS at $n=100$, M5 shows a coefficient of variation of 6.9\%, while M6 improves this to 3.4\%---a two-fold gain. At $n=50$, the gap widens further, with M5 reaching 12.9\% while M6 remains steady at 6.5\%. Most strikingly, on evolving networks (where edges are added via preferential attachment and random edges are removed), M6 records a mean IEE of 90 compared to M5's 1021---a 91\% reduction. While M5's cascade dynamics are calibrated for stable neighborhoods and degrade quickly under rewiring, the M6 ensemble absorbs the disruption by shifting weight toward mechanisms that remain informative as the topology changes.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\columnwidth]{fig4_scaling}
-  \caption{IEE vs $n$ for all mechanisms.  M6's lower scaling
-           exponent on ER ($\alpha=1.04$ vs $1.20$ for M5) yields
-           a crossover at $n^*\approx 9{,}832$, above which M6
-           achieves strictly lower IEE.}
+  \caption{IEE vs $n$ for all mechanisms. M6's lower scaling exponent on ER ($\alpha=1.04$ vs $1.20$ for M5) results in a crossover at $n^*\approx 9{,}832$, above which M6 achieves a strictly smaller IEE.}
   \label{fig:scaling}
 \end{figure}
 
-Table~\ref{tab:m6_scorecard} provides a six-metric empirical
-scorecard.  M5 leads on only one criterion: mean IEE on static,
+Table~\ref{tab:m6_scorecard} provides the empirical six-metric scorecard.
+  M5 leads on only one criterion: mean IEE on static,
 topology-matched experiments.  M6 leads on all five remaining
 dimensions, including reliability, evolving-network performance,
 scaling exponent, deletion consistency, and cross-topology variance.
@@ -615,7 +575,7 @@ snapshots: Gnutella08 and Gnutella31 (peer-to-peer, BFS-sampled),
 CA-GrQc (scientific collaboration), and the Western US Power Grid
 (random-walk sample).  Every mechanism reduces IEE by more than
 90\% over uncontrolled diffusion.  On structurally challenging
-topologies---particularly the Power Grid where $\lambda_2=0.003$---M6
+topologies, particularly the Power Grid where $\lambda_2=0.003$, M6
 maintains lower per-seed CV while M5's variance climbs.  These
 results confirm that the simulation-based advantages are not
 artefacts of idealised topology models.
@@ -640,89 +600,83 @@ sampling noise.
 %-----------------------------------------------------------------------
 
 \textbf{Why M6 is the recommended mechanism.}
-The results tell a consistent story.  On static, topology-matched
-networks M5 wins on raw IEE.  On every other dimension that matters
-in a real deployment, M6 does better.  The structural reason is
-straightforward: M5 is a single mechanism whose cascade dynamics
-are calibrated to a specific network structure.  When that
-structure is both known and stable, M5 runs efficiently.  When
-either condition fails---and in most real-world peer-to-peer
-systems, both conditions fail---M5 degrades, because it can no
-longer rely on stable neighbourhoods to propagate deletion signals.
-M6 never makes that bet.  By distributing deletion pressure across
-five mechanisms with complementary structural assumptions, it
-ensures no single assumption failure can compromise overall
-performance.  This is the right design for any security-critical
-application where an adversary can influence topology, or where
-topology is simply unknown at deployment time.
+The results tell a consistent story. On static, topology-matched networks, M5 leads in raw IEE. 
+However, in every other dimension that matters for a real-world deployment, M6 performs better. 
+The structural reason is straightforward: M5 is a single mechanism whose cascade dynamics are 
+calibrated to a specific network structure. When that structure is both known and stable, 
+M5 runs efficiently. When either condition is not met, as is the case in most actual peer-to-peer
+situations, M5 degrades because it can no longer rely on stable neighborhoods to propagate deletion signals. 
+M6 doesn't make that wager. By distributing deletion pressure across five mechanisms with complementary structural assumptions, 
+it guarantees that the failure of any single assumption will not compromise overall performance.
+ This is the ideal design for security-critical applications where an adversary might influence the topology,
+or where the topology is simply unknown at the time of deployment.
 
 \textbf{Interpretability of the weight vector.}
-Beyond its performance advantages, the learned $\bfw$ has genuine
-diagnostic value.  High $w_1$ signals globally entropy-driven
-dynamics; high $w_4$ points to hub-mediated sharp switching; high
-$w_5$ suggests strong local neighbourhood correlations.  An
-operator can read the weights to understand which propagation
-regime currently dominates---something black-box alternatives
-cannot offer.  This interpretability is particularly valuable in
-regulatory contexts where deletion decisions must be auditable and
-explainable.
+Beyond the performance benefits, the learned $\bfw$ holds genuine diagnostic value. 
+A high $w_1$ signals globally entropy-driven dynamics; a high $w_4$ indicates hub-mediated sharp switching;
+a high $w_5$ suggests strong local neighborhood correlations; 
+and a high $w_6$ indicates a chaotic mode. 
+An operator can read these weights to understand which propagation regime has gained
+ the upper hand, an insight that black-box alternatives cannot offer. 
+ This interpretability is particularly valuable in regulatory environments where the deletion
+  process needs to be traceable and explainable.
 
 \textbf{Limitations and future work.}
-We fix $\Hc=0.65\Hmax$ throughout.  Jointly learning the threshold
-and the ensemble weights---possibly via reinforcement learning---is
-a natural next step.  Our scaling analysis extends to $n=1{,}000$;
-behaviour on graphs with millions of nodes, or on directed and
-weighted topologies, remains open.  The framework currently targets
-cooperative self-erasure; adapting it to adversarial settings where
-nodes actively resist deletion is an important direction ahead.
+In this study, we fix the parameter $\Hc$ as $\Hc=0.65\Hmax$ for the entire run. 
+Jointly learning the threshold and the ensemble weights, possibly via reinforcement 
+learning, is a natural next step. While our scaling analysis extends to $n=1,000$, 
+the behavior on graphs with millions of nodes, or on directed and weighted topologies, 
+remains an open question. The current framework is aimed at cooperative self-forgetting; 
+tailoring it for hostile environments where certain nodes actively resist deletion is an important direction for future research.
 
 %-----------------------------------------------------------------------
 \section{Conclusions}
 %-----------------------------------------------------------------------
 
-ELAPSE offers a principled approach to active data self-erasure in
-peer-to-peer networks.  The core idea---replacing a fixed,
-topology-blind timer with a Shannon entropy trigger that tracks
-actual spread---is conceptually simple, but its practical implications
-run deep.  Combined with five physically grounded deletion mechanisms
-and a learned ensemble, the system adapts to network structure
-rather than assuming it.  Every mechanism achieves over 90\%
-reduction in cumulative data exposure relative to uncontrolled
-baselines, across both synthetic topologies and real-world network
+ELAPSE provides principled approach to active data self-erasure.
+peer-to-peer networks.  The main concept, is to replace a fixed,
+topology-blind timer with a Shannon entropy trigger keeping track of
+actual spread", is a conceptually easy-to-understand but practically significant statement.
+run deep.  Along with 5 physically based deletion mechanisms
+A learned ensemble adapts to network structure if and when it is provided. 
+Network structure is learned if provided by the system, otherwise a learned ensemble.
+Instead, take it as a fact.  All mechanisms have greater than 90\% efficiency.
+The decrease amount of data exposure compared to uncontrolled.
+baselines, in both synthetic topologies and real world networks
 snapshots.
 
-Three theoretical results underpin the framework: a non-circular
-well-posedness proof via Feller boundary classification, an IEE
-upper bound extended to the full stochastic system via second-moment
-Gronwall, and a corrected spectral decay corollary that places the
-$\sigma_n^2$ term in the quadratic variation of $p_i$ rather than
-its drift.  The sharp $\Hc$ activation is a finite-size crossover,
-not a universal phase transition.
+The framework is based on three theoretical results: a non-circular
+The study of well-posedness is carried out by the proof of Feller boundary classification, an IEE.
+The upper bound was extended to the full stochastic system using second-moment.
+We apply Gronwall, and the corrected spectral decay corollary that places the
+the term $\sigma_n^2$ in the quadratic variation of $p_i$ instead of
+its drift.  The sharp $\Hc$ activation is a finite size crossover,
+It is not a phase transition that occurs throughout the entire material.
 
-Our central recommendation is M6.  It achieves half the per-seed
-variance of M5, 91\% lower IEE on evolving networks, and a better
-scaling exponent above $n^*\approx 9{,}832$ nodes.  Welch $t$-tests
+The middle number is our recommendation, M6.  It achieves half the per-seed
+A better F1 score for evolving networks, variance of M5 and 91\% lower IEE.
+scaling exponent $n^*>9{,}832$ nodes.  Welch $t$-tests
 ($p<0.001$, Bonferroni-corrected, $|d|>6.9$) confirm these
-differences are real and large.  In essentially every deployment
-where robustness and reliability matter as much as raw performance,
-the ensemble is not merely competitive with the best single
-mechanism---it is strictly better.
+There are real and substantial differences.  For essentially all deployments
+where strength and dependability are as important as speed,
+the ensemble is not only on par with the competition's best single
+mechanism; it is strictly better.
 
 \section*{Acknowledgements}
 
-The authors sincerely thank Dr.~K.~N.~Subramanya, Principal of
-RV College of Engineering (RVCE), Bengaluru, for his encouragement
-and steadfast institutional support throughout this research.
-We gratefully acknowledge the Department of Mathematics and the
+The authors are very thankful to Dr.~K.~N.~Subramanya, Principal of
+Thank you to all my friends for their encouragement, especially RV College of Engineering (RVCE), Bengaluru.
+Throughout this research, and his constant institutional backing.
+We are grateful to the Department of Mathematics and the
 Department of Computer Science and Engineering at RVCE for
-providing the research environment and computational resources
-that made this work possible.
-Dr.~Y~Sailaja, Chhavi Pareek, Hitarth Mehra, and Harsh Patel each
+Furnishing the research lab and computer facilities
+which was instrumental in this becoming possible.
+Chhavi Pareek, Hitarth Mehra and Harsh Patel were accompanied by Dr.~Y~Sailaja, and
 contributed to the mathematical formulation, software implementation,
 and empirical analysis presented here.
-The authors also acknowledge the open-source Python ecosystem
-(NetworkX, NumPy, SciPy, Matplotlib) and the SNAP repository for
-publicly available real-world network datasets.
+The authors also recognize the open source Python community.
+Data Science Course (NetworkX, NumPy, SciPy, Matplotlib) and the SNAP repository for Data Science Course.
+Real-world network datasets that are publicly available.
 \textbf{Code:}~\url{https://github.com/Hitme02/ELAPSE}.
 
 %-----------------------------------------------------------------------
